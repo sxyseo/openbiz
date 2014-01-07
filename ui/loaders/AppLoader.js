@@ -8,17 +8,19 @@ define(function(){
 		    	var appRequire = requirejs.config({
 		    		baseUrl:'/'+appName,
 		    		context:appName,
+		    		config:{
+						i18n:{
+							locale: 'zh-cn' //force to use this locale for test translation
+						}
+					},
 		    		paths:{
 		    			'i18n'	: openbiz.baseUrl+'/vendor/require/plugins/i18n',
 						'text'	: openbiz.baseUrl+'/vendor/require/plugins/text',
 		    		}
 		    	});	    	
 		    	appRequire(['./main'],function(app){
-		    		console.log(app);
-
-		    		var appNames = appName.split('/');
-		    		var appRealName = appNames[appNames.length-1];
-			    	openbiz.apps[appRealName] = app;
+			    	openbiz.apps[app.name] = app;
+			    	openbiz.apps[app.name].require = appRequire;
 		    		loadedApps.push(app);
 		    		if(loadedApps.length == apps.length){
 		    			callback(loadedApps);
