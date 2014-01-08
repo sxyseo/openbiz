@@ -6,7 +6,8 @@ define(["objects/Object",
 		"loaders/TemplateLoader",
 		"loaders/AppLoader",
 		"utils/MobileDetection",
-		"utils/BrowserDetection"
+		"utils/BrowserDetection",
+		'i18n!./nls/locale'
 		],
 	function(Object,
 		Module,
@@ -15,10 +16,12 @@ define(["objects/Object",
 		TemplateLoader,
 		AppLoader,
 		MobileDetection,
-		BrowserDetection
+		BrowserDetection,
+		locale
 		){		
 	return {
 		apps:{},
+		locale:locale,
 		loaders:{
 			TemplateLoader : TemplateLoader,
 			AppLoader : AppLoader
@@ -41,6 +44,40 @@ define(["objects/Object",
 		Router: Router,
 		isMobile: MobileDetection,
 		Browser: BrowserDetection,
-		loadApps: AppLoader.load
+		loadApps: AppLoader.load,
+		init:function(){
+			//setup jquery plugins		
+			$.validator.messages = 	locale.validation;			
+			$.validator.setDefaults({					
+			    highlight: function(element) {
+			    	$(element).closest('.form-group').removeClass('has-success');
+			        $(element).closest('.form-group').addClass('has-error');			    
+			    },
+			    unhighlight: function(element) {
+			    	$(element).attr('data-validation','valid');
+			    	$(element).popover('hide');
+			    	if($(element).closest('.form-group').find("[data-validation='invalid']").length==0){
+				        $(element).closest('.form-group').removeClass('has-error');		
+				        $(element).closest('.form-group').addClass('has-success');	        			        
+			    	}		    	
+			    },
+			    showErrors: function(errorMap, errorList) {			    				    	
+			    	for(var i in errorList)
+			    	{			    		
+			    		$(errorList[i].element)
+			    		.attr('data-validation','invalid')
+			    		.attr('data-content',errorList[i].message)
+			    		.popover({
+			    			placement:'auto'
+			    		})
+			    		.popover('show');
+			    	}
+			    	this.defaultShowErrors();
+			    },
+			    errorPlacement:function(){
+			    	//here do nothing, we use popover to show errors
+			    }
+			});	
+		}
 	}
 });
