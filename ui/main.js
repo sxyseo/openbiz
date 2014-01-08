@@ -5,13 +5,15 @@ if(typeof openbizUrl == 'undefined') openbizUrl = '/lib/openbiz';
 requirejs.config({
 	config:{
 		i18n:{
-			//locale: 'zh-cn' //force to use this locale for test translation
+			locale: 'zh-cn' //force to use this locale for test translation
 		}
 	},
 	paths:{
-		'bootstrap'	: 'vendor/bootstrap/js/bootstrap.min',
+		'bootstrap'	: 'vendor/bootstrap/js/bootstrap',
 		'underscore': 'vendor/underscore/underscore-min',
 		'jquery' 	: 'vendor/jquery/jquery-1.10.2.min',
+		'jquery.validate' 		: 'vendor/jquery/validation/jquery.validate.min',
+		'jquery.validate-addon' : 'vendor/jquery/validation/additional-methods.min',
 		'backbone'	: 'vendor/backbone/backbone-min',
 		'i18n'		: openbizUrl+'/vendor/require/plugins/i18n',
 		'text'		: openbizUrl+'/vendor/require/plugins/text',
@@ -24,9 +26,15 @@ requirejs.config({
 			deps: [	'underscore', 
 					'jquery'],
 			exports: 'Backbone'
-		},
+		},		
 		'underscore':{
 			exports: '_'
+		},
+		'jquery.validate':{
+			deps: ['jquery']
+		},
+		'jquery.validate-addon':{
+			deps: ['jquery.validate']
 		},
 		'bootstrap':{
 			deps: ["jquery"],
@@ -35,14 +43,48 @@ requirejs.config({
 	}
 });
 
-define(['backbone','i18n!./nls/locale','bootstrap'],
-	function(Backbone,locale){
+define(['backbone','bootstrap','jquery.validate-addon'],
+	function(Backbone){
 		// trigger event for onEnvironmentLoaded
 		if( typeof openbizEventsDelegate =='object' && 
 			typeof openbizEventsDelegate.onEnvironmentLoaded =='function' ){
 			openbizEventsDelegate.onEnvironmentLoaded.apply(this);
 		}
-		require(['openbiz'],function(openbiz){			
+		require(['openbiz','i18n!./nls/locale'],function(openbiz,locale){
+			openbiz.locale = locale;
+			//setup jquery plugins		
+			$.validator.messages = 	locale.validation;			
+			$.validator.setDefaults({					
+			    highlight: function(element) {
+			    	$(element).closest('.form-group').removeClass('has-success');
+			        $(element).closest('.form-group').addClass('has-error');			    
+			    },
+			    unhighlight: function(element) {
+			    	$(element).attr('data-validation','valid');
+			    	$(element).popover('hide');
+			    	if($(element).closest('.form-group').find("[data-validation='invalid']").length==0){
+				        $(element).closest('.form-group').removeClass('has-error');		
+				        $(element).closest('.form-group').addClass('has-success');	        			        
+			    	}		    	
+			    },
+			    showErrors: function(errorMap, errorList) {			    				    	
+			    	for(var i in errorList)
+			    	{
+			    		$(errorList[i].element)
+			    		.attr('data-validation','invalid')
+			    		.popover({
+			    			content: errorList[i].message,
+			    			placement:'auto'
+			    		})
+			    		.popover('show');
+			    	}
+			    	this.defaultShowErrors();
+			    },
+			    errorPlacement:function(){
+			    	//here do nothing, we use popover to show errors
+			    }
+			});			
+
 			if(openbiz.Browser.isIE(8,'lte')){
 				//load patches for fucking <= IE8
 				require(["html5shiv","respond"]);
