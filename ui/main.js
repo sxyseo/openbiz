@@ -69,11 +69,11 @@ define(['backbone','bootstrap','jquery.validate-addon'],
 			    },
 			    showErrors: function(errorMap, errorList) {			    				    	
 			    	for(var i in errorList)
-			    	{
+			    	{			    		
 			    		$(errorList[i].element)
 			    		.attr('data-validation','invalid')
+			    		.attr('data-content',errorList[i].message)
 			    		.popover({
-			    			content: errorList[i].message,
 			    			placement:'auto'
 			    		})
 			    		.popover('show');

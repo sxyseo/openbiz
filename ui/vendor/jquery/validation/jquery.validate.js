@@ -603,7 +603,7 @@ $.extend($.validator, {
 			return undefined;
 		},
 
-		defaultMessage: function( element, method ) {
+		defaultMessage: function( element, method ) {			
 			return this.findDefined(
 				this.customMessage( element.name, method ),
 				this.customDataMessage( element, method ),
