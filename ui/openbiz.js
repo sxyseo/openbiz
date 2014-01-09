@@ -21,6 +21,7 @@ define(["objects/Object",
 		){		
 	return {
 		apps:{},
+		session:{},
 		locale:locale,
 		loaders:{
 			TemplateLoader : TemplateLoader,
@@ -48,12 +49,13 @@ define(["objects/Object",
 		init:function(){
 			//setup jquery plugins		
 			$.validator.messages = 	locale.validation;			
-			$.validator.setDefaults({					
+			$.validator.setDefaults({				
 			    highlight: function(element) {
 			    	$(element).closest('.form-group').removeClass('has-success');
 			        $(element).closest('.form-group').addClass('has-error');			    
 			    },
 			    unhighlight: function(element) {
+			    	if($(element).hasClass('ignore-validation'))return;
 			    	$(element).attr('data-validation','valid');
 			    	$(element).popover('hide');
 			    	if($(element).closest('.form-group').find("[data-validation='invalid']").length==0){
