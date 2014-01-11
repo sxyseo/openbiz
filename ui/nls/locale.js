@@ -7,24 +7,33 @@ define({
 	    	cubi: 		'Loading Cubi Application',
 	    	done: 		'Loading ... Done!'
 	    },
-	    validation:{
-			required: "This field is required.",
-			remote: "Please fix this field.",
-			email: "Please enter a valid email address.",
-			url: "Please enter a valid URL.",
-			date: "Please enter a valid date.",
-			dateISO: "Please enter a valid date (ISO).",
-			number: "Please enter a valid number.",
-			digits: "Please enter only digits.",
-			creditcard: "Please enter a valid credit card number.",
-			equalTo: "Please enter the same value again.",
-			maxlength: $.validator.format("Please enter no more than {0} characters."),
-			minlength: $.validator.format("Please enter at least {0} characters."),
-			rangelength: $.validator.format("Please enter a value between {0} and {1} characters long."),
-			range: $.validator.format("Please enter a value between {0} and {1}."),
-			max: $.validator.format("Please enter a value less than or equal to {0}."),
-			min: $.validator.format("Please enter a value greater than or equal to {0}.")
-		}
+	    validation : {
+	        defaultMessage: "This value seems to be invalid."
+	      , type: {
+	            email:      "This value should be a valid email."
+	          , url:        "This value should be a valid url."
+	          , urlstrict:  "This value should be a valid url."
+	          , number:     "This value should be a valid number."
+	          , digits:     "This value should be digits."
+	          , dateIso:    "This value should be a valid date (YYYY-MM-DD)."
+	          , alphanum:   "This value should be alphanumeric."
+	          , phone:      "This value should be a valid phone number."
+	        }
+	      , notnull:        "This value should not be null."
+	      , notblank:       "This value should not be blank."
+	      , required:       "This value is required."
+	      , regexp:         "This value seems to be invalid."
+	      , min:            "This value should be greater than or equal to %s."
+	      , max:            "This value should be lower than or equal to %s."
+	      , range:          "This value should be between %s and %s."
+	      , minlength:      "This value is too short. It should have %s characters or more."
+	      , maxlength:      "This value is too long. It should have %s characters or less."
+	      , rangelength:    "This value length is invalid. It should be between %s and %s characters long."
+	      , mincheck:       "You must select at least %s choices."
+	      , maxcheck:       "You must select %s choices or less."
+	      , rangecheck:     "You must select between %s and %s choices."
+	      , equalto:        "This value should be the same."
+	    }
 	},
 	'en-us': true,
 	'zh-cn': true

@@ -9,16 +9,26 @@ requirejs.config({
 		}
 	},
 	paths:{
-		'bootstrap'	: 'vendor/bootstrap/js/bootstrap',
+		'bootstrap'	: 'vendor/bootstrap/js/bootstrap.min',
 		'underscore': 'vendor/underscore/underscore-min',
 		'jquery' 	: 'vendor/jquery/jquery-1.10.2.min',
-		'jquery.validate' 		: 'vendor/jquery/validation/jquery.validate.min',
-		'jquery.validate-addon' : 'vendor/jquery/validation/additional-methods.min',
-		'backbone'	: 'vendor/backbone/backbone-min',
+		'jquery.mmenu' : 'vendor/plugins/mmenu/jquery.mmenu',
+		'jquery.ui' : 'vendor/jquery-ui/jquery.ui.min',
+		'modernizr' : 'vendor/modernizr/modernizr',
+		'chart' 	: 'vendor/plugins/chart/chart',
+		'EasyPieChart' 	: 'vendor/plugins/chart/ori/easypiechart.min',
+		'throbber'	: 'vendor/throbber/throbber',
+		'hammer'	: 'vendor/hammer/hammer',
+		'form' 		: 'vendor/plugins/form/ori/form',
+		'datetime' 	: 'vendor/plugins/datetime/datetime',
+		'holder'	: 'vendor/plugins/holder/holder',
+ 		'backbone'	: 'vendor/backbone/backbone-min',
 		'i18n'		: openbizUrl+'/vendor/require/plugins/i18n',
 		'text'		: openbizUrl+'/vendor/require/plugins/text',
 		'respond'	: 'vendor/bootstrap/libs/respond.js/1.3.0/respond.min',
 		'html5shiv'	: 'vendor/bootstrap/libs/html5shiv/3.7.0/html5shiv',
+		'openbiz.custom' : 'vendor/openbiz/openbiz.custom',
+		'parsley'   : 'vendor/openbiz/openbiz.parsley',
 		'openbiz'	: 'openbiz'
 	},
 	shim:{
@@ -36,23 +46,37 @@ requirejs.config({
 		'jquery.validate-addon':{
 			deps: ['jquery.validate']
 		},
+		'chart':{
+			deps: ['EasyPieChart']
+		},
 		'bootstrap':{
 			deps: ["jquery"],
-			exports: 'jQuery'	
+			exports: ['jQuery']
+		},
+		'throbber':{
+			exports: 'Throbber'
+		},		
+		'openbiz.custom':{
+			deps: [ "holder","throbber","jquery.ui","jquery.mmenu",
+					"modernizr","form",'parsley',"chart","datetime"],
 		}
 	}
 });
 
-define(['backbone','bootstrap','jquery.validate-addon'],
-	function(Backbone){
-		// trigger event for onEnvironmentLoaded
+define(['backbone','hammer','bootstrap','throbber'],
+	function(Backbone,Hammer){
+		window.Hammer = Hammer; //kick the thing back to global		
+		//solve conflict 
+		var bootstrapButton = $.fn.button.noConflict();
+		$.fn.tbButton = bootstrapButton;
+
+		// trigger event for onEnvironmentLoaded			
 		if( typeof openbizEventsDelegate =='object' && 
 			typeof openbizEventsDelegate.onEnvironmentLoaded =='function' ){
 			openbizEventsDelegate.onEnvironmentLoaded.apply(this);
 		}
 		require(['openbiz'],function(openbiz,locale){
 			openbiz.init();		
-
 			if(openbiz.Browser.isIE(8,'lte')){
 				//load patches for fucking <= IE8
 				require(["html5shiv","respond"]);
@@ -67,5 +91,6 @@ define(['backbone','bootstrap','jquery.validate-addon'],
 				Backbone.history.start();
 			}
 		});
+		
 	}
 );
