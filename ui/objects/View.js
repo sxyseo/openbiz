@@ -12,14 +12,14 @@ define(function(){
 			var self=this;
 	    	var viewArr = viewName.split(".");
 	    	var viewPath = "./modules/"+viewArr[0]+"/views/"+viewArr[1];
-			this.app.require([viewPath],function(targetView){
-				self.undelegateEvents();
-				var view = new targetView();
-				$(self.el).fadeOut(function(){
-					$(view.render().el).fadeIn(function(){						
-					});					
-				});
-			})
+	    	$(self.el).fadeOut(function(){
+				this.app.require([viewPath],function(targetView){
+					self.undelegateEvents();
+					var view = new targetView();
+					view.render();
+					$(self.el).fadeIn();
+				})
+			});	
 		} 
 	});
 });
