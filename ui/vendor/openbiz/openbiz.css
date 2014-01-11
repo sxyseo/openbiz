@@ -1611,7 +1611,7 @@ ol.rectangle-list a:hover:after {
 	text-transform:capitalize;
 }
 .account-wall .form-signup {
-	max-width: 330px;
+	max-width: 320px;
 	padding: 15px;
 	margin: 0 auto;
 }
@@ -1664,7 +1664,7 @@ ol.rectangle-list a:hover:after {
 
 
 .account-wall .form-signin {
-	max-width: 330px;
+	max-width: 320px;
 	padding: 15px;
 	margin: 0 auto;
 }
