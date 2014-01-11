@@ -74,11 +74,12 @@ define(["objects/Object",
 									popupElem = elem.closest(".iCheck");
 								}
 								$(popupElem).attr("data-content",msgStr);
-								if(!$(popupElem).attr('placement')){
-									$(popupElem).attr('placement','auto');
-								}
+								// if(!$(popupElem).attr('placement')){
+								// 	$(popupElem).attr('placement','auto');
+								// }
 								$(popupElem).popover({	
-											html:false,							    			
+											html:false,
+											placement:'auto',
 							    			trigger: 'manual'							    			
 							    		})
 							    		.popover('show');
