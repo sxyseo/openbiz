@@ -345,13 +345,14 @@
 		  });
 		
 		//////////     TOGGLE  OPEN LEFT CANVAS MENU      //////////
-		$("body").append('<div class="toggle-menu"/>');
-		$('body').on("click",".toggle-menu",function( e ) {
-				e.stopImmediatePropagation();
-				e.preventDefault();
-				$('nav#menu').trigger( 'open.mm' );
-		});
-		
+		if($("body div.toggle-menu").length==0){
+			$("body").append('<div class="toggle-menu"/>');
+			$('body').on("click",".toggle-menu",function( e ) {
+					e.stopImmediatePropagation();
+					e.preventDefault();
+					$('nav#menu').trigger( 'open.mm' );
+			});
+		}
 		
 		//////////     TOUCH TO OPEN CANVAS MENU      //////////
 		var nav=document.getElementById("nav");
