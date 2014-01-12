@@ -5,9 +5,11 @@ define(function(){
 		name:null,
 		locale:{},
 		initialize:function(){
-			if(typeof this.app == 'string')this.app = openbiz.apps[this.app];		
-			if(typeof this.model == 'function')this.model = new this.model();	
-			this.initLocale();
+			if(typeof this.app == 'string'){						
+				this.app = openbiz.apps[this.app];		
+				this.initLocale();
+			}
+			if(typeof this.model == 'function')this.model = new this.model();				
 			return this;
 		},
 		initLocale:function(){
@@ -30,6 +32,8 @@ define(function(){
 					self.undelegateEvents();
 					var view = new targetView();
 					view.render();
+					openbiz.views.renderred[viewName] = true;
+					openbiz.views.inited[viewName] = false;
 					openbiz.ui.update();
 					$(self.el).fadeIn();
 				})

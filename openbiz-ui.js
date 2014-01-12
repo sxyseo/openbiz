@@ -4,7 +4,7 @@ var path = require('path'),
 	fs = require('fs');
 
 module.exports = function(app){
-	var openbizUI = {
+	return {
 		context:app,
 		libUrl:null,
 		_libPath: path.join(__dirname,'ui'),
@@ -25,5 +25,4 @@ module.exports = function(app){
 			}
 		}
 	};
-	return openbizUI;
 }

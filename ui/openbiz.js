@@ -44,7 +44,11 @@ define(["objects/Object",
 		},		
 		ui:{
 			update: updateUI
-		},
+		},	
+        views:{
+            renderred:{},
+            inited:{}    
+        },
 		baseUrl:openbizUrl,
 		//shortcut alias
 		Application: Application,
@@ -131,7 +135,6 @@ define(["objects/Object",
 		},
 		init:function(){
 			this.validator.init();
-			this.ui.update();
 		}
 	}
 });

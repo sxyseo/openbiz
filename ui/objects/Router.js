@@ -9,7 +9,7 @@ define(function(){
 			if(typeof this.app == 'string')this.app = openbiz.apps[this.app];
 			return this;
 		},
-	    renderView:function(viewName){
+	    renderView:function(viewName,callback){
 	    	if(this.app==null)return;
 			$(window).off('resize');
 	    	var self = this;
@@ -17,11 +17,18 @@ define(function(){
 	    	var viewPath = "./modules/"+viewArr[0]+"/views/"+viewArr[1];
 	    	if(self.currentView!=null && viewArr[0]!='system'){
 	    		$(self.currentView.el).fadeOut(function(){
+	    			//self.currentView.undelegateEvents();
 		    		self.app.require([viewPath],function(targetView){
 						var view = new targetView();
 						if(viewArr[0]!='system') self.currentView = view;
 						view.render();
-						$(view.el).fadeIn();				
+						openbiz.views.renderred[viewName] = true;
+						openbiz.views.inited[viewName] = false;
+						$(view.el).fadeIn(function(){
+							if(typeof callback =='function'){
+								callback();
+							}
+						});				
 					});
 				});
 	    	}else{
@@ -30,10 +37,15 @@ define(function(){
 					if(viewArr[0]!='system') self.currentView = view;
 					$(view.el).hide();
 					view.render();
-					$(view.el).fadeIn();
+					openbiz.views.renderred[viewName] = true;
+					openbiz.views.inited[viewName] = false;
+					$(view.el).fadeIn(function(){
+						if(typeof callback =='function'){
+							callback();
+						}
+					});	
 				});
 	    	}
-	    	
 	    }
 	});
 });
