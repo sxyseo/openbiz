@@ -34,7 +34,7 @@ define(function(){
 					view.render();
 					openbiz.views.renderred[viewName] = true;
 					openbiz.views.inited[viewName] = false;
-					openbiz.ui.update();
+					openbiz.ui.update($(self.el));
 					$(self.el).fadeIn();
 				})
 			});	

@@ -1,6 +1,5 @@
 define(function(){
     return function(elem) {
-        console.log("elem is "+ elem );
         if(typeof elem =='undefined'){
             elem = $('body');
         }
