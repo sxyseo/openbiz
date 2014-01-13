@@ -66,6 +66,7 @@ define(["objects/Object",
 				validateIfUnchanged:true,
 				listeners:{
 					onFieldError:function(elem, constraints, ParsleyField){
+						openbiz.validator.elementCounter++;
 						ParsleyField.manageValidationResult();
 						$(elem).attr('data-validation-result','invalid');
 						var showErrorPopup = function(){
@@ -87,6 +88,19 @@ define(["objects/Object",
 							    			trigger: 'manual'							    			
 							    		})
 							    		.popover('show');
+							    $(popupElem).off('click');
+							    $(popupElem).on('click',function(){
+							    	$(popupElem).popover('hide');
+							    });
+							    // console.log(elem.attr('id'));
+							    // console.log(3000 - openbiz.validator.elementCounter*100);
+							    if(!$(popupElem).attr('popover-dismiss-time')){
+								    var popOverDismiss = 3000 - openbiz.validator.elementCounter*100;
+								    $(popupElem).attr('popover-dismiss-time',popOverDismiss)
+								    setTimeout(function(){
+								    	$(popupElem).popover('hide');
+								    },popOverDismiss);
+								}
 							}else{
 								setTimeout(showErrorPopup,5);
 							}

@@ -290,6 +290,7 @@ define(function(){
 	if( openbiz.views.inited['system.ContactRightView']!=true && 
 		openbiz.views.renderred['system.ContactRightView'] ){
 		// Menu right		
+		$('nav#contact-right').css('display',''); //fix after fade in and out
 		$('nav#contact-right').mmenu({
 			position	: 'right',
 			counters	: true,
@@ -310,6 +311,7 @@ define(function(){
 	if( openbiz.views.inited['system.MenuView']!=true && 
 		openbiz.views.renderred['system.MenuView'] ){		
 		// Menu Left
+		$('nav#menu').css('display',''); //fix after fade in and out
 		$('nav#menu').mmenu({
 			searchfield   :  true,	
 			slidingSubmenus	: true
