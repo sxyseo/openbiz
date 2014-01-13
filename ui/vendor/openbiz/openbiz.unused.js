@@ -1,14 +1,6 @@
 define(function(){
    return function(){
 
-       //unknown html
-       $('#flot_view a').off('click');
-       $('#flot_view a').on('click',function (e) {
-           e.preventDefault()
-           $(this).tab('show')
-       })
-
-
        // mailBox.html
        //////////     MAIL  COLLAPSE     //////////
        $(".mail-collapse").off('click');
