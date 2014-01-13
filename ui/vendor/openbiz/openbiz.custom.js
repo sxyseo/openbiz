@@ -71,7 +71,14 @@ define(function(){
             }
         }
 
-
+        //////////     CHAT  COLLAPSE     //////////
+        $(elem).find('.widget-chat .chat-collapse').off('click');
+        $(elem).find('.widget-chat .chat-collapse').on('click', function () {
+            var btn=$(this), chatBody=btn.closest(".widget-chat").find(".chat-body");
+            btn.find("i").toggleClass( "fa-minus" );
+            btn.find("i").toggleClass( "fa-plus" );
+            chatBody.slideToggle(500);
+        });
 
         //////////     TIME AGO  FUNCTION   //////////
         var zeropad = function(num) {

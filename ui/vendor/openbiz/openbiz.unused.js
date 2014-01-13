@@ -9,17 +9,6 @@ define(function(){
        })
 
 
-
-       //dashboard.html
-       //////////     CHAT  COLLAPSE     //////////
-       $('.widget-chat .chat-collapse').off('click');
-       $('.widget-chat .chat-collapse').on('click', function () {
-           var btn=$(this), chatBody=btn.closest(".widget-chat").find(".chat-body");
-           btn.find("i").toggleClass( "fa-minus" );
-           btn.find("i").toggleClass( "fa-plus" );
-           chatBody.slideToggle(500);
-       });
-
        // mailBox.html
        //////////     MAIL  COLLAPSE     //////////
        $(".mail-collapse").off('click');
