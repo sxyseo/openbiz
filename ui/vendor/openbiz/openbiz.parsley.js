@@ -1325,6 +1325,14 @@
     , validate: function ( event ) {
       var valid = true;
       this.focusedField = false;
+      if( typeof openbiz.validator =='object' ){
+          openbiz.validator.elementCounter = 0;
+          this.$element.find('input, .iCheck').each(function(){
+            if($(this).attr('popover-dismiss-time')){
+              $(this).attr('popover-dismiss-time','');
+            }
+          });
+      }      
 
       for ( var item = 0; item < this.items.length; item++ ) {
         if ( 'undefined' !== typeof this.items[ item ] && false === this.items[ item ].validate() ) {

@@ -22,6 +22,7 @@ requirejs.config({
 		'form' 		: 'vendor/plugins/form/ori/form',
 		'datetime' 	: 'vendor/plugins/datetime/datetime',
 		'holder'	: 'vendor/plugins/holder/holder',
+		'cookie'	: 'vendor/plugins/cookie/jquery.cookie',
  		'backbone'	: 'vendor/backbone/backbone-min',
 		'i18n'		: openbizUrl+'/vendor/require/plugins/i18n',
 		'text'		: openbizUrl+'/vendor/require/plugins/text',
@@ -58,7 +59,7 @@ requirejs.config({
 		},		
 		'openbiz.custom':{
 			deps: [ "holder","throbber","jquery.ui","jquery.mmenu",
-					"modernizr","form",'parsley',"chart","datetime"],
+					"modernizr","form",'parsley',"chart","datetime","cookie"],
 		}
 	}
 });
