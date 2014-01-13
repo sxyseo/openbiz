@@ -29,8 +29,8 @@ define(function(){
 						    			trigger: 'manual'							    			
 						    		}).popover('show');
 						    	}
-						    $(popupElem).off('click');
-						    $(popupElem).on('click',function(){
+						    $(popupElem).off('click keyup');
+						    $(popupElem).on('click keyup',function(){
 						    	if($(popupElem).parent().find('.popover').length==0){
 						    		$(popupElem).popover('show');
 						    	}
