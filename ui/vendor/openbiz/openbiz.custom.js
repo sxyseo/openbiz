@@ -88,8 +88,7 @@ define(function(){
         prepareDynamicDates();
         $(elem).find('time.timeago').timeago();
 
-        //////////     CAPLET CLOCK    //////////
-        $(elem).find('div#clock').capletClock();
+
 
         //////////     TEXTAREA  AUTO SIZE    //////////
         $(elem).find('textarea[data-height="auto"]').autosize();
@@ -472,24 +471,8 @@ define(function(){
         });
 
 
-        //////////     COLOR PALET     //////////
-        $(elem).find('#colorpalette1').colorPalette().off('selectColor');
-        $(elem).find('#colorpalette1').colorPalette().on('selectColor', function(e) {
-            $('#selected-color1').val(e.color);
-            $('#selected-color1').parent().find(".ico").css("color", e.color );
-        });
 
-        //////////     COLOR PALET  IN  ADD EVENT CALENDAR    //////////
-        var cc_color= new Array();
-        $.each(cepletColor, function(key,val) {
-            cc_color.push(val) //put color for ceplet color
-        });
-        $(elem).find('#colorpalette_events').colorPalette({ colors:[cc_color] }).off('selectColor');
-        $(elem).find('#colorpalette_events').colorPalette({ colors:[cc_color] }).on('selectColor', function(e) {
-            var data=$(this).data();
-            $(data.returnColor).val(e.color);
-            $(this).parents(".input-group").find(".ico").css("color", e.color );
-        });
+
 
         //////////     DATE TIME PICKER     //////////
         $('.form_datetime').datetimepicker({
@@ -502,49 +485,6 @@ define(function(){
             forceParse: 0,
             showMeridian: 1
         });
-
-        //////////     DATE TIME RANG      //////////
-        $(elem).find('#daterange').daterangepicker();
-        $(elem).find('#reportrange').daterangepicker({
-                startDate: moment().subtract('days', 29),
-                endDate: moment(),
-                minDate: '01/01/2012',
-                maxDate: '12/31/2014',
-                dateLimit: { days: 60 },
-                /*parentEl:"#main",*/
-                timePicker: false,
-                timePickerIncrement: 1,
-                timePicker12Hour: true,
-                ranges: {
-                    'Today': [moment(), moment()],
-                    'Yesterday': [moment().subtract('days', 1), moment().subtract('days', 1)],
-                    'Last 7 Days': [moment().subtract('days', 6), moment()],
-                    'This Month': [moment().startOf('month'), moment().endOf('month')],
-                    'Last Month': [moment().subtract('month', 1).startOf('month'), moment().subtract('month', 1).endOf('month')]
-                },
-                opens: 'left',
-                buttonClasses: ['btn-sm'],
-                applyClass: 'btn-inverse',
-                cancelClass: 'btn-inverse',
-                format: 'MM/DD/YYYY',
-                separator: ' to ',
-                locale: {
-                    fromLabel: 'From',
-                    toLabel: 'To',
-                    customRangeLabel: 'Custom Range',
-                    daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr','Sa'],
-                    monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-                    firstDay: 1
-                }
-            },
-            function(start, end) {
-                console.log("Callback has been called!");
-                $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-            }
-        );
-        $(elem).find('#reportrange span').html(moment().subtract('days', 29).format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
-
-
 
         //////////     PANEL  TOOLS     //////////
         $(elem).find(".panel-tools[data-toolscolor]").each(function(i) {
