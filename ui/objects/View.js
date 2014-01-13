@@ -32,8 +32,8 @@ define(function(){
 					self.undelegateEvents();
 					var view = new targetView();
 					view.render();
-					openbiz.views.renderred[viewName] = true;
-					openbiz.views.inited[viewName] = false;
+					openbiz.views._renderred[viewName] = true;
+					openbiz.views._inited[viewName] = false;
 					openbiz.ui.update($(self.el));
 					$(self.el).fadeIn();
 				})

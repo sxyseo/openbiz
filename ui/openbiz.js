@@ -48,8 +48,18 @@ define(["objects/Object",
 			update: updateUI
 		},	
         views:{
-            renderred:{},
-            inited:{}    
+            isRenderred:function(viewName){
+                if(openbiz.views._renderred[viewName] == true)
+                    return true;
+                return false;
+            },
+            _renderred:{},
+            isInited:function(viewName){
+                if(openbiz.views._inited[viewName] == true)
+                    return true;
+                return false;
+            },
+            _inited:{}
         },
 		baseUrl:openbizUrl,
 		//shortcut alias

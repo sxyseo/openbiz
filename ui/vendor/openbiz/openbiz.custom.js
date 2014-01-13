@@ -238,8 +238,8 @@ define(function(){
         $(elem).find('.popover-area-hover [data-toggle="popover"]').popover({ trigger:"hover" });
 
         //////////     OFF CANVAS MENU      //////////
-        if( openbiz.views.inited['system.ContactRightView']!=true &&
-            openbiz.views.renderred['system.ContactRightView'] ){
+        if( openbiz.views.isInited('system.ContactRightView')!=true &&
+            openbiz.views.isRenderred('system.ContactRightView') ){
             // Menu right
             $('nav#contact-right').mmenu({
                     position	: 'right',
@@ -255,11 +255,11 @@ define(function(){
                     pageSelector:'div#wrapper'
                 }
             );
-            openbiz.views.inited['system.ContactRightView']=true;
+            openbiz.views._inited['system.ContactRightView']=true;
         }
 
-        if( openbiz.views.inited['system.MenuView']!=true &&
-            openbiz.views.renderred['system.MenuView'] ){
+        if( openbiz.views.isInited('system.MenuView')!=true &&
+            openbiz.views.isRenderred('system.MenuView') ){
             // Menu Left
             $('nav#menu').mmenu({
                     searchfield   :  true,
@@ -288,7 +288,7 @@ define(function(){
                         }
                     }
                 });
-            openbiz.views.inited['system.MenuView']=true;
+            openbiz.views._inited['system.MenuView']=true;
         }
         //////////     TOGGLE  OPEN LEFT CANVAS MENU      //////////
         if($("body div.toggle-menu").length==0){

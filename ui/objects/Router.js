@@ -22,8 +22,8 @@ define(function(){
 						var view = new targetView();
 						if(viewArr[0]!='system') self.currentView = view;
 						view.render();
-						openbiz.views.renderred[viewName] = true;
-						openbiz.views.inited[viewName] = false;
+						openbiz.views._renderred[viewName] = true;
+						openbiz.views._inited[viewName] = false;
 						$(view.el).fadeIn(function(){
 							if(typeof callback =='function'){
 								callback();
@@ -37,8 +37,8 @@ define(function(){
 					if(viewArr[0]!='system') self.currentView = view;
 					$(view.el).hide();
 					view.render();
-					openbiz.views.renderred[viewName] = true;
-					openbiz.views.inited[viewName] = false;
+					openbiz.views._renderred[viewName] = true;
+					openbiz.views._inited[viewName] = false;
 					$(view.el).fadeIn(function(){
 						if(typeof callback =='function'){
 							callback();
