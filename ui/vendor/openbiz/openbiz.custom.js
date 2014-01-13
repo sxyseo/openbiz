@@ -727,11 +727,11 @@ define(function(){
 
 
         //////////     SPARKLINE CHART     //////////
-        $(elem).find('.sparkline[data-type="bar"]').each(function () {
-            if($(this).find('canvas').length) return;	//prevent repeat binding
+        $(elem).find('.sparkline[data-type="bar"]').each(function () {            
+            if($(this).find('canvas').length) return;	//prevent repeat binding            
             var thisSpark=$(this) , $data = $(this).data();
             $data.barColor = $.fillColor( thisSpark ) || "#6CC3A0";
-            $data.minSpotColor = false;
+            $data.minSpotColor = false;            
             thisSpark.sparkline($data.data || "html", $data);
         });
         $(elem).find('.sparkline[data-type="pie"]').each(function () {
