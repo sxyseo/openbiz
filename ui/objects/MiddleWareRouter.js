@@ -15,26 +15,27 @@ define( ["objects/Router"], function(router){
 	        for(var routeTest in this._middlewaresRegExps)
 	        {	        
 	        	if(this._middlewaresRegExps[routeTest].test(fragment)){
-	        		stack.push(this[this._middlewaresCallbacks[routeTest]]);
+                    stack.push(this[this._middlewaresCallbacks[routeTest]]);
 	        	}
 	        }
-	        var done = function(){
+
+            var done = function(){
 	        	router.navigate(fragment, {trigger: true, replace: true});
 	        }	        
 	        if(stack.length){
 		        var hopCounter = 0 ;
 		        var nextHop = function()
-		        {		       
-		        	hopCounter++; 	
-		        	if(hopCounter >= stack.length-1){
-		        		stack[hopCounter].call(router,done);
-		        	}else{		        		
-		        		stack[hopCounter].call(router,nextHop);		        		
+		        {
+                    hopCounter++;
+                    if(hopCounter >= stack.length){
+                        done.call(router);
+		        	}else{
+		        		stack[hopCounter].call(router,nextHop);
 		        	}
-		        }
+                }
 				stack[hopCounter].call(router,nextHop);
 			}else{
-				done();
+				done.call(router);
 			}
 	        
 	    },
@@ -46,4 +47,4 @@ define( ["objects/Router"], function(router){
 			router.apply(this, arguments);
 		}		
 	});
-})
+});
