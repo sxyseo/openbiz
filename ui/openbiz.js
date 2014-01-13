@@ -78,16 +78,18 @@ define(["objects/Object",
 								if(ParsleyField.isRadioOrCheckbox){
 									popupElem = elem.closest(".iCheck");
 								}
+								var prevMsg = $(popupElem).attr("data-content");								
 								$(popupElem).attr("data-content",msgStr);
 								// if(!$(popupElem).attr('placement')){
 								// 	$(popupElem).attr('placement','auto');
-								// }
-								$(popupElem).popover({	
+								// }								
+								if(prevMsg!=msgStr){
+									$(popupElem).popover({	
 											html:false,
 											placement:'auto',
 							    			trigger: 'manual'							    			
-							    		})
-							    		.popover('show');
+							    		}).popover('show');
+							    	}
 							    $(popupElem).off('click');
 							    $(popupElem).on('click',function(){
 							    	$(popupElem).popover('toggle');
