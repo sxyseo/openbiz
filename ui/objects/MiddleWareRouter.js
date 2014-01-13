@@ -1,5 +1,5 @@
 "use strict";
-define( ["objects/Router",], function(router){	
+define( ["objects/Router"], function(router){
 	return router.extend({				
 		_middlewaresRegExps : {},
 		_middlewaresCallbacks : {},
