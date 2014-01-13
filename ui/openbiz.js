@@ -94,12 +94,14 @@ define(["objects/Object",
 							    $(popupElem).on('click',function(){
 							    	$(popupElem).popover('toggle');
 							    });
-							    $(popupElem).off('mouseenter');
-							    $(popupElem).on('mouseenter',function(){
-							    	$(popupElem).popover('show');
+							    $(popupElem).off('mouseenter focusin');
+							    $(popupElem).on('mouseenter focusin',function(){
+							    	if($(popupElem).parent().find('.popover').length==0){
+							    		$(popupElem).popover('show');
+							    	}
 							    });
-							    $(popupElem).off('mouseleave');
-							    $(popupElem).on('mouseleave',function(){
+							    $(popupElem).off('mouseleave focusout');
+							    $(popupElem).on('mouseleave focusout',function(){
 							    	$(popupElem).popover('hide');
 							    });
 							    // console.log(elem.attr('id'));
