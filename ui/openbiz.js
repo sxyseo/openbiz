@@ -90,7 +90,7 @@ define(["objects/Object",
 							    		.popover('show');
 							    $(popupElem).off('click');
 							    $(popupElem).on('click',function(){
-							    	$(popupElem).popover('hide');
+							    	$(popupElem).popover('toggle');
 							    });
 							    // console.log(elem.attr('id'));
 							    // console.log(3000 - openbiz.validator.elementCounter*100);
