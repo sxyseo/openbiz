@@ -96,7 +96,7 @@ define(["objects/Object",
 							    // console.log(3000 - openbiz.validator.elementCounter*100);
 							    if(!$(popupElem).attr('popover-dismiss-time')){
 								    var popOverDismiss = 3000 - openbiz.validator.elementCounter*100;
-								    $(popupElem).attr('popover-dismiss-time',popOverDismiss)
+								    $(popupElem).attr('popover-dismiss-time',popOverDismiss);								    
 								    setTimeout(function(){
 								    	$(popupElem).popover('hide');
 								    },popOverDismiss);

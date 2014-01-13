@@ -1327,7 +1327,11 @@
       this.focusedField = false;
       if( typeof openbiz.validator =='object' ){
           openbiz.validator.elementCounter = 0;
-          this.$element.find('[popover-dismiss-time="*"]').attr('popover-dismiss-time','');
+          this.$element.find('input, .iCheck').each(function(){
+            if($(this).attr('popover-dismiss-time')){
+              $(this).attr('popover-dismiss-time','');
+            }
+          });
       }      
 
       for ( var item = 0; item < this.items.length; item++ ) {
