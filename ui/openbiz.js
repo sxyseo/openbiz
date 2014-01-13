@@ -94,9 +94,11 @@ define(["objects/Object",
 							    $(popupElem).on('click',function(){
 							    	$(popupElem).popover('toggle');
 							    });
+							    $(popupElem).off('mouseenter');
 							    $(popupElem).on('mouseenter',function(){
 							    	$(popupElem).popover('show');
 							    });
+							    $(popupElem).off('mouseleave');
 							    $(popupElem).on('mouseleave',function(){
 							    	$(popupElem).popover('hide');
 							    });
