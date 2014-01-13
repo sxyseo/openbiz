@@ -92,6 +92,12 @@ define(["objects/Object",
 							    $(popupElem).on('click',function(){
 							    	$(popupElem).popover('toggle');
 							    });
+							    $(popupElem).on('mouseenter',function(){
+							    	$(popupElem).popover('show');
+							    });
+							    $(popupElem).on('mouseleave',function(){
+							    	$(popupElem).popover('hide');
+							    });
 							    // console.log(elem.attr('id'));
 							    // console.log(3000 - openbiz.validator.elementCounter*100);
 							    if(!$(popupElem).attr('popover-dismiss-time')){
