@@ -52,9 +52,16 @@ define(["objects/Object",
 		},	
         views:{
             isRenderred:function(viewName){
-                if(openbiz.views._renderred[viewName] == true)
+                if(openbiz.views.get(viewName) != null){
                     return true;
+                }
                 return false;
+            },
+            get:function(viewName){
+                 if(openbiz.views._renderred[viewName] == null || (typeof openbiz.views._renderred[viewName]) == 'undefined'){
+                    return null;
+                 }
+                 return openbiz.views._renderred[viewName];
             },
             _renderred:{},
             isInited:function(viewName){

@@ -23,14 +23,14 @@ requirejs.config({
 		'datetime' 	: 'vendor/plugins/datetime/datetime',
 		'holder'	: 'vendor/plugins/holder/holder',
 		'cookie'	: 'vendor/plugins/cookie/jquery.cookie',
+        'openbiz'	: 'openbiz',
  		'backbone'	: 'vendor/backbone/backbone-min',
 		'i18n'		: openbizUrl+'/vendor/require/plugins/i18n',
 		'text'		: openbizUrl+'/vendor/require/plugins/text',
 		'respond'	: 'vendor/bootstrap/libs/respond.js/1.3.0/respond.min',
 		'html5shiv'	: 'vendor/bootstrap/libs/html5shiv/3.7.0/html5shiv',
 		'openbiz.custom' : 'vendor/openbiz/openbiz.custom',
-		'parsley'   : 'vendor/openbiz/openbiz.parsley',
-		'openbiz'	: 'openbiz'
+		'parsley'   : 'vendor/openbiz/openbiz.parsley'
 	},
 	shim:{
 		'backbone':{
@@ -59,7 +59,7 @@ requirejs.config({
 		},		
 		'openbiz.custom':{
 			deps: [ "holder","throbber","jquery.ui","jquery.mmenu",
-					"modernizr","form",'parsley',"chart","datetime","cookie"],
+					"modernizr","form",'parsley',"chart","datetime","cookie"]
 		}
 	}
 });
@@ -82,8 +82,10 @@ define(['backbone','hammer','bootstrap','throbber'],
 				//load patches for fucking <= IE8
 				require(["html5shiv","respond"]);
 			}
+
 			var appRouter = new openbiz.Router();
 			window.openbiz = openbiz;
+
 			// trigger event for onOpenbizLoaded
 			if( typeof openbizEventsDelegate =='object' && 
 				typeof openbizEventsDelegate.onOpenbizLoaded =='function' ){

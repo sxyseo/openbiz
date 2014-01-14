@@ -21,7 +21,7 @@ define( ["objects/Router"], function(router){
 
             var done = function(){
 	        	router.navigate(fragment, {trigger: true, replace: true});
-	        }	        
+	        };
 	        if(stack.length){
 		        var hopCounter = 0 ;
 		        var nextHop = function()
@@ -32,19 +32,20 @@ define( ["objects/Router"], function(router){
 		        	}else{
 		        		stack[hopCounter].call(router,nextHop);
 		        	}
-                }
+                };
 				stack[hopCounter].call(router,nextHop);
 			}else{
 				done.call(router);
 			}
 	        
 	    },
-		constructor:function(){		
+		constructor:function(){
 			for(var route in this.middlewares){
 				this._middlewaresRegExps[route] = this._routeToRegExp(route);
 				this._middlewaresCallbacks[route] = this.middlewares[route];
 			}
+            router.prototype.initialize.apply(this,arguments);
 			router.apply(this, arguments);
-		}		
+		}
 	});
 });

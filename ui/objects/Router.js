@@ -7,7 +7,7 @@ define(function(){
 		currentView:null,
 		initialize:function(){
 			if(typeof this.app == 'string')this.app = openbiz.apps[this.app];
-			return this;
+            return this;
 		},
 	    renderView:function(viewName,callback){
 	    	if(this.app==null)return;
@@ -22,7 +22,7 @@ define(function(){
 						var view = new targetView();
 						if(viewArr[0]!='system') self.currentView = view;
 						view.render();
-						openbiz.views._renderred[viewName] = true;
+						openbiz.views._renderred[viewName] = view;
 						openbiz.views._inited[viewName] = false;
 						$(view.el).fadeIn(function(){
 							if(typeof callback =='function'){
@@ -37,7 +37,7 @@ define(function(){
 					if(viewArr[0]!='system') self.currentView = view;
 					$(view.el).hide();
 					view.render();
-					openbiz.views._renderred[viewName] = true;
+					openbiz.views._renderred[viewName] = view;
 					openbiz.views._inited[viewName] = false;
 					$(view.el).fadeIn(function(){
 						if(typeof callback =='function'){
@@ -46,6 +46,13 @@ define(function(){
 					});	
 				});
 	    	}
-	    }
+	    },
+        removeView:function(viewName){
+            var view = openbiz.views.get(viewName);
+            if(view =! null){
+                openbiz.views._renderred.remove(view);
+                $(view.el).html("");
+            }
+        }
 	});
 });
