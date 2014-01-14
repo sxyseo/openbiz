@@ -7,10 +7,10 @@ define(function(){
 				middlewares:[],
 				middleware:function(route, callback) {
 			      this.middlewares.push({route: route, callback: callback});
-			    },
+                },
 				loadUrl: function(fragment) {
 			      fragment = this.fragment = this.getFragment(fragment);
-			      var matchedMiddlewares = [];
+                    var matchedMiddlewares = [];
 			      _.any(this.middlewares, function(middlewares) {
 			      	if (middlewares.route.test(fragment)) {
 			      		matchedMiddlewares.push(middlewares.callback);

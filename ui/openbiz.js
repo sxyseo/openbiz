@@ -60,10 +60,11 @@ define(["objects/Object",
                 return false;
             },
             get:function(viewName){
-                 if(openbiz.views._renderred[viewName] == null || (typeof openbiz.views._renderred[viewName]) == 'undefined'){
+                 if(openbiz.views._renderred[viewName] == null || typeof openbiz.views._renderred[viewName] == 'undefined'){
                     return null;
                  }
-                 return openbiz.views._renderred[viewName];
+                 var obj= openbiz.views._renderred[viewName];
+                return obj;
             },
             _renderred:{},
             isInited:function(viewName){

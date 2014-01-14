@@ -47,11 +47,14 @@ define(function(){
 				});
 	    	}
 	    },
-        removeView:function(viewName){
-            var view = openbiz.views.get(viewName);
-            if(view =! null){
-                openbiz.views._renderred.remove(view);
-                $(view.el).html("");
+        removeView:function(viewName,callback){
+            var view = openbiz.views.get.call(openbiz,viewName);
+            if(view){
+                $(view.el).fadeOut(function(){
+                    $(view.el).html('');
+                    delete openbiz.views._renderred[viewName];
+                    callback();
+                });
             }
         }
 	});

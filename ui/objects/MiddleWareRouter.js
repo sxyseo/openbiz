@@ -13,7 +13,7 @@ define( ["objects/Router"], function(router){
 			if (!this.middlewares) return;
 		      this.middlewares = _.result(this, 'middlewares');
 		      var route, routes = _.keys(this.middlewares);
-		      while ((route = routes.pop()) != null) {
+		      while ((route = routes.shift()) != null) {
 		        this.middleware(route, this.middlewares[route]);
 		      }
 		},

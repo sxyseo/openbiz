@@ -268,7 +268,10 @@ define(function(){
                 {
                     pageSelector:'div#wrapper'
                 }).on( "closing.mm", function(){
+
                     var highest=$(this).find("ul.mm-highest");
+                    console.log(highest);
+
                     highest.find(".mm-subclose").trigger('click');
                     setTimeout(function () { closeSub() }, 200);
                     function closeSub(){
@@ -298,7 +301,7 @@ define(function(){
         $('body').on("click",".toggle-menu",function( e ) {
             e.stopImmediatePropagation();
             e.preventDefault();
-            $(elem).find('nav#menu').trigger( 'open.mm' );
+            $('nav#menu').trigger( 'open.mm' );
         });
 
         //////////     TOUCH TO OPEN CANVAS MENU      //////////
@@ -667,11 +670,11 @@ define(function(){
 
 
         //////////     SPARKLINE CHART     //////////
-        $(elem).find('.sparkline[data-type="bar"]').each(function () {            
-            if($(this).find('canvas').length) return;	//prevent repeat binding            
+        $(elem).find('.sparkline[data-type="bar"]').each(function () {
+            if($(this).find('canvas').length) return;	//prevent repeat binding
             var thisSpark=$(this) , $data = $(this).data();
             $data.barColor = $.fillColor( thisSpark ) || "#6CC3A0";
-            $data.minSpotColor = false;            
+            $data.minSpotColor = false;
             thisSpark.sparkline($data.data || "html", $data);
         });
         $(elem).find('.sparkline[data-type="pie"]').each(function () {
