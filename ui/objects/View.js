@@ -13,10 +13,12 @@ define(function(){
 			return this;
 		},
 		initLocale:function(){
-			if(this.name && this.app ){
-				if(this.app.locale.hasOwnProperty(this.name))
-					this.locale = this.app.locale[this.name];				
+			if(this.name && this.module && this.app ){
+				if(this.app.locale.hasOwnProperty(this.module) &&
+                    this.app.locale[this.module].hasOwnProperty(this.name) )
+					this.locale = this.app.locale[this.module][this.name];
 				this.locale.loading = this.app.locale.loading;
+                this.locale.breadcrumb = this.app.locale.breadcrumb;
 			}			
 			this.locale.appUrl 	= this.app.appUrl;
 			this.locale.baseUrl = this.app.baseUrl;
