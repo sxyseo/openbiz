@@ -270,8 +270,6 @@ define(function(){
                 }).on( "closing.mm", function(){
 
                     var highest=$(this).find("ul.mm-highest");
-                    console.log(highest);
-
                     highest.find(".mm-subclose").trigger('click');
                     setTimeout(function () { closeSub() }, 200);
                     function closeSub(){

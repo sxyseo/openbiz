@@ -53,7 +53,9 @@ define(function(){
                 $(view.el).fadeOut(function(){
                     $(view.el).html('');
                     delete openbiz.views._renderred[viewName];
-                    callback();
+                    if(typeof callback =='function'){
+                        callback();
+                    }
                 });
             }
         }
