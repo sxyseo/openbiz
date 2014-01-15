@@ -4,7 +4,7 @@ define(["objects/Object",
 		"objects/Application",
 		"objects/Router",
 		"objects/MiddleWareRouter",
-		"objects/View",		
+		"objects/View",
 		"loaders/TemplateLoader",
 		"loaders/AppLoader",
 		"utils/MobileDetection",
@@ -19,7 +19,7 @@ define(["objects/Object",
 		Application,		
 		Router,
 		MiddleWareRouter,
-		View,		
+		View,
 		TemplateLoader,
 		AppLoader,
 		MobileDetection,
@@ -52,28 +52,6 @@ define(["objects/Object",
 		ui:{
 			update: updateUI
 		},	
-        views:{
-            isRenderred:function(viewName){
-                if(openbiz.views.get(viewName) != null){
-                    return true;
-                }
-                return false;
-            },
-            get:function(viewName){
-                 if(openbiz.views._renderred[viewName] == null || typeof openbiz.views._renderred[viewName] == 'undefined'){
-                    return null;
-                 }
-                 var obj= openbiz.views._renderred[viewName];
-                return obj;
-            },
-            _renderred:{},
-            isInited:function(viewName){
-                if(openbiz.views._inited[viewName] == true)
-                    return true;
-                return false;
-            },
-            _inited:{}
-        },
 		baseUrl:openbizUrl,
 		//shortcut alias
 		Application: Application,

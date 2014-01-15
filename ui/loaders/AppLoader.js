@@ -15,12 +15,13 @@ define(function(){
 					},
 		    		paths:{
 		    			'i18n'	: openbiz.baseUrl+'/vendor/require/plugins/i18n',
-						'text'	: openbiz.baseUrl+'/vendor/require/plugins/text',
+						'text'	: openbiz.baseUrl+'/vendor/require/plugins/text'
 		    		}
 		    	});	    	
 		    	appRequire(['./main'],function(app){
 			    	openbiz.apps[app.name] = app;
 			    	openbiz.apps[app.name].require = appRequire;
+                    openbiz.apps[app.name].views._app = app;
 		    		loadedApps.push(app);
 		    		if(loadedApps.length == apps.length){
 		    			callback(loadedApps);

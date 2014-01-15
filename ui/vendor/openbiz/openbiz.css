@@ -5649,7 +5649,7 @@ ul.parsley-error-list {
 }
 
 @media all and (max-width: 767px) {
-#main {
+#main { `
 	margin-left:0px;
 	top: 0;
 }
