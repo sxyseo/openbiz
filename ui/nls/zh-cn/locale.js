@@ -27,9 +27,9 @@ define({
       , minlength:      "此项填写数据过短，至少应当大于或等于 %s 个字符。"
       , maxlength:      "此项填写数据过长，最多应当小于或等于 %s 个字符。"
       , rangelength:    "此项数据长度无效，有效长度为在 %s 到 %s 个字符。"
-      , mincheck:       "您至少应当选择 %s 项。"
-      , maxcheck:       "您最多只能选择 %s 项。"
-      , rangecheck:     "您只能选择 %s 到 %s 项。"
+      , mincheck:       "此项少输入 %s 个字符。"
+      , maxcheck:       "此项最多输入 %s 个字符"
+      , rangecheck:     "请输入 %s 至 %s 个字符。"
       , equalto:        "此项数值应当相等。"
     }
 });

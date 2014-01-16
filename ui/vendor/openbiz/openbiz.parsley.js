@@ -944,10 +944,10 @@
       var val = this.getVal()
         , valid = null;
 
-      if( typeof openbiz.validator =='object' ){    
+      if( typeof openbiz.validator.elementCounter =='undefined' ){    
           openbiz.validator.elementCounter=0;
           if($(this).attr('popover-dismiss-time')){
-            $(this).removeAttr('popover-dismiss-time','');
+            $(this).removeAttr('popover-dismiss-time');
           }
       } 
       // do not even bother trying validating a field w/o constraints
