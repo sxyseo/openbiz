@@ -28,21 +28,21 @@ define(function(){
 										placement:'auto',
 						    			trigger: 'manual'							    			
 						    		}).popover('show');
-						    	}
-						    $(popupElem).off('click keyup');
-						    $(popupElem).on('click keyup',function(){
+						    }						    
+						    $(popupElem).off('click keyup','validator');
+						    $(popupElem).on('click keyup','validator',function(){
 						    	if($(popupElem).parent().find('.popover').length==0){
 						    		$(popupElem).popover('show');
 						    	}
 						    });
-						    $(popupElem).off('mouseenter focusin');
-						    $(popupElem).on('mouseenter focusin',function(){
+						    $(popupElem).off('mouseenter focusin','validator');
+						    $(popupElem).on('mouseenter focusin','validator',function(){
 						    	if($(popupElem).parent().find('.popover').length==0){
 						    		$(popupElem).popover('show');
 						    	}
 						    });
-						    $(popupElem).off('mouseleave focusout');
-						    $(popupElem).on('mouseleave focusout',function(){
+						    $(popupElem).off('mouseleave focusout','validator');
+						    $(popupElem).on('mouseleave focusout','validator',function(){
 						    	$(popupElem).popover('hide');
 						    });
 						    // console.log(elem.attr('id'));
@@ -52,7 +52,7 @@ define(function(){
 							    $(popupElem).attr('popover-dismiss-time',popOverDismiss);								    
 							    setTimeout(function(){
 							    	$(popupElem).popover('hide');
-							    },popOverDismiss);
+							    },popOverDismiss);							    
 							}
 						}else{
 							setTimeout(showErrorPopup,5);
@@ -88,6 +88,9 @@ define(function(){
 				    		$(elem).closest(".input-group").removeClass("parsley-error");
 				    		$(elem).closest(".input-group").addClass("parsley-success");
 				    	}
+				    }else{
+			    		$(elem).removeClass("parsley-error");
+			    		$(elem).addClass("parsley-success");
 				    }
 				}
 			}

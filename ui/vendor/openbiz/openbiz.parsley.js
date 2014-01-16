@@ -632,6 +632,7 @@
       if ( this.hasConstraints() ) {
         this.bindValidationEvents();
       }
+
     }
 
     , setParent: function ( elem ) {
@@ -943,6 +944,12 @@
       var val = this.getVal()
         , valid = null;
 
+      if( typeof openbiz.validator =='object' ){    
+          openbiz.validator.elementCounter=0;
+          if($(this).attr('popover-dismiss-time')){
+            $(this).removeAttr('popover-dismiss-time','');
+          }
+      } 
       // do not even bother trying validating a field w/o constraints
       if ( !this.hasConstraints() ) {
         return null;
@@ -1142,6 +1149,7 @@
       this.isRadio = this.$element.is( 'input[type=radio]' );
       this.isCheckbox = this.$element.is( 'input[type=checkbox]' );
       this.errorClassHandler = options.errors.classHandler( element, this.isRadioOrCheckbox ) || this.$element.parent();
+
     }
 
     /**
@@ -1260,6 +1268,7 @@
       });
 
       this.$element.on( 'submit.' + this.type , false, $.proxy( this.validate, this ) );
+       
     }
 
     /**
@@ -1324,15 +1333,16 @@
     */
     , validate: function ( event ) {
       var valid = true;
-      this.focusedField = false;
-      if( typeof openbiz.validator =='object' ){
-          openbiz.validator.elementCounter = 0;
+      this.focusedField = false;   
+
+      if( typeof openbiz.validator =='object' ){          
+          openbiz.validator.elementCounter=0;
           this.$element.find('input, .iCheck').each(function(){
             if($(this).attr('popover-dismiss-time')){
-              $(this).attr('popover-dismiss-time','');
+              $(this).removeAttr('popover-dismiss-time');
             }
           });
-      }      
+      }  
 
       for ( var item = 0; item < this.items.length; item++ ) {
         if ( 'undefined' !== typeof this.items[ item ] && false === this.items[ item ].validate() ) {
@@ -1440,7 +1450,7 @@
       var parsleyInstance = $( self ).data( type );
 
       // if data never binded or we want to clone a build (for radio & checkboxes), bind it right now!
-      if ( !parsleyInstance ) {
+      if ( !parsleyInstance ) {        
         switch ( type ) {
           case 'parsleyForm':
             parsleyInstance = new ParsleyForm( self, options, 'parsleyForm' );
