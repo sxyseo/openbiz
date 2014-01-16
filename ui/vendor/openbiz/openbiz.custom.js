@@ -5,8 +5,8 @@ define(function(){
             elem = $('body');
         }
 
-        $(elem).find('.iCheckColor li').off('click');
-        $(elem).find('.iCheckColor li').on('click',function(){
+        $(elem).find('.iCheckColor li').off('click.openbizCustom');
+        $(elem).find('.iCheckColor li').on('click.openbizCustom',function(){
             var self = $(this);
             if (!self.hasClass('active')) {
                 self.siblings().removeClass('active');
@@ -111,23 +111,23 @@ define(function(){
         $(elem).find('[data-provide="tabdrop"]').tabdrop();
 
         //Map Collapse
-        $(elem).find('a[data-toggle="collapse"]').off('click');
-        $(elem).find('a[data-toggle="collapse"]').on('click',function(){
+        $(elem).find('a[data-toggle="collapse"]').off('click.openbizCustom');
+        $(elem).find('a[data-toggle="collapse"]').on('click.openbizCustom',function(){
             var caret=$(this).find(".collapse-caret");
             caret.toggleClass( "fa-angle-down" );
             caret.toggleClass( "fa-angle-up" );
         });
 
         //////////     WIDGET IM      //////////
-        $(elem).find("a.im-delete , a.im-action").off('click');
-        $(elem).find("a.im-delete , a.im-action").on('click',function(){
+        $(elem).find("a.im-delete , a.im-action").off('click.openbizCustom');
+        $(elem).find("a.im-delete , a.im-action").on('click.openbizCustom',function(){
             var self = $(this);
             imClose(self,self.closest('section'));
             self.closest('section').toggleClass( "push-in" );
         });
 
-        $(elem).find("a.im-confirm").off('click');
-        $(elem).find("a.im-confirm").on('click',function(){
+        $(elem).find("a.im-confirm").off('click.openbizCustom');
+        $(elem).find("a.im-confirm").on('click.openbizCustom',function(){
             var aClick=$(this), confirm=aClick.data("confirm"), parents=aClick.closest('li');
             var imWrapper=aClick.closest("ul");
             var confirmClose=function(){
@@ -420,8 +420,8 @@ define(function(){
                 $(this).css("background-color",$.xcolor.darken( $.fillColor(tools) , data.colorStep==false? 1:i+1 ,15))	;
             });
         });
-        $(elem).find('.panel-tools .btn-collapse').off('click');
-        $(elem).find('.panel-tools .btn-collapse').on('click', function () {
+        $(elem).find('.panel-tools .btn-collapse').off('click.openbizCustom');
+        $(elem).find('.panel-tools .btn-collapse').on('click.openbizCustom', function () {
             var btn=$(this), panelBody=btn.closest(".panel").find(".panel-body");
             btn.toggleClass("in");
             btn.find("i").toggleClass( "fa-sort-amount-desc" );
@@ -433,8 +433,8 @@ define(function(){
             }
         });
 
-        $(elem).find('.panel-tools .btn-reload').off('click');
-        $(elem).find('.panel-tools .btn-reload').on('click', function () {
+        $(elem).find('.panel-tools .btn-reload').off('click.openbizCustom');
+        $(elem).find('.panel-tools .btn-reload').on('click.openbizCustom', function () {
             var  btn=$(this), panelBody=btn.closest(".panel").find(".panel-body"),
                 overlay=$('<div class="load-overlay"><div><div class="c1"></div><div class="c2"></div><div class="c3"></div><div class="c4"></div></div><span>Loading...</span></div>');
             btn.removeClass("btn-panel-reload").addClass("disabled")
@@ -446,8 +446,8 @@ define(function(){
             }, 5000);
         });
 
-        $(elem).find(".panel-tools").off('click');
-        $(elem).find(".panel-tools").on('click',".btn-close",function(){
+        $(elem).find(".panel-tools").off('click.openbizCustom');
+        $(elem).find(".panel-tools").on('click.openbizCustom',".btn-close",function(){
             var panel=$(this).closest('.panel'), tools=$(this).closest('.panel-tools');
             console.log(tools)
             var confirmGroup=$('<div class="pt-confirm-group">'+'<div class=" btn-group btn-group-justified">'+'<a class="btn btn-inverse close-confirm" href="javascript:void(0)" data-confirm="accept">Yes</a>'+'<a class="btn btn-theme btn-close" href="javascript:void(0)">No.</a>'+'</div>'+'</div>');
@@ -467,14 +467,14 @@ define(function(){
                 }, 500);
             }
         });
-        $(elem).find(".panel-tools").on('click','.close-confirm',function(){
+        $(elem).find(".panel-tools").on('click.openbizCustom','.close-confirm',function(){
             $(this).closest('.panel').fadeOut(500,function(){
                 $(this).remove();
                 $(".blockerClose").fadeOut(200,function(){ $(this).remove() });
             });
         });
-        $(elem).find('#content').off('click');
-        $(elem).find('#content').on('click' ,'.blockerClose', function() {
+        $(elem).find('#content').off('click.openbizCustom');
+        $(elem).find('#content').on('click.openbizCustom' ,'.blockerClose', function() {
             var el=$(this);
             el.fadeOut(200,function(){ $(this).remove() });
             $(".panel-tools.push-in").toggleClass("push-in",function(){
@@ -528,8 +528,8 @@ define(function(){
 // Create Flot Chart
         createFlot();
 
-        $(elem).find(".chart-change .btn").off('click');
-        $(elem).find(".chart-change .btn").on('click',function(e){
+        $(elem).find(".chart-change .btn").off('click.openbizCustom');
+        $(elem).find(".chart-change .btn").on('click.openbizCustom',function(e){
             var el=$(this),data=el.data();
             el.closest(".chart-change").find(".btn").toggleClass("active");
             createFlot(data.changeType,data.forId);
@@ -668,8 +668,8 @@ define(function(){
             thisEasy.easyPieChart($data);
         });
 
-        $(elem).find('.js_update').off('click');
-        $(elem).find('.js_update').on('click', function() {
+        $(elem).find('.js_update').off('click.openbizCustom');
+        $(elem).find('.js_update').on('click.openbizCustom', function() {
             $('.easy-chart').each(function () {
                 var chart = window.chart = $(this).data('easyPieChart');
                 chart.update(Math.random()*100);

@@ -34,7 +34,7 @@ define(function(){
        $('div#clock').capletClock();
 
        //calendar.html
-       $(".slide-trash").off('click');
+       $(".slide-trash").off('click.openbizcustom');
        $(".slide-trash").on('click',function(){
            $("#slide-trash").toggleClass( "active" );
        });
