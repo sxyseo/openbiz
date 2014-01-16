@@ -37,20 +37,20 @@ define(function(){
 									});
 						    }		
 
-						    $(popupElem).off('click keyup','validator');
-						    $(popupElem).on('click keyup','validator',function(){
+						    $(popupElem).off('click keyup');
+						    $(popupElem).on('click keyup',function(){
 						    	if($(popupElem).parent().find('.popover').length==0){
 						    		$(popupElem).popover('show');
 						    	}
 						    });
-						    $(popupElem).off('mouseenter focusin','validator');
-						    $(popupElem).on('mouseenter focusin','validator',function(){
+						    $(popupElem).off('mouseenter focusin');
+						    $(popupElem).on('mouseenter focusin',function(){
 						    	if($(popupElem).parent().find('.popover').length==0){
 						    		$(popupElem).popover('show');
 						    	}
 						    });
-						    $(popupElem).off('mouseleave focusout','validator');
-						    $(popupElem).on('mouseleave focusout','validator',function(){
+						    $(popupElem).off('mouseleave focusout');
+						    $(popupElem).on('mouseleave focusout',function(){
 						    	$(popupElem).popover('hide');
 						    });
 						    // console.log(elem.attr('id'));
