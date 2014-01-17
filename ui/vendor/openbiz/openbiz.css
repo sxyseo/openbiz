@@ -3761,7 +3761,7 @@ background:rgb(151,150,156);
  width: 220px;
 }
 .bootstrap-select {
-	width: 220px\0;
+	width: 220px;
 }
 .bootstrap-select.form-control:not([class*="span"]) {
  width: 100%;
@@ -5649,7 +5649,7 @@ ul.parsley-error-list {
 }
 
 @media all and (max-width: 767px) {
-#main { `
+#main {
 	margin-left:0px;
 	top: 0;
 }
