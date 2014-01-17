@@ -3,26 +3,26 @@ define(function(){
 
        // mailBox.html
        //////////     MAIL  COLLAPSE     //////////
-       $(".mail-collapse").off('click');
-       $(".mail-collapse").on('click',function(){
+       $(".mail-collapse").off('click.openbizcustom');
+       $(".mail-collapse").on('click.openbizcustom',function(){
            $("#main").toggleClass( "in" );
        });
 
        //////////     MAIL FAVOURITE      //////////
-       $("a.mail-favourite").off('click');
-       $("a.mail-favourite").on('click',function(){
+       $("a.mail-favourite").off('click.openbizcustom');
+       $("a.mail-favourite").on('click.openbizcustom',function(){
            $(this).toggleClass( "active" );
            var star=$(this).find(".fa");
        });
 
        //map.html
        //////////     MAP GOOGLE      //////////
-       $(".mapTools").off('click');
-       $(".mapTools").on('click',function(){
+       $(".mapTools").off('click.openbizcustom');
+       $(".mapTools").on('click.openbizcustom',function(){
            $("#mapSetting").toggleClass( "active" );
        });
-       $(".map-control-min").off('click');
-       $(".map-control-min").on('click',function(){
+       $(".map-control-min").off('click.openbizcustom');
+       $(".map-control-min").on('click.openbizcustom',function(){
            $("#mapControl").toggleClass( "active" );
            $(this).find("i").toggleClass( "fa-chevron-down" );
            $(this).find("i").toggleClass( "fa-chevron-up" );
@@ -35,19 +35,19 @@ define(function(){
 
        //calendar.html
        $(".slide-trash").off('click.openbizcustom');
-       $(".slide-trash").on('click',function(){
+       $(".slide-trash").on('click.openbizcustom',function(){
            $("#slide-trash").toggleClass( "active" );
        });
 
        //chartOther.html
-       $('.knob_save').off('click');
-       $('.knob_save').on('click', function() {
+       $('.knob_save').off('click.openbizcustom');
+       $('.knob_save').on('click.openbizcustom', function() {
            alert("Save  "+$("#add_item").val()+" Item");
        });
 
        //////////     COLOR PALET     //////////
-       $('#colorpalette1').colorPalette().off('selectColor');
-       $('#colorpalette1').colorPalette().on('selectColor', function(e) {
+       $('#colorpalette1').colorPalette().off('selectColor.openbizcustom');
+       $('#colorpalette1').colorPalette().on('selectColor.openbizcustom', function(e) {
            $('#selected-color1').val(e.color);
            $('#selected-color1').parent().find(".ico").css("color", e.color );
        });
@@ -56,8 +56,8 @@ define(function(){
        $.each(cepletColor, function(key,val) {
            cc_color.push(val) //put color for ceplet color
        });
-       $('#colorpalette_events').colorPalette({ colors:[cc_color] }).off('selectColor');
-       $('#colorpalette_events').colorPalette({ colors:[cc_color] }).on('selectColor', function(e) {
+       $('#colorpalette_events').colorPalette({ colors:[cc_color] }).off('selectColor.openbizcustom');
+       $('#colorpalette_events').colorPalette({ colors:[cc_color] }).on('selectColor.openbizcustom', function(e) {
            var data=$(this).data();
            $(data.returnColor).val(e.color);
            $(this).parents(".input-group").find(".ico").css("color", e.color );
