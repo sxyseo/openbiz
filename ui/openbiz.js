@@ -50,7 +50,8 @@ define(["objects/Object",
 			BrowserDetection: BrowserDetection
 		},		
 		ui:{
-			update: updateUI
+			update: updateUI,
+            loader:$('<div class="load-overlay"><div><div class="c1"></div><div class="c2"></div><div class="c3"></div><div class="c4"></div></div><span>'+ locale.loading.text +'</span></div>')
 		},	
 		baseUrl:openbizUrl,
 		//shortcut alias

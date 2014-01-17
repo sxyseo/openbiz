@@ -5,7 +5,8 @@ define({
 	    	system: 	'Loading system resources',
 	    	framework: 	'Loading Openbiz framework',
 	    	cubi: 		'Loading Cubi Application',
-	    	done: 		'Loading ... Done!'
+	    	done: 		'Loading ... Done!',
+            text:       'Loading...'
 	    },
 	    validation : {
 	        defaultMessage: "This value seems to be invalid."

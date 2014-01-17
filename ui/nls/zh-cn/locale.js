@@ -3,7 +3,8 @@ define({
     loading:{
     	framework: 	'正在加载 Openbiz 框架',
     	cubi: 		'正在加载 Cubi 应用程序',
-    	done: 		'全部加载完成！'
+    	done: 		'全部加载完成！',
+        text:       '加载中...'
     },
     validation:{
         defaultMessage: "该项信息填写不正确。"
