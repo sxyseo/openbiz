@@ -1,5 +1,5 @@
 "use strict";
-define(['./Object','../services/ViewService'],function(object,ViewService){
+define(['./Object','../services/ViewService'],function(object,ViewService){	
     return object.extend({
         name:null,
         appUrl:null,

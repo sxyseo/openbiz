@@ -2,9 +2,8 @@
 define(function(){
 	return {			    
 	    load:function(apps, callback){
-	    	var loadedApps=[];
-	    	for(var i in apps){
-	    		var appName=apps[i];
+	    	var loadedApps=[];	    	
+	    	apps.forEach(function(appName){
 		    	var appRequire = requirejs.config({
 		    		baseUrl:'/'+appName,
 		    		context:appName,
@@ -18,16 +17,17 @@ define(function(){
 						'text'	: openbiz.baseUrl+'/vendor/require/plugins/text'
 		    		}
 		    	});	    	
-		    	appRequire(['./main'],function(app){
-			    	openbiz.apps[app.name] = app;
-			    	openbiz.apps[app.name].require = appRequire;
-                    openbiz.apps[app.name].views._app = app;
+		    	appRequire(['./main'],function(app){		    		
+			    	app.require = appRequire;
+			    	app.views = new app.views();
+			    	app.views._app = app;
+			    	openbiz.apps[app.name] = app;			    	
 		    		loadedApps.push(app);
 		    		if(loadedApps.length == apps.length){
 		    			callback(loadedApps);
 		    		}
 		    	});	
-	    	}
+	    	});
 	    }
 	}
 });
