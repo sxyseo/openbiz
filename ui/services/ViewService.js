@@ -5,6 +5,10 @@ define(['../objects/Object'],function(object){
             _renderred:{},
             _inited:{},
             currentView:null,
+            reset:function(){
+                this._renderred ={};
+                this._inited = {};
+            },
             isRenderred:function(viewName){
                 if(this.get(viewName) != null){
                     return true;

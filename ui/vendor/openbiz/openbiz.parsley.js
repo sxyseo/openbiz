@@ -231,7 +231,6 @@
                   // if onFieldSuccess returns (bool) false, consider that field si invalid
                   isConstraintValid = false;
               }
-
               self.updtConstraint( { name: 'remote', valid: isConstraintValid }, message );
               if ( self.options.showErrors ) {                
                   self.manageValidationResult();
@@ -1343,7 +1342,8 @@
             }
           });
       }  
-
+      
+      //here has bug about async network requests @jixian
       for ( var item = 0; item < this.items.length; item++ ) {
         if ( 'undefined' !== typeof this.items[ item ] && false === this.items[ item ].validate() ) {
           valid = false;
