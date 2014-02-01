@@ -85,14 +85,16 @@ define(function(){
             $('time.timeago.lasted').attr("datetime", iso8601(new Date()));
         }
         //////////     TIME AGO    //////////
-        prepareDynamicDates();
+        prepareDynamicDates();        
         $(elem).find('time.timeago').timeago();
+        
 
 
 
-        //////////     TEXTAREA  AUTO SIZE    //////////
+        //////////     TEXTAREA  AUTO SIZE    //////////    
         $(elem).find('textarea[data-height="auto"]').autosize();
         $(elem).find(".widget-write-post textarea").limit({  limit: 20 });
+    
 
         //////////     SELETE PICKER    //////////
         $(elem).find('.selectpicker').selectpicker();

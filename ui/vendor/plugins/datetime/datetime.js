@@ -2688,7 +2688,7 @@ $.fn.capletClock = function(options) {
  * Copyright (c) 2008-2013, Ryan McGeary (ryan -[at]- mcgeary [*dot*] org)
  */
 
-(function(factory) {
+(function(factory) {	
     if (typeof define === 'function' && define.amd) {
         // AMD. Register as an anonymous module.
         define(['jquery'], factory);

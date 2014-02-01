@@ -19,7 +19,7 @@ requirejs.config({
 		'EasyPieChart' 	: 'vendor/plugins/chart/ori/easypiechart.min',
 		'throbber'	: 'vendor/throbber/throbber',
 		'hammer'	: 'vendor/hammer/hammer',
-		'form' 		: 'vendor/plugins/form/ori/form',
+		'form' 		: 'vendor/plugins/form/form',
 		'datetime' 	: 'vendor/plugins/datetime/datetime',
 		'holder'	: 'vendor/plugins/holder/holder',
 		'cookie'	: 'vendor/plugins/cookie/jquery.cookie',
@@ -34,49 +34,51 @@ requirejs.config({
 	},
 	shim:{
 		'backbone':{
-			deps: [	'underscore', 
-					'jquery'],
-			exports: 'Backbone'
-		},		
-		'underscore':{
-			exports: '_'
-		},
-		'jquery.validate':{
-			deps: ['jquery']
-		},
-		'jquery.validate-addon':{
-			deps: ['jquery.validate']
-		},
-		'chart':{
-			deps: ['EasyPieChart']
-		},
-		'bootstrap':{
-			deps: ["jquery"],
-			exports: ['jQuery']
-		},
-		'throbber':{
-			exports: 'Throbber'
-		},		
-		'openbiz.custom':{
-			deps: [ "holder","throbber","jquery.ui","jquery.mmenu",
-					"modernizr","form",'parsley',"chart","datetime","cookie"]
-		}
+          deps: [ 'underscore', 
+              'jquery.ui'],
+          exports: 'Backbone'
+        },    
+        'underscore':{
+          exports: '_'
+        },
+        'jquery.validate':{
+          deps: ['jquery']
+        },
+        'jquery.validate-addon':{
+          deps: ['jquery.validate']
+        },
+        'chart':{
+          deps: ['EasyPieChart']
+        },
+        'bootstrap':{
+          deps: ["jquery"],
+          exports: ['jQuery']
+        },
+        'throbber':{
+          exports: 'Throbber'
+        },
+        'openbiz':{
+          deps: [ 'underscore','jquery','backbone','openbiz.custom' ]
+        },               
+        'jquery.ui':{
+          deps: [ "jquery","holder","throbber","jquery.mmenu",
+              "modernizr","form",'parsley',"chart","EasyPieChart","datetime","cookie"]
+        },
+        'openbiz.custom':{
+          deps: [ "jquery.ui" ]
+        }
 	}
 });
 
-define(['backbone','hammer','bootstrap','throbber'],
-	function(Backbone,Hammer){
-		window.Hammer = Hammer; //kick the thing back to global		
-		//solve conflict 
-		var bootstrapButton = $.fn.button.noConflict();
-		$.fn.tbButton = bootstrapButton;
+define(['backbone','hammer','openbiz','bootstrap','throbber'],
+	function(Backbone,Hammer,openbiz){
+		window.Hammer = Hammer; //kick the thing back to global				
 
-		// trigger event for onEnvironmentLoaded			
-		if( typeof openbizEventsDelegate =='object' && 
-			typeof openbizEventsDelegate.onEnvironmentLoaded =='function' ){
-			openbizEventsDelegate.onEnvironmentLoaded.apply(this);
-		}
-		require(['openbiz'],function(openbiz,locale){
+		// // trigger event for onEnvironmentLoaded			
+		// if( typeof openbizEventsDelegate =='object' && 
+		// 	typeof openbizEventsDelegate.onEnvironmentLoaded =='function' ){
+		// 	openbizEventsDelegate.onEnvironmentLoaded.apply(this);
+		// }
 			openbiz.init();		
 			if(openbiz.Browser.isIE(8,'lte')){
 				//load patches for fucking <= IE8
@@ -93,7 +95,7 @@ define(['backbone','hammer','bootstrap','throbber'],
 			}else{
 				Backbone.history.start();
 			}
-		});
+		
 		
 	}
 );

@@ -2004,3 +2004,6 @@ if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery"
   })
 
 }(jQuery);
+
+//solve conflict 
+try{var bootstrapButton = $.fn.button.noConflict(); $.fn.tbButton = bootstrapButton;}catch(e){};

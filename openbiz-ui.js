@@ -18,7 +18,17 @@ module.exports = function(app){
 		getOpenbizUI:function(){
 			var self = this;
 			return function(req,res){
-				var uiData = fs.readFileSync(path.join(__dirname,'ui','main.js'));
+				switch(process.env.NODE_ENV){
+				  case "development":
+				  default:
+				    var uiFile = "main.js"
+				    //var uiFile = "main.min.js"
+				    break;
+				  case "production":  
+				    var uiFile = "main.min.js"
+				    break;
+				}
+				var uiData = fs.readFileSync(path.join(__dirname,'ui',uiFile));
 				uiData = "var openbizUrl = '"+self.libUrl+"';\n" + uiData;
 				res.set('Content-Type','application/javascript');
 				res.send(200,uiData);
