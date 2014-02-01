@@ -231,6 +231,7 @@
                   // if onFieldSuccess returns (bool) false, consider that field si invalid
                   isConstraintValid = false;
               }
+              result = isConstraintValid;
               self.updtConstraint( { name: 'remote', valid: isConstraintValid }, message );
               if ( self.options.showErrors ) {                
                   self.manageValidationResult();
@@ -257,6 +258,7 @@
             $.ajax( $.extend( {}, {
                 url: url
               , data: data
+              , async: false
               , type: self.options.remoteMethod || 'GET'
               , success: function ( response ) {
                 response = handleResponse( response );
