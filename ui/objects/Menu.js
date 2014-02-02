@@ -11,7 +11,7 @@ define(function(){
             container.append("<nav id='menu' />");                                                
             $(this.menuRoot).html(menuData);
 
-             //$(menuHtml).mmenu();
+            menuHtml = $(menuHtml).addClass(this.menu).get(0);
             if($(menuData).find('li.'+this.menu).length == 0){
                 //append it                
                 $(this.menuRoot).find('ul.system-menu').append(menuHtml);
