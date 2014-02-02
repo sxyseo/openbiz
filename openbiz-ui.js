@@ -1,7 +1,8 @@
 'use strict';
 var path = require('path'),
 	express = require('express'),
-	fs = require('fs');
+	fs = require('fs'),
+	crypto = require('crypto');
 
 module.exports = function(app){
 	return {
@@ -29,7 +30,7 @@ module.exports = function(app){
 				    break;
 				}
 				var uiData = fs.readFileSync(path.join(__dirname,'ui',uiFile));
-				uiData = "var openbizUrl = '"+self.libUrl+"';\n" + uiData;
+				uiData = "var openbizUrl = '"+self.libUrl+"';\n" + uiData;				
 				res.set('Content-Type','application/javascript');
 				res.send(200,uiData);
 			}
