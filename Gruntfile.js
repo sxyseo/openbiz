@@ -31,12 +31,22 @@ module.exports = function(grunt) {
       }
     },
     requirejs: {
+      "openbiz-ui-css":{
+        options:{
+          cssIn: "ui/vendor/openbiz/openbiz.css",
+          out: "ui/vendor/openbiz/openbiz.min.css",                    
+          preserveLicenseComments:false,
+          baseUrl: "./ui",
+          useStrict: true,
+        }
+      },
       "openbiz-ui": {
         options: {
+          preserveLicenseComments:false,
           baseUrl: "./ui",
           useStrict: true,          
           name: "main",
-          out: "ui/main.min.js",
+          out: "ui/main.min.js",          
           paths:{
             'bootstrap' : 'vendor/bootstrap/js/bootstrap.min',
             'underscore': 'vendor/underscore/underscore-min',
