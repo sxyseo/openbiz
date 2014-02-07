@@ -3958,6 +3958,11 @@ background:rgb(151,150,156);
 body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom {
 	margin-right: 0;
 }
+.bootbox{
+	background: none!important;;
+	-webkit-box-shadow: none!important;;
+	box-shadow: none!important;;
+}
 .modal {
 	left: 50%;
 	bottom: auto;

@@ -5,6 +5,10 @@ define(function(){
             elem = $('body');
         }
 
+        $("nav#menu a").not(".mm-subclose,.mm-subopen").click(function(event){
+            window.location.href = $(this).attr('href');
+        })
+
         $(elem).find('.iCheckColor li').off('click.openbizCustom');
         $(elem).find('.iCheckColor li').on('click.openbizCustom',function(){
             var self = $(this);

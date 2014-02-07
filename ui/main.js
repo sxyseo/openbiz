@@ -30,7 +30,8 @@ requirejs.config({
 		'respond'	: 'vendor/bootstrap/libs/respond.js/1.3.0/respond.min',
 		'html5shiv'	: 'vendor/bootstrap/libs/html5shiv/3.7.0/html5shiv',
 		'openbiz.custom' : 'vendor/openbiz/openbiz.custom',
-		'parsley'   : 'vendor/openbiz/openbiz.parsley'
+		'parsley'   : 'vendor/openbiz/openbiz.parsley',
+		'bootbox'   : 'vendor/bootbox/bootbox.min'
 	},
 	shim:{
 		'backbone':{
@@ -61,7 +62,7 @@ requirejs.config({
           deps: [ 'underscore','jquery','backbone','openbiz.custom' ]
         },               
         'jquery.ui':{
-          deps: [ "jquery","holder","throbber","jquery.mmenu",
+          deps: [ "jquery","holder","throbber","jquery.mmenu","bootbox",
               "modernizr","form",'parsley',"chart","EasyPieChart","datetime","cookie"]
         },
         'openbiz.custom':{

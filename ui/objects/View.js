@@ -24,7 +24,7 @@ define(function(){
 			this.locale.baseUrl = this.app.baseUrl;
 			return this;
 		},
-		switchView:function(viewName){
+		switchView:function(viewName,args){
 			if(this.app==null)return;
 			var self=this;
 	    	var viewArr = viewName.split(".");
@@ -32,7 +32,7 @@ define(function(){
 	    	$(self.el).fadeOut(function(){
 				this.app.require([viewPath],function(targetView){
 					self.undelegateEvents();
-					var view = new targetView();
+					var view = new targetView(args);
 					view.render();
 					openbiz.views._renderred[viewName] = view;
 					openbiz.views._inited[viewName] = false;
