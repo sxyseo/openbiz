@@ -46,7 +46,7 @@ module.exports = function(app){
 			var self = this;
 			return function(req,res){
 				if(caches.hasOwnProperty('openbiz.css') && process.env.NODE_ENV=='production'){
-					res.set('Content-Type','application/javascript');
+					res.set('Content-Type','text/css');
 					res.send(200,caches['openbiz.css']);
 				}else{
 					switch(process.env.NODE_ENV){
