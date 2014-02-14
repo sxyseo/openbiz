@@ -7,6 +7,7 @@ define(function(){
 		    	var appRequire = requirejs.config({
 		    		baseUrl:'/'+appName,
 		    		context:appName,
+		    		waitSeconds:0,
 		    		config:{
 						i18n:{
 							locale: 'zh-cn' //force to use this locale for test translation

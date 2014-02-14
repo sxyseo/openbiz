@@ -8,6 +8,7 @@ requirejs.config({
 			locale: 'zh-cn' //force to use this locale for test translation
 		}
 	},
+	waitSeconds:0,
 	paths:{
 		'bootstrap'	: 'vendor/bootstrap/js/bootstrap.min',
 		'underscore': 'vendor/underscore/underscore-min',
