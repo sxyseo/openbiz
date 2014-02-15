@@ -40,6 +40,39 @@ define(function(){
 					$(self.el).fadeIn();
 				})
 			});	
-		} 
+		},
+		popupView:function(viewName){
+			if(this.app==null)return;
+	    	var callback,args=[],self=this;;
+	    	switch(arguments.length){
+	    		case 2:
+	    			if(typeof arguments[1]=='function'){
+	    				callback = arguments[1];	
+	    			}else if(typeof arguments[1]=='object'){
+	    				args = arguments[1];
+	    			}
+	    			break;
+	    		case 3:
+	    			args = arguments[1];
+	    			callback = arguments[2];
+	    			break;
+	    	}
+	    	var viewArr = viewName.split(".");
+	    	var viewPath = "./modules/"+viewArr[0]+"/views/"+viewArr[1];
+	    	if(self.app.views.isRenderred(viewName)){
+				self.app.views.get(viewName).undelegateEvents();
+			}
+            self.app.views.render(viewName,args,function(view){
+            	var $modal = $(view.$el);
+                $modal.modal();
+                $modal.on('hidden.bs.modal',function(){
+                	view.undelegateEvents();
+                });
+                openbiz.ui.update($modal);
+                if(typeof callback =='function'){
+                    callback();
+                }
+            });
+		}
 	});
 });
