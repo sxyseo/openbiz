@@ -655,7 +655,7 @@ body.full-lg #wrapper, body.full-lg #main {
 .avatar-slide .avatar-detail p:first-child {
 	font-size:24px;
 }
-.avatar-slide .avatar-detail span {
+.avatar-slide .avatar-detail .span {
 	color:#FFF;
 	display:inline-block;
 	background-color:#444;
