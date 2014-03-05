@@ -258,7 +258,7 @@
                 size = this.options.size || "normal",
                 alignment = this.options.alignment || "left",
                 pages = this.getPages(),
-                listContainer = this.options.bootstrapMajorVersion === 2 ? $("<ul></ul>") : this.$element,
+                listContainer = this.options.bootstrapMajorVersion === 2 ? $("<ul></ul>") : this.$element,                
                 listContainerClass = this.options.bootstrapMajorVersion === 2 ? this.getValueFromOption(this.options.listContainerClass, listContainer) : null,
                 first = null,
                 prev = null,
@@ -270,8 +270,9 @@
 
             this.$element.prop("class", "");
 
-            this.$element.addClass("pagination");
-
+            // this.$element.addClass("pagination");
+            listContainer.addClass("pagination");
+            
             switch (size.toLowerCase()) {
             case "large":
             case "small":
