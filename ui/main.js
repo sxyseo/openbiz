@@ -26,6 +26,7 @@ requirejs.config({
 		'cookie'	: 'vendor/plugins/cookie/jquery.cookie',
         'openbiz'	: 'openbiz',
  		'backbone'	: 'vendor/backbone/backbone-min',
+ 		'backbone-pageable'	: 'vendor/backbone-pageable/backbone-pageable.min',
 		'i18n'		: openbizUrl+'/vendor/require/plugins/i18n',
 		'text'		: openbizUrl+'/vendor/require/plugins/text',
 		'respond'	: 'vendor/bootstrap/libs/respond.js/1.3.0/respond.min',
@@ -68,7 +69,7 @@ requirejs.config({
               "modernizr","form",'parsley',"chart","EasyPieChart","datetime","cookie"]
         },
         'openbiz.custom':{
-          deps: [ "jquery.ui","bootstrap-paginator" ]
+          deps: [ "jquery.ui","bootstrap-paginator","backbone-pageable" ]
         }
 	}
 });
