@@ -33,7 +33,7 @@ requirejs.config({
 		'openbiz.custom' : 'vendor/openbiz/openbiz.custom',
 		'parsley'   : 'vendor/openbiz/openbiz.parsley',
 		'bootbox'   : 'vendor/bootbox/bootbox.min',
-		'bootstrap-paginator'	: 'vendor/bootstrap-paginator/bootstrap-paginator.min',
+		'bootstrap-paginator'	: 'vendor/paginator/bootstrap-paginator.min',
 	},
 	shim:{
 		'backbone':{
