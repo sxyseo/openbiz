@@ -41,7 +41,10 @@ requirejs.config({
           deps: [ 'underscore', 
               'jquery.ui'],
           exports: 'Backbone'
-        },    
+        },   
+        "backbone-paginator":{
+          deps: [ 'backbone'],          
+        },   
         'underscore':{
           exports: '_'
         },
@@ -69,12 +72,12 @@ requirejs.config({
               "modernizr","form",'parsley',"chart","EasyPieChart","datetime","cookie"]
         },
         'openbiz.custom':{
-          deps: [ "jquery.ui","bootstrap-paginator","backbone-paginator" ]
+          deps: [ "jquery.ui","bootstrap-paginator"]
         }
 	}
 });
 
-define(['backbone','hammer','openbiz','bootstrap','throbber'],
+define(['backbone-paginator','hammer','openbiz','bootstrap','throbber'],
 	function(Backbone,Hammer,openbiz){
 		window.Hammer = Hammer; //kick the thing back to global				
 
