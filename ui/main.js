@@ -10,7 +10,7 @@ requirejs.config({
 	},
 	waitSeconds:0,
 	paths:{
-		'bootstrap'	: 'vendor/bootstrap/js/bootstrap.min',
+		'bootstrap'	: 'vendor/bootstrap/js/bootstrap.min',		
 		'underscore': 'vendor/underscore/underscore-min',
 		'jquery' 	: 'vendor/jquery/jquery-1.10.2.min',
 		'jquery.mmenu' : 'vendor/plugins/mmenu/jquery.mmenu',
@@ -32,7 +32,8 @@ requirejs.config({
 		'html5shiv'	: 'vendor/bootstrap/libs/html5shiv/3.7.0/html5shiv',
 		'openbiz.custom' : 'vendor/openbiz/openbiz.custom',
 		'parsley'   : 'vendor/openbiz/openbiz.parsley',
-		'bootbox'   : 'vendor/bootbox/bootbox.min'
+		'bootbox'   : 'vendor/bootbox/bootbox.min',
+		'bootstrap-paginator'	: 'vendor/bootstrap-paginator/bootstrap-paginator.min',
 	},
 	shim:{
 		'backbone':{
@@ -67,7 +68,7 @@ requirejs.config({
               "modernizr","form",'parsley',"chart","EasyPieChart","datetime","cookie"]
         },
         'openbiz.custom':{
-          deps: [ "jquery.ui" ]
+          deps: [ "jquery.ui","bootstrap-paginator" ]
         }
 	}
 });
