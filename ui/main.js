@@ -26,7 +26,9 @@ requirejs.config({
 		'cookie'	: 'vendor/plugins/cookie/jquery.cookie',
         'openbiz'	: 'openbiz',
  		'backbone'	: 'vendor/backbone/backbone-min',
- 		'backbone-paginator'	: 'vendor/backbone-paginator/backbone.paginator.min',
+ 		'backgrid'	: 'vendor/backgrid/backgrid',
+ 		'backgrid-paginator'	: 'vendor/backgrid/extensions/paginator/backgrid-paginator',
+ 		'backbone-pageable'	: 'vendor/backbone-pageable/backbone-pageable.min',
 		'i18n'		: openbizUrl+'/vendor/require/plugins/i18n',
 		'text'		: openbizUrl+'/vendor/require/plugins/text',
 		'respond'	: 'vendor/bootstrap/libs/respond.js/1.3.0/respond.min',
@@ -45,6 +47,13 @@ requirejs.config({
         "backbone-paginator":{
           deps: [ 'backbone'],          
         },   
+        "backgrid":{
+          exports: "Backgrid",
+           deps: [ 'underscore','jquery','backbone' ]     
+        }, 
+        "backgrid-paginator":{          
+           deps: [ 'backgrid' ]     
+        }, 
         'underscore':{
           exports: '_'
         },
@@ -77,7 +86,7 @@ requirejs.config({
 	}
 });
 
-define(['backbone-paginator','hammer','openbiz','bootstrap','throbber'],
+define(['backbone-pageable','hammer','openbiz','bootstrap','throbber','backgrid-paginator'],
 	function(Backbone,Hammer,openbiz){
 		window.Hammer = Hammer; //kick the thing back to global				
 
