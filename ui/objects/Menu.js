@@ -48,6 +48,14 @@ define(function(){
                     }
                 }); 
                         
+        },
+        processACL:function(aclArray){
+            for(var i=0;i<aclArray.length;i++){
+                if(! openbiz.session.me.hasPermission(aclArray[i]) ){
+                    $(this.el).find('.'+aclArray[i]).remove();
+                }
+            }
+            return this;
         }
 	});
 });
