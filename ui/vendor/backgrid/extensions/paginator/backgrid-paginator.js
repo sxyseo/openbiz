@@ -426,7 +426,7 @@
     },
     /* Its not done yet, for render total records */
     renderTextIndicator: function(){
-      if(typeof this.collection.state.totalRecords!='undefined'){
+      if(typeof this.collection.state.totalRecords!='undefined' && parseInt(this.collection.state.totalRecords)>0)){
           var text = document.createElement("div");
           this.$el.parent().find('ul.'+this.className).addClass("pull-left");
           $(text).addClass('pull-right').html('<div class="indicator">Total: '+this.collection.state.totalRecords+' '+
