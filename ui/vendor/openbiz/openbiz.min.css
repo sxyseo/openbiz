@@ -1,6 +1,4 @@
 @charset "utf-8";
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400,300,800);
-@import url(http://fonts.googleapis.com/css?family=Ubuntu:300,400,700);
 .indicator{
   line-height: 36px;
 }
@@ -63,7 +61,7 @@
   color: gray;
 }
 .backgrid tbody tr.empty td {
-  display: inherit;
+  display: table-cell;
   text-align: center;
 }
 .backgrid td.editor {
@@ -12156,6 +12154,48 @@ padding:10px 5px;
   75%  { -ms-transform: rotate(270deg); }
   75% { -ms-transform: rotate(360deg); }
   100% { -ms-transform: rotate(360deg); }
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Open Sans Light'), local('OpenSans-Light'), url(fonts/Open-Sans-Light.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(fonts/Open-Sans.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 800;
+  src: local('Open Sans Extrabold'), local('OpenSans-Extrabold'), url(fonts/Open-Sans-Extrabold.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 300;
+  src: local('Open Sans Light Italic'), local('OpenSansLight-Italic'), url(fonts/Open-Sans-Light-Italic.woff) format('woff');
+}
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Ubuntu Light'), local('Ubuntu-Light'), url(fonts/Ubuntu-Light.woff) format('woff');
+}
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Ubuntu'), url(fonts/Ubuntu.woff) format('woff');
+}
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Ubuntu Bold'), local('Ubuntu-Bold'), url(fonts/Ubuntu-Bold.woff) format('woff');
 }
 .ui-helper-hidden {
 	display: none;
