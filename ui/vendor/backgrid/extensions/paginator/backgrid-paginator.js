@@ -419,8 +419,24 @@
       }
 
       this.el.appendChild(ul);
+      
+      this.renderTextIndicator();
 
       return this;
+    },
+    /* Its not done yet, for render total records */
+    renderTextIndicator: function(){
+      if(typeof this.collection.state.totalRecords!='undefined'){
+          var text = document.createElement("div");
+          this.$el.parent().find('ul.'+this.className).addClass("pull-left");
+          $(text).addClass('pull-right').html('<div class="indicator">Total: '+this.collection.state.totalRecords+' '+
+            (this.collection.state.totalRecords>1?'Records':'Record')+'</div>');
+          if(this.$el.parent().find('.indicator').length){
+              this.$el.parent().find('.indicator').replaceWith(text);
+          }else{
+              this.$el.after(text);
+          }
+      }
     }
 
   });

@@ -1,6 +1,9 @@
 @charset "utf-8";
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400,300,800);
 @import url(http://fonts.googleapis.com/css?family=Ubuntu:300,400,700);
+.indicator{
+  line-height: 36px;
+}
 .backgrid-container {
   position: relative;
   display: block;
