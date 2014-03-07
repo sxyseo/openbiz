@@ -29,7 +29,6 @@ requirejs.config({
  		'backgrid'	: 'vendor/backgrid/backgrid',
  		'backgrid-paginator': 'vendor/backgrid/extensions/paginator/backgrid-paginator',
  		'backgrid-filter'	: 'vendor/backgrid/extensions/filter/backgrid-filter',
- 		'backbone-pageable'	: 'vendor/backbone-pageable/backbone-pageable.min',
 		'i18n'		: openbizUrl+'/vendor/require/plugins/i18n',
 		'text'		: openbizUrl+'/vendor/require/plugins/text',
 		'respond'	: 'vendor/bootstrap/libs/respond.js/1.3.0/respond.min',
