@@ -874,7 +874,10 @@ var Cell = Backgrid.Cell = Backbone.View.extend({
      model's raw value for this cell's column.
   */
   render: function () {
-    this.$el.empty();
+    this.$el.empty();    
+    if(this.column.get('className')){
+      this.$el.addClass(this.column.get('className'))
+    }
     var model = this.model;
     var attr = this.column.get("name");    
     var attrArray = attr.split('.');
@@ -2149,6 +2152,9 @@ var HeaderCell = Backgrid.HeaderCell = Backbone.View.extend({
     var column = this.column;
     var sortable = Backgrid.callByNeed(column.sortable(), column, this.collection);
     var label;
+    if(this.column.get('className')){
+      this.$el.addClass(this.column.get('className'))
+    }
     if(sortable){
       label = $("<a>").text(column.get("label")).append("<b class='sort-caret'></b>");
     } else {

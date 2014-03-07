@@ -287,7 +287,7 @@
 
       _.extend(self, _.pick(options || {}, "windowSize", "pageHandle",
                             "slideScale", "goBackFirstOnSort",
-                            "renderIndexedPageHandles","cssClass"));
+                            "renderIndexedPageHandles","className"));
 
       var col = self.collection;
       self.listenTo(col, "add", self.render);
@@ -413,7 +413,7 @@
       var handles = this.handles = this.makeHandles();
 
       var ul = document.createElement("ul");      
-      $(ul).addClass(this.cssClass)
+      $(ul).addClass(this.className)
       for (var i = 0; i < handles.length; i++) {
         ul.appendChild(handles[i].render().el);
       }

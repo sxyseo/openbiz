@@ -27,7 +27,8 @@ requirejs.config({
         'openbiz'	: 'openbiz',
  		'backbone'	: 'vendor/backbone/backbone-min',
  		'backgrid'	: 'vendor/backgrid/backgrid',
- 		'backgrid-paginator'	: 'vendor/backgrid/extensions/paginator/backgrid-paginator',
+ 		'backgrid-paginator': 'vendor/backgrid/extensions/paginator/backgrid-paginator',
+ 		'backgrid-filter'	: 'vendor/backgrid/extensions/filter/backgrid-filter',
  		'backbone-pageable'	: 'vendor/backbone-pageable/backbone-pageable.min',
 		'i18n'		: openbizUrl+'/vendor/require/plugins/i18n',
 		'text'		: openbizUrl+'/vendor/require/plugins/text',
@@ -46,7 +47,9 @@ requirejs.config({
         },   
         "backbone-paginator":{
           deps: [ 'backbone'],          
-        },   
+        }, 
+           
+           
         "backgrid":{
           exports: "Backgrid",
            deps: [ 'underscore','jquery','backbone' ]     
@@ -54,6 +57,11 @@ requirejs.config({
         "backgrid-paginator":{          
            deps: [ 'backgrid' ]     
         }, 
+        "backgrid-filter":{
+          deps: [ 'backgrid'],          
+        },
+
+
         'underscore':{
           exports: '_'
         },
@@ -86,7 +94,7 @@ requirejs.config({
 	}
 });
 
-define(['backbone-pageable','hammer','openbiz','bootstrap','throbber','backgrid-paginator'],
+define(['backbone-pageable','hammer','openbiz','bootstrap','throbber','backgrid-paginator','backgrid-filter'],
 	function(Backbone,Hammer,openbiz){
 		window.Hammer = Hammer; //kick the thing back to global				
 

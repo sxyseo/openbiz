@@ -34,10 +34,9 @@
   padding: 4px 5px;
   overflow: hidden;
   line-height: 20px;
-  text-align: left;
   text-overflow: ellipsis;
   white-space: nowrap;
-  vertical-align: middle;
+  vertical-align: middle !important;
   border-bottom: 1px solid #DDD;
 }
 
@@ -171,7 +170,7 @@
 .backgrid .string-cell.editor input[type=text],
 .backgrid .uri-cell.editor input[type=text],
 .backgrid .email-cell.editor input[type=text] {
-  text-align: left;
+/*  text-align: left;*/
 }
 
 .backgrid .date-cell,
@@ -186,7 +185,7 @@
 .backgrid .number-cell.editor input[type=text],
 .backgrid .integer-cell.editor input[type=text],
 .backgrid .percent-cell.editor input[type=text] {
-  text-align: right;
+  /*text-align: right;*/
 }
 
 .backgrid .boolean-cell,
