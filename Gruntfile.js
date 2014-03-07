@@ -48,7 +48,7 @@ module.exports = function(grunt) {
           name: "main",
           out: "ui/main.min.js",          
           paths:{
-            'bootstrap' : 'vendor/bootstrap/js/bootstrap.min',
+            'bootstrap' : 'vendor/bootstrap/js/bootstrap.min',    
             'underscore': 'vendor/underscore/underscore-min',
             'jquery'  : 'vendor/jquery/jquery-1.10.2.min',
             'jquery.mmenu' : 'vendor/plugins/mmenu/jquery.mmenu',
@@ -64,19 +64,42 @@ module.exports = function(grunt) {
             'cookie'  : 'vendor/plugins/cookie/jquery.cookie',
             'openbiz' : 'openbiz',
             'backbone'  : 'vendor/backbone/backbone-min',
+            'backgrid'  : 'vendor/backgrid/backgrid',
+            'backgrid-paginator': 'vendor/backgrid/extensions/paginator/backgrid-paginator',
+            'backgrid-filter' : 'vendor/backgrid/extensions/filter/backgrid-filter',
+            'backbone-pageable' : 'vendor/backbone-pageable/backbone-pageable.min',
             'i18n'    : 'vendor/require/plugins/i18n',
             'text'    : 'vendor/require/plugins/text',
             'respond' : 'vendor/bootstrap/libs/respond.js/1.3.0/respond.min',
             'html5shiv' : 'vendor/bootstrap/libs/html5shiv/3.7.0/html5shiv',
             'openbiz.custom' : 'vendor/openbiz/openbiz.custom',
-            'parsley'   : 'vendor/openbiz/openbiz.parsley'
+            'parsley'   : 'vendor/openbiz/openbiz.parsley',
+            'bootbox'   : 'vendor/bootbox/bootbox.min',
+            'bootstrap-paginator' : 'vendor/paginator/bootstrap-paginator.min',
           },
           shim:{
             'backbone':{
               deps: [ 'underscore', 
                   'jquery.ui'],
               exports: 'Backbone'
-            },    
+            },   
+            "backbone-paginator":{
+              deps: [ 'backbone'],          
+            }, 
+               
+               
+            "backgrid":{
+              exports: "Backgrid",
+               deps: [ 'underscore','jquery','backbone' ]     
+            }, 
+            "backgrid-paginator":{          
+               deps: [ 'backgrid' ]     
+            }, 
+            "backgrid-filter":{
+              deps: [ 'backgrid'],          
+            },
+
+
             'underscore':{
               exports: '_'
             },
@@ -100,11 +123,11 @@ module.exports = function(grunt) {
               deps: [ 'underscore','jquery','backbone','openbiz.custom' ]
             },               
             'jquery.ui':{
-              deps: [ "jquery","holder","throbber","jquery.mmenu",
+              deps: [ "jquery","holder","throbber","jquery.mmenu","bootbox",
                   "modernizr","form",'parsley',"chart","EasyPieChart","datetime","cookie"]
             },
             'openbiz.custom':{
-              deps: [ "jquery.ui" ]
+              deps: [ "jquery.ui","bootstrap-paginator"]
             }
           }
         }
