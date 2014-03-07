@@ -558,10 +558,6 @@
 		 @return {Object} Returns the `state` object if no error was found.
 		 */
 		_checkState: function (state) {
-			console.log("state.totalRecords");
-			console.log(state.totalRecords);
-
-
 			var mode = this.mode;
 			var links = this.links;
 			var totalRecords = state.totalRecords;
@@ -1025,9 +1021,10 @@
 		 @return {Array.<Object>} An array of model objects
 		 */
 		parse: function (resp, options) {
-			debugger;
+
 			var newState = this.parseState(resp, _clone(this.queryParams), _clone(this.state), options);
 			if (newState) this.state = this._checkState(_extend({}, this.state, newState));
+
 			return this.parseRecords(resp, options);
 		},
 

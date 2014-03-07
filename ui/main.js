@@ -25,7 +25,7 @@ requirejs.config({
 		'holder'	: 'vendor/plugins/holder/holder',
 		'cookie'	: 'vendor/plugins/cookie/jquery.cookie',
         'openbiz'	: 'openbiz',
- 		'backbone'	: 'vendor/backbone/backbone',
+ 		'backbone'	: 'vendor/backbone/backbone-min',
  		'backgrid'	: 'vendor/backgrid/backgrid',
  		'backgrid-paginator': 'vendor/backgrid/extensions/paginator/backgrid-paginator',
  		'backgrid-filter'	: 'vendor/backgrid/extensions/filter/backgrid-filter',

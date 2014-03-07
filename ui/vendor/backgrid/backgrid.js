@@ -2331,7 +2331,9 @@ var Body = Backgrid.Body = Backbone.View.extend({
         emptyText: this.emptyText,
         columns: this.columns
       }));
+	    return true;
     }
+	  return false;
   },
 
   /**
@@ -2425,10 +2427,13 @@ var Body = Backgrid.Body = Backbone.View.extend({
     if (_.isUndefined(options.render) || options.render) {
       this.rows[options.index].remove();
     }
-
+	var rowLenght = this.rows.length;
     this.rows.splice(options.index, 1);
-    this._unshiftEmptyRowMayBe();
 
+	var result = this._unshiftEmptyRowMayBe();
+	  if(result == true){
+		  this.render();
+	  }
     return this;
   },
 
