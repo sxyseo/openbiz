@@ -293,7 +293,8 @@
       self.listenTo(col, "add", self.render);
       self.listenTo(col, "remove", self.render);
       self.listenTo(col, "reset", self.render);
-      self.listenTo(col, "backgrid:sorted", function () {
+	  self.listenTo(col, "sync", self.render);
+	    self.listenTo(col, "backgrid:sorted", function () {
         if (self.goBackFirstOnSort) col.getFirstPage({reset: true});
       });
     },
@@ -426,7 +427,7 @@
     },
     /* Its not done yet, for render total records */
     renderTextIndicator: function(){
-      if(typeof this.collection.state.totalRecords!='undefined'){
+	      if(typeof this.collection.state.totalRecords!='undefined'){
           var text = document.createElement("div");
           this.$el.parent().find('ul.'+this.className).addClass("pull-left");
           $(text).addClass('pull-right').html('<div class="indicator">Total: '+this.collection.state.totalRecords+' '+
