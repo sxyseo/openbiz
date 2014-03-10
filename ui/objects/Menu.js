@@ -56,6 +56,14 @@ define(function(){
                 }
             }
             return this;
+        },
+        render:function(){
+            if( openbiz.session.me.hasPermission(this.menuPermission) ){
+                var menuHtml = this.template(this.locale); 
+                this.updateMenu(menuHtml);                    
+                this.processACL(this.menuACL);
+            }
+            return this;
         }
 	});
 });
