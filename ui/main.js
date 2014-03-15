@@ -15,6 +15,7 @@ requirejs.config({
 		'jquery' 	: 'vendor/jquery/jquery-1.10.2.min',
 		'jquery.mmenu' : 'vendor/plugins/mmenu/jquery.mmenu',
 		'jquery.ui' : 'vendor/jquery-ui/jquery.ui.min',
+		'jqueryform' 	: 'vendor/jquery-form/jquery.form.min',
 		'modernizr' : 'vendor/modernizr/modernizr',
 		'chart' 	: 'vendor/plugins/chart/chart',
 		'EasyPieChart' 	: 'vendor/plugins/chart/ori/easypiechart.min',
@@ -37,7 +38,7 @@ requirejs.config({
 		'openbiz.custom' : 'vendor/openbiz/openbiz.custom',
 		'parsley'   : 'vendor/openbiz/openbiz.parsley',
 		'bootbox'   : 'vendor/bootbox/bootbox.min',
-		'bootstrap-paginator'	: 'vendor/paginator/bootstrap-paginator.min',
+		'bootstrap-paginator'	: 'vendor/paginator/bootstrap-paginator.min'
 	},
 	shim:{
 		'backbone':{
@@ -46,7 +47,7 @@ requirejs.config({
           exports: 'Backbone'
         },   
         "backbone-paginator":{
-          deps: [ 'backbone'],          
+          deps: [ 'backbone']
         }, 
            
            
@@ -88,16 +89,23 @@ requirejs.config({
           deps: [ "jquery","holder","throbber","jquery.mmenu","bootbox",
               "modernizr","form",'parsley',"chart","EasyPieChart","datetime","cookie"]
         },
+<<<<<<< HEAD
         'bootstrap-paginator':{
           deps: [ "bootstrap"]
         },
         'openbiz.custom':{
+=======
+		'jqueryform':{
+			deps: [ "jquery"]
+		},
+		'openbiz.custom':{
+>>>>>>> d07cc98ee76d1246d938e4b65bb059a15df49cd7
           deps: [ "jquery.ui","bootstrap-paginator"]
         }
 	}
 });
 
-define(['backbone-pageable','hammer','openbiz','bootstrap','throbber','backgrid-paginator','backgrid-filter'],
+define(['backbone-pageable','hammer','openbiz','bootstrap','throbber','backgrid-paginator','backgrid-filter',"jqueryform"],
 	function(Backbone,Hammer,openbiz){
 		window.Hammer = Hammer; //kick the thing back to global				
 
