@@ -88,6 +88,9 @@ requirejs.config({
           deps: [ "jquery","holder","throbber","jquery.mmenu","bootbox",
               "modernizr","form",'parsley',"chart","EasyPieChart","datetime","cookie"]
         },
+        'bootstrap-paginator':{
+          deps: [ "bootstrap"]
+        },
         'openbiz.custom':{
           deps: [ "jquery.ui","bootstrap-paginator"]
         }

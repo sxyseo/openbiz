@@ -15,6 +15,10 @@ define(['../objects/Object'],function(object){
                 }
                 return false;
             },
+            reset:function(){
+                this._renderred={};
+                this._inited={};
+            },
             get:function(viewName){
                 if(this._renderred[viewName] == null || typeof this._renderred[viewName] == 'undefined'){
                     return null;
