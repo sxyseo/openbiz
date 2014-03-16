@@ -82,6 +82,8 @@ define(function(){
 	    	}
 	    	var viewArr = viewName.split(".");
 	    	var viewPath = "./modules/"+viewArr[0]+"/views/"+viewArr[1];
+	    	var parentView = self.app.views.currentView;
+	    	parentView.undelegateEvents();
 	    	if(self.app.views.isRenderred(viewName)){
 				self.app.views.get(viewName).undelegateEvents();
 			}
@@ -91,6 +93,8 @@ define(function(){
                 $modal.modal();
                 $modal.on('hidden.bs.modal',function(){
                 	view.undelegateEvents();
+                	self.app.views.currentView=parentView;
+                	parentView.delegateEvents();
                 });
                 openbiz.ui.update($modal);
                 if(typeof callback =='function'){
