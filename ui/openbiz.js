@@ -12,6 +12,7 @@ define(["objects/Object",
 		"utils/BrowserDetection",
 		"utils/Validator",
 		"utils/HistoryInit",
+		'miscs/colorSetting',
 		'openbiz.custom',
 		'i18n!./nls/locale'
 		],
@@ -28,6 +29,7 @@ define(["objects/Object",
 		BrowserDetection,
 		Validator,
 		historyInit,
+		colorSetting,
 		updateUI,
 		locale
 		){		
@@ -74,6 +76,7 @@ define(["objects/Object",
 			this.historyInit();
 			this.validator.defaults.messages=locale.validation,
 			this.validator.init();
-		}
+		},
+		colorSetting:colorSetting
 	}
 });
