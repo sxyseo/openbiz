@@ -628,7 +628,7 @@ define(function(){
         $(elem).find('.avatar-chart').easyPieChart({
             lineCap: "butt",
             trackColor:'#2E2E31',
-            barColor: "#6CC3A0",
+            barColor: openbiz.colorSetting['theme-inverse'],
             scaleColor:false,
             size: 118,
             lineWidth:5
