@@ -1,8 +1,8 @@
 "use strict";
-define(function(){
-	return openbiz.View.extend({		
+define(['../objects/View'],function(view){
+	return view.extend({
 		initialize:function(){
-			openbiz.View.initialize.apply(this);
+			openbiz.View.prototype.initialize.apply(this);
 			return this;
 		}
 	});
