@@ -51,7 +51,10 @@ define(['../objects/View'],function(view){
 			for (var i in columnConfigs){
 				var column = columnConfigs[i];
 				if(this._canDisplayColumn(column)){
-					columns.push(openbiz.elements.grid[column['type']].getConfig(this,column));
+					var field = openbiz.elements.grid[column['type']].getConfig(this,column);
+					if(field != null){
+						columns.push(field);
+					}
 				}
 			}
 			if(this._getFilterConfig()){

@@ -12,6 +12,21 @@ define(['../../../objects/Object'],function(object){
 			if(typeof column.className != 'undefined' && column.className){
 				field.className = column.className;
 			}
+			if(typeof column.className != 'undefined' && column.className){
+				field.className = column.className;
+			}
+			if(typeof column.sortable != 'undefined' && column.sortable){
+				field.sortable = column.sortable;
+			}
+			else{
+				field.sortable = false;
+			}
+			if(typeof column.editable != 'undefined' && column.editable){
+				field.editable = column.editable;
+			}
+			else{
+				field.editable = false;
+			}
 			return field;
 		}
 	});
