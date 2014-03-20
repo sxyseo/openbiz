@@ -130,7 +130,7 @@ define(['../objects/View'],function(view){
 		},
 		_getPaginatorConfig:function(){
 			if(! this._paginatorConfig){
-				this._paginatorConfig = this._config.paginator;
+				this._paginatorConfig = this._metadata.paginator;
 			}
 			return this._paginatorConfig;
 		}

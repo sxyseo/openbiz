@@ -6,6 +6,11 @@ define(['../../../objects/Object'],function(object){
 			if(typeof column.field != 'undefined' && column.field){
 				field.name = column.field;
 			}
+			else{
+				if(typeof column.method != 'undefined' && column.method){
+					field.method = column.method;
+				}
+			}
 			if(typeof column.displayName != 'undefined' && column.displayName){
 				field.label = column.displayName;
 			}
