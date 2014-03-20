@@ -51,7 +51,11 @@ define(['../objects/View'],function(view){
 			for (var i in columnConfigs){
 				var column = columnConfigs[i];
 				if(this._canDisplayColumn(column)){
-					var field = openbiz.elements.grid[column['type']].getConfig(this,column);
+					var type = column['type'];
+					if(typeof  type == 'undefined' || type == null){
+						type = 'text';
+					}
+					var field = openbiz.elements.columns[type].getConfig(this,column,this._getRecordActions());
 					if(field != null){
 						columns.push(field);
 					}
@@ -83,16 +87,20 @@ define(['../objects/View'],function(view){
 				$(this.el).find(this._dataGridEL).append(paginator.render().el);
 			}
 			this.collection.fetch();
+			return this;
 		},
 		_renderNoPermissionView:function(){
 			//render 403 page
 		},
 		_canDisplayView:function(){
+			if(typeof this._config.permission == 'undefined' || this._config.permission == null){
+				return true;
+			}
 			return openbiz.session.me.hasPermission(this._config.permission);
 		},
 		_canDisplayColumn:function(column){
-			if(typeof column['permission'] != 'undefined' && column['permission'])
-				return openbiz.session.me.hasPermission(column['permission']);
+			if(typeof column.permission != 'undefined' && column.permission)
+				return openbiz.session.me.hasPermission(column.permission);
 			return true;
 		},
 		_getRecordActions:function(){

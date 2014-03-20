@@ -2,7 +2,7 @@
 define(['./Element'],function(element){
 	return element.extend({
 		getConfig:function(obj,column){
-			var field = element.prototype.getConfig.call(this,obj,column);
+			var field = openbiz.Element.getConfig.call(this,obj,column);
 			field.cell = BackGrid.UriCell.extend({
 				render: function () {
 					this.$el.empty();

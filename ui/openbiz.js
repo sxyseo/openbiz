@@ -16,8 +16,12 @@ define(["objects/Object",
 		"utils/HistoryInit",
 		'miscs/colorSetting',
 		'openbiz.custom',
-		'i18n!./nls/locale'
-		],
+		'i18n!./nls/locale',
+		'views/elements/columns/Element',
+		'views/elements/columns/Link',
+		'views/elements/columns/Text',
+		'views/elements/columns/RecordAction'
+],
 	function(Object,
 		Module,
 		Application,		
@@ -35,7 +39,11 @@ define(["objects/Object",
 		historyInit,
 		colorSetting,
 		updateUI,
-		locale
+		locale,
+		element,
+		link,
+		text,
+		recordAction
 		){		
 	return {
 		apps:{},
@@ -61,7 +69,15 @@ define(["objects/Object",
 		ui:{
 			update: updateUI,
             loader:$('<div class="load-overlay"><div><div class="c1"></div><div class="c2"></div><div class="c3"></div><div class="c4"></div></div><span>'+ locale.loading.text +'</span></div>')
-		},	
+		},
+		elements:{
+			columns:{
+				link:link,
+				text:text,
+				recordActions:recordAction
+			}
+		},
+		Element:element,
 		baseUrl:openbizUrl,
 		//shortcut alias
 		Application: Application,
@@ -71,8 +87,9 @@ define(["objects/Object",
 		MiddleWareRouter:MiddleWareRouter,
 		View: 	View,
 		Menu: 	Menu,
+		Grid: Backgrid,
 		FormView: FormView,
-		GirdView: GridView,
+		GridView: GridView,
 		isMobile: MobileDetection,
 		Browser: BrowserDetection,
 		loadApps: AppLoader.load,	

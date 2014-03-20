@@ -1,23 +1,23 @@
 "use strict";
 define(['./Element'],function(element){
 	return element.extend({
-		getConfig:function(obj,column){
-			var field = element.prototype.getConfig.call(this,obj,column);
+		getConfig:function(obj,column,recordActions){
+			var self = this;
+			var field = openbiz.Element.getConfig.call(this,obj,column);
 			{
-				if(this._recordActions.length > 0){
-					field.cell = BackGrid.UriCell.extend({
+				if(recordActions.length > 0){
+					field.cell = openbiz.Grid.UriCell.extend({
 						render:function(){
 							this.$el.empty();
 							var model = this.model;
 							var value = model.get("_id");
 							var html = "<div class='tooltip-area'>";
-							for (var rac in this._recordActions){
-								var recordAction = this._recordActions[rac];
-
-								if(openbiz.session.me.hasPermission(recordAction['permission']))
+							for (var i in recordActions){
+								var recordAction = recordActions[i];
+								if(self._hasPermission(recordAction.permission))
 								{
 									var className = "rec-act-"+recordAction["name"].toLowerCase();
-									html = html + "<a href='#' record-id='{{ id }}' class='btn btn-default"+ className+"'>"+recordAction["displayName"]+"</a>+"&nbsp;""
+									html = html + "<a href='#' record-id='{{ id }}' class='btn btn-default "+ className+"'>"+recordAction["displayName"]+"</a>"+"&nbsp";
 								}
 							}
 							html = html + "</div>";
@@ -32,6 +32,12 @@ define(['./Element'],function(element){
 				}
 			}
 			return field;
+		},
+		_hasPermission:function(permission){
+			if(typeof permission != 'undefined' && permission){
+				return openbiz.session.me.hasPermission(permission);
+			}
+			return true;
 		}
 	});
 });
