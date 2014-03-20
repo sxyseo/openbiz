@@ -5,7 +5,7 @@ define(['../objects/View'],function(view){
 		_filterConfig:null,
 		_paginatorConfig:null,
 		_actions:null,
-		_config:null,
+		_metadata:null,
 		_recordActions:null,
 		_dataGridEL:'.data-grid',
 		collection:null,
@@ -93,10 +93,10 @@ define(['../objects/View'],function(view){
 			//render 403 page
 		},
 		_canDisplayView:function(){
-			if(typeof this._config.permission == 'undefined' || this._config.permission == null){
+			if(typeof this._metadata.permission == 'undefined' || this._metadata.permission == null){
 				return true;
 			}
-			return openbiz.session.me.hasPermission(this._config.permission);
+			return openbiz.session.me.hasPermission(this._metadata.permission);
 		},
 		_canDisplayColumn:function(column){
 			if(typeof column.permission != 'undefined' && column.permission)
@@ -105,26 +105,26 @@ define(['../objects/View'],function(view){
 		},
 		_getRecordActions:function(){
 			if(! this._recordActions){
-				this._recordActions = this._config.recordActions;
+				this._recordActions = this._metadata.recordActions;
 			}
 			return this._recordActions;
 		},
 		_getActions:function(){
 
 			if(! this._actions){
-				this._actions = this._config.action;
+				this._actions = this._metadata.action;
 			}
 			return this._actions;
 		},
 		_getColumnsConfig:function(){
 			if(! this._columnsConfig){
-				this._columnsConfig = this._config.fields;
+				this._columnsConfig = this._metadata.fields;
 			}
 			return this._columnsConfig;
 		},
 		_getFilterConfig:function(){
 			if(! this._filterConfig){
-				this._filterConfig = this._config.filter;
+				this._filterConfig = this._metadata.filter;
 			}
 			return this._filterConfig;
 		},
