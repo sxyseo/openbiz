@@ -16,7 +16,6 @@ define(['./Element'],function(element){
 								var recordAction = recordActions[i];
 								if(self._hasPermission(recordAction.permission))
 								{
-<<<<<<< HEAD
 									switch(recordAction.type.toLowerCase()){
 										case "link":
 										{
@@ -34,10 +33,6 @@ define(['./Element'],function(element){
 											break;
 										}
 									}
-=======
-									var className = "rec-act-"+recordAction["name"].toLowerCase();
-									html = html + "<a href='#' record-id='{{ id }}' record-name='{{ id }}'  class='btn btn-default "+ className+"'>"+recordAction["displayName"]+"</a>"+"&nbsp";
->>>>>>> d537a82d7934f0739460248c9edf7db5bf572e2c
 								}
 							}
 							html = html + "</div>";
