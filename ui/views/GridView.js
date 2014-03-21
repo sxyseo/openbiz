@@ -94,7 +94,7 @@ define(['../objects/View'],function(view){
 				columns:columns,
 				collection: this.collection,
 				className: 'backgrid table table-striped table-bordered text-center',
-				emptyText: 'emptyText '
+				emptyText: this.metadata.gridEmptyText
 			});
 			$(this.el).find(this._dataGridEL).append(grid.render().el);
 			if(this._getPaginatorConfig()){
