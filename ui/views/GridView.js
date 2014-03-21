@@ -5,11 +5,13 @@ define(['../objects/View'],function(view){
 		_filterConfig:null,
 		_paginatorConfig:null,
 		_actions:null,
-		_metadata:null,
+		metadata:null,
 		_recordActions:null,
 		_dataGridEL:'.data-grid',
 		collection:null,
 		initialize:function(){
+			this.template = _.template(this.template);
+		 	this.collection = new this.collection();
 			openbiz.View.prototype.initialize.apply(this);
 			return this;
 		},
@@ -97,10 +99,10 @@ define(['../objects/View'],function(view){
 			//render 403 page
 		},
 		_canDisplayView:function(){
-			if(typeof this._metadata.permission == 'undefined' || this._metadata.permission == null){
+			if(typeof this.metadata.permission == 'undefined' || this.metadata.permission == null){
 				return true;
 			}
-			return openbiz.session.me.hasPermission(this._metadata.permission);
+			return openbiz.session.me.hasPermission(this.metadata.permission);
 		},
 		_canDisplayColumn:function(column){
 			if(typeof column.permission != 'undefined' && column.permission)
@@ -109,32 +111,32 @@ define(['../objects/View'],function(view){
 		},
 		_getRecordActions:function(){
 			if(! this._recordActions){
-				this._recordActions = this._metadata.recordActions;
+				this._recordActions = this.metadata.recordActions;
 			}
 			return this._recordActions;
 		},
 		_getActions:function(){
 
 			if(! this._actions){
-				this._actions = this._metadata.action;
+				this._actions = this.metadata.action;
 			}
 			return this._actions;
 		},
 		_getColumnsConfig:function(){
 			if(! this._columnsConfig){
-				this._columnsConfig = this._metadata.fields;
+				this._columnsConfig = this.metadata.fields;
 			}
 			return this._columnsConfig;
 		},
 		_getFilterConfig:function(){
 			if(! this._filterConfig){
-				this._filterConfig = this._metadata.filter;
+				this._filterConfig = this.metadata.filter;
 			}
 			return this._filterConfig;
 		},
 		_getPaginatorConfig:function(){
 			if(! this._paginatorConfig){
-				this._paginatorConfig = this._metadata.paginator;
+				this._paginatorConfig = this.metadata.paginator;
 			}
 			return this._paginatorConfig;
 		}
