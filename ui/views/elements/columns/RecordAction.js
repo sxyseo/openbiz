@@ -17,7 +17,7 @@ define(['./Element'],function(element){
 								if(self._hasPermission(recordAction.permission))
 								{
 									var className = "rec-act-"+recordAction["name"].toLowerCase();
-									html = html + "<a href='#' record-id='{{ id }}' class='btn btn-default "+ className+"'>"+recordAction["displayName"]+"</a>"+"&nbsp";
+									html = html + "<a href='#' record-id='{{ id }}' record-name='{{ id }}'  class='btn btn-default "+ className+"'>"+recordAction["displayName"]+"</a>"+"&nbsp";
 								}
 							}
 							html = html + "</div>";
