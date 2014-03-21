@@ -70,7 +70,13 @@ define(['../objects/View'],function(view){
 					if(typeof  type == 'undefined' || type == null){
 						type = 'text';
 					}
-					var field = openbiz.elements.columns[type].getConfig(this,column,this._getRecordActions());
+					var field;
+					if(this.elements[type]){
+						field = this.elements[type].getConfig(this,column,this._getRecordActions());
+					}
+					else{
+						field = openbiz.elements.columns[type].getConfig(this,column,this._getRecordActions());
+					}
 					if(field != null){
 						columns.push(field);
 					}
