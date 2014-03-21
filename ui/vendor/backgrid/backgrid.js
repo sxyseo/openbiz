@@ -879,14 +879,28 @@ var Cell = Backgrid.Cell = Backbone.View.extend({
       this.$el.addClass(this.column.get('className'))
     }
     var model = this.model;
-    var attr = this.column.get("name");    
-    var attrArray = attr.split('.');
-    var data = model.get(attrArray[0]);
-    var value = data;
-    for(var i =1; i<attrArray.length; i++){
-      var indexName = attrArray[i];
-      value = value[indexName];
+    //openbiz modification
+    var attr = this.column.get("name");  
+    if(attr!='' && attr.indexOf("{%")!=-1 ){      
+      value = _.template(attr,
+            { 
+              model:model
+            },
+            {
+              evaluate    : /\{%([\s\S]+?)%\}/g,
+              interpolate : /\{\{([\s\S]+?)\}\}/g,
+              escape      : /\{-([\s\S]+?)\}/g
+            });
+    }else{
+      var attrArray = attr.split('.');
+      var data = model.get(attrArray[0]);
+      var value = data;
+      for(var i =1; i<attrArray.length; i++){
+        var indexName = attrArray[i];
+        value = value[indexName];
+      }  
     }
+    
     this.$el.text(this.formatter.fromRaw( value , model));
     this.delegateEvents();
     return this;
