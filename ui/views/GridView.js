@@ -24,10 +24,12 @@ define(['../objects/View'],function(view){
 			var recordActions = this._getRecordActions();
 			for (var i in recordActions){
 				var recordAction = recordActions[i];
-				var className = recordAction["className"];
-				var selector = "rec-act-"+recordAction["name"].toLowerCase();
-				var key = recordAction.event + " ." + selector;
-				this.events[key] = recordAction.action;
+				if(typeof recordAction.action != 'undefined' && recordAction.action)
+				{
+					var selector = "rec-act-"+recordAction["name"].toLowerCase();
+					var key = recordAction.event + " ." + selector;
+					this.events[key] = recordAction.action;
+				}
 			}
 			this.delegateEvents();
 			return this;
