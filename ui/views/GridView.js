@@ -21,20 +21,25 @@ define(['../objects/View'],function(view){
 			for (var i in actions){
 				var action = actions[i];
 				var key = action.event + " ." + action.className;
-				this.events[key] = action.action;
+				this.events[key] = action.function;
 			}
 			var recordActions = this._getRecordActions();
 			for (var i in recordActions){
 				var recordAction = recordActions[i];
-				if(typeof recordAction.action != 'undefined' && recordAction.action)
+				if(typeof recordAction.function != 'undefined' && recordAction.function)
 				{
 					var selector = "rec-act-"+recordAction["name"].toLowerCase();
 					var key = recordAction.event + " ." + selector;
-					this.events[key] = recordAction.action;
+					this.events[key] = recordAction.function;
 				}
 			}
 			this.delegateEvents();
 			return this;
+		},
+		_getLocale:function(){
+			this.locale.breadcrumbs = this.metadata.breadcrumbs;
+			this.locale.viewTitle = this.metadata.viewTitle;
+			this.locale.viewDescription = this.metadata.viewDescription;
 		},
 		beforeRender:function(){},
 		afterRender:function(){},
@@ -44,6 +49,7 @@ define(['../objects/View'],function(view){
 			if(this._canDisplayView())
 			{
 				this.beforeRender();
+				this._getLocale();
 				$(this.el).html(this.template(this.locale));
 				this._renderDataGridConfig()._bindEvents();
 				this.afterRender();
@@ -120,7 +126,7 @@ define(['../objects/View'],function(view){
 		_getActions:function(){
 
 			if(! this._actions){
-				this._actions = this.metadata.action;
+				this._actions = this.metadata.actions;
 			}
 			return this._actions;
 		},
