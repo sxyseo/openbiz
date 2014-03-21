@@ -14,6 +14,7 @@ define(["objects/Object",
 		"utils/BrowserDetection",
 		"utils/Validator",
 		"utils/HistoryInit",
+		"utils/MetadataParser",
 		'miscs/colorSetting',
 		'openbiz.custom',
 		'i18n!./nls/locale',
@@ -37,6 +38,7 @@ define(["objects/Object",
 		BrowserDetection,
 		Validator,
 		historyInit,
+		MetadataParser,
 		colorSetting,
 		updateUI,
 		locale,
@@ -64,7 +66,8 @@ define(["objects/Object",
 		},			
 		utils:{
 			MobileDetection: MobileDetection,
-			BrowserDetection: BrowserDetection
+			BrowserDetection: BrowserDetection,
+			MetadataParser: MetadataParser
 		},		
 		ui:{
 			update: updateUI,
@@ -95,6 +98,7 @@ define(["objects/Object",
 		loadApps: AppLoader.load,	
 		validator: Validator,
 		historyInit: historyInit,
+		MetadataParser: MetadataParser,
 		init:function(){
 			this.historyInit();
 			this.validator.defaults.messages=locale.validation,

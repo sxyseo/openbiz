@@ -1,3 +1,4 @@
+"use strict";
 define(function(){
 	return { 
 		isIE:function( version, comparison )
