@@ -32,13 +32,17 @@ define(['../objects/View'],function(view){
 			this.delegateEvents();
 			return this;
 		},
+		beforeRender:function(){},
+		afterRender:function(){},
 		render:function(){
 			$(window).off('resize');
 			openbiz.ui.update($(this.el));
 			if(this._canDisplayView())
 			{
+				this.beforeRender();
 				$(this.el).html(this.template(this.locale));
 				this._renderDataGridConfig()._bindEvents();
+				this.afterRender();
 			}
 			else
 			{
