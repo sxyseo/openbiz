@@ -9,6 +9,7 @@ define(['../objects/View'],function(view){
 		_recordActions:null,
 		_dataGridEL:'.data-grid',
 		collection:null,
+		elements:{}, 
 		initialize:function(){
 			this.template = _.template(this.template);
 		 	this.collection = new this.collection();
