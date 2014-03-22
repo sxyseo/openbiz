@@ -36,12 +36,7 @@ define(['../objects/View'],function(view){
 			}
 			this.delegateEvents();
 			return this;
-		},
-		_getLocale:function(){
-			this.locale.breadcrumbs = this.metadata.breadcrumbs;
-			this.locale.viewTitle = this.metadata.viewTitle;
-			this.locale.viewDescription = this.metadata.viewDescription;
-		},
+		},		
 		beforeRender:function(){},
 		afterRender:function(){},
 		render:function(){
@@ -50,7 +45,6 @@ define(['../objects/View'],function(view){
 			if(this._canDisplayView())
 			{
 				this.beforeRender();
-				this._getLocale();
 				$(this.el).html(this.template(this.locale));
 				this._renderDataGridConfig()._bindEvents();
 				this.afterRender();
