@@ -64,7 +64,13 @@ define(['../objects/View'],function(view){
 					if(typeof  type == 'undefined' || type == null){
 						type = 'text';
 					}
-					var field = openbiz.elements.columns[type].getConfig(this,column,this._getRecordActions());
+					var field;
+					if(this.elements[type]){
+						field = this.elements[type].getConfig(this,column,this._getRecordActions());
+					}
+					else{
+						field = openbiz.elements.columns[type].getConfig(this,column,this._getRecordActions());
+					}
 					if(field != null){
 						columns.push(field);
 					}
@@ -82,7 +88,7 @@ define(['../objects/View'],function(view){
 				columns:columns,
 				collection: this.collection,
 				className: 'backgrid table table-striped table-bordered text-center',
-				emptyText: 'emptyText '
+				emptyText: this.metadata.gridEmptyText
 			});
 			$(this.el).find(this._dataGridEL).append(grid.render().el);
 			if(this._getPaginatorConfig()){
