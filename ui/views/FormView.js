@@ -3,6 +3,7 @@ define(['../objects/View'],function(view){
 	return view.extend({
 		metadata:null,
 		model:null,
+		_formEL:'.recordForm',
 		initialize:function(){
 			openbiz.View.prototype.initialize.apply(this);
 			return this;
@@ -52,6 +53,15 @@ define(['../objects/View'],function(view){
 		},
 		saveRecord:function(event){
 			event.preventDefault();
+			var record = {};
+//			for(var i in)
+
+			this.model.save(record,{success:function(){
+
+			}});
+		},
+		_validateForm:function(){
+			return $(this.el).find(this._formEL).parsley('validate');
 		}
 	});
 });
