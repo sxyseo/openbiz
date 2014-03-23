@@ -51,6 +51,27 @@ define(['../objects/View'],function(view){
 			}
 			return this._actions;
 		},
+		beforeDeleteRecord:function(){},
+		afterDeleteRecord:function(){},
+		deleteRecord:function(event){
+			event.preventDefault();
+			var self = this;
+			var recordId = $(event.currentTarget).attr('record-id');
+			var recordName = $(event.currentTarget).attr('record-name');
+			bootbox.confirm({
+				title: this.locale.deleteConfirmationTitle ? this.locale.deleteConfirmationTitle: this.app.locale.common.deleteConfirmationTitle,
+				message:_.template(this.locale.deleteConfirmationMessage ? this.locale.deleteConfirmationMessage: this.app.locale.common.deleteConfirmationMessage,{record:recordName}),
+				callback:function(result){
+					if(result){
+						self.beforeDeleteRecord();
+						self.collection.get(recordId).destroy({success:function(){
+							self.collection.fetch();
+						}});
+						self.afterDeleteRecord();
+					}
+				}
+			});
+		},
 		saveRecord:function(event){
 			event.preventDefault();
 			var record = {};
