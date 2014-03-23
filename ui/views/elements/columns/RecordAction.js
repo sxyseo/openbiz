@@ -14,18 +14,19 @@ define(['./Element'],function(element){
 							var html = "<div class='tooltip-area'>";
 							for (var i in recordActions){
 								var recordAction = recordActions[i];
+								var displayName = 'recordAction'+recordAction.name.charAt(0).toUpperCase() + recordAction.name.slice(1);
 								if(self._hasPermission(recordAction.permission))
 								{
 									switch(recordAction.type.toLowerCase()){
 										case "link":
 										{
-											html = html + "<a href='"+recordAction.url+"' class='btn btn-default'>"+recordAction.displayName+"</a>"+"&nbsp";
+											html = html + "<a href='"+recordAction.url+"' class='btn btn-default'>"+displayName+"</a>"+"&nbsp";
 											break;
 										}
 										case "button":
 										{
 											var className = "rec-act-"+recordAction.name.toLowerCase();
-											html = html + "<a href='#' record-id='{{ id }}' class='btn btn-default "+ className+"'>"+recordAction.displayName+"</a>"+"&nbsp";
+											html = html + "<a href='#' record-id='{{ id }}' class='btn btn-default "+ className+"'>"+displayName+"</a>"+"&nbsp";
 											break;
 										}
 										default:
