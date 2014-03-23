@@ -21,7 +21,7 @@ define(['../objects/View'],function(view){
 			var actions = this._getActions();
 			for (var i in actions){
 				var action = actions[i];
-				var key = action.event + " ." + action.className;
+				var key = action.event + " ." + "act-"+action.name.toLowerCase();
 				this.events[key] = action.function;
 			}
 			var recordActions = this._getRecordActions();
@@ -29,19 +29,13 @@ define(['../objects/View'],function(view){
 				var recordAction = recordActions[i];
 				if(typeof recordAction.function != 'undefined' && recordAction.function)
 				{
-					var selector = "rec-act-"+recordAction["name"].toLowerCase();
-					var key = recordAction.event + " ." + selector;
+					var key = recordAction.event + " ." + "rec-act-"+recordAction.name.toLowerCase();
 					this.events[key] = recordAction.function;
 				}
 			}
 			this.delegateEvents();
 			return this;
-		},
-		_getLocale:function(){
-			this.locale.breadcrumbs = this.metadata.breadcrumbs;
-			this.locale.viewTitle = this.metadata.viewTitle;
-			this.locale.viewDescription = this.metadata.viewDescription;
-		},
+		},		
 		beforeRender:function(){},
 		afterRender:function(){},
 		render:function(){
@@ -50,7 +44,6 @@ define(['../objects/View'],function(view){
 			if(this._canDisplayView())
 			{
 				this.beforeRender();
-				this._getLocale();
 				$(this.el).html(this.template(this.locale));
 				this._renderDataGridConfig()._bindEvents();
 				this.afterRender();

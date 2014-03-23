@@ -19,13 +19,13 @@ define(['./Element'],function(element){
 									switch(recordAction.type.toLowerCase()){
 										case "link":
 										{
-											html = html + "<a href='"+recordAction.url+"' class='btn btn-default'>"+recordAction["displayName"]+"</a>"+"&nbsp";
+											html = html + "<a href='"+recordAction.url+"' class='btn btn-default'>"+recordAction.displayName+"</a>"+"&nbsp";
 											break;
 										}
 										case "button":
 										{
-											var className = "rec-act-"+recordAction["name"].toLowerCase();
-											html = html + "<a href='#' record-id='{{ id }}' class='btn btn-default "+ className+"'>"+recordAction["displayName"]+"</a>"+"&nbsp";
+											var className = "rec-act-"+recordAction.name.toLowerCase();
+											html = html + "<a href='#' record-id='{{ id }}' class='btn btn-default "+ className+"'>"+recordAction.displayName+"</a>"+"&nbsp";
 											break;
 										}
 										default:

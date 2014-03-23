@@ -12,7 +12,8 @@ define(['../../../objects/Object'],function(object){
 				}
 			}
 			if(typeof column.displayName != 'undefined' && column.displayName){
-				field.label = column.displayName;
+				var localeKey = 'field'+column.name.charAt(0).toUpperCase() + column.name.slice(1);;
+				field.label = obj.locale[localeKey]?obj.locale[localeKey]: column.displayName;
 			}
 			if(typeof column.className != 'undefined' && column.className){
 				field.className = column.className;
