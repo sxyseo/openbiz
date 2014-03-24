@@ -4,6 +4,7 @@ define(['../objects/View'],function(view){
 		metadata:null,
 		model:null,
 		_formEL:'.recordForm',
+		_fields:null,
 		initialize:function(){
 			openbiz.View.prototype.initialize.apply(this);
 			return this;
@@ -56,16 +57,14 @@ define(['../objects/View'],function(view){
 		deleteRecord:function(event){
 			event.preventDefault();
 			var self = this;
-			var recordId = $(event.currentTarget).attr('record-id');
-			var recordName = $(event.currentTarget).attr('record-name');
 			bootbox.confirm({
 				title: this.locale.deleteConfirmationTitle ? this.locale.deleteConfirmationTitle: this.app.locale.common.deleteConfirmationTitle,
 				message:_.template(this.locale.deleteConfirmationMessage ? this.locale.deleteConfirmationMessage: this.app.locale.common.deleteConfirmationMessage,{record:recordName}),
 				callback:function(result){
 					if(result){
 						self.beforeDeleteRecord();
-						self.collection.get(recordId).destroy({success:function(){
-							self.collection.fetch();
+						self.collection.destroy({success:function(){
+//							self.collection.fetch();
 						}});
 						self.afterDeleteRecord();
 					}
@@ -75,11 +74,40 @@ define(['../objects/View'],function(view){
 		saveRecord:function(event){
 			event.preventDefault();
 			var record = {};
-//			for(var i in)
-
+			var fields = this._getFields();
+			for(var i in fields)
+			{
+				var field = fields[i];
+				var selector = ".name="+ field.selector
+				switch(field.type){
+					case 'text':
+						this._parseAttr(record,field.field,$(selector).val());
+						break;
+					case 'textarea':
+						this._parseAttr(record,field.field,$(selector).val());
+						break;
+					case 'select':
+						this._parseAttr(record,field.field,$(selector).find("option:selected").text());
+						break;
+				}
+			}
+			console.log(record);
 			this.model.save(record,{success:function(){
 
 			}});
+		},
+		_parseAttr:function(record,attrArray,value){
+			if(typeof attrArray=='string') attrArray=attrArray.split('.');
+			if(attrArray.length==1)
+			{
+				record[attrArray[0]]=value;
+				return record;
+			}else{
+				var key = attrArray[0]
+				if(!record.hasOwnProperty(key))record[key]={};
+				attrArray.shift();
+				return this._parseAttr(record[key],attrArray,value);
+			}
 		},
 		_validateForm:function(){
 			return $(this.el).find(this._formEL).parsley('validate');

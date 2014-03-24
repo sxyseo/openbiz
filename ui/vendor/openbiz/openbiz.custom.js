@@ -387,13 +387,10 @@ define(function(){
         //////////     DATE TIME PICKER     //////////
         $('.form_datetime').datetimepicker({
             bornIn:"#main",
-            weekStart: 1,
-            todayBtn:  1,
-            autoclose: 1,
-            todayHighlight: 1,
-            startView: 2,
-            forceParse: 0,
-            showMeridian: 1
+	        maskInput: true,
+	        minView:2,
+	        todayBtn:true,
+	        weekStart:1
         });
 
         //////////     PANEL  TOOLS     //////////

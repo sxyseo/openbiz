@@ -59,7 +59,7 @@ $.fn.capletClock = function(options) {
  * =========================================================
  * Copyright 2012 Stefan Petre
  * Improvements by Andrew Rowls
- * Improvements by S�bastien Malot
+ * Improvements by S�bastien Malot
  * Improvements by Yun Lai
  * Project URL : http://www.malot.fr/bootstrap-datetimepicker
  *
@@ -78,7 +78,7 @@ $.fn.capletClock = function(options) {
 
 /*
  * Improvement by CuGBabyBeaR @ 2013-09-12
- * 
+ *
  * Make it work in bootstrap v3
  */
 
@@ -101,7 +101,7 @@ $.fn.capletClock = function(options) {
 		this.element = $(element);
 
 		this.bornIn = options.bornIn || "body";
-		this.language = options.language || this.element.data('date-language') || "en";
+		this.language = options.language || this.element.data('date-language') || "cn";
 		this.language = this.language in dates ? this.language : "en";
 		this.isRTL = dates[this.language].rtl || false;
 		this.formatType = options.formatType || this.element.data('format-type') || 'standard';
@@ -486,11 +486,11 @@ $.fn.capletClock = function(options) {
 			});
 			var zIndex = index_highest + 10;
 
-			var offset, top, left;				
+			var offset, top, left;
 			if (this.component) {
 				offset = this.component.offset();
 				left = offset.left;
-				
+
 				if (this.pickerPosition == 'bottom-left' || this.pickerPosition == 'top-left') {
 					left += this.component.outerWidth() - this.picker.outerWidth();
 				}
@@ -503,10 +503,10 @@ $.fn.capletClock = function(options) {
 			} else {
 				top = offset.top + this.height;
 			}
-			
+
 		var newBorn=$(this.bornIn);
 		var bornPos=newBorn.offset();
-			
+
 			this.picker.css({
 				top:    top+newBorn.scrollTop(),
 				left:   left-bornPos.left,
@@ -1315,6 +1315,16 @@ $.fn.capletClock = function(options) {
 			meridiem:    ["am", "pm"],
 			suffix:      ["st", "nd", "rd", "th"],
 			today:       "Today"
+		},
+		cn: {
+			days:        ["周日", "周一", "周二", "周三", "周四", "周五", "周六", "周日"],
+			daysShort:   ["周日", "周一", "周二", "周三", "周四", "周五", "周六", "周日"],
+			daysMin:     ["周日", "周一", "周二", "周三", "周四", "周五", "周六", "周日"],
+			months:      ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"],
+			monthsShort: ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"],
+			meridiem:    ["上午", "下午"],
+			suffix:      ["st", "nd", "rd", "th"],
+			today:       "今天"
 		}
 	};
 
