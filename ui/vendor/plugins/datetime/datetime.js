@@ -1011,6 +1011,7 @@ $.fn.capletClock = function(options) {
 							});
 							if (this.viewSelect >= 2) {
 								this._setDate(UTCDate(year, month, day, hours, minutes, seconds, 0));
+								this.hide();
 							}
 						}
 						var oldViewMode = this.viewMode;
