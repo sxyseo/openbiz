@@ -49,6 +49,7 @@ define(["objects/Object",
 		){		
 	return {
 		apps:{},
+		loadedApps:[],
 		session:{},
 		locale:locale,
 		loaders:{

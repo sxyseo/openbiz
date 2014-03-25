@@ -2,7 +2,9 @@
 define(function(){
 	return Backbone.View.extend({	
 		menu: null,	
-        menuRoot: 'nav#menu',            
+        menuRoot: 'nav#menu',      
+        menuPermission:null,      
+        menuACL:[],
         updateMenu:function(menuHtml){
             var menuData = $(document).data('menu');
             var menu = $(this.menuRoot);
@@ -68,14 +70,14 @@ define(function(){
         },
         processACL:function(aclArray){
             for(var i=0;i<aclArray.length;i++){
-                if(! openbiz.session.me.hasPermission(aclArray[i]) ){
+                if(! openbiz.session.me.hasPermission(aclArray[i]) ){                    
                     $(this.el).find('.'+aclArray[i]).remove();
                 }
             }
             return this;
         },
         render:function(){            
-            if( openbiz.session.me.hasPermission(this.menuPermission) ){
+            if( openbiz.session.me.hasPermission(this.menuPermission) || this.menuPermission==null){                
                 if(typeof this.app != 'undefined')
                 {
                     var locale = this.app.locale.menu;
@@ -83,7 +85,7 @@ define(function(){
                     var locale = {}; 
                 }
                 var menuHtml = this.template(locale); 
-                this.updateMenu(menuHtml);                    
+                this.updateMenu(menuHtml);                                   
                 this.processACL(this.menuACL);
             }
             return this;

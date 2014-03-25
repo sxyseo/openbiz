@@ -22,7 +22,8 @@ define(function(){
 			    	app.require = appRequire;
 			    	app.views = new app.views();
 			    	app.views._app = app;
-			    	openbiz.apps[app.name] = app;			    	
+			    	openbiz.apps[app.name] = app;
+			    	openbiz.loadedApps.unshift(app.name);
 		    		loadedApps.push(app);
 		    		if(loadedApps.length == apps.length){
 		    			callback(loadedApps);
