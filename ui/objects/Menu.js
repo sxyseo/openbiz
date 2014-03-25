@@ -49,6 +49,23 @@ define(function(){
                 }); 
                         
         },
+        initialize:function(){
+            if(typeof this.app == 'string'){                        
+                this.app = openbiz.apps[this.app];      
+                this.initLocale();
+            }
+            return this;
+        },
+        initLocale:function(){
+            if(this.name && this.module && this.app ){
+                if(this.app.locale.hasOwnProperty(this.module) &&
+                    this.app.locale[this.module].hasOwnProperty(this.name) )
+                    this.locale = this.app.locale[this.module][this.name];
+                this.locale.loading = this.app.locale.loading;
+                this.locale.breadcrumb = this.app.locale.breadcrumb;
+            }           
+            return this;
+        },
         processACL:function(aclArray){
             for(var i=0;i<aclArray.length;i++){
                 if(! openbiz.session.me.hasPermission(aclArray[i]) ){
@@ -59,7 +76,7 @@ define(function(){
         },
         render:function(){            
             if( openbiz.session.me.hasPermission(this.menuPermission) ){
-                var menuHtml = this.template(this.locale); 
+                var menuHtml = this.template(this.app.locale.menu); 
                 this.updateMenu(menuHtml);                    
                 this.processACL(this.menuACL);
             }
