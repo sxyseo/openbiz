@@ -42,13 +42,14 @@
     className: "backgrid-filter form-search",
 
     /** @property {function(Object, ?Object=): string} template */
-    template: _.template('<div class="input-icon"><i class="fa fa-search ico" /><input class="form-control" type="search" <% if (placeholder) { %> placeholder="<%- placeholder %>" <% } %> name="<%- name %>" /><a class="clear" data-backgrid-action="clear" href="#">&times;</a><button class="btn btn-theme button-filter-search">搜索</button></div>', null, {variable: null}),
+    template: _.template('<div class="form-group"><div class="input-icon"><i class="fa fa-search ico" /><input class="form-control" type="search" <% if (placeholder) { %> placeholder="<%- placeholder %>" <% } %> name="<%- name %>" /><a class="clear" data-backgrid-action="clear" href="#">&times;</a><a data-backgrid-action="search" class="btn btn-theme button-filter-search search-button">搜索</a></div></div>', null, {variable: null}),
 
     /** @property */
     events: {
       "keyup input[type=search]": "showClearButtonMaybe",
       "click a[data-backgrid-action=clear]": "clear",
-      "submit": "search"
+      "submit": "search",
+	   "click a[data-backgrid-action=search]": "search"
     },
 
     /** @property {string} [name='q'] Query key */
