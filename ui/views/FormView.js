@@ -7,6 +7,7 @@ define(['../objects/View'],function(view){
 		_fields:null,
 		initialize:function(){
 			openbiz.View.prototype.initialize.apply(this);
+			this.metadata = openbiz.MetadataParser.call(this,this.metadata);
 			return this;
 		},
 		_bindEvents:function(){
