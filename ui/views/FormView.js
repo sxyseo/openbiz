@@ -109,6 +109,13 @@ define(['../objects/View'],function(view){
 				return this._parseAttr(record[key],attrArray,value);
 			}
 		},
+		_getFields:function(){
+			if(!this._fields)
+			{
+				this._fields = this.metadata.fields;
+			}
+			return this._fields;
+		},
 		_validateForm:function(){
 			return $(this.el).find(this._formEL).parsley('validate');
 		}
