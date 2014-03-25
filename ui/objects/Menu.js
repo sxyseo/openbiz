@@ -50,7 +50,7 @@ define(function(){
                         
         },
         initialize:function(){
-            if(typeof this.app == 'string'){                        
+            if(typeof this.app == 'string'){                 
                 this.app = openbiz.apps[this.app];      
                 this.initLocale();
             }
@@ -76,7 +76,13 @@ define(function(){
         },
         render:function(){            
             if( openbiz.session.me.hasPermission(this.menuPermission) ){
-                var menuHtml = this.template(this.app.locale.menu); 
+                if(typeof this.app != 'undefined')
+                {
+                    var locale = this.app.locale.menu;
+                }else{
+                    var locale = {}; 
+                }
+                var menuHtml = this.template(locale); 
                 this.updateMenu(menuHtml);                    
                 this.processACL(this.menuACL);
             }
