@@ -5,9 +5,11 @@ define(['../objects/View'],function(view){
 		model:null,
 		_formEL:'.recordForm',
 		_fields:null,
-		initialize:function(){
-			openbiz.View.prototype.initialize.apply(this);
+		initialize:function(){						
+			this.template = _.template(this.template);
+		 	this.model = new this.model();
 			this.metadata = openbiz.MetadataParser.call(this,this.metadata);
+			openbiz.View.prototype.initialize.apply(this);
 			return this;
 		},
 		_bindEvents:function(){
@@ -29,7 +31,11 @@ define(['../objects/View'],function(view){
 			if(this._canDisplayView())
 			{
 				this.beforeRender();
-				$(this.el).html(this.template(this.locale));
+				var output{
+					locale:this.locale,
+					record:this.model
+				}
+				$(this.el).html(this.template(output));
 				this._bindEvents();
 				this.afterRender();
 			}
