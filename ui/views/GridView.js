@@ -13,6 +13,7 @@ define(['../objects/View'],function(view){
 		initialize:function(){
 			this.template = _.template(this.template);
 		 	this.collection = new this.collection();
+			this.metadata = openbiz.MetadataParser.call(this,this.metadata)
 			openbiz.View.prototype.initialize.apply(this);
 			return this;
 		},
@@ -39,6 +40,7 @@ define(['../objects/View'],function(view){
 		beforeRender:function(){},
 		afterRender:function(){},
 		render:function(){
+			console.log(this.collection);
 			$(window).off('resize');
 			openbiz.ui.update($(this.el));
 			if(this._canDisplayView())
