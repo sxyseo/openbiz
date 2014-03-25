@@ -900,7 +900,6 @@ var Cell = Backgrid.Cell = Backbone.View.extend({
         value = value[indexName];
       }  
     }
-    
     this.$el.text(this.formatter.fromRaw( value , model));
     this.delegateEvents();
     return this;
