@@ -40,7 +40,6 @@ define(['../objects/View'],function(view){
 		beforeRender:function(){},
 		afterRender:function(){},
 		render:function(){
-			console.log(this.collection);
 			$(window).off('resize');
 			openbiz.ui.update($(this.el));
 			if(this._canDisplayView())
