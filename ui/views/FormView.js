@@ -3,7 +3,7 @@ define(['../objects/View'],function(view){
 	return view.extend({
 		metadata:null,
 		model:null,
-		_formEL:'.recordForm',
+		_formEL:'.record-form',
 		_fields:null,
 		initialize:function(){						
 			this.template = _.template(this.template);
@@ -20,6 +20,7 @@ define(['../objects/View'],function(view){
 				var key = action.event + " ." + "act-"+action.name.toLowerCase();
 				this.events[key] = action.function;
 			}
+
 			this.delegateEvents();
 			return this;
 		},
@@ -27,14 +28,11 @@ define(['../objects/View'],function(view){
 		afterRender:function(){},
 		render:function(){
 			$(window).off('resize');
-			openbiz.ui.update($(this.el));
 			if(this._canDisplayView())
 			{
 				this.beforeRender();
-				var output{
-					locale:this.locale,
-					record:this.model
-				}
+				var output = this.locale;
+				output.record = this.model;
 				$(this.el).html(this.template(output));
 				this._bindEvents();
 				this.afterRender();
@@ -43,6 +41,7 @@ define(['../objects/View'],function(view){
 			{
 				this._renderNoPermissionView();
 			}
+			openbiz.ui.update($(this.el));
 		},
 		_renderNoPermissionView:function(){
 			//render 403 page
@@ -79,13 +78,16 @@ define(['../objects/View'],function(view){
 			});
 		},
 		saveRecord:function(event){
+			if(!this._validateForm())return;
 			event.preventDefault();
 			var record = {};
 			var fields = this._getFields();
+
 			for(var i in fields)
 			{
 				var field = fields[i];
-				var selector = ".name="+ field.selector
+				var selector = "[name="+"'"+field.selector+"']";
+
 				switch(field.type){
 					case 'text':
 						this._parseAttr(record,field.field,$(selector).val());
@@ -96,9 +98,13 @@ define(['../objects/View'],function(view){
 					case 'select':
 						this._parseAttr(record,field.field,$(selector).find("option:selected").text());
 						break;
+					case 'date':
+						this._parseAttr(record,field.field,new Date($(selector).val().replace(/-/g,"/")));
+						break;
 				}
 			}
-			console.log(record);
+			//@TODO: test
+			record["bandId"] = "SGASDGSD151";
 			this.model.save(record,{success:function(){
 
 			}});
@@ -119,12 +125,22 @@ define(['../objects/View'],function(view){
 		_getFields:function(){
 			if(!this._fields)
 			{
-				this._fields = this.metadata.fields;
+				var formFields = [];
+				for (var key in this.metadata.fields){
+					var field = this.metadata.fields[key];
+					field.selector = "record-"+field.name.toLowerCase();
+					formFields.push(field);
+				}
+				this._fields = formFields;
 			}
 			return this._fields;
 		},
 		_validateForm:function(){
-			return $(this.el).find(this._formEL).parsley('validate');
+			var result = $(this.el).find(this._formEL).parsley('validate');
+			if(result == null){
+				result = true;
+			}
+			return result;
 		}
 	});
 });

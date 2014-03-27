@@ -389,8 +389,11 @@ define(function(){
             bornIn:"#main",
 	        maskInput: true,
 	        minView:2,
-	        todayBtn:true,
-	        weekStart:1
+	        weekStart:1,
+	        language:"cn",
+	        autoclose: true,
+	        todayBtn: true,
+	        pickerPosition: "bottom-left"
         });
 
         //////////     PANEL  TOOLS     //////////

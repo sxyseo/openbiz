@@ -35,13 +35,13 @@ define(['../objects/View'],function(view){
 				}
 			}
 			this.delegateEvents();
+
 			return this;
 		},		
 		beforeRender:function(){},
 		afterRender:function(){},
 		render:function(){
 			$(window).off('resize');
-			openbiz.ui.update($(this.el));
 			if(this._canDisplayView())
 			{
 				this.beforeRender();
@@ -53,6 +53,8 @@ define(['../objects/View'],function(view){
 			{
 				this._renderNoPermissionView();
 			}
+			openbiz.ui.update($(this.el));
+
 		},
 		_renderDataGridConfig:function(){
 			var columns = [];
@@ -101,7 +103,12 @@ define(['../objects/View'],function(view){
 				});
 				$(this.el).find(this._dataGridEL).append(paginator.render().el);
 			}
-			this.collection.fetch();
+			var self = this;
+			this.collection.fetch({
+				success:function(){
+					console.log(self.collection);
+				}
+			});
 			return this;
 		},
 		_renderNoPermissionView:function(){
