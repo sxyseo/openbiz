@@ -104,7 +104,8 @@ define(['../objects/View'],function(view){
 				}
 			}
 			//@TODO: test
-			record["bandId"] = "SGASDGSD151";
+			record["bandId"] = "SGASDGSD22151";
+			console.log(record);
 			this.model.save(record,{success:function(){
 
 			}});
