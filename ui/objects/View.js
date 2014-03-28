@@ -49,9 +49,9 @@ define(function(){
 				}
 	            self.app.views.render(viewName,args,function(view){
 	            	var viewHTML = $(view.$el);
-	            	
-	            	view.delegateEvents();
+	            		            	
 	                self.$el.replaceWith(viewHTML);
+	                view.delegateEvents();
 	                try{
 		                self.on('hidden.bs.modal',function(){
 		                	view.undelegateEvents();
@@ -101,6 +101,19 @@ define(function(){
                     callback();
                 }
             });
+		},
+		_canDisplayView:function(){
+			if(typeof this.metadata.permission == 'undefined' || this.metadata.permission == null){
+				return true;
+			}
+			return openbiz.session.me.hasPermission(this.metadata.permission);
+		},
+		_renderNoPermissionView:function(){
+			//render 403 page
+			console.log("no permission");
+			this.app = openbiz.apps.cubi;
+			this.switchView('common.NoPermissionView');
 		}
+
 	});
 });

@@ -45,7 +45,11 @@ define(['../objects/View'],function(view){
 			if(this._canDisplayView())
 			{
 				this.beforeRender();
-				$(this.el).html(this.template(this.locale));
+				var output={
+					locale:this.locale,
+					record:this.model
+				}
+				$(this.el).html(this.template(output));
 				this._renderDataGridConfig()._bindEvents();
 				this.afterRender();
 			}
@@ -110,16 +114,7 @@ define(['../objects/View'],function(view){
 				}
 			});
 			return this;
-		},
-		_renderNoPermissionView:function(){
-			//render 403 page
-		},
-		_canDisplayView:function(){
-			if(typeof this.metadata.permission == 'undefined' || this.metadata.permission == null){
-				return true;
-			}
-			return openbiz.session.me.hasPermission(this.metadata.permission);
-		},
+		},	
 		_canDisplayColumn:function(column){
 			if(typeof column.permission != 'undefined' && column.permission)
 				return openbiz.session.me.hasPermission(column.permission);

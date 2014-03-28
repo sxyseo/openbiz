@@ -9,7 +9,7 @@ define(function(){
 			if(typeof this.app == 'string')this.app = openbiz.apps[this.app];
             return this;
 		},
-	    renderView:function(viewName){
+	    renderView:function(viewName){	    	
 	    	if(this.app==null)return;
 	    	var callback,args=[];
 	    	switch(arguments.length){
