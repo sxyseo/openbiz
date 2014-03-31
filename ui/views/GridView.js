@@ -110,7 +110,7 @@ define(['../objects/View'],function(view){
 			var self = this;
 			this.collection.fetch({
 				success:function(){
-					console.log(self.collection);
+
 				}
 			});
 			return this;

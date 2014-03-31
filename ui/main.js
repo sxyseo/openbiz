@@ -39,7 +39,8 @@ requirejs.config({
 		'parsley'   : 'vendor/openbiz/openbiz.parsley',
 		'async'   	: 'vendor/async/async',
 		'bootbox'   : 'vendor/bootbox/bootbox.min',
-		'bootstrap-paginator'	: 'vendor/paginator/bootstrap-paginator.min'
+		'bootstrap-paginator'	: 'vendor/paginator/bootstrap-paginator.min',
+		'moment' : 'vendor/moment/moment-with-langs.min'
 	},
 	shim:{
 		'backbone':{
@@ -103,11 +104,11 @@ requirejs.config({
 	}
 });
 
-define(['backbone-pageable','hammer','openbiz',"async",'bootstrap','throbber','backgrid-paginator','backgrid-filter',"jqueryform"],
-	function(Backbone,Hammer,openbiz,async){
+define(['backbone-pageable','hammer','openbiz',"async","moment",'bootstrap','throbber','backgrid-paginator','backgrid-filter',"jqueryform"],
+	function(Backbone,Hammer,openbiz,async,moment){
 		window.Hammer = Hammer; //kick the thing back to global				
 		window.async = async;
-		
+		window.moment = moment;
 		// // trigger event for onEnvironmentLoaded			
 		// if( typeof openbizEventsDelegate =='object' && 
 		// 	typeof openbizEventsDelegate.onEnvironmentLoaded =='function' ){

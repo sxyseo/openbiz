@@ -76,7 +76,8 @@ module.exports = function(grunt) {
 						'openbiz.custom' : 'vendor/openbiz/openbiz.custom',
 						'parsley'   : 'vendor/openbiz/openbiz.parsley',
 						'bootbox'   : 'vendor/bootbox/bootbox.min',
-						'bootstrap-paginator' : 'vendor/paginator/bootstrap-paginator.min'
+						'bootstrap-paginator' : 'vendor/paginator/bootstrap-paginator.min',
+						'moment' : 'vendor/moment/moment-with-langs.min'
 					},
 					shim:{
 						'backbone':{
