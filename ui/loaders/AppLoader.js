@@ -18,7 +18,8 @@ define(function(){
 						'text'	: openbiz.baseUrl+'/vendor/require/plugins/text'
 		    		}
 		    	});	    	
-		    	appRequire(['./main'],function(app){		    		
+		    	appRequire(['./main'],function(app){
+				    var app = new app();
 			    	app.require = appRequire;
 			    	app.views = new app.views();
 			    	app.views._app = app;

@@ -1,13 +1,17 @@
 "use strict";
 define(function(){
-	var object = {		
-		extend:function(properties)
-		{
-			var newClass = {};
-			_.extend(newClass,this,properties);
-			return newClass;
-		}
+	var object = function(attributes, options) {
+		var attrs = attributes || {};
+		options || (options = {});
+		this.cid = _.uniqueId('o');
+		this.initialize.apply(this, arguments);
 	};
-	_.extend(object,Backbone.Events);
+
+	_.extend(object.prototype,Backbone.Events,{
+		initialize:function(){}
+	});
+
+	object.extend = Backbone.Model.extend;
+
 	return object;
 });

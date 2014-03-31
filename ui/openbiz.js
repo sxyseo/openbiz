@@ -23,7 +23,8 @@ define(["objects/Object",
 		'views/elements/columns/Text',
 		'views/elements/columns/RecordAction',
 		"views/elements/forms/OptionElement",
-		"views/elements/forms/DropdownView"
+		"views/elements/forms/DropdownView",
+		"views/elements/forms/RadioView"
 ],
 	function(Object,
 		Module,
@@ -49,7 +50,8 @@ define(["objects/Object",
 		text,
 		recordAction,
 		optionElement,
-		dropdownView
+		dropdownView,
+		radioView
 		){		
 	return {
 		apps:{},
@@ -85,7 +87,8 @@ define(["objects/Object",
 				recordActions:recordAction
 			},
 			forms:{
-				dropdown:dropdownView
+				dropdown:dropdownView,
+				radio:radioView
 			}
 		},
 		Element:element,

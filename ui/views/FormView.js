@@ -42,7 +42,8 @@ define(['../objects/View'],function(view){
 				for(var i in this._fields){
 					var field = this._fields[i];
 					if(openbiz.elements.forms.hasOwnProperty(field.type)){
-						this._element[field.field] = openbiz.elements.forms[field.type].init(field,this,this.model.get(field.field));
+						var element = new openbiz.elements.forms[field.type];
+						this._element[field.field] = element.init(field,this,this.model.get(field.field));
 					}
 				}
 				this.afterRender();
@@ -101,6 +102,10 @@ define(['../objects/View'],function(view){
 						break;
 					case 'date':
 						this._parseAttr(record,field.field,new Date($(selector).val().replace(/-/g,"/")));
+						break;
+					case 'radio':
+						var value = this._element[field.field].getValue();
+						this._parseAttr(record,field.field,value);
 						break;
 				}
 			}

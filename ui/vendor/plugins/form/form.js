@@ -291,7 +291,7 @@ PR_NOCODE:"nocode",PR_PLAIN:"pln",PR_PUNCTUATION:"pun",PR_SOURCE:"src",PR_STRING
 
 /**
  * @name        jQuery FullScreen Plugin
- * @author      Martin Angelov, Morten Sjøgren
+ * @author      Martin Angelov, Morten Sjï¿½gren
  * @version     1.2
  * @url         http://tutorialzine.com/2012/02/enhance-your-website-fullscreen-api/
  * @license     MIT License
@@ -342,7 +342,7 @@ for(k=0;k<b.lines;k++)u=k+s>=b.lines?k-b.lines+s:k+s,a.strokeStyle="rgba("+b.col
  * http://bassistance.de/jquery-plugins/jquery-plugin-treeview/
  * http://docs.jquery.com/Plugins/Treeview
  *
- * Copyright (c) 2007 Jörn Zaefferer
+ * Copyright (c) 2007 Jï¿½rn Zaefferer
  *
  * Dual licensed under the MIT and GPL licenses:
  *   http://www.opensource.org/licenses/mit-license.php

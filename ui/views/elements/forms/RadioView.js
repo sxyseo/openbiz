@@ -1,0 +1,94 @@
+"use strict";
+define(['./OptionElement'],function(element){
+	return element.extend({
+		_selector:null,
+		init:function(metadata,parent,defautValue){
+			openbiz.OptionElement.prototype.init.call(this,metadata,parent);
+			var self = this;
+			this._parseModel(function(){
+				self._selector = "record-"+self.metadata.name.toLowerCase();
+				var data = "<div class='form-group'><label class='control-label'>"+self.metadata.displayName+"</label>";
+				var div = "<ul data-color='green' class='iCheck'>";
+				if(self._modelType == "internal"){
+					for(var i = 0; i < self.collection.length; i++){
+						var display = self.collection[i];
+						div += "<li class='pull-left' style='margin-right: 10px'><input type='radio' name='"+self.metadata.name+"' value='"+display+"'/><label>"+display+"</label></li>";
+					}
+					div += "</ul></div>";
+					$(self.parent.el).find("."+self._selector).append(data+div);
+					self._setDefaultValue(defautValue);
+					self._update();
+				}else if(self._modelType == "model"){
+					self.collection.fetch({
+						success:function(){
+							for(var i = 0; i < self.collection.models.length; i++){
+								var model = self.collection.models[i];
+								var display = model.get(self._dataSource.path);
+								div += "<li class='pull-left' style='margin-right: 10px'><input type='radio' name='"+self.metadata.name+"' value='"+display+"'/><label>"+display+"</label></li>";
+							}
+							div += "</ul></div>";
+							$(self.parent.el).find("."+self._selector).append(data+div);
+							self._setDefaultValue(defautValue);
+							self._update();
+						}
+					});
+				}
+			});
+			return this;
+		},
+		_setDefaultValue:function(value){
+			if(value == null || typeof value != "undefined")
+			{
+				if(this._modelType == "internal"){
+					value = this.collection[0];
+				}else{
+					var model = this.collection.models[0];
+					value = model.get(this._dataSource.path);
+				}
+			}
+			var sel = "input:radio[name='"+this.metadata.name+"'][value='"+value+"']";
+			$("."+this._selector).find(sel).attr('checked', 'true');
+		},
+		getValue:function(){
+			var sel = "input:radio[name='"+this.metadata.name+"']:checked";
+			return $("."+this._selector).find(sel).val();
+		},
+		_update:function(){
+			var createiCheck = (function() {
+				$('.iCheck').each(function(i) {
+					var  data=$(this).data() ,
+						input=$(this).find("input") ,
+						li=$(this).find("li") ,
+						index="cp"+i ,
+						insert_text,
+						iCheckColor = [ "black", "red","green","blue","aero","grey","orange","yellow","pink","purple"],
+						callCheck=data.style || "flat";
+					if(data.color && data.style !=="polaris" && data.style !=="futurico" ){
+						var hasColor= jQuery.inArray(data.color, iCheckColor);
+						if(hasColor !=-1 && hasColor < iCheckColor.length){
+							callCheck=callCheck+"-"+data.color;
+						}
+					}
+					input.each(function(i) {
+						var self = $(this), label=$(this).next(), label_text=label.html();
+						self.attr("id","iCheck-"+index+"-"+i);
+						if(data.style=="line"){
+							insert_text='<div class="icheck_line-icon"></div><span>'+label_text+'</span>';
+							label.remove();
+							self.iCheck({ checkboxClass: 'icheckbox_'+callCheck, radioClass: 'iradio_'+callCheck, insert:insert_text  });
+						}else{
+							label.attr("for","iCheck-"+index+"-"+i);
+						}
+					});
+					if(data.style!=="line"){
+						input.iCheck({ checkboxClass: 'icheckbox_'+callCheck, radioClass: 'iradio_'+callCheck });
+					}else{
+						li.addClass("line");
+					}
+				});
+			});
+			createiCheck();
+		}
+	});
+});
+

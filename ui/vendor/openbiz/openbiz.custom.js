@@ -88,7 +88,7 @@ define(function(){
         $(elem).find(".widget-write-post textarea").limit({  limit: 20 });
     
 
-        //////////     SELETE PICKER    //////////
+        //////////     SELETE PICKseER    //////////
         $(elem).find('.selectpicker').selectpicker();
 
         //////////     INPUT MAXLENGTH    //////////
