@@ -5,10 +5,12 @@ define(['../objects/View'],function(view){
 		model:null,
 		_formEL:'.record-form',
 		_fields:null,
+		_element:{},
 		initialize:function(){						
 			this.template = _.template(this.template);
 		 	this.model = new this.model();
 			this.metadata = openbiz.MetadataParser.call(this,this.metadata);
+			this._getFields();
 			openbiz.View.prototype.initialize.apply(this);
 			return this;
 		},
@@ -35,9 +37,14 @@ define(['../objects/View'],function(view){
 					locale:this.locale,
 					record:this.model
 				}
-				console.log(this.model);
 				$(this.el).html(this.template(output));
 				this._bindEvents();
+				for(var i in this._fields){
+					var field = this._fields[i];
+					if(openbiz.elements.forms.hasOwnProperty(field.type)){
+						this._element[field.field] = openbiz.elements.forms[field.type].init(field,this,this.model.get(field.field));
+					}
+				}
 				this.afterRender();
 			}
 			else
@@ -88,14 +95,16 @@ define(['../objects/View'],function(view){
 					case 'textarea':
 						this._parseAttr(record,field.field,$(selector).val());
 						break;
-					case 'select':
-						this._parseAttr(record,field.field,$(selector).find("option:selected").text());
+					case 'dropdown':
+						var value = this._element[field.field].getValue();
+						this._parseAttr(record,field.field,value);
 						break;
 					case 'date':
 						this._parseAttr(record,field.field,new Date($(selector).val().replace(/-/g,"/")));
 						break;
 				}
 			}
+
 			//@TODO: test
 //			record["bandId"] = "SGASDGSD22151";
 			console.log(record);
