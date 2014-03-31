@@ -21,7 +21,8 @@ define(["objects/Object",
 		'views/elements/columns/Element',
 		'views/elements/columns/Link',
 		'views/elements/columns/Text',
-		'views/elements/columns/RecordAction'
+		'views/elements/columns/RecordAction',
+		"views/elements/forms/OptionElement"
 ],
 	function(Object,
 		Module,
@@ -45,7 +46,8 @@ define(["objects/Object",
 		element,
 		link,
 		text,
-		recordAction
+		recordAction,
+		optionElement
 		){		
 	return {
 		apps:{},
@@ -79,9 +81,13 @@ define(["objects/Object",
 				link:link,
 				text:text,
 				recordActions:recordAction
+			},
+			forms:{
+
 			}
 		},
 		Element:element,
+		OptionElement:optionElement,
 		baseUrl:openbizUrl,
 		//shortcut alias
 		Application: Application,

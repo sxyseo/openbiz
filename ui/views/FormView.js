@@ -35,6 +35,7 @@ define(['../objects/View'],function(view){
 					locale:this.locale,
 					record:this.model
 				}
+				console.log(this.model);
 				$(this.el).html(this.template(output));
 				this._bindEvents();
 				this.afterRender();
@@ -63,7 +64,6 @@ define(['../objects/View'],function(view){
 					if(result){
 						self.beforeDeleteRecord();
 						self.collection.destroy({success:function(){
-//							self.collection.fetch();
 						}});
 						self.afterDeleteRecord();
 					}
