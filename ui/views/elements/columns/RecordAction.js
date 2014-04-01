@@ -3,7 +3,7 @@ define(['./Element'],function(element){
 	return element.extend({
 		getConfig:function(obj,column,recordActions){
 			var self = this;
-			var field = openbiz.Element.getConfig.call(this,obj,column);
+			var field = openbiz.Element.prototype.getConfig.call(this,obj,column);
 			{
 				if(recordActions.length > 0){
 					field.cell = openbiz.Grid.UriCell.extend({

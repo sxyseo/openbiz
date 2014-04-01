@@ -75,7 +75,8 @@ define(['../objects/View'],function(view){
 						field = this.elements[type].getConfig(this,column,this._getRecordActions());
 					}
 					else{
-						field = openbiz.elements.columns[type].getConfig(this,column,this._getRecordActions());
+						var element = new openbiz.elements.columns[type];
+						field = element.getConfig(this,column,this._getRecordActions());
 					}
 					if(field != null){
 						columns.push(field);

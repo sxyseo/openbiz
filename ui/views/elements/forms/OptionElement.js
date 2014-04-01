@@ -17,7 +17,7 @@ define(['../../../objects/Object'],function(object){
 			this._dataSource = this.metadata.dataSource;
 			this._modelType = this._dataSource.type;
 			if(this._modelType == "internal"){
-				this.collection = this._dataSource.model.split(",");
+				this.collection = this._dataSource.model;
 				callback();
 			}else{
 				//self.app.require(['modules/system/models/AppCollection'],function(AppCollection)
@@ -28,6 +28,16 @@ define(['../../../objects/Object'],function(object){
 					callback();
 				});
 			}
+		},
+		_parseField:function(model,field){
+			var attrArray = field.split('.');
+			var data = model.get(attrArray[0]);
+			var value = data;
+			for(var i =1; i<attrArray.length; i++){
+				var indexName = attrArray[i];
+				value = value[indexName];
+			}
+			return value;
 		},
 		getType:function(){
 			return this.metadata.type;

@@ -9,16 +9,16 @@ define(['./OptionElement'],function(element){
 			this._parseModel(function(){
 				self._selector = "record-"+self.metadata.name.toLowerCase();
 				var data = "<label class='control-label'>"+self.metadata.displayName+"</label>";
-				var select = "<select class='selectpicker form-control' data-size='7'>";
+				var select = "<select class='selectpicker form-control'>";
 
 				if(self._modelType == "internal"){
 					for(var i = 0; i < self.collection.length; i++){
 						var display = self.collection[i];
 						if(display == defautValue){
-							select += "<option value="+i+" selected='selected'>"+display+"</option>";
+							select += "<option value='"+display+"' selected='selected' data-value-field='"+display+"' data-display-field='"+display+"'>"+display+"</option>";
 						}
 						else{
-							select += "<option value="+i+">"+display+"</option>";
+							select += "<option value='"+display+"' data-value-field='"+display+"' data-display-field='"+display+"'>"+display+"</option>";
 						}
 					}
 					select += "</select>";
@@ -29,12 +29,13 @@ define(['./OptionElement'],function(element){
 						success:function(){
 							for(var i = 0; i < self.collection.models.length; i++){
 								var model = self.collection.models[i];
-								var display = model.get(self._dataSource.path);
-								if(display == defautValue){
-									select += "<option value="+i+" selected='selected'>"+display+"</option>";
+								var display =  this._parseField(model,self._dataSource.displayField);
+								var value = this._parseField(model,self._dataSource.valueField);
+								if(value == defautValue){
+									select += "<option value="+display+" selected='selected' data-value-field='"+value+"' data-display-field='"+display+"'>"+display+"</option>";
 								}
 								else{
-									select += "<option value="+i+">"+display+"</option>";
+									select += "<option value="+display+" data-value-field='"+value+"' data-display-field='"+display+"'>"+display+"</option>";
 								}
 							}
 							select += "</select></div>";
@@ -47,7 +48,9 @@ define(['./OptionElement'],function(element){
 			return this;
 		},
 		getValue:function(){
-			return $("."+this._selector).find(".filter-option").text();
+			var sel =  "."+this._selector + " option[value='"+$("."+this._selector).find(".selected").text()+"']";
+			var value = $(sel).attr('data-value-field');
+			return value;
 		}
 	});
 });
