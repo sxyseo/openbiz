@@ -7,7 +7,7 @@ define(['./OptionElement'],function(element){
 			var self = this;
 			this._parseModel(function(){
 				self._selector = "record-"+self.metadata.name.toLowerCase();
-				var data = "<div class='form-group'><label class='control-label'>"+self.metadata.displayName+"</label>";
+				var data = "<div class='form-group'><label class='control-label'>"+ parent.locale[self.metadata.fieldName] +"</label>";
 				var div = "<ul data-color='green' class='iCheck'>";
 				if(self._modelType == "internal"){
 					for(var i = 0; i < self.collection.length; i++){

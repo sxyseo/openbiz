@@ -9,6 +9,8 @@ define(['../../../objects/Object'],function(object){
 		_dataSource:null,
 		init:function(metadata,parent){
 			this.metadata = metadata;
+			var fieldName = 'field'+metadata.name.charAt(0).toUpperCase() + metadata.name.slice(1);
+			this.metadata["fieldName"] = fieldName;
 			this.parent = parent;
 			return this;
 		},

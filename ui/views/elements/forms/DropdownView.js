@@ -8,9 +8,9 @@ define(['./OptionElement'],function(element){
 
 			this._parseModel(function(){
 				self._selector = "record-"+self.metadata.name.toLowerCase();
-				var data = "<label class='control-label'>"+self.metadata.displayName+"</label>";
+				console.log(self.metadata);
+				var data = "<label class='control-label'>"+ parent.locale[self.metadata.fieldName] +"</label>";
 				var select = "<select class='selectpicker form-control'>";
-
 				if(self._modelType == "internal"){
 					for(var i = 0; i < self.collection.length; i++){
 						var display = self.collection[i];

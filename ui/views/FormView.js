@@ -33,7 +33,6 @@ define(['../objects/View'],function(view){
 			if(this._canDisplayView())
 			{
 				this.beforeRender();
-				console.log(this.locale);
 				var output={
 					locale:this.locale,
 					record:this.model
@@ -110,10 +109,6 @@ define(['../objects/View'],function(view){
 						break;
 				}
 			}
-
-			//@TODO: test
-//			record["bandId"] = "SGASDGSD22151";
-			console.log(record);
 			this.model.save(record,{success:function(){
 
 			}});

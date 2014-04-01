@@ -46,8 +46,7 @@ define(['../objects/View'],function(view){
 			{
 				this.beforeRender();
 				var output={
-					locale:this.locale,
-					record:this.model
+					locale:this.locale
 				}
 				$(this.el).html(this.template(output));
 				this._renderDataGridConfig()._bindEvents();
@@ -78,6 +77,7 @@ define(['../objects/View'],function(view){
 						var element = new openbiz.elements.columns[type];
 						field = element.getConfig(this,column,this._getRecordActions());
 					}
+					console.log(field);
 					if(field != null){
 						columns.push(field);
 					}
