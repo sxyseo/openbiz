@@ -33,6 +33,7 @@ define(['../objects/View'],function(view){
 			if(this._canDisplayView())
 			{
 				this.beforeRender();
+				console.log(this.locale);
 				var output={
 					locale:this.locale,
 					record:this.model
@@ -145,7 +146,7 @@ define(['../objects/View'],function(view){
 		},
 		_validateForm:function(){
 			var result = $(this.el).find(this._formEL).parsley('validate');
-			if(result == null){
+			if(result === null){
 				result = true;
 			}
 			return result;
