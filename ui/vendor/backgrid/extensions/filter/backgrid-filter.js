@@ -42,7 +42,7 @@
     className: "backgrid-filter form-search",
 
     /** @property {function(Object, ?Object=): string} template */
-    template: _.template('<div class="form-group"><div class="input-icon"><i class="fa fa-search ico" /><input class="form-control" type="search" <% if (placeholder) { %> placeholder="<%- placeholder %>" <% } %> name="<%- name %>" /><a class="clear" data-backgrid-action="clear" href="#">&times;</a><a data-backgrid-action="search" class="btn btn-theme button-filter-search search-button">搜索</a></div></div>', null, {variable: null}),
+    template: _.template('<div class="form-group"><div class="input-icon"><i class="fa fa-search-plus ico" /><input class="form-control" type="search" <% if (placeholder) { %> placeholder="<%- placeholder %>" <% } %> name="<%- name %>" /><a class="clear" data-backgrid-action="clear" href="#">&times;</a><button data-backgrid-action="search" class="btn-query-plan btn btn-theme btn-sm button-filter-search search-button"><i class="fa fa-search"></i>查询</button></div></div>', null, {variable: null}),
 
     /** @property */
     events: {

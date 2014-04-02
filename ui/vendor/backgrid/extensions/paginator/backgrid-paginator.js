@@ -428,21 +428,22 @@
 		/* Its not done yet, for render total records */
 		renderTextIndicator: function(){
 			var totalRecords = parseInt(this.collection.state.totalRecords);
-			if(typeof(totalRecords) == 'undefined' || totalRecords == 'NaN'){
+			if(typeof(totalRecords) == 'undefined' || totalRecords == 'NaN' || totalRecords == null){
 				totalRecords = 0;
 			}
 			var text = document.createElement("div");
-			this.$el.parent().find('ul.'+this.className).addClass("pull-left");
-			$(text).addClass('pull-right').html('<div class="indicator">Total: '+this.collection.state.totalRecords+' '+
-				(this.collection.state.totalRecords>1?'Records':'Record')+' &nbsp; </div>');
-			if(this.$el.parent().find('.indicator').length){
-				this.$el.parent().find('.indicator').replaceWith(text);
-			}else{
-				this.$el.after(text);
+			$(text).addClass('pull-left').html('<div class="indicator col-sm-6 align-xs-right align-sm-left">显示 '+this.collection.state.firstPage+' 到 '+this.collection.state.lastPage+',共 '+this.collection.state.totalRecords+' 条记录</div>');
+			if(!this.$el.hasClass('row')){
+				this.$el.replaceWith("<div class='row'>"+$(text).html()+"<div class='align-lg-right col-sm-6'><div class='dataTables_paginate paging_bs_normal'>"+this.$el.html()+"</div></div></div>");
+			}
+			else{
+				if(this.$el.parent().find('.indicator').length){
+					this.$el.parent().find('.indicator').replaceWith(text);
+				}else{
+					this.$el.after(text);
+				}
 			}
 		}
-
-
 	});
 
 }));

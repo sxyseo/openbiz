@@ -20,7 +20,9 @@ define(['./Element'],function(element){
 									switch(recordAction.type.toLowerCase()){
 										case "link":
 										{
-											html = html + "<a href='"+recordAction.url+"' class='btn btn-default'>"+obj.locale[displayName]+"</a>"+"&nbsp";
+											var url = recordAction.url.replace(":id","{{ id }}");
+											url = "#!/backend/"+obj.app.name+url
+											html = html + "<a href='"+url+"' class='btn btn-default'>"+obj.locale[displayName]+"</a>"+"&nbsp";
 											break;
 										}
 										case "button":

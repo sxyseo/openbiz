@@ -895,7 +895,8 @@ var Cell = Backgrid.Cell = Backbone.View.extend({
       var attrArray = attr.split('.');
       var data = model.get(attrArray[0]);
       var value = data;
-      for(var i =1; i<attrArray.length; i++){
+
+	    for(var i =1; i<attrArray.length; i++){
         var indexName = attrArray[i];
         value = value[indexName];
       }  
