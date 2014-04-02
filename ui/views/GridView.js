@@ -77,7 +77,6 @@ define(['../objects/View'],function(view){
 						var element = new openbiz.elements.columns[type];
 						field = element.getConfig(this,column,this._getRecordActions());
 					}
-					console.log(field);
 					if(field != null){
 						columns.push(field);
 					}
@@ -90,11 +89,12 @@ define(['../objects/View'],function(view){
 					placeholder: ""
 				});
 				$(this.el).find(this._dataGridEL).append(filter.render().el);
+				$(this.el).find(this._dataGridEL).append("<hr>");
 			}
 			var grid = new Backgrid.Grid({
 				columns:columns,
 				collection: this.collection,
-				className: 'backgrid table table-striped table-bordered text-center',
+				className: 'backgrid table table-striped table-bordered text-center datatable table-hover',
 				emptyText: this.metadata.gridEmptyText
 			});
 			$(this.el).find(this._dataGridEL).append(grid.render().el);
