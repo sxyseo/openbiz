@@ -22,6 +22,12 @@
 .data-grid .pagination{
 	margin:0px !important;
 }
+.nest-view{
+	padding:15px 30px;
+}
+.heading{
+	padding-bottom:20px;
+}
 body {
 	background: #1C1D1F;
 	color: #717171;

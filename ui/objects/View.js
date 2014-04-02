@@ -4,19 +4,24 @@ define(function(){
 		app:null,
 		name:null,
 		locale:{},
-		initialize:function(){
+		subviews:[],
+		renderedSubviews:{},
+		parent:null,
+		initialize:function(){			
 			if(typeof this.app == 'string'){						
 				this.app = openbiz.apps[this.app];		
 				this.initLocale();
 			}
-			if(typeof this.model == 'function')this.model = new this.model();				
+			if(typeof this.model == 'function')this.model = new this.model();		
+			if(typeof this.template == 'string')this.template = _.template(this.template);		
+			if(typeof this.metadata == 'string')this.metadata = openbiz.MetadataParser.call(this,this.metadata)
 			return this;
 		},
-		initLocale:function(){
+		initLocale:function(){			
 			if(this.name && this.module && this.app ){
 				if(this.app.locale.hasOwnProperty(this.module) &&
                     this.app.locale[this.module].hasOwnProperty(this.name) )
-					this.locale = this.app.locale[this.module][this.name];
+					this.locale = this.app.locale[this.module][this.name];				
 				this.locale.loading = this.app.locale.loading;
                 this.locale.breadcrumb = this.app.locale.breadcrumb;
 			}			
@@ -102,6 +107,30 @@ define(function(){
                 }
             });
 		},
+		render:function(){			
+			var output={
+				locale:this.locale
+			}
+	        $(this.el).html(this.template(output));
+        	openbiz.ui.update($(this.el));
+			this.renderSubviews();
+ 	        return this;
+	    },
+	    renderSubviews:function(){
+	    	var self = this;
+	    	if(typeof this.metadata.subviews=='undefined') return;
+	    	for(var i =0;i<this.metadata.subviews.length;i++){
+	    		var subviewConfig = this.metadata.subviews[i];
+	    		var viewConfig = subviewConfig.view.split(".");
+	    		var viewFile = "modules/"+viewConfig[0]+"/views/"+viewConfig[1];
+	    		this.app.require([viewFile],function(viewClass){
+	    			var view = new viewClass();
+	    			view.parent =self;
+	    			view.render();
+	    			self.renderedSubviews[subviewConfig.name]=view;
+	    		});
+	    	}
+	    },
 		_canDisplayView:function(){
 			if(typeof this.metadata.permission == 'undefined' || this.metadata.permission == null){
 				return true;
