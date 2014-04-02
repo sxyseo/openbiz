@@ -17,7 +17,7 @@ requirejs.config({
 		'jquery.ui' : 'vendor/jquery-ui/jquery.ui.min',
 		'jqueryform' 	: 'vendor/jquery-form/jquery.form.min',
 		'modernizr' : 'vendor/modernizr/modernizr',
-		'chart' 	: 'vendor/plugins/chart/chart',
+		'chart' 	: 'vendor/plugins/chart/ori/chart',
 		'EasyPieChart' 	: 'vendor/plugins/chart/ori/easypiechart.min',
 		'throbber'	: 'vendor/throbber/throbber',
 		'hammer'	: 'vendor/hammer/hammer',
