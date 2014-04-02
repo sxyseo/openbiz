@@ -30,11 +30,18 @@ define(['../ChartView'],function(view){
 						radius:1,
 						label:{							
 							show:"show",
-							radius:2/4,
-							formatter: labelFormatter							
+							radius:1,
+							formatter: labelFormatter,
+							background: { 
+			                    opacity: 0.8,
+			                }						
 						}
 					},					
 				},
+				grid: {
+			        hoverable: true,
+			        clickable: true
+			    },
 				legend: {
 			        show: true
 			    }
