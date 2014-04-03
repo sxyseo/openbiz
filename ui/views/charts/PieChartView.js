@@ -29,7 +29,7 @@ define(['../ChartView'],function(view){
 						show:true,
 						radius:1,
 						label:{							
-							show:"show",
+							show:this.metadata.showLabel==true?"show":"auto",
 							radius:1,
 							formatter: labelFormatter,
 							background: { 
@@ -39,11 +39,11 @@ define(['../ChartView'],function(view){
 					},					
 				},
 				grid: {
-			        hoverable: true,
-			        clickable: true
+			        hoverable: this.metadata.hoverable?this.metadata.hoverable:true,
+			        clickable: this.metadata.clickable?this.metadata.clickable:true,
 			    },
 				legend: {
-			        show: true
+			        show: this.metadata.showLegend?this.metadata.showLegend:true
 			    }
 			});
 		},
@@ -56,6 +56,7 @@ define(['../ChartView'],function(view){
 					label:this.locale[localeKey],
 					data:data[field.field]
 				}
+				if(field.color) record.color = field.color;
 				localizedData.push(record);
 			}
 			return localizedData;
