@@ -84,6 +84,9 @@
 	height:100%;
 	min-height:300px;
 }
+.openbiz-grid-spacing{
+	padding-bottom:5px !important;
+}
 .heading{
 	padding-bottom:20px;
 }
