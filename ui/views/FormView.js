@@ -79,8 +79,15 @@ define(['../objects/View'],function(view){
 			});
 		},
 		saveRecord:function(event){
-			if(!this._validateForm())return;
+			if(!this.validateForm())return;
 			event.preventDefault();
+			this.saveRecordWithCallback(function(success){
+				if(!success){
+					console.log("save error")
+				}
+			});
+		},
+		saveRecordWithCallback:function(callback){
 			var record = {};
 			var fields = this._getFields();
 
@@ -110,7 +117,9 @@ define(['../objects/View'],function(view){
 				}
 			}
 			this.model.save(record,{success:function(){
-
+				callback(true);
+			},error:function(){
+				callback(false);
 			}});
 		},
 		_parseAttr:function(record,attrArray,value){
@@ -139,7 +148,7 @@ define(['../objects/View'],function(view){
 			}
 			return this._fields;
 		},
-		_validateForm:function(){
+		validateForm:function(){
 			var result = $(this.el).find(this._formEL).parsley('validate');
 			if(result === null){
 				result = true;
