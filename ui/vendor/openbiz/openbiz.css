@@ -76,6 +76,9 @@
 	margin:0px;
 	padding:0px;
 }
+.action-panel-spacing{
+	margin-right:8px;
+}
 .openbiz-chart{
 	width:100%;
 	height:100%;
