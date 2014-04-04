@@ -2,8 +2,12 @@
 define(['./FormView'],function(view){
 	return view.extend({
 		jsonEditor:null,
-		parseRecordForDisplay:function(record){},
-		parseRecordForSave:function(record){},
+		parseRecordForDisplay:function(record){
+			return record;
+		},
+		parseRecordForSave:function(record){
+			return record;
+		},
 		render:function(){
 			var self = this;
 			$(window).off('resize');
@@ -15,13 +19,23 @@ define(['./FormView'],function(view){
 					record:this.model
 				}
 				$(this.el).html(this.template(output));
+				this._bindEvents();
+				for(var i in this._fields){
+					var field = this._fields[i];
+					if(openbiz.elements.forms.hasOwnProperty(field.type)){
+						var element = new openbiz.elements.forms[field.type];
+						this._element[field.field] = element.init(field,this,this.model.get(field.field));
+					}
+				}
 				if(this.model!=null){
 					this.model.fetch({success:function(){
 						self.initEditor.call(self);
 						self.afterRender.call(self);		
 					}})
-				}
-				
+				}else{
+					self.initEditor.call(self);
+					self.afterRender.call(self);	
+				}				
 			}
 			else
 			{
@@ -37,7 +51,15 @@ define(['./FormView'],function(view){
 			      alert(err.toString());
 			    }
 			};
-			this.jsonEditor =  new jsoneditor.JSONEditor($(this.el).find('.openbiz-json-editor').get(0),options,this.model.toJSON());
+			var data = {};
+			if(this.model!=null)data = this.model.toJSON();
+			data = this.parseRecordForDisplay(data);
+			this.jsonEditor =  new jsoneditor.JSONEditor($(this.el).find('.openbiz-json-editor').get(0),options,data);
+		},
+		saveRecord:function(){
+			var data = this.jsonEditor.get();
+			data = this.parseRecordForSave(data);
+			console.log(data);
 		}
 	});
 });
