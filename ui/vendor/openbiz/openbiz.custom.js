@@ -427,18 +427,18 @@ define(function(){
             }
         });
 
-        $(elem).find('.panel-tools .btn-reload').off('click.openbizCustom');
-        $(elem).find('.panel-tools .btn-reload').on('click.openbizCustom', function () {
-            var  btn=$(this), panelBody=btn.closest(".panel").find(".panel-body"),
-                overlay=$('<div class="load-overlay"><div><div class="c1"></div><div class="c2"></div><div class="c3"></div><div class="c4"></div></div><span>Loading...</span></div>');
-            btn.removeClass("btn-panel-reload").addClass("disabled")
-            panelBody.append(overlay);
-            overlay.css('opacity',1).fadeIn();
-            setTimeout(function () {
-                btn.removeClass("disabled").addClass("btn-panel-reload") ;
-                panelBody.find(overlay).fadeOut("slow",function(){ $(this).remove() });
-            }, 5000);
-        });
+//        $(elem).find('.panel-tools .btn-reload').off('click.openbizCustom');
+//        $(elem).find('.panel-tools .btn-reload').on('click.openbizCustom', function () {
+//            var  btn=$(this), panelBody=btn.closest(".panel").find(".panel-body"),
+//                overlay=$('<div class="load-overlay"><div><div class="c1"></div><div class="c2"></div><div class="c3"></div><div class="c4"></div></div><span>Loading...</span></div>');
+//            btn.removeClass("btn-panel-reload").addClass("disabled")
+//            panelBody.append(overlay);
+//            overlay.css('opacity',1).fadeIn();
+//            setTimeout(function () {
+//                btn.removeClass("disabled").addClass("btn-panel-reload") ;
+//                panelBody.find(overlay).fadeOut("slow",function(){ $(this).remove() });
+//            }, 5000);
+//        });
 
         $(elem).find(".panel-tools").off('click.openbizCustom');
         $(elem).find(".panel-tools").on('click.openbizCustom',".btn-close",function(){
