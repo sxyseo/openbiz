@@ -40,7 +40,8 @@ requirejs.config({
 		'async'   	: 'vendor/async/async',
 		'bootbox'   : 'vendor/bootbox/bootbox.min',
 		'bootstrap-paginator'	: 'vendor/paginator/bootstrap-paginator.min',
-		'moment' : 'vendor/moment/moment-with-langs.min'
+		'moment' : 'vendor/moment/moment-with-langs.min',
+		'jsoneditor' : 'vendor/jsoneditor/jsoneditor-min'
 	},
 	shim:{
 		'backbone':{
@@ -104,11 +105,12 @@ requirejs.config({
 	}
 });
 
-define(['backbone-pageable','hammer','openbiz',"async","moment",'bootstrap','throbber','backgrid-paginator','backgrid-filter',"jqueryform"],
-	function(Backbone,Hammer,openbiz,async,moment){
+define(['backbone-pageable','hammer','openbiz',"async","moment","jsoneditor",'bootstrap','throbber','backgrid-paginator','backgrid-filter',"jqueryform"],
+	function(Backbone,Hammer,openbiz,async,moment,jsoneditor){
 		window.Hammer = Hammer; //kick the thing back to global				
 		window.async = async;
 		window.moment = moment;
+		window.jsoneditor = jsoneditor;
 		// // trigger event for onEnvironmentLoaded			
 		// if( typeof openbizEventsDelegate =='object' && 
 		// 	typeof openbizEventsDelegate.onEnvironmentLoaded =='function' ){

@@ -23,6 +23,7 @@ define(function(){
                     this.app.locale[this.module].hasOwnProperty(this.name) )
 					this.locale = this.app.locale[this.module][this.name];				
 				this.locale.loading = this.app.locale.loading;
+				this.locale.app = this.app.locale.app;
                 this.locale.breadcrumb = this.app.locale.breadcrumb;
 			}			
 			this.locale.appUrl 	= this.app.appUrl;

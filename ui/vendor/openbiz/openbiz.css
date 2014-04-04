@@ -3,6 +3,7 @@
 @import url(../backgrid/extensions/filter/backgrid-filter.css);
 @import url(../bootstrap/css/bootstrap.css);
 @import url(../bootstrap/css/theme.css);
+@import url(../jsoneditor/jsoneditor-min.css);
 @import url(../plugins/form/icheck/skins/all.css);
 @import url(../plugins/form/switch/switch.css);
 @import url(../plugins/datable/dataTables.bootstrap.css);

@@ -32,7 +32,7 @@ define(['../objects/View'],function(view){
 			$(window).off('resize');
 			if(this._canDisplayView())
 			{
-				this.beforeRender();
+				this.beforeRender();				
 				var output={
 					locale:this.locale,
 					record:this.model
