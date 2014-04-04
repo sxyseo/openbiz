@@ -6,18 +6,26 @@ define(["objects/Object",
 		"objects/MiddleWareRouter",
 		"objects/View",
 		"objects/Menu",
+
 		"views/FormView",
 		"views/GridView",
+		"views/ChartView",
+
 		"loaders/TemplateLoader",
 		"loaders/AppLoader",
+
 		"utils/MobileDetection",
 		"utils/BrowserDetection",
 		"utils/Validator",
 		"utils/HistoryInit",
 		"utils/MetadataParser",
+
 		'miscs/colorSetting',
 		'openbiz.custom',
 		'i18n!./nls/locale',
+
+		'views/charts/PieChartView',
+
 		'views/elements/columns/Element',
 		'views/elements/columns/Link',
 		'views/elements/columns/Text',
@@ -34,7 +42,8 @@ define(["objects/Object",
 		View,
 		Menu,
 		FormView,
-		GridView,		
+		GridView,
+		ChartView,		
 		TemplateLoader,
 		AppLoader,
 		MobileDetection,
@@ -45,13 +54,14 @@ define(["objects/Object",
 		colorSetting,
 		updateUI,
 		locale,
-		element,
-		link,
-		text,
-		recordAction,
-		optionElement,
-		dropdownView,
-		radioView
+		PieChartView,
+		Element,
+		Link,
+		Text,
+		RecordAction,
+		OptionElement,
+		DropdownView,
+		RadioView
 		){		
 	return {
 		apps:{},
@@ -80,19 +90,22 @@ define(["objects/Object",
 			update: updateUI,
             loader:$('<div class="load-overlay"><div><div class="c1"></div><div class="c2"></div><div class="c3"></div><div class="c4"></div></div><span>'+ locale.loading.text +'</span></div>')
 		},
+		charts:{
+			PieChartView:PieChartView
+		},
 		elements:{
 			columns:{
-				link:link,
-				text:text,
-				recordActions:recordAction
+				link:Link,
+				text:Text,
+				recordActions:RecordAction
 			},
 			forms:{
-				dropdown:dropdownView,
-				radio:radioView
+				dropdown:DropdownView,
+				radio:RadioView
 			}
 		},
-		Element:element,
-		OptionElement:optionElement,
+		Element:Element,
+		OptionElement:OptionElement,
 		baseUrl:openbizUrl,
 		//shortcut alias
 		Application: Application,
@@ -103,6 +116,7 @@ define(["objects/Object",
 		View: 	View,
 		Menu: 	Menu,
 		Grid: Backgrid,
+		ChartView: ChartView,
 		FormView: FormView,
 		GridView: GridView,
 		isMobile: MobileDetection,
