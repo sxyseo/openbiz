@@ -40,8 +40,10 @@ requirejs.config({
 		'async'   	: 'vendor/async/async',
 		'bootbox'   : 'vendor/bootbox/bootbox.min',
 		'bootstrap-paginator'	: 'vendor/paginator/bootstrap-paginator.min',
-		'moment' : 'vendor/moment/moment-with-langs.min',
-		'jsoneditor' : 'vendor/jsoneditor/jsoneditor-min'
+		'moment' 	: 'vendor/moment/moment-with-langs.min',
+		'jsoneditor': 'vendor/jsoneditor/jsoneditor-min',
+		'ace' 		: 'vendor/ace/ace',
+		'jsonlint'  : 'vendor/jsonlint/jsonlint'
 	},
 	shim:{
 		'backbone':{
@@ -68,6 +70,12 @@ requirejs.config({
 
         'underscore':{
           exports: '_'
+        },
+        'ace':{
+          exports: 'ace'
+        },
+        'jsonlint':{
+          exports: 'jsonlint'
         },
         'jquery.validate':{
           deps: ['jquery']
@@ -105,8 +113,8 @@ requirejs.config({
 	}
 });
 
-define(['backbone-pageable','hammer','openbiz',"async","moment","jsoneditor",'bootstrap','throbber','backgrid-paginator','backgrid-filter',"jqueryform"],
-	function(Backbone,Hammer,openbiz,async,moment,jsoneditor){
+define(['backbone-pageable','hammer','openbiz',"async","moment","ace","jsonlint","jsoneditor",'bootstrap','throbber','backgrid-paginator','backgrid-filter',"jqueryform"],
+	function(Backbone,Hammer,openbiz,async,moment,ace,jsonlint,jsoneditor){
 		window.Hammer = Hammer; //kick the thing back to global				
 		window.async = async;
 		window.moment = moment;

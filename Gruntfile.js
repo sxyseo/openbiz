@@ -77,7 +77,10 @@ module.exports = function(grunt) {
 						'parsley'   : 'vendor/openbiz/openbiz.parsley',
 						'bootbox'   : 'vendor/bootbox/bootbox.min',
 						'bootstrap-paginator' : 'vendor/paginator/bootstrap-paginator.min',
-						'moment' : 'vendor/moment/moment-with-langs.min'
+						'moment' 	: 'vendor/moment/moment-with-langs.min',
+						'jsoneditor': 'vendor/jsoneditor/jsoneditor-min',
+						'ace' 		: 'vendor/ace/ace',
+						'jsonlint'  : 'vendor/jsonlint/jsonlint'
 					},
 					shim:{
 						'backbone':{
@@ -105,6 +108,12 @@ module.exports = function(grunt) {
 						'underscore':{
 							exports: '_'
 						},
+						'ace':{
+				          exports: 'ace'
+				        },
+				        'jsonlint':{
+				          exports: 'jsonlint'
+				        },
 						'jquery.validate':{
 							deps: ['jquery']
 						},

@@ -57,9 +57,19 @@ define(['./FormView'],function(view){
 			this.jsonEditor =  new jsoneditor.JSONEditor($(this.el).find('.openbiz-json-editor').get(0),options,data);
 		},
 		saveRecord:function(){
+			var self = this;
 			var data = this.jsonEditor.get();
 			data = this.parseRecordForSave(data);
-			console.log(data);
+			if(this.model==null)return;
+			this.model.save(data,{
+				success:function(){
+					bootbox.alert({
+						title: self.locale.saveRecordTitle ? self.locale.saveRecordTitle: self.app.locale.common.saveRecordTitle,
+						message:_.template(self.locale.saveRecordMessage ? self.locale.saveRecordMessage: self.app.locale.common.saveRecordMessage,{})
+					});
+				}
+		});
+			
 		}
 	});
 });
