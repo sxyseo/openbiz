@@ -23,8 +23,8 @@ define(['./OptionElement'],function(element){
 						success:function(){
 							for(var i = 0; i < self.collection.models.length; i++){
 								var model = self.collection.models[i];
-								var display =  this._parseField(model,self._dataSource.displayField);
-								var value = this._parseField(model,self._dataSource.valueField);
+								var display =  self._parseField(model,self._dataSource.displayField);
+								var value = self._parseField(model,self._dataSource.valueField);
 								div += "<li class='pull-left' style='margin-right: 10px'><input type='radio' name='"+self.metadata.name+"' data-display-field='"+value+"'  data-value-field='"+value+"'/><label>"+display+"</label></li>";
 							}
 							div += "</ul></div>";
@@ -44,15 +44,15 @@ define(['./OptionElement'],function(element){
 					value = this.collection[0];
 				}else{
 					var model = this.collection.models[0];
-					value = this._parseField(model,self._dataSource.valueField);
+					value = this._parseField(model,this._dataSource.displayField);
 				}
 			}
-			var sel = "input:radio[name='"+this.metadata.name+"'][data-value-field='"+value+"']";
+			var sel = "input:radio[name='"+this.metadata.name+"'][data-display-field='"+value+"']";
 			$("."+this._selector).find(sel).attr('checked', 'true');
 		},
 		getValue:function(){
 			var sel = "input:radio[name='"+this.metadata.name+"']:checked";
-			return $("."+this._selector).find(sel).attr('data-value-field');
+			return $("."+this._selector).find(sel).attr('data-display-field');
 		},
 		_update:function(){
 			var createiCheck = (function() {
