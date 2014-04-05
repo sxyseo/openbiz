@@ -2,6 +2,7 @@
 define(['./FormView'],function(view){
 	return view.extend({
 		jsonEditor:null,
+		transform:{},		
 		parseRecordForDisplay:function(record){
 			return record;
 		},
@@ -27,6 +28,7 @@ define(['./FormView'],function(view){
 						this._element[field.field] = element.init(field,this,this.model.get(field.field));
 					}
 				}
+				this.transformLocale();
 				if(this.model!=null){
 					this.model.fetch({success:function(){
 						self.initEditor.call(self);
@@ -43,10 +45,19 @@ define(['./FormView'],function(view){
 			}
 			openbiz.ui.update($(this.el));
 		},
+		transformLocale:function(){
+			if(!this.locale.hasOwnProperty('transform'))return;
+			for(var key in this.locale.transform){
+				this.transform[key]={
+					name:key,
+					display:this.locale.transform[key]
+				};
+			}
+		},
 		initEditor:function(){
 			var options = {
-			    mode: 'tree',
-			    modes: ['code', 'form', 'text', 'tree', 'view'], // allowed modes
+			    mode: this.metadata.mode?this.metadata.mode:'tree',
+			    modes: this.metadata.modes?this.metadata.modes:['code', 'form', 'text', 'tree', 'view'], // allowed modes
 			    error: function (err) {
 			      alert(err.toString());
 			    }
@@ -58,7 +69,7 @@ define(['./FormView'],function(view){
 		},
 		saveRecord:function(){
 			var self = this;
-			var data = this.jsonEditor.get();
+			var data = this.jsonEditor.get();			
 			data = this.parseRecordForSave(data);
 			if(this.model==null)return;
 			this.model.save(data,{
