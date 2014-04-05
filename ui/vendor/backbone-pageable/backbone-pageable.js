@@ -1024,6 +1024,7 @@
 
 			var newState = this.parseState(resp, _clone(this.queryParams), _clone(this.state), options);
 			if (newState) this.state = this._checkState(_extend({}, this.state, newState));
+			this.trigger("reset", this,newState);
 
 			return this.parseRecords(resp, options);
 		},
@@ -1194,7 +1195,6 @@
 					else {
 						fullCol.add(models, _extend({at: fullCol.length},
 							_extend(opts, {parse: false})));
-						self.trigger("reset", self, opts);
 					}
 
 					if (success) success(col, resp, opts);

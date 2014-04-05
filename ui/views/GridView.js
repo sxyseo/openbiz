@@ -104,7 +104,7 @@ define(['../objects/View'],function(view){
 					slideScale: 0.5,
 					goBackFirstOnSort: true,
 					collection: this.collection,
-					className:'pagination'
+					className:'vog'
 				});
 				$(this.el).find(this._dataGridEL).append(paginator.render().el);
 			}
