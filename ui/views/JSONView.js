@@ -3,10 +3,10 @@ define(['./FormView'],function(view){
 	return view.extend({
 		jsonEditor:null,
 		transform:{},		
-		parseRecordForDisplay:function(record){
+		parseRecordToDisplay:function(record){
 			return record;
 		},
-		parseRecordForSave:function(record){
+		parseDisplayToRecord:function(record){
 			return record;
 		},
 		render:function(){
@@ -64,13 +64,13 @@ define(['./FormView'],function(view){
 			};
 			var data = {};
 			if(this.model!=null)data = this.model.toJSON();
-			data = this.parseRecordForDisplay(data);
+			data = this.parseRecordToDisplay(data);
 			this.jsonEditor =  new jsoneditor.JSONEditor($(this.el).find('.openbiz-json-editor').get(0),options,data);
 		},
 		saveRecord:function(){
 			var self = this;
 			var data = this.jsonEditor.get();			
-			data = this.parseRecordForSave(data);
+			data = this.parseDisplayToRecord(data);
 			if(this.model==null)return;
 			this.model.save(data,{
 				success:function(){
