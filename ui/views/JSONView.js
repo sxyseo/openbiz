@@ -69,9 +69,10 @@ define(['./FormView'],function(view){
 		},
 		saveRecord:function(){
 			var self = this;
-			var data = this.jsonEditor.get();			
+			var data = this.jsonEditor.get();
 			data = this.parseDisplayToRecord(data);
-			if(this.model==null)return;
+			if(this.model==null)return;			
+			this.model.attributes= data;
 			this.model.save(data,{
 				success:function(){
 					bootbox.alert({
