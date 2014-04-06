@@ -2435,7 +2435,8 @@ var Body = Backgrid.Body = Backbone.View.extend({
     if (!options) {
       this.collection.remove(model, (options = collection));
       this._unshiftEmptyRowMayBe();
-      return;
+	    this.collection.trigger("backgrid:collectionRemove", this);
+	    return;
     }
 
     if (_.isUndefined(options.render) || options.render) {
@@ -2448,6 +2449,9 @@ var Body = Backgrid.Body = Backbone.View.extend({
 	  if(result == true){
 		  this.render();
 	  }
+
+	  this.collection.trigger("backgrid:collectionRemove", this);
+
     return this;
   },
 
