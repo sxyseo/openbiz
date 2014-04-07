@@ -7,6 +7,7 @@ define(function(){
 		subviews:[],
 		renderedSubviews:{},
 		parent:null,
+		_dataId:null,
 		initialize:function(){			
 			if(typeof this.app == 'string'){						
 				this.app = openbiz.apps[this.app];		
@@ -155,7 +156,12 @@ define(function(){
 	    		this.app.require([viewFile],function(viewClass){
 	    			var view = new viewClass();
 	    			view.parent =self;
-	    			view.render();
+				    if(self._dataId != null)
+				    {
+					    view.render(self._dataId);
+				    }else{
+					    view.render();
+				    }
 	    			self.renderedSubviews[subviewConfig.name]=view;
 	    		});
 	    	}

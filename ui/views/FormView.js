@@ -67,11 +67,11 @@ define(['../objects/View'],function(view){
 			var self = this;
 			bootbox.confirm({
 				title: this.locale.deleteConfirmationTitle ? this.locale.deleteConfirmationTitle: this.app.locale.common.deleteConfirmationTitle,
-				message:_.template(this.locale.deleteConfirmationMessage ? this.locale.deleteConfirmationMessage: this.app.locale.common.deleteConfirmationMessage,{record:recordName}),
+				message:_.template(this.locale.deleteConfirmationMessage ? this.locale.deleteConfirmationMessage: this.app.locale.common.deleteConfirmationMessage,{record:""}),
 				callback:function(result){
 					if(result){
 						self.beforeDeleteRecord();
-						self.collection.destroy({success:function(){
+						self.model.destroy({success:function(){
 						}});
 						self.afterDeleteRecord();
 					}
