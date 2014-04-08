@@ -168,7 +168,12 @@ define(['../objects/View'],function(view){
 		    			self.beforeDeleteRecord();
 		    			self.collection.get(recordId).destroy({success:function(){
                             self.collection.fetch();
-                        }});       
+                        },error:function(){
+						    bootbox.alert({
+							    title: self.app.locale.common.deleteRecordErrorTitle,
+							    message:self.app.locale.common.deleteRecordErrorMessage
+						    });
+					    }});
                         self.afterDeleteRecord();   
 		    		}
 		    	}

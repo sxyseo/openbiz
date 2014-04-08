@@ -61,7 +61,10 @@ define(['../objects/View'],function(view){
 			return this._actions;
 		},
 		beforeDeleteRecord:function(){},
-		afterDeleteRecord:function(){},
+		deleteRecordSuccess:function(){},
+		deleteRecordError:function(){
+
+		},
 		deleteRecord:function(event){
 			event.preventDefault();
 			var self = this;
@@ -72,18 +75,29 @@ define(['../objects/View'],function(view){
 					if(result){
 						self.beforeDeleteRecord();
 						self.model.destroy({success:function(){
+							self.deleteRecordSuccess();
+						},error:function(){
+							bootbox.alert({
+								title: self.app.locale.common.deleteRecordErrorTitle,
+								message:self.app.locale.common.deleteRecordErrorMessage
+							});
+							self.deleteRecordError();
 						}});
-						self.afterDeleteRecord();
 					}
 				}
 			});
 		},
+		saveRecordSuccess:function(){},
+		saveRecordError:function(){},
 		saveRecord:function(event){
 			if(!this.validateForm())return;
 			event.preventDefault();
+			var self = this;
 			this.saveRecordWithCallback(function(success){
-				if(!success){
-					console.log("save error")
+				if(success){
+					self.saveRecordSuccess();
+				}else{
+					self.saveRecordError();
 				}
 			});
 		},
@@ -116,9 +130,14 @@ define(['../objects/View'],function(view){
 						break;
 				}
 			}
+			var self = this;
 			this.model.save(record,{success:function(){
 				callback(true);
 			},error:function(){
+				bootbox.alert({
+					title: self.app.locale.common.saveRecordErrorTitle,
+					message:self.app.locale.common.saveRecordErrorMessage
+				});
 				callback(false);
 			}});
 		},
