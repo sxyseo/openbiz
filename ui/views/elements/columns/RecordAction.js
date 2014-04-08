@@ -17,18 +17,19 @@ define(['./Element'],function(element){
 								var displayName = 'recordAction'+recordAction.name.charAt(0).toUpperCase() + recordAction.name.slice(1);
 								if(self._hasPermission(recordAction.permission))
 								{
+									var text = self._getEnableText(recordAction["name"],model);
 									switch(recordAction.type.toLowerCase()){
 										case "link":
 										{
 											var url = recordAction.url.replace(":id","{{ id }}");
 											url = "#!/backend/"+obj.app.name+url
-											html = html + "<a href='"+url+"' class='btn btn-default'>"+obj.locale[displayName]+"</a>"+"&nbsp";
+											html = html + "<a href='"+url+"' class='btn btn-default'"+text+">"+obj.locale[displayName]+"</a>"+"&nbsp";
 											break;
 										}
 										case "button":
 										{
 											var className = "rec-act-"+recordAction.name.toLowerCase();
-											html = html + "<a href='#' record-id='{{ id }}' class='btn btn-default "+ className+"'>"+obj.locale[displayName]+"</a>"+"&nbsp";
+											html = html + "<a href='#' record-id='{{ id }}' class='btn btn-default "+ className+"'"+text+">"+obj.locale[displayName]+"</a>"+"&nbsp";
 											break;
 										}
 										default:
@@ -50,6 +51,23 @@ define(['./Element'],function(element){
 				}
 			}
 			return field;
+		},
+		_getEnableText:function(action,model){
+			var approval = model.get("_approval")
+			var text = "";
+			if(approval && approval.hasOwnProperty("approvalStatus")){
+				 var status = approval.approvalStatus;
+				if(action == "edit"){
+					if(status == "approved" ){
+						text = " disabled='disabled'";
+					}
+				}else if(action == "delete"){
+					if(status == "approved" || status == "rejected"){
+						text = " disabled='disabled'";
+					}
+				}
+			}
+			return text;
 		},
 		_hasPermission:function(permission){
 			if(typeof permission != 'undefined' && permission){

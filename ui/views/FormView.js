@@ -61,29 +61,43 @@ define(['../objects/View'],function(view){
 			return this._actions;
 		},
 		beforeDeleteRecord:function(){},
-		afterDeleteRecord:function(){},
+		deleteRecordSuccess:function(){},
+		deleteRecordError:function(){
+
+		},
 		deleteRecord:function(event){
 			event.preventDefault();
 			var self = this;
 			bootbox.confirm({
 				title: this.locale.deleteConfirmationTitle ? this.locale.deleteConfirmationTitle: this.app.locale.common.deleteConfirmationTitle,
-				message:_.template(this.locale.deleteConfirmationMessage ? this.locale.deleteConfirmationMessage: this.app.locale.common.deleteConfirmationMessage,{record:recordName}),
+				message:_.template(this.locale.deleteConfirmationMessage ? this.locale.deleteConfirmationMessage: this.app.locale.common.deleteConfirmationMessage,{record:""}),
 				callback:function(result){
 					if(result){
 						self.beforeDeleteRecord();
-						self.collection.destroy({success:function(){
+						self.model.destroy({success:function(){
+							self.deleteRecordSuccess();
+						},error:function(){
+							bootbox.alert({
+								title: self.app.locale.common.deleteRecordErrorTitle,
+								message:self.app.locale.common.deleteRecordErrorMessage
+							});
+							self.deleteRecordError();
 						}});
-						self.afterDeleteRecord();
 					}
 				}
 			});
 		},
+		saveRecordSuccess:function(){},
+		saveRecordError:function(){},
 		saveRecord:function(event){
 			if(!this.validateForm())return;
 			event.preventDefault();
+			var self = this;
 			this.saveRecordWithCallback(function(success){
-				if(!success){
-					console.log("save error")
+				if(success){
+					self.saveRecordSuccess();
+				}else{
+					self.saveRecordError();
 				}
 			});
 		},
@@ -116,9 +130,14 @@ define(['../objects/View'],function(view){
 						break;
 				}
 			}
+			var self = this;
 			this.model.save(record,{success:function(){
 				callback(true);
 			},error:function(){
+				bootbox.alert({
+					title: self.app.locale.common.saveRecordErrorTitle,
+					message:self.app.locale.common.saveRecordErrorMessage
+				});
 				callback(false);
 			}});
 		},
