@@ -6,7 +6,8 @@ define(['../objects/View'],function(view){
 		_formEL:'.record-form',
 		_fields:null,
 		_element:{},
-		initialize:function(){						
+		_isModal:false,
+		initialize:function(){
 			this.template = _.template(this.template);
 		 	this.model = new this.model();
 			this.metadata = openbiz.MetadataParser.call(this,this.metadata);
@@ -22,7 +23,6 @@ define(['../objects/View'],function(view){
 				var key = action.event + " ." + "act-"+action.name.toLowerCase();
 				this.events[key] = action.function;
 			}
-
 			this.delegateEvents();
 			return this;
 		},
@@ -37,7 +37,10 @@ define(['../objects/View'],function(view){
 					locale:this.locale,
 					record:this.model
 				}
-				$(this.el).html(this.template(output));
+				if(this._isModal == true)
+					this.$el = $(this.template(output));
+				else
+					$(this.el).html(this.template(output));
 				this._bindEvents();
 				for(var i in this._fields){
 					var field = this._fields[i];
@@ -168,11 +171,20 @@ define(['../objects/View'],function(view){
 			return this._fields;
 		},
 		validateForm:function(){
-			var result = $(this.el).find(this._formEL).parsley('validate');
-			if(result === null){
-				result = true;
+			if(this._isModal){
+				var result = this.$el.find(this._formEL).parsley('validate');
+				if(result === null){
+					result = true;
+				}
+				return result;
 			}
-			return result;
+			else{
+				var result = $(this.el).find(this._formEL).parsley('validate');
+				if(result === null){
+					result = true;
+				}
+				return result;
+			}
 		}
 	});
 });
