@@ -10,7 +10,7 @@ define(['./Element'],function(element){
 					var formattedValue = this.formatter.fromRaw(rawValue, this.model);
 					this.$el.append($("<a>", {
 						tabIndex: -1,
-						href: "#!/backend/"+obj.app.name + column.url.split(":")[0] + rawValue,
+						href: "#!/backend"+ (obj.app.name=='cubi'?'':'/'+obj.app.name) + column.url.split(":")[0] + rawValue,
 						title: ""
 					}).text(this.model.get(this.column.get("name"))));
 					this.delegateEvents();
