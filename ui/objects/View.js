@@ -125,6 +125,7 @@ define(function(){
             self.app.views.render(viewName,args,function(view){
             	var $modal = $(view.$el);
             	view.delegateEvents();
+	            view.parent = parentView;
                 $modal.modal();
                 $modal.on('hidden.bs.modal',function(){
                 	view.undelegateEvents();

@@ -26,19 +26,26 @@ define(['./OptionElement'],function(element){
 				}else if(self._modelType == "model"){
 					self.collection.fetch({
 						success:function(){
+							console.log(self.collection.models);
 							for(var i = 0; i < self.collection.models.length; i++){
 								var model = self.collection.models[i];
 								var display =  self._parseField(model,self._dataSource.displayField);
-								var value = self._parseField.call(this,model,self._dataSource.valueField);
-								if(display == defautValue){
+								var value = self._parseField(model,self._dataSource.valueField);
+								if(value == defautValue){
 									select += "<option value="+display+" selected='selected' data-value-field='"+value+"' data-display-field='"+display+"'>"+display+"</option>";
 								}
 								else{
 									select += "<option value="+display+" data-value-field='"+value+"' data-display-field='"+display+"'>"+display+"</option>";
 								}
 							}
-							select += "</select>";
-							$(self.parent.el).find("."+self._selector).append(data+select);
+							select += "</select></div>";
+							if(self.parent._isModal){
+								self.parent.$el.find("."+self._selector).append(data+select);
+							}
+							else{
+								$(self.parent.el).find("."+self._selector).append(data+select);
+							}
+
 							$('.selectpicker').selectpicker();
 						}
 					});
@@ -48,7 +55,7 @@ define(['./OptionElement'],function(element){
 		},
 		getValue:function(){
 			var sel =  "."+this._selector + " option[value='"+$("."+this._selector).find(".selected").text()+"']";
-			var value = $(sel).attr('data-display-field');
+			var value = $(sel).attr('data-value-field');
 			return value;
 		}
 	});

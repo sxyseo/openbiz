@@ -169,6 +169,7 @@ define(['../objects/View'],function(view){
 		    			self.collection.get(recordId).destroy({success:function(){
                             self.collection.fetch();
                         },error:function(){
+						    self.collection.fetch();
 						    bootbox.alert({
 							    title: self.app.locale.common.deleteRecordErrorTitle,
 							    message:self.app.locale.common.deleteRecordErrorMessage

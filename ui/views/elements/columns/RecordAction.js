@@ -55,6 +55,7 @@ define(['./Element'],function(element){
 		_getEnableText:function(action,model){
 			var approval = model.get("_approval")
 			var text = "";
+			console.log(model);
 			if(approval && approval.hasOwnProperty("approvalStatus")){
 				 var status = approval.approvalStatus;
 				if(action == "edit"){
