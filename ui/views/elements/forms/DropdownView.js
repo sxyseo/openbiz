@@ -37,7 +37,7 @@ define(['./OptionElement'],function(element){
 									select += "<option value="+display+" data-value-field='"+value+"' data-display-field='"+display+"'>"+display+"</option>";
 								}
 							}
-							select += "</select></div>";
+							select += "</select>";
 							$(self.parent.el).find("."+self._selector).append(data+select);
 							$('.selectpicker').selectpicker();
 						}
