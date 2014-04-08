@@ -6,7 +6,8 @@ define(['../objects/View'],function(view){
 		_formEL:'.record-form',
 		_fields:null,
 		_element:{},
-		initialize:function(){						
+		initialize:function(){	
+			this._fields=null;
 			this.template = _.template(this.template);
 		 	this.model = new this.model();
 			this.metadata = openbiz.MetadataParser.call(this,this.metadata);
@@ -22,7 +23,6 @@ define(['../objects/View'],function(view){
 				var key = action.event + " ." + "act-"+action.name.toLowerCase();
 				this.events[key] = action.function;
 			}
-
 			this.delegateEvents();
 			return this;
 		},

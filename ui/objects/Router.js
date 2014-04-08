@@ -29,9 +29,9 @@ define(function(){
 	    	var self = this;
             var viewArr = viewName.split(".");
             var viewPath = "./modules/"+viewArr[0]+"/views/"+viewArr[1];
-	    	if(self.app.views.currentView!=null && viewArr[0]!='system'){	    		
-	    		self.app.views.currentView.undelegateEvents();
-	    		$(self.app.views.currentView.el).fadeOut(function(){
+	    	if(openbiz.session.currentView!=null && viewArr[0]!='system'){	 
+	    		openbiz.session.currentView.undelegateEvents();
+	    		$(openbiz.session.currentView.el).fadeOut(function(){
 	    			if(self.app.views.isRenderred(viewName)){
 	    				self.app.views.get(viewName).undelegateEvents();
 	    			}

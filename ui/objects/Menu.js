@@ -29,7 +29,6 @@ define(function(){
             {
                 pageSelector:'div#wrapper'
             }).on( "closing.mm", function(){
-                console.log("closing me ");
                     // var highest=$(this).find("ul.mm-highest");
                     // highest.find(".mm-subclose").trigger('click');
                     // setTimeout(function () { closeSub() }, 200);

@@ -44,7 +44,10 @@ define(['../objects/Object'],function(object){
 			var viewPath = "./modules/"+viewArr[0]+"/views/"+viewArr[1];
 			this._app.require([viewPath],function(targetView){
 				var view = new targetView();
-				if(viewArr[0]!='system') self.currentView = view;
+				if(viewArr[0]!='system'){ 
+					self.currentView = view;
+					openbiz.session.currentView=view;
+				}
 				view.render.apply(view,args);
 				self._renderred[viewName] = view;
 				self._inited[viewName] = false;

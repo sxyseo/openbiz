@@ -9,20 +9,7 @@ define(function(){
             window.location.href = $(this).attr('href');
         })
 
-        $(elem).find('.iCheckColor li').off('click.openbizCustom');
-        $(elem).find('.iCheckColor li').on('click.openbizCustom',function(){
-            var self = $(this);
-            if (!self.hasClass('active')) {
-                self.siblings().removeClass('active');
-                var color = self.attr('class');
-                $(elem).find('.iCheck').each(function(i) {
-                    $(this).data("color",color)
-                });
-                $(elem).find('.iCheck input').iCheck('destroy');
-                createiCheck();
-                self.addClass('active');
-            };
-        });
+        
 
         //////////     MOBILE CHECK    //////////
         var iOS = /(iPad|iPhone|iPod)/g.test( navigator.userAgent );
