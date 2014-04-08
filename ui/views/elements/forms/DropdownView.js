@@ -45,6 +45,7 @@ define(['./OptionElement'],function(element){
 							else{
 								$(self.parent.el).find("."+self._selector).append(data+select);
 							}
+
 							$('.selectpicker').selectpicker();
 						}
 					});
