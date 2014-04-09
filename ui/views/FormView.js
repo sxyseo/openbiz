@@ -123,6 +123,7 @@ define(['../objects/View'],function(view){
 						this._parseAttr(record,field.field,$(selector).val());
 						break;
 					case 'dropdown':
+					case 'colorpicker':
 						var value = this._element[field.field].getValue();
 						this._parseAttr(record,field.field,value);
 						break;
