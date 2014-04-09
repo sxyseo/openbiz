@@ -27,6 +27,7 @@ define(function(){
 				}
 			}
 			Backbone.View.prototype.undelegateEvents.apply(this,arguments);
+			return this;
 		},
 		initLocale:function(){			
 			if(this.name && this.module && this.app ){
