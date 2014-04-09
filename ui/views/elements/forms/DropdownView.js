@@ -26,7 +26,6 @@ define(['./OptionElement'],function(element){
 				}else if(self._modelType == "model"){
 					self.collection.fetch({
 						success:function(){
-							console.log(self.collection.models);
 							for(var i = 0; i < self.collection.models.length; i++){
 								var model = self.collection.models[i];
 								var display =  self._parseField(model,self._dataSource.displayField);

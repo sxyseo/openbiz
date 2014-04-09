@@ -17,7 +17,7 @@ define(['./Element'],function(element){
 								var displayName = 'recordAction'+recordAction.name.charAt(0).toUpperCase() + recordAction.name.slice(1);
 								if(self._hasPermission(recordAction.permission))
 								{
-									var text = self._getEnableText(recordAction["name"],model);
+									var text = self._getEnableText(recordAction["name"],obj.model!=null?obj.model:model);
 									switch(recordAction.type.toLowerCase()){
 										case "link":
 										{
@@ -55,7 +55,6 @@ define(['./Element'],function(element){
 		_getEnableText:function(action,model){
 			var approval = model.get("_approval")
 			var text = "";
-			console.log(model);
 			if(approval && approval.hasOwnProperty("approvalStatus")){
 				 var status = approval.approvalStatus;
 				if(action == "edit"){

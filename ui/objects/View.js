@@ -28,6 +28,18 @@ define(function(){
 			}
 			Backbone.View.prototype.undelegateEvents.apply(this,arguments);
 		},
+		delegateEvents:function(){
+			Backbone.View.prototype.delegateEvents.apply(this,arguments);
+			if(typeof this.renderedSubviews=='object'){
+				for(var viewName in this.renderedSubviews){
+					var subView = this.renderedSubviews[viewName];
+					subView.delegateEvents();
+					if(typeof subView["_bindEvents"] == "function"){
+						subView._bindEvents();
+					}
+				}
+			}
+		},
 		initLocale:function(){			
 			if(this.name && this.module && this.app ){
 				if(this.app.locale.hasOwnProperty(this.module) &&
