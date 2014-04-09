@@ -9,11 +9,10 @@ define(['./OptionElement'],function(element){
 			this._parseModel(function(){
 				self._selector = "record-"+self.metadata.name.toLowerCase();				
 				var data = "<label class='control-label' >"+ parent.locale[self.metadata.fieldName] +"</label>";
-				var select = "<select class='selectpicker form-control'  >";
+				var select = "<select class='selectpicker form-control' parsley-required='true' parsley-error-container='div#select-com-error'>";
 				if(typeof metadata.placeholder!="undefined"){
 					var title = parent.locale["placeholder"+metadata.name.charAt(0).toUpperCase()+metadata.name.slice(1)];
-					select += "<option>"+title+"</option>";
-					select += "<option data-divider='true'></option>";
+					select += "<option value=''>"+title+"</option>";
 				}
 
 				if(self._modelType == "internal"){
@@ -43,7 +42,7 @@ define(['./OptionElement'],function(element){
 									select += "<option value="+display+" data-value-field='"+value+"' data-display-field='"+display+"'>"+display+"</option>";
 								}
 							}
-							select += "</select></div>";
+							select += "</select><div id='select-com-error'></div>";
 							if(self.parent._isModal){
 								self.parent.$el.find("."+self._selector).append(data+select);
 							}

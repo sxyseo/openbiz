@@ -9,20 +9,29 @@ define(function(){
 					openbiz.validator.elementCounter++;
 					ParsleyField.manageValidationResult();
 					$(elem).attr('data-validation-result','invalid');
+
 					var showErrorPopup = function(){
 						var message = $("#"+ParsleyField.hash);							
 						if(message.get(0)){							
 							var msgStr =message.find('li').last().text();	
 							message.hide();
 							var popupElem = elem;
+
+							//不知道如何判断当前为select
+							if($(popupElem).find("option").length > 0){
+								popupElem = $(elem).parent().find(".bootstrap-select");
+							}
+
 							if(ParsleyField.isRadioOrCheckbox){
 								popupElem = elem.closest(".iCheck");
 							}
+
 							var prevMsg = $(popupElem).attr("data-content");								
 							$(popupElem).attr("data-content",msgStr);
 							// if(!$(popupElem).attr('placement')){
 							// 	$(popupElem).attr('placement','auto');
-							// }								
+							// }
+
 							if(prevMsg!=msgStr || $(popupElem).attr('popover-state')=='hidden'){
 								$(popupElem).popover({	
 										html:false,
