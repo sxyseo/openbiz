@@ -18,7 +18,7 @@ define(function(){
 							var popupElem = elem;
 
 							//不知道如何判断当前为select
-							if($(popupElem).find("option").length > 0){
+							if($(popupElem).tagName == 'SELECT' && $(popupElem).hasClass('selectpicker')){
 								popupElem = $(elem).parent().find(".bootstrap-select");
 							}
 
