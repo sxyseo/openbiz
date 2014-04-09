@@ -9,6 +9,7 @@ define(function(){
 		parent:null,
 		_dataId:null,
 		initialize:function(){			
+			this.renderedSubviews={};
 			if(typeof this.app == 'string'){						
 				this.app = openbiz.apps[this.app];		
 				this.initLocale();
@@ -17,6 +18,15 @@ define(function(){
 			if(typeof this.template == 'string')this.template = _.template(this.template);		
 			if(typeof this.metadata == 'string')this.metadata = openbiz.MetadataParser.call(this,this.metadata)
 			return this;
+		},
+		undelegateEvents:function(){
+			if(typeof this.renderedSubviews=='object'){
+				for(var viewName in this.renderedSubviews){
+					var subView = this.renderedSubviews[viewName];
+					subView.undelegateEvents();
+				}
+			}
+			Backbone.View.prototype.undelegateEvents.apply(this,arguments);
 		},
 		initLocale:function(){			
 			if(this.name && this.module && this.app ){
@@ -163,7 +173,7 @@ define(function(){
 				    }else{
 					    view.render();
 				    }
-	    			self.renderedSubviews[subviewConfig.name]=view;
+	    			self.renderedSubviews[view.metadata.name]=view;
 	    		});
 	    	}
 	    },
