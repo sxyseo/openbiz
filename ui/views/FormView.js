@@ -97,10 +97,21 @@ define(['../objects/View'],function(view){
 		saveRecord:function(event){
 			if(!this.validateForm())return;
 			event.preventDefault();
+			var currentActionName = $(event.currentTarget).attr('data-action-name');			
 			var self = this;
 			this.saveRecordWithCallback(function(success){
 				if(success){
 					self.saveRecordSuccess();
+					for (var i in self.metadata.actions){
+						var actionElem = self.metadata.actions[i];
+						if(actionElem.name==currentActionName){
+							if(typeof actionElem.gotoURL!='undefined'){
+								var url = "!/backend/"+self.app.name +actionElem.gotoURL.replace(":id",self.model.id);;
+								Backbone.history.navigate(url, {trigger: true, replace: true});
+							}
+							break;
+						}
+					}
 				}else{
 					self.saveRecordError();
 				}
@@ -123,6 +134,7 @@ define(['../objects/View'],function(view){
 						this._parseAttr(record,field.field,$(selector).val());
 						break;
 					case 'dropdown':
+					case 'colorpicker':
 						var value = this._element[field.field].getValue();
 						this._parseAttr(record,field.field,value);
 						break;

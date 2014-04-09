@@ -51,8 +51,7 @@ define(['./OptionElement'],function(element){
 			$("."+this._selector).find(sel).attr('checked', 'true');
 		},
 		getValue:function(){
-			var sel = "input:radio[name='"+this.metadata.name+"']:checked";
-			return $("."+this._selector).find(sel).attr('data-value');
+			return $("."+this._selector).find('.active').attr('data-value')
 		},
 		_update:function(){
 
