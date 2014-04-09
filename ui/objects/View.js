@@ -27,6 +27,7 @@ define(function(){
 				}
 			}
 			Backbone.View.prototype.undelegateEvents.apply(this,arguments);
+			return this;
 		},
 		delegateEvents:function(){
 			Backbone.View.prototype.delegateEvents.apply(this,arguments);
