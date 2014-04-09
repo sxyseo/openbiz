@@ -7,9 +7,15 @@ define(['./OptionElement'],function(element){
 			var self = this;
 
 			this._parseModel(function(){
-				self._selector = "record-"+self.metadata.name.toLowerCase();
-				var data = "<label class='control-label'>"+ parent.locale[self.metadata.fieldName] +"</label>";
-				var select = "<select class='selectpicker form-control'>";
+				self._selector = "record-"+self.metadata.name.toLowerCase();				
+				var data = "<label class='control-label' >"+ parent.locale[self.metadata.fieldName] +"</label>";
+				var select = "<select class='selectpicker form-control'  >";
+				if(typeof metadata.placeholder!="undefined"){
+					var title = parent.locale["placeholder"+metadata.name.charAt(0).toUpperCase()+metadata.name.slice(1)];
+					select += "<option>"+title+"</option>";
+					select += "<option data-divider='true'></option>";
+				}
+
 				if(self._modelType == "internal"){
 					for(var i = 0; i < self.collection.length; i++){
 						var display = self.collection[i];
@@ -25,8 +31,7 @@ define(['./OptionElement'],function(element){
 					$('.selectpicker').selectpicker();
 				}else if(self._modelType == "model"){
 					self.collection.fetch({
-						success:function(){
-							console.log(self.collection.models);
+						success:function(){							
 							for(var i = 0; i < self.collection.models.length; i++){
 								var model = self.collection.models[i];
 								var display =  self._parseField(model,self._dataSource.displayField);

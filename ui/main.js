@@ -21,7 +21,7 @@ requirejs.config({
 		'EasyPieChart' 	: 'vendor/plugins/chart/ori/easypiechart.min',
 		'throbber'	: 'vendor/throbber/throbber',
 		'hammer'	: 'vendor/hammer/hammer',
-		'form' 		: 'vendor/plugins/form/form',
+		'form' 		: 'vendor/plugins/form/ori/form',
 		'datetime' 	: 'vendor/plugins/datetime/datetime',
 		'holder'	: 'vendor/plugins/holder/holder',
 		'cookie'	: 'vendor/plugins/cookie/jquery.cookie',

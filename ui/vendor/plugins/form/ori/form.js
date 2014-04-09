@@ -1734,7 +1734,6 @@ For usage and examples: colpick.com/plugin
                 };
                 posVert();
                 if (this.options.header) menu.css('padding-top', 0);
-
             if (this.options.size == 'auto') {
                 var getSize = function() {
                     var minHeight;
@@ -1745,7 +1744,7 @@ For usage and examples: colpick.com/plugin
                         menuHeight = selectOffsetTop - menuExtras;
                     }
                     if ((menu.find('li').length + menu.find('dt').length) > 1) {
-                        minHeight = liHeight*3 + menuExtras - 2;
+                        minHeight = liHeight*5 + menuExtras - 2;
                     } else {
                         minHeight = 0;
                     }
