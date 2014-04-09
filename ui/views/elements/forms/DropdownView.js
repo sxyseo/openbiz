@@ -9,7 +9,7 @@ define(['./OptionElement'],function(element){
 			this._parseModel(function(){
 				self._selector = "record-"+self.metadata.name.toLowerCase();				
 				var data = "<label class='control-label' >"+ parent.locale[self.metadata.fieldName] +"</label>";
-				var select = "<select class='selectpicker form-control'  >";
+				var select = "<select class='selectpicker form-control' >";
 				if(typeof metadata.placeholder!="undefined"){
 					var title = parent.locale["placeholder"+metadata.name.charAt(0).toUpperCase()+metadata.name.slice(1)];
 					select += "<option>"+title+"</option>";
