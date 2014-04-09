@@ -166,7 +166,9 @@ define(['../objects/View'],function(view){
 				callback:function(result){
 		    		if(result){
 		    			self.beforeDeleteRecord();
-		    			self.collection.get(recordId).destroy({success:function(){
+					    var model = self.collection.get(recordId);
+					    model.urlRoot = self.collection.url;
+					    model.destroy({success:function(){
                             self.collection.fetch();
                         },error:function(){
 						    self.collection.fetch();

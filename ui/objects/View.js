@@ -40,6 +40,7 @@ define(function(){
 					}
 				}
 			}
+			return this;
 		},
 		initLocale:function(){			
 			if(this.name && this.module && this.app ){

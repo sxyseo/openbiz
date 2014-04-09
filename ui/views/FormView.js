@@ -133,6 +133,9 @@ define(['../objects/View'],function(view){
 						var value = this._element[field.field].getValue();
 						this._parseAttr(record,field.field,value);
 						break;
+					case "currency":
+						this._parseAttr(record,field.field,$(selector).val());
+						break;
 				}
 			}
 			var self = this;
