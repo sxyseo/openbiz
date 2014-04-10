@@ -118,7 +118,7 @@ define(['../objects/View'],function(view){
 			else
 				$(this.el).find(this._dataGridEL).append(grid.render().el);
 				$(this.el).find(this._dataGridEL).append($("<div class='data-grid-scroll' />").html(grid.render().el));
-			});	
+			})
 			if(this._getPaginatorConfig()){
 				var paginator = new Backgrid.Extension.Paginator({
 					windowSize: 10,
