@@ -96,8 +96,8 @@ define(['../objects/View'],function(view){
 				collection: this.collection,
 				className: 'backgrid table table-striped table-bordered text-center datatable table-hover',
 				emptyText: this.metadata.gridEmptyText
-			});
-			$(this.el).find(this._dataGridEL).append(grid.render().el);
+			});	
+			$(this.el).find(this._dataGridEL).append($("<div class='data-grid-scroll' />").html(grid.render().el));
 			if(this._getPaginatorConfig()){
 				var paginator = new Backgrid.Extension.Paginator({
 					windowSize: 10,
