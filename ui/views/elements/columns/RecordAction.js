@@ -17,7 +17,7 @@ define(['./Element'],function(element){
 								var displayName = 'recordAction'+recordAction.name.charAt(0).toUpperCase() + recordAction.name.slice(1);
 								if(self._hasPermission(recordAction.permission))
 								{
-									var text = self._getEnableText(recordAction["name"],obj.model!=null?obj.model:model);
+									var text = self._getEnableText(recordAction["name"],obj.model!=null?obj.model:model,obj.model!=null?true:false);
 									switch(recordAction.type.toLowerCase()){
 										case "link":
 										{
@@ -52,17 +52,20 @@ define(['./Element'],function(element){
 			}
 			return field;
 		},
-		_getEnableText:function(action,model){
-			var approval = model.get("_approval")
+		_getEnableText:function(action,model,isSubDoc){
+			var state = model.get("_metadata").state
 			var text = "";
-			if(approval && approval.hasOwnProperty("approvalStatus")){
-				 var status = approval.approvalStatus;
-				if(action == "edit"){
-					if(status == "approved" ){
-						text = " disabled='disabled'";
-					}
-				}else if(action == "delete"){
-					if(status == "approved" || status == "rejected"){
+
+			if(action == "edit"){
+				if(state.writable == false){
+					text = " disabled='disabled'";
+				}
+			}else if(action == "delete"){
+				if(state.deletable==false){
+					text = " disabled='disabled'";
+				}
+				if(isSubDoc){
+					if(state.writable == false){
 						text = " disabled='disabled'";
 					}
 				}
