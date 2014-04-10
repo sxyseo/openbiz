@@ -20,6 +20,10 @@
  	background-color:#ffcc33;
 	color:#FFF;
 }
+.data-grid-scroll{
+	width:100%;
+	overflow-x: scroll;
+}
 .data-grid .pagination{
 	margin:0px !important;
 }
