@@ -5,7 +5,6 @@ define(['./OptionElement'],function(element){
 		init:function(metadata,parent,defautValue){
 			openbiz.OptionElement.prototype.init.call(this,metadata,parent);
 			var self = this;
-
 			this._parseModel(function(){
 				self._selector = "record-"+self.metadata.name.toLowerCase();				
 				var data = "<label class='control-label' >"+ parent.locale[self.metadata.fieldName] +"</label>";

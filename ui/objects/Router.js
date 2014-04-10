@@ -28,6 +28,13 @@ define(function(){
 			$(window).off('resize');
 	    	var self = this;
             var viewArr = viewName.split(".");
+
+            if(this.app.name !='cubi'){
+            	if(!$("#nav,#main").hasClass("nav-collapse-out")){
+            		$("#nav,#main").toggleClass( "nav-collapse-out" );
+            	}
+        	}
+
             var viewPath = "./modules/"+viewArr[0]+"/views/"+viewArr[1];
 	    	if(openbiz.session.currentView!=null && viewArr[0]!='system'){	 
 	    		openbiz.session.currentView.undelegateEvents();
