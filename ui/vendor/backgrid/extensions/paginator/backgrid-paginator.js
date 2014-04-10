@@ -431,11 +431,20 @@
 		/* Its not done yet, for render total records */
 		renderTextIndicator: function(){
 			var totalRecords = parseInt(this.collection.state.totalRecords);
+			var firstNum,lastNum;
 			if(typeof(totalRecords) == 'undefined' || totalRecords == 'NaN' || totalRecords == null){
 				totalRecords = 0;
 			}
+			if(totalRecords == 0 ){
+				firstNum = 0;
+				lastNum = 0;
+			}else{
+				firstNum = (this.collection.state.firstPage -1)*this.collection.state.pageSize + 1;
+				lastNum = this.collection.state.firstPage*this.collection.state.pageSize;
+				if(lastNum > this.collection.state.totalRecords )lastNum = this.collection.state.totalRecords;
+			}
 			var text = document.createElement("div");
-			$(text).addClass('pull-left').html('<div class="indicator col-sm-6 align-xs-right align-sm-left">显示 '+this.collection.state.firstPage+' 到 '+this.collection.state.lastPage+',共 '+this.collection.state.totalRecords+' 条记录</div>');
+			$(text).addClass('pull-left').html('<div class="indicator col-sm-6 align-xs-right align-sm-left">显示第 '+firstNum+' 到 '+lastNum+' 项,共 '+this.collection.state.totalRecords+' 条记录</div>');
 			var html = this.$el.html();
 			this.$el.html("<div class='row'>"+$(text).html()+"<div class='align-lg-right col-sm-6'><div class='dataTables_paginate paging_bs_normal'>"+html+"</div></div></div>");
 

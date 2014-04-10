@@ -7,6 +7,7 @@ define(function(){
 		subviews:[],
 		renderedSubviews:{},
 		parent:null,
+		_isModal:false,
 		_dataId:null,
 		initialize:function(){			
 			this.renderedSubviews={};

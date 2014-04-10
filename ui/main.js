@@ -10,7 +10,7 @@ requirejs.config({
 	},
 	waitSeconds:0,
 	paths:{
-		'bootstrap'	: 'vendor/bootstrap/js/bootstrap.min',		
+		'bootstrap'	: 'vendor/bootstrap/js/bootstrap.min',
 		'underscore': 'vendor/underscore/underscore-min',
 		'jquery' 	: 'vendor/jquery/jquery-1.10.2.min',
 		'jquery.mmenu' : 'vendor/plugins/mmenu/jquery.mmenu',

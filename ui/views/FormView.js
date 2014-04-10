@@ -6,8 +6,7 @@ define(['../objects/View'],function(view){
 		_formEL:'.record-form',
 		_fields:null,
 		_element:{},
-		_isModal:false,
-		initialize:function(){	
+		initialize:function(){
 			this._fields=null;
 			this._isModal=false;
 			this.template = _.template(this.template);
@@ -57,7 +56,10 @@ define(['../objects/View'],function(view){
 			{
 				this._renderNoPermissionView();
 			}
-			openbiz.ui.update($(this.el));
+			if(this._isModal == true)
+				openbiz.ui.update(this.$el);
+			else
+				openbiz.ui.update($(this.el));
 		},
 		_getActions:function(){
 			if(! this._actions){

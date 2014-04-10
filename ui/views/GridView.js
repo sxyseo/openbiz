@@ -48,7 +48,10 @@ define(['../objects/View'],function(view){
 				var output={
 					locale:this.locale
 				}
-				$(this.el).html(this.template(output));
+				if(this._isModal == true)
+					this.$el = $(this.template(output));
+				else
+					$(this.el).html(this.template(output));
 				this._renderDataGridConfig()._bindEvents();
 				this.afterRender();
 			}
@@ -56,8 +59,10 @@ define(['../objects/View'],function(view){
 			{
 				this._renderNoPermissionView();
 			}
-			openbiz.ui.update($(this.el));
-
+			if(this._isModal == true)
+				openbiz.ui.update(this.$el);
+			else
+				openbiz.ui.update($(this.el));
 		},
 		_renderDataGridConfig:function(){
 			var columns = [];
@@ -71,7 +76,8 @@ define(['../objects/View'],function(view){
 					}
 					var field;
 					if(this.elements[type]){
-						field = this.elements[type].getConfig(this,column,this._getRecordActions());
+						var element = new this.elements[type];
+						field = element.getConfig(this,column,this._getRecordActions());
 					}
 					else{
 						var element = new openbiz.elements.columns[type];
@@ -88,8 +94,17 @@ define(['../objects/View'],function(view){
 					name: "query",
 					placeholder: ""
 				});
-				$(this.el).find(this._dataGridEL).append(filter.render().el);
-				$(this.el).find(this._dataGridEL).append("<hr>");
+
+				if(this._isModal == true)
+				{
+					this.$el.find(this._dataGridEL).append(filter.render().el);
+					this.$el.find(this._dataGridEL).append("<hr>");
+				}
+				else
+				{
+					$(this.el).find(this._dataGridEL).append(filter.render().el);
+					$(this.el).find(this._dataGridEL).append("<hr>");
+				}
 			}
 			var grid = new Backgrid.Grid({
 				columns:columns,
@@ -97,7 +112,10 @@ define(['../objects/View'],function(view){
 				className: 'backgrid table table-striped table-bordered text-center datatable table-hover',
 				emptyText: this.metadata.gridEmptyText
 			});
-			$(this.el).find(this._dataGridEL).append(grid.render().el);
+			if(this._isModal == true)
+				this.$el.find(this._dataGridEL).append(grid.render().el);
+			else
+				$(this.el).find(this._dataGridEL).append(grid.render().el);
 			if(this._getPaginatorConfig()){
 				var paginator = new Backgrid.Extension.Paginator({
 					windowSize: 10,
@@ -106,7 +124,10 @@ define(['../objects/View'],function(view){
 					collection: this.collection,
 					className:'vog'
 				});
-				$(this.el).find(this._dataGridEL).append(paginator.render().el);
+				if(this._isModal == true)
+					this.$el.find(this._dataGridEL).append(paginator.render().el);
+				else
+					$(this.el).find(this._dataGridEL).append(paginator.render().el);
 			}
 			var self = this;
 			this.collection.fetch({
