@@ -80,6 +80,7 @@ module.exports = function(grunt) {
 						'moment' 	: 'vendor/moment/moment-with-langs.min',
 						'jsoneditor': 'vendor/jsoneditor/jsoneditor-min',
 						'ace' 		: 'vendor/ace/ace',
+						'async'   	: 'vendor/async/async',
 						'jsonlint'  : 'vendor/jsonlint/jsonlint'
 					},
 					shim:{

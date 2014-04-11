@@ -6831,7 +6831,7 @@ a.list-group-item:hover, a.list-group-item:focus {
 .form-horizontal.labelcustomize .control-label {
 	padding:0 10px
 }
-form.x2 .form-control, form.x2 .form-group-vertical, form.x2 .input-group-btn btn {
+form.x2 .form-control, form.x2 .form-group-vertical, form.x2 .input-group-btn {
 	border-width:2px;
 }
 .dropdown-menu, .form-control, .form-group-vertical, .input-group-addon, .btn-default {
@@ -7081,7 +7081,7 @@ label span.icon i {
 .nav-tabs > li.completed > a, .nav-tabs > li.completed > a:hover, .nav-tabs > li.completed > a:focus {
 	color: #717171;
 	background-color: #FCFCFC;
-	border-bottom-color: 1px solid #FFF;
+	border-bottom-color: #FFFFFF;
 	cursor: pointer;
 }
 .nav-tabs > li > a:hover {
@@ -7479,7 +7479,6 @@ ul.wysihtml5-toolbar div[data-wysihtml5-command-value="blue"] {
 }
 ul.wysihtml5-toolbar div[data-wysihtml5-command-value="orange"] {
 	background: orange !important;
- t
 }
 .align-xs-left, .align-sm-left, .align-md-left, .align-lg-left {
 	text-align:left;
@@ -7557,6 +7556,7 @@ ul.wysihtml5-toolbar div[data-wysihtml5-command-value="orange"] {
  text-align: right;
 }
 }
+.jsoneditor .field,.jsoneditor .readonly,.jsoneditor .value{border:1px solid transparent;min-height:16px;min-width:32px;padding:2px;margin:1px;word-wrap:break-word;float:left}.jsoneditor .field p,.jsoneditor .value p{margin:0}.jsoneditor .value{word-break:break-word}.jsoneditor .readonly{min-width:16px;color:gray}.jsoneditor .empty{border-color:#d3d3d3;border-style:dashed;border-radius:2px}.jsoneditor .field.empty{background-image:url(../jsoneditor/img/jsoneditor-icons.png);background-position:0 -144px}.jsoneditor .value.empty{background-image:url(../jsoneditor/img/jsoneditor-icons.png);background-position:-48px -144px}.jsoneditor .value.url{color:green;text-decoration:underline}.jsoneditor a.value.url:focus,.jsoneditor a.value.url:hover{color:red}.jsoneditor .separator{padding:3px 0;vertical-align:top;color:gray}.jsoneditor .field.highlight,.jsoneditor .field[contenteditable=true]:focus,.jsoneditor .field[contenteditable=true]:hover,.jsoneditor .value.highlight,.jsoneditor .value[contenteditable=true]:focus,.jsoneditor .value[contenteditable=true]:hover{background-color:#FFFFAB;border:1px solid #ff0;border-radius:2px}.jsoneditor .field.highlight-active,.jsoneditor .field.highlight-active:focus,.jsoneditor .field.highlight-active:hover,.jsoneditor .value.highlight-active,.jsoneditor .value.highlight-active:focus,.jsoneditor .value.highlight-active:hover{background-color:#fe0;border:1px solid #ffc700;border-radius:2px}.jsoneditor div.tree button{width:24px;height:24px;padding:0;margin:0;border:0;cursor:pointer;background:transparent url(../jsoneditor/img/jsoneditor-icons.png)}.jsoneditor div.tree button.collapsed{background-position:0 -48px}.jsoneditor div.tree button.expanded{background-position:0 -72px}.jsoneditor div.tree button.contextmenu{background-position:-48px -72px}.jsoneditor div.tree button.contextmenu.selected,.jsoneditor div.tree button.contextmenu:focus,.jsoneditor div.tree button.contextmenu:hover{background-position:-48px -48px}.jsoneditor div.tree :focus{outline:0}.jsoneditor div.tree button:focus{background-color:#f5f5f5;outline:#e5e5e5 solid 1px}.jsoneditor div.tree button.invisible{visibility:hidden;background:0 0}.jsoneditor{color:#1A1A1A;border:1px solid #97B0F8;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;width:100%;height:100%;overflow:auto;position:relative;padding:0;line-height:100%}.jsoneditor div.tree table.tree{border-collapse:collapse;border-spacing:0;width:100%;margin:0}.jsoneditor div.outer{width:100%;height:100%;margin:-35px 0 0 0;padding:35px 0 0;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;overflow:hidden}.jsoneditor div.tree{width:100%;height:100%;position:relative;overflow:auto}.jsoneditor textarea.text{width:100%;height:100%;margin:0;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;border:0;background-color:#fff;resize:none}.jsoneditor tr.highlight{background-color:#FFFFAB}.jsoneditor div.tree button.dragarea{background:url(../jsoneditor/img/jsoneditor-icons.png) -72px -72px;cursor:move}.jsoneditor div.tree button.dragarea:focus,.jsoneditor div.tree button.dragarea:hover{background-position:-72px -48px}.jsoneditor td,.jsoneditor th,.jsoneditor tr{padding:0;margin:0}.jsoneditor td,.jsoneditor td.tree{vertical-align:top}.jsoneditor .field,.jsoneditor .value,.jsoneditor td,.jsoneditor textarea,.jsoneditor th{font-family:droid sans mono,monospace,courier new,courier,sans-serif;font-size:10pt;color:#1A1A1A}.jsoneditor-contextmenu{position:absolute;z-index:99999}.jsoneditor-contextmenu ul{position:relative;left:0;top:0;width:124px;background:#fff;border:1px solid #d3d3d3;box-shadow:2px 2px 12px rgba(128,128,128,.3);list-style:none;margin:0;padding:0}.jsoneditor-contextmenu ul li button{padding:0;margin:0;width:124px;height:24px;border:0;cursor:pointer;color:#4d4d4d;background:0 0;line-height:26px;text-align:left}.jsoneditor-contextmenu ul li button::-moz-focus-inner{padding:0;border:0}.jsoneditor-contextmenu ul li button:focus,.jsoneditor-contextmenu ul li button:hover{color:#1a1a1a;background-color:#f5f5f5;outline:0}.jsoneditor-contextmenu ul li button.default{width:90px}.jsoneditor-contextmenu ul li button.expand{float:right;width:32px;height:24px;border-left:1px solid #e5e5e5}.jsoneditor-contextmenu div.icon{float:left;width:24px;height:24px;border:0;padding:0;margin:0;background-image:url(../jsoneditor/img/jsoneditor-icons.png)}.jsoneditor-contextmenu ul li button div.expand{float:right;width:24px;height:24px;padding:0;margin:0 4px 0 0;background:url(../jsoneditor/img/jsoneditor-icons.png) 0 -72px;opacity:.4}.jsoneditor-contextmenu ul li button.expand:focus div.expand,.jsoneditor-contextmenu ul li button.expand:hover div.expand,.jsoneditor-contextmenu ul li button:focus div.expand,.jsoneditor-contextmenu ul li button:hover div.expand,.jsoneditor-contextmenu ul li.selected div.expand{opacity:1}.jsoneditor-contextmenu .separator{height:0;border-top:1px solid #e5e5e5;padding-top:5px;margin-top:5px}.jsoneditor-contextmenu button.remove>.icon{background-position:-24px -24px}.jsoneditor-contextmenu button.remove:focus>.icon,.jsoneditor-contextmenu button.remove:hover>.icon{background-position:-24px 0}.jsoneditor-contextmenu button.append>.icon{background-position:0 -24px}.jsoneditor-contextmenu button.append:focus>.icon,.jsoneditor-contextmenu button.append:hover>.icon{background-position:0 0}.jsoneditor-contextmenu button.insert>.icon{background-position:0 -24px}.jsoneditor-contextmenu button.insert:focus>.icon,.jsoneditor-contextmenu button.insert:hover>.icon{background-position:0 0}.jsoneditor-contextmenu button.duplicate>.icon{background-position:-48px -24px}.jsoneditor-contextmenu button.duplicate:focus>.icon,.jsoneditor-contextmenu button.duplicate:hover>.icon{background-position:-48px 0}.jsoneditor-contextmenu button.sort-asc>.icon{background-position:-168px -24px}.jsoneditor-contextmenu button.sort-asc:focus>.icon,.jsoneditor-contextmenu button.sort-asc:hover>.icon{background-position:-168px 0}.jsoneditor-contextmenu button.sort-desc>.icon{background-position:-192px -24px}.jsoneditor-contextmenu button.sort-desc:focus>.icon,.jsoneditor-contextmenu button.sort-desc:hover>.icon{background-position:-192px 0}.jsoneditor-contextmenu ul li .selected{background-color:#D5DDF6}.jsoneditor-contextmenu ul li{overflow:hidden}.jsoneditor-contextmenu ul li ul{display:none;position:relative;left:0px;top:0;border:0;box-shadow:inset 0 0 10px rgba(128,128,128,.5);padding:0 10px;-webkit-transition:all .3s ease-out;-moz-transition:all .3s ease-out;-o-transition:all .3s ease-out;transition:all .3s ease-out}.jsoneditor-contextmenu ul li ul li button{padding-left:24px}.jsoneditor-contextmenu ul li ul li button:focus,.jsoneditor-contextmenu ul li ul li button:hover{background-color:#f5f5f5}.jsoneditor-contextmenu button.type-string>.icon{background-position:-144px -24px}.jsoneditor-contextmenu button.type-string.selected>.icon,.jsoneditor-contextmenu button.type-string:focus>.icon,.jsoneditor-contextmenu button.type-string:hover>.icon{background-position:-144px 0}.jsoneditor-contextmenu button.type-auto>.icon{background-position:-120px -24px}.jsoneditor-contextmenu button.type-auto.selected>.icon,.jsoneditor-contextmenu button.type-auto:focus>.icon,.jsoneditor-contextmenu button.type-auto:hover>.icon{background-position:-120px 0}.jsoneditor-contextmenu button.type-object>.icon{background-position:-72px -24px}.jsoneditor-contextmenu button.type-object.selected>.icon,.jsoneditor-contextmenu button.type-object:focus>.icon,.jsoneditor-contextmenu button.type-object:hover>.icon{background-position:-72px 0}.jsoneditor-contextmenu button.type-array>.icon{background-position:-96px -24px}.jsoneditor-contextmenu button.type-array.selected>.icon,.jsoneditor-contextmenu button.type-array:focus>.icon,.jsoneditor-contextmenu button.type-array:hover>.icon{background-position:-96px 0}.jsoneditor-contextmenu button.type-modes>.icon{background-image:none;width:6px}.jsoneditor .menu{width:100%;height:35px;padding:2px;margin:0;overflow:hidden;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;color:#1A1A1A;background-color:#D5DDF6;border-bottom:1px solid #97B0F8}.jsoneditor .menu button{width:26px;height:26px;margin:2px;padding:0;border-radius:2px;border:1px solid #aec0f8;background:#e3eaf6 url(../jsoneditor/img/jsoneditor-icons.png);color:#4D4D4D;opacity:.8;font-family:arial,sans-serif;font-size:10pt;float:left}.jsoneditor .menu button:hover{background-color:#f0f2f5}.jsoneditor .menu button:active{background-color:#fff}.jsoneditor .menu button:disabled{background-color:#e3eaf6}.jsoneditor .menu button.collapse-all{background-position:0 -96px}.jsoneditor .menu button.expand-all{background-position:0 -120px}.jsoneditor .menu button.undo{background-position:-24px -96px}.jsoneditor .menu button.undo:disabled{background-position:-24px -120px}.jsoneditor .menu button.redo{background-position:-48px -96px}.jsoneditor .menu button.redo:disabled{background-position:-48px -120px}.jsoneditor .menu button.compact{background-position:-72px -96px}.jsoneditor .menu button.format{background-position:-72px -120px}.jsoneditor .menu button.modes{background-image:none;width:auto;padding-left:6px;padding-right:6px}.jsoneditor .menu button.separator{margin-left:10px}.jsoneditor .menu a{font-family:arial,sans-serif;font-size:10pt;color:#97B0F8;vertical-align:middle}.jsoneditor .menu a:hover{color:red}.jsoneditor .menu a.poweredBy{font-size:8pt;position:absolute;right:0;top:0;padding:10px}.jsoneditor .search .results,.jsoneditor .search input{font-family:arial,sans-serif;font-size:10pt;color:#1A1A1A}.jsoneditor .search{position:absolute;right:2px;top:2px}.jsoneditor .search .frame{border:1px solid #97B0F8;background-color:#fff;padding:0 2px;margin:0}.jsoneditor .search .frame table{border-collapse:collapse}.jsoneditor .search input{width:120px;border:0;outline:0;margin:1px}.jsoneditor .search .results{color:#4d4d4d;padding-right:5px;line-height:24px}.jsoneditor .search button{width:16px;height:24px;padding:0;margin:0;border:0;background:url(../jsoneditor/img/jsoneditor-icons.png);vertical-align:top}.jsoneditor .search button:hover{background-color:transparent}.jsoneditor .search button.refresh{width:18px;background-position:-99px -73px}.jsoneditor .search button.next{cursor:pointer;background-position:-124px -73px}.jsoneditor .search button.next:hover{background-position:-124px -49px}.jsoneditor .search button.previous{cursor:pointer;background-position:-148px -73px;margin-right:2px}.jsoneditor .search button.previous:hover{background-position:-148px -49px}
 .icheckbox_minimal,
 .iradio_minimal {
     display: block;
@@ -10740,7 +10740,7 @@ html.mm-blocking #mm-blocker {
 	border-left: none;
 }
 .mm-list a.mm-subclose {
-	text-indent: 20px;
+	text-indent: 28px;
 	margin-top: 0px;
 }
 .mm-list a.mm-subopen + a,
@@ -13320,8 +13320,94 @@ body .ui-tooltip {
  	background-color:#ffcc33;
 	color:#FFF;
 }
+.data-grid-scroll{
+	width:100%;
+	overflow-x: scroll;
+}
 .data-grid .pagination{
 	margin:0px !important;
+}
+.nest-views .row {
+	margin:0px;
+}
+.nest-views .col-xs-1,
+.nest-views .col-sm-1,
+.nest-views .col-md-1,
+.nest-views .col-lg-1,
+.nest-views .col-xs-2,
+.nest-views .col-sm-2,
+.nest-views .col-md-2,
+.nest-views .col-lg-2,
+.nest-views .col-xs-3,
+.nest-views .col-sm-3,
+.nest-views .col-md-3,
+.nest-views .col-lg-3,
+.nest-views .col-xs-4,
+.nest-views .col-sm-4,
+.nest-views .col-md-4,
+.nest-views .col-lg-4,
+.nest-views .col-xs-5,
+.nest-views .col-sm-5,
+.nest-views .col-md-5,
+.nest-views .col-lg-5,
+.nest-views .col-xs-6,
+.nest-views .col-sm-6,
+.nest-views .col-md-6,
+.nest-views .col-lg-6,
+.nest-views .col-xs-7,
+.nest-views .col-sm-7,
+.nest-views .col-md-7,
+.nest-views .col-lg-7,
+.nest-views .col-xs-8,
+.nest-views .col-sm-8,
+.nest-views .col-md-8,
+.nest-views .col-lg-8,
+.nest-views .col-xs-9,
+.nest-views .col-sm-9,
+.nest-views .col-md-9,
+.nest-views .col-lg-9,
+.nest-views .col-xs-10,
+.nest-views .col-sm-10,
+.nest-views .col-md-10,
+.nest-views .col-lg-10,
+.nest-views .col-xs-11,
+.nest-views .col-sm-11,
+.nest-views .col-md-11,
+.nest-views .col-lg-11,
+.nest-views .col-xs-12,
+.nest-views .col-sm-12,
+.nest-views .col-md-12,
+.nest-views .col-lg-12 {
+	margin:0px;
+	padding:0px;
+}
+.action-panel-spacing{
+	margin-right:8px;
+}
+.openbiz-chart{
+	width:100%;
+	height:100%;
+	min-height:300px;
+}
+.openbiz-json-editor .ace-jsoneditor{
+	min-height:500px;
+}
+.color-block{
+	display:block;
+	min-width: 20px;
+	max-width: 100px;
+	min-height: 20px;
+}
+.openbiz-grid-spacing{
+	padding-bottom:5px !important;
+}
+.heading{
+	padding-bottom:20px;
+}
+.mm-list hr{
+	margin-top:4px;
+	margin-bottom:4px;
+	border-top:1px solid #333333;
 }
 body {
 	background: #1C1D1F;
