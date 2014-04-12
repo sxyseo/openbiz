@@ -124,6 +124,34 @@ define(function(){
 				}
 			});
 		},
+		popupPickerView:function(viewName,callback){			
+			if(this.app==null)return;
+	    	var callback,args=[],self=this;;
+	    	
+	    	var viewArr = viewName.split(".");
+	    	var viewPath = "./modules/"+viewArr[0]+"/views/"+viewArr[1];
+	    	var parentView = openbiz.session.currentView;
+	    	parentView.undelegateEvents();
+	    	if(self.app.views.isRenderred(viewName)){
+				self.app.views.get(viewName).undelegateEvents();
+			}
+            self.app.views.render(viewName,args,function(view){
+            	var $modal = $(view.$el);
+            	view.delegateEvents();
+	            view.parent = parentView;
+	            view.onPickedRecord = callback;
+                $modal.modal();
+                $modal.on('hidden.bs.modal',function(){
+                	view.undelegateEvents();
+                	openbiz.session.currentView=parentView;
+                	parentView.delegateEvents();
+                });
+                openbiz.ui.update($modal);
+                if(typeof callback =='function'){
+                    callback();
+                }
+            });
+		},
 		popupView:function(viewName){
 			if(this.app==null)return;
 	    	var callback,args=[],self=this;;
