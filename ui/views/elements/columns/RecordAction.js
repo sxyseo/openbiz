@@ -17,19 +17,31 @@ define(['./Element'],function(element){
 								var displayName = 'recordAction'+recordAction.name.charAt(0).toUpperCase() + recordAction.name.slice(1);
 								if(self._hasPermission(recordAction.permission))
 								{
-									var text = self._getEnableText(recordAction["name"],obj.model!=null?obj.model:model,obj.model!=null?true:false);
+									var isEnabled = self._getEnableText(recordAction["name"],obj.model!=null?obj.model:model,obj.model!=null?true:false);
+									var label = obj.locale[displayName]?obj.locale[displayName]: recordAction.displayName;
 									switch(recordAction.type.toLowerCase()){
 										case "link":
 										{
 											var url = recordAction.url.replace(":id","{{ id }}");
+											var className;
+											if(typeof recordAction.className!='undefined'){
+												className = recordAction.className;
+											}else{
+												className = "btn-default";
+											}
 											url = "#!/backend/"+obj.app.name+url
-											html = html + "<a href='"+url+"' class='btn btn-default'"+text+">"+obj.locale[displayName]+"</a>"+"&nbsp";
+											html = html + "<a href='"+url+"' class='btn  "+className+" '"+isEnabled+">"+label+"</a>"+"&nbsp";
 											break;
 										}
 										case "button":
 										{
 											var className = "rec-act-"+recordAction.name.toLowerCase();
-											html = html + "<a href='#' record-id='{{ id }}' class='btn btn-default "+ className+"'"+text+">"+obj.locale[displayName]+"</a>"+"&nbsp";
+											if(typeof recordAction.className!='undefined'){
+												className += " "+recordAction.className;
+											}else{
+												className += " btn-default";
+											}
+											html = html + "<a href='#' record-id='{{ id }}' class='btn  "+ className+"'"+isEnabled+">"+label+"</a>"+"&nbsp";
 											break;
 										}
 										default:
