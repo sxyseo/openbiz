@@ -20,6 +20,9 @@
  	background-color:#ffcc33;
 	color:#FFF;
 }
+.data-grid a.hidden-xs {
+  display: inline-block !important;
+}
 .data-grid-scroll{
 	width:100%;
 	overflow-x: scroll;

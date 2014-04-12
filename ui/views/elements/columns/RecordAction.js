@@ -29,6 +29,7 @@ define(['./Element'],function(element){
 											}else{
 												className = "btn-default";
 											}
+											if(className.indexOf("btn-default"))className += " btn-default";
 											url = "#!/backend/"+obj.app.name+url
 											html = html + "<a href='"+url+"' class='btn  "+className+" '"+isEnabled+">"+label+"</a>"+"&nbsp";
 											break;
@@ -41,6 +42,7 @@ define(['./Element'],function(element){
 											}else{
 												className += " btn-default";
 											}
+											if(className.indexOf("btn-default"))className += " btn-default";
 											html = html + "<a href='#' record-id='{{ id }}' class='btn  "+ className+"'"+isEnabled+">"+label+"</a>"+"&nbsp";
 											break;
 										}
