@@ -104,6 +104,7 @@ define(['../objects/View'],function(view){
 		},
 		saveRecordSuccess:function(){},
 		saveRecordError:function(){},
+		beforeSaveRecord:function(record){return record},
 		saveRecord:function(event){
 			if(!this.validateForm())return;
 			event.preventDefault();
@@ -161,6 +162,7 @@ define(['../objects/View'],function(view){
 				}
 			}
 			var self = this;
+			record = this.beforeSaveRecord(record);
 			this.model.save(record,{success:function(){
 				callback(true);
 			},error:function(model, response){
