@@ -67,6 +67,8 @@ define(['./Element'],function(element){
 			return field;
 		},
 		_getEnableText:function(action,model,isSubDoc){
+			if(_.isUndefined(model.get("_metadata")))
+				return "";
 			var state = model.get("_metadata").state
 			var text = "";
 
