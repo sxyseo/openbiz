@@ -124,7 +124,7 @@ define(function(){
 				}
 			});
 		},
-		popupPickerView:function(viewName,callback){			
+		popupPickerView:function(viewName,onPickedRecordCallBack){			
 			if(this.app==null)return;
 	    	var callback,args=[],self=this;;
 	    	
@@ -139,7 +139,7 @@ define(function(){
             	var $modal = $(view.$el);
             	view.delegateEvents();
 	            view.parent = parentView;
-	            view.onPickedRecord = callback;
+	            view.onPickedRecord = onPickedRecordCallBack;
                 $modal.modal();
                 $modal.on('hidden.bs.modal',function(){
                 	view.undelegateEvents();

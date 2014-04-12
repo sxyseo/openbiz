@@ -33,7 +33,7 @@ define(['../objects/View'],function(view){
 					var key = recordAction.event + " ." + "rec-act-"+recordAction.name.toLowerCase();
 					this.events[key] = recordAction.function;
 				}
-			}
+			}			
 			this.delegateEvents();
 
 			return this;
@@ -177,7 +177,15 @@ define(['../objects/View'],function(view){
 			}
 			return this._paginatorConfig;
 		},
-
+		pickRecord:function(event){
+			event.preventDefault();
+			var recordId = $(event.currentTarget).attr('record-id');				
+			var record = this.collection.get(recordId);
+			this.$el.modal('hide');
+			if(typeof this.onPickedRecord=='function'){
+				this.onPickedRecord.call(this.parent,record);					
+			}
+		},
 		beforeDeleteRecord:function(){},
 		afterDeleteRecord:function(){},
 		deleteRecord:function(event){	    	
