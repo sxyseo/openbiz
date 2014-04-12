@@ -112,11 +112,11 @@ define(['../objects/View'],function(view){
 				className: 'backgrid table table-striped table-bordered text-center datatable table-hover',
 				emptyText: this.metadata.gridEmptyText
 			});
-			if(this._isModal == true)
+			if(this._isModal == true){
 				this.$el.find(this._dataGridEL).append(grid.render().el);
 //				this.$el.find(this._dataGridEL).append($("<div class='data-grid-scroll' />").html(grid.render().el));
-			else
-			{
+			}
+			else{
 				$(this.el).find(this._dataGridEL).append(grid.render().el);
 				$(this.el).find(this._dataGridEL).append($("<div class='data-grid-scroll' />").html(grid.render().el));
 			}
