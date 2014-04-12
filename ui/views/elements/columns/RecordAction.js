@@ -24,12 +24,12 @@ define(['./Element'],function(element){
 										{
 											var url = recordAction.url.replace(":id","{{ id }}");
 											var className;
-											if(typeof recordAction.className!='undefined'){
+											if(typeof recordAction.className!='undefined' && recordAction.className!=""){
 												className = recordAction.className;
+												if(className.indexOf("btn-")==-1)className += " btn-default";
 											}else{
 												className = "btn-default";
 											}
-											if(className.indexOf("btn-default"))className += " btn-default";
 											url = "#!/backend/"+obj.app.name+url
 											html = html + "<a href='"+url+"' class='btn  "+className+" '"+isEnabled+">"+label+"</a>"+"&nbsp";
 											break;
@@ -37,12 +37,12 @@ define(['./Element'],function(element){
 										case "button":
 										{
 											var className = "rec-act-"+recordAction.name.toLowerCase();
-											if(typeof recordAction.className!='undefined'){
+											if(typeof recordAction.className!='undefined' && recordAction.className!="" ){
 												className += " "+recordAction.className;
+												if(className.indexOf("btn-")==-1)className += " btn-default";
 											}else{
 												className += " btn-default";
-											}
-											if(className.indexOf("btn-default"))className += " btn-default";
+											}											
 											html = html + "<a href='#' record-id='{{ id }}' class='btn  "+ className+"'"+isEnabled+">"+label+"</a>"+"&nbsp";
 											break;
 										}
