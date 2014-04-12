@@ -116,9 +116,10 @@ define(['../objects/View'],function(view){
 				this.$el.find(this._dataGridEL).append(grid.render().el);
 //				this.$el.find(this._dataGridEL).append($("<div class='data-grid-scroll' />").html(grid.render().el));
 			else
+			{
 				$(this.el).find(this._dataGridEL).append(grid.render().el);
 				$(this.el).find(this._dataGridEL).append($("<div class='data-grid-scroll' />").html(grid.render().el));
-			})
+			}
 			if(this._getPaginatorConfig()){
 				var paginator = new Backgrid.Extension.Paginator({
 					windowSize: 10,
@@ -194,12 +195,20 @@ define(['../objects/View'],function(view){
 					    model.urlRoot = self.collection.url;
 					    model.destroy({success:function(){
                             self.collection.fetch();
-                        },error:function(){
+                        },error:function(model, response){
 						    self.collection.fetch();
-						    bootbox.alert({
-							    title: self.app.locale.common.deleteRecordErrorTitle,
-							    message:self.app.locale.common.deleteRecordErrorMessage
-						    });
+						    if(response.status == 403){
+							    bootbox.alert({
+								    title: self.app.locale.common.deleteRecordErrorTitle,
+								    message:self.app.locale.common.noPermissionErrorMessage
+							    });
+						    }
+						    else{
+							    bootbox.alert({
+								    title: self.app.locale.common.deleteRecordErrorTitle,
+								    message:self.app.locale.common.deleteRecordErrorMessage
+							    });
+						    }
 					    }});
                         self.afterDeleteRecord();   
 		    		}

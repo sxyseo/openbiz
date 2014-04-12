@@ -83,11 +83,19 @@ define(['../objects/View'],function(view){
 						self.beforeDeleteRecord();
 						self.model.destroy({success:function(){
 							self.deleteRecordSuccess();
-						},error:function(){
-							bootbox.alert({
-								title: self.app.locale.common.deleteRecordErrorTitle,
-								message:self.app.locale.common.deleteRecordErrorMessage
-							});
+						},error:function(model, response){
+							if(response.status == 403){
+								bootbox.alert({
+									title: self.app.locale.common.deleteRecordErrorTitle,
+									message:self.app.locale.common.noPermissionErrorMessage
+								});
+							}
+							else{
+								bootbox.alert({
+									title: self.app.locale.common.deleteRecordErrorTitle,
+									message:self.app.locale.common.deleteRecordErrorMessage
+								});
+							}
 							self.deleteRecordError();
 						}});
 					}
@@ -155,11 +163,18 @@ define(['../objects/View'],function(view){
 			var self = this;
 			this.model.save(record,{success:function(){
 				callback(true);
-			},error:function(){
-				bootbox.alert({
-					title: self.app.locale.common.saveRecordErrorTitle,
-					message:self.app.locale.common.saveRecordErrorMessage
-				});
+			},error:function(model, response){
+				if(response.status == 403){
+					bootbox.alert({
+						title: self.app.locale.common.saveRecordErrorTitle,
+						message:self.app.locale.common.noPermissionErrorMessage
+					});
+				}else{
+					bootbox.alert({
+						title: self.app.locale.common.saveRecordErrorTitle,
+						message:self.app.locale.common.saveRecordErrorMessage
+					});
+				}
 				callback(false);
 			}});
 		},
