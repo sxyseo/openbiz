@@ -22,7 +22,7 @@ define(['./Element'],function(element){
 									switch(recordAction.type.toLowerCase()){
 										case "link":
 										{
-											var url = recordAction.url.replace(":id","{{ id }}");
+											var url = recordAction.url.replace(":id","{{ id }}");											
 											var className;
 											if(typeof recordAction.className!='undefined' && recordAction.className!=""){
 												className = recordAction.className;

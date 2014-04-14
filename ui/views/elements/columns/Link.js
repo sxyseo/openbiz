@@ -6,8 +6,10 @@ define(['./Element'],function(element){
 			field.cell = openbiz.Grid.UriCell.extend({
 				render: function () {
 					this.$el.empty();
-					var rawValue = this.model.get("_id");
-
+					var self = this;
+					var parsedURL = column.url.replace(/.*\/?\:(.*)\/?.*/gi,function(s,value){						
+						return s.replace(":"+value, (typeof self.model[value]!='undefined')?self.model[value]:self.model.get(value) );																		
+					});
 					var attr = this.column.get("name");
 					var attrArray = attr.split('.');
 					var data = this.model.get(attrArray[0]);
@@ -18,7 +20,7 @@ define(['./Element'],function(element){
 					}
 					this.$el.append($("<a>", {
 						tabIndex: -1,
-						href: "#!/backend"+ (obj.app.name=='cubi'?'':'/'+obj.app.name) + column.url.split(":")[0] + rawValue,
+						href: "#!/backend"+ (obj.app.name=='cubi'?'':'/'+obj.app.name) + parsedURL,
 						title: ""
 					}).text(value));
 					this.delegateEvents();
