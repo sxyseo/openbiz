@@ -24,7 +24,7 @@ define(['./OptionElement'],function(element){
 							select += "<option value='"+display+"' data-value-field='"+display+"' data-display-field='"+display+"'>"+display+"</option>";
 						}
 					}
-					select += "</select>";
+					select += "</select><div id='select-com-error'></div>";
 					$(self.parent.el).find("."+self._selector).append(data+select);
 					$('.selectpicker').selectpicker();
 				}else if(self._modelType == "model"){
