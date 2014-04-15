@@ -85,6 +85,7 @@
 	padding:0px;
 }
 .action-panel-spacing{
+	display:inline;
 	margin-right:8px;
 }
 .openbiz-chart{

@@ -35,6 +35,8 @@ define(["objects/Object",
 		"views/elements/forms/DropdownView",
 		"views/elements/forms/RadioView",
 		"views/elements/forms/ColorPicker",
+		'views/elements/forms/Button',
+		'views/elements/forms/Link',
 ],
 	function(Object,
 		Module,
@@ -59,13 +61,15 @@ define(["objects/Object",
 		locale,
 		PieChartView,
 		Element,
-		Link,
-		Text,
+		ColumnLink,
+		ColumnText,
 		RecordAction,
 		OptionElement,
 		DropdownView,
 		RadioView,
-		ColorPicker
+		ColorPicker,
+		FormButton,
+		FormLink
 		){		
 	return {
 		apps:{},
@@ -99,11 +103,13 @@ define(["objects/Object",
 		},
 		elements:{
 			columns:{
-				link:Link,
-				text:Text,
+				link:ColumnLink,
+				text:ColumnText,
 				recordActions:RecordAction
 			},
 			forms:{
+				link:FormLink,
+				button:FormButton,
 				dropdown:DropdownView,
 				radio:RadioView,
 				colorpicker:ColorPicker

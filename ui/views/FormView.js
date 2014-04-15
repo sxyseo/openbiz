@@ -50,6 +50,15 @@ define(['../objects/View'],function(view){
 						this._element[field.field] = element.init(field,this,this.model.get(field.field));
 					}
 				}
+
+				for(var i in this._actions){
+					var action = this._actions[i];
+					if(openbiz.elements.forms.hasOwnProperty(action.type)){
+						var element = new openbiz.elements.forms[action.type];
+						element.init(action,this,this.model);
+					}
+				}
+
 				this.afterRender();
 			}
 			else

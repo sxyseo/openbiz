@@ -7,7 +7,7 @@ define(['./Element'],function(element){
 				render: function () {
 					this.$el.empty();
 					var self = this;
-					var parsedURL = column.url.replace(/.*\/?\:(.*)\/?.*/gi,function(s,value){						
+					var parsedURL = column.url.replace(/.*\/?\:([^\/]*).*?/gi,function(s,value){						
 						return s.replace(":"+value, (typeof self.model[value]!='undefined')?self.model[value]:self.model.get(value) );																		
 					});
 					var attr = this.column.get("name");

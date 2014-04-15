@@ -1,6 +1,6 @@
 "use strict";
 define(['../../../objects/Object',
-		'text!./Button.html'
+		'text!./Link.html'
 		],
 		function(object,templateData){
 	return object.extend({
@@ -17,7 +17,7 @@ define(['../../../objects/Object',
 					});
 			metadata.className = metadata.className?metadata.className:'btn-default';
 			metadata.icon = metadata.icon.replace(/\./g," ");
-
+			
 			$(parent.el).find(selector).replaceWith($(template(metadata)).addClass("act-"+metadata.name.toLowerCase()));
 		}
 	})
