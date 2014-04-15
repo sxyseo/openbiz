@@ -155,7 +155,7 @@
 		render: function () {
 			this.$el.empty();
 			var anchor = document.createElement("a");
-			anchor.href = '#';
+			anchor.href = 'javascript:void(0);';
 			if (this.title) anchor.title = this.title;
 			anchor.innerHTML = this.label;
 			this.el.appendChild(anchor);
@@ -445,10 +445,17 @@
 				lastNum = this.collection.state.firstPage*this.collection.state.pageSize;
 				if(lastNum > this.collection.state.totalRecords )lastNum = this.collection.state.totalRecords;
 			}
-			var text = document.createElement("div");
-			$(text).addClass('pull-left').html('<div class="indicator col-sm-6 align-xs-right align-sm-left">显示第 '+firstNum+' 到 '+lastNum+' 项,共 '+this.collection.state.totalRecords+' 条记录</div>');
-			var html = this.$el.html();
-			this.$el.html("<div class='row'>"+$(text).html()+"<div class='align-lg-right col-sm-6'><div class='dataTables_paginate paging_bs_normal'>"+html+"</div></div></div>");
+			var textDiv = document.createElement("div");
+			$(textDiv).addClass('pull-left indicator col-sm-6 align-xs-right align-sm-left').html('显示第 '+firstNum+' 到 '+lastNum+' 项,共 '+this.collection.state.totalRecords+' 条记录');
+						
+			if(this.$el.parent().find('.indicator').length==0){
+				this.$el.before(textDiv);
+			}else{
+				this.$el.parent().find('.indicator').replaceWith(textDiv);
+			}
+			this.$el.addClass("pull-right");
+
+			//this.$el.html("<div class='row'>"+$(text).html()+"<div class='align-lg-right col-sm-6'><div class='dataTables_paginate paging_bs_normal'>"+html+"</div></div></div>");
 
 		}
 	});
