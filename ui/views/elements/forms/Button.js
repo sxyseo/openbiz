@@ -7,6 +7,11 @@ define(['../../../objects/Object',
 		init:function(metadata,parent,model){
 			var selector = "div.act-"+metadata.name.toLowerCase();			
 			if ($(parent.el).find(selector).length == 0) return;
+			if(typeof metadata.permission!='undefined'){
+				if(typeof openbiz.session.me=='undefined' || !openbiz.session.me.hasPermission(metadata.permission)){							
+					return ;
+				}
+			}
 			var template = _.template(templateData);
 			var localeKey = 'action'+metadata.name.charAt(0).toUpperCase()+metadata.name.slice(1);
 			

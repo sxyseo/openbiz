@@ -53,6 +53,13 @@ define(['../objects/View'],function(view){
 				else
 					$(this.el).html(this.template(output));
 				this._renderDataGridConfig()._bindEvents();
+				for(var i in this._actions){
+					var action = this._actions[i];
+					if(openbiz.elements.forms.hasOwnProperty(action.type)){
+						var element = new openbiz.elements.forms[action.type];
+						element.init(action,this,this.model);
+					}
+				}
 				this.afterRender();
 			}
 			else
