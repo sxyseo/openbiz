@@ -454,9 +454,6 @@
 				this.$el.parent().find('.indicator').replaceWith(textDiv);
 			}
 			this.$el.addClass("pull-right");
-
-			//this.$el.html("<div class='row'>"+$(text).html()+"<div class='align-lg-right col-sm-6'><div class='dataTables_paginate paging_bs_normal'>"+html+"</div></div></div>");
-
 		}
 	});
 
