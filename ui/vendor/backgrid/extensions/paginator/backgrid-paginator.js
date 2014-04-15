@@ -155,7 +155,7 @@
 		render: function () {
 			this.$el.empty();
 			var anchor = document.createElement("a");
-			anchor.href = '#';
+			anchor.href = 'javascript:void(0)';
 			if (this.title) anchor.title = this.title;
 			anchor.innerHTML = this.label;
 			this.el.appendChild(anchor);
