@@ -155,7 +155,7 @@
 		render: function () {
 			this.$el.empty();
 			var anchor = document.createElement("a");
-			anchor.href = 'javascript:void(0)';
+			anchor.href = '#';
 			if (this.title) anchor.title = this.title;
 			anchor.innerHTML = this.label;
 			this.el.appendChild(anchor);
@@ -170,6 +170,7 @@
 				this.isForward && !collection.hasNext() ||
 				this.isFastForward && (currentPage == state.lastPage || state.totalPages < 1)) {
 				this.$el.addClass("disabled");
+				this.$el.find("a").attr("disabled","disabled");
 			}
 			else if (!(this.isRewind ||
 				this.isBack ||
@@ -177,6 +178,7 @@
 				this.isFastForward) &&
 				state.currentPage == pageIndex) {
 				this.$el.addClass("active");
+				this.$el.find("a").removeAttr("disabled");
 			}
 
 			this.delegateEvents();

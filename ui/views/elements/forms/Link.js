@@ -5,8 +5,12 @@ define(['../../../objects/Object',
 		function(object,templateData){
 	return object.extend({
 		init:function(metadata,parent,model){
-			var selector = "div.act-"+metadata.name.toLowerCase();			
-			if ($(parent.el).find(selector).length == 0) return;
+			var selector = "div.act-"+metadata.name.toLowerCase();
+			if(parent._isModal == true){
+				if (parent.$el.find(selector).length == 0) return;
+			}else{
+				if ($(parent.el).find(selector).length == 0) return;
+			}
 			if(typeof metadata.permission!='undefined'){
 				if(typeof openbiz.session.me=='undefined' || !openbiz.session.me.hasPermission(metadata.permission)){							
 					return ;
