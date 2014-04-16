@@ -46,7 +46,7 @@ define(['../objects/View'],function(view){
 					var field = this._fields[i];
 					if(openbiz.elements.forms.hasOwnProperty(field.type)){
 						var element = new openbiz.elements.forms[field.type];
-						this._element[field.field] = element.init(field,this,this.model.get(field.field));
+						this._element[field.field] = element.init(field,this,this.model);
 					}
 				}
 				this._renderElements();
