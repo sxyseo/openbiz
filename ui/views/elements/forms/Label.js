@@ -23,7 +23,7 @@ define(['../../../objects/Object',
 			metadata.icon = metadata.icon.replace(/\./g," ");
 
 
-			parent.$el.find(selector).replaceWith($(template(metadata)).addClass("act-"+metadata.name.toLowerCase()));			
+			parent.$el.find(selector).replaceWith($(template(metadata)).addClass("field-"+metadata.name.toLowerCase()));			
 		}
 	})
 });
