@@ -22,8 +22,8 @@ define(['../../../objects/Object',
 			metadata.url = "#!/backend/"+parent.app.name+metadata.url;
 			metadata.url = metadata.url.replace(/.*\/?\:([^\/]*).*?/gi,function(s,value){		
 						return s.replace(":"+value, (typeof model[value]!='undefined')?model[value]:model.get(value) );																		
-					});
-			metadata.className = metadata.className?metadata.className:'btn-default';
+					});			
+			metadata.className = metadata.className?metadata.className.replace(/\./g," "):'btn-default';
 			metadata.icon = metadata.icon.replace(/\./g," ");
 			
 			parent.$el.find(selector).replaceWith($(template(metadata)).addClass("act-"+metadata.name.toLowerCase()));			

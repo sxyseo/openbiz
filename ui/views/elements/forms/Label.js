@@ -18,11 +18,14 @@ define(['../../../objects/Object',
 			var localeKey = 'field'+metadata.name.charAt(0).toUpperCase()+metadata.name.slice(1);
 			
 			metadata.displayName = parent.locale[localeKey]?parent.locale[localeKey]:metadata.displayName			
-			metadata.className = metadata.className?metadata.className:'btn-default';
+			metadata.className = metadata.className?metadata.className.replace(/\./g," "):'';
 			metadata.icon = metadata.icon?metadata.icon.replace(/\./g," "):"";
 			if(!metadata.field) metadata.displayValue = "";
-			if(metadata.field.indexOf("<%")!=-1){
-
+//			debugger;
+			if(metadata.field.indexOf("{{")!=-1){
+				metadata.displayValue =  _.template(metadata.field,
+													{record:model},
+													{interpolate: /\{\{(.+?)\}\}/g});
 			}else{
 				metadata.displayValue = model[metadata.field]?model[metadata.field]:model.get(metadata.field);
 			}			
