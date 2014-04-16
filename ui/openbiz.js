@@ -37,6 +37,7 @@ define(["objects/Object",
 		"views/elements/forms/ColorPicker",
 		'views/elements/forms/Button',
 		'views/elements/forms/Link',
+		'views/elements/forms/Label'
 ],
 	function(Object,
 		Module,
@@ -69,7 +70,8 @@ define(["objects/Object",
 		RadioView,
 		ColorPicker,
 		FormButton,
-		FormLink
+		FormLink,
+		FormLabel
 		){		
 	return {
 		apps:{},
@@ -112,6 +114,7 @@ define(["objects/Object",
 				button:FormButton,
 				dropdown:DropdownView,
 				radio:RadioView,
+				label:FormLabel,
 				colorpicker:ColorPicker
 			}
 		},
