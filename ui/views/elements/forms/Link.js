@@ -6,11 +6,10 @@ define(['../../../objects/Object',
 	return object.extend({
 		init:function(metadata,parent,model){
 			var selector = "div.act-"+metadata.name.toLowerCase();
-			if(parent._isModal == true){
-				if (parent.$el.find(selector).length == 0) return;
-			}else{
-				if ($(parent.el).find(selector).length == 0) return;
-			}
+			
+			if (parent.$el.find(selector).length == 0) return; //ignore it, if it doesn't mount on UI
+			if (parent.$el.find(selector).children().length>0) return; //ignore it, if has custom template
+
 			if(typeof metadata.permission!='undefined'){
 				if(typeof openbiz.session.me=='undefined' || !openbiz.session.me.hasPermission(metadata.permission)){							
 					return ;
@@ -26,11 +25,8 @@ define(['../../../objects/Object',
 					});
 			metadata.className = metadata.className?metadata.className:'btn-default';
 			metadata.icon = metadata.icon.replace(/\./g," ");
-			if(parent._isModal == true){
-				parent.$el.find(selector).replaceWith($(template(metadata)).addClass("act-"+metadata.name.toLowerCase()));
-			}else{
-				$(parent.el).find(selector).replaceWith($(template(metadata)).addClass("act-"+metadata.name.toLowerCase()));
-			}
+			
+			parent.$el.find(selector).replaceWith($(template(metadata)).addClass("act-"+metadata.name.toLowerCase()));			
 		}
 	})
 });
