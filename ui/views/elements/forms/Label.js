@@ -8,7 +8,6 @@ define(['../../../objects/Object',
 			var selector = "div.field-"+metadata.name.toLowerCase();
 			if (parent.$el.find(selector).length == 0) return; //ignore it, if it doesn't mount on UI
 			if (parent.$el.find(selector).children().length>0) return; //ignore it, if has custom template
-			debugger;
 
 			if(typeof metadata.permission!='undefined'){
 				if(typeof openbiz.session.me=='undefined' || !openbiz.session.me.hasPermission(metadata.permission)){							
@@ -21,7 +20,12 @@ define(['../../../objects/Object',
 			metadata.displayName = parent.locale[localeKey]?parent.locale[localeKey]:metadata.displayName			
 			metadata.className = metadata.className?metadata.className:'btn-default';
 			metadata.icon = metadata.icon?metadata.icon.replace(/\./g," "):"";
+			if(!metadata.field) metadata.displayValue = "";
+			if(metadata.field.indexOf("<%")!=-1){
 
+			}else{
+				metadata.displayValue = model[metadata.field]?model[metadata.field]:model.get(metadata.field);
+			}			
 
 			parent.$el.find(selector).replaceWith($(template(metadata)).addClass("field-"+metadata.name.toLowerCase()));			
 		}

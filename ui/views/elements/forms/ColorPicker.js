@@ -2,7 +2,8 @@
 define(['./OptionElement'],function(element){
 	return element.extend({
 		_selector:null,
-		init:function(metadata,parent,defautValue){
+		init:function(metadata,parent,model){
+			var defautValue = model.get(metadata.field);
 			openbiz.OptionElement.prototype.init.call(this,metadata,parent);
 			var self = this;
 			this._parseModel(function(){
