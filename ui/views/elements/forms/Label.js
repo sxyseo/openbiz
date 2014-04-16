@@ -1,6 +1,6 @@
 "use strict";
 define(['../../../objects/Object',
-		'text!./Button.html'
+		'text!./Label.html'
 		],
 		function(object,templateData){
 	return object.extend({
