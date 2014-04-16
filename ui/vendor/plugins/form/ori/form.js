@@ -1127,7 +1127,7 @@ For usage and examples: colpick.com/plugin
                     showCharsTyped: true, // show the number of characters typed and not the number of characters remaining
                     validate: false, // if the browser doesn't support the maxlength attribute, attempt to type more than
                                                                         // the indicated chars, will be prevented.
-                    utf8: false // counts using bytesize rather than length.  eg: '£' is counted as 2 characters.
+                    utf8: false // counts using bytesize rather than length.  eg: 'ï¿½' is counted as 2 characters.
                 };
 
             if ($.isFunction(options) && !callback) {
@@ -1135,7 +1135,7 @@ For usage and examples: colpick.com/plugin
                 options = {};
             }
             options = $.extend(defaults, options);
-		  console.log(options.warningClass);
+
 		 var documentBody = $(options.bornIn);
           /**
           * Return the length of the specified input.
@@ -3277,7 +3277,7 @@ PR_NOCODE:"nocode",PR_PLAIN:"pln",PR_PUNCTUATION:"pun",PR_SOURCE:"src",PR_STRING
 
 /**
  * @name        jQuery FullScreen Plugin
- * @author      Martin Angelov, Morten Sjøgren
+ * @author      Martin Angelov, Morten Sjï¿½gren
  * @version     1.2
  * @url         http://tutorialzine.com/2012/02/enhance-your-website-fullscreen-api/
  * @license     MIT License

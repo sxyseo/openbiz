@@ -42,7 +42,6 @@ define(['../objects/View'],function(view){
 					this.$el = $(this.template(output));
 				else
 					$(this.el).html(this.template(output));
-				this._bindEvents();
 				for(var i in this._fields){
 					var field = this._fields[i];
 					if(openbiz.elements.forms.hasOwnProperty(field.type)){
@@ -50,15 +49,8 @@ define(['../objects/View'],function(view){
 						this._element[field.field] = element.init(field,this,this.model.get(field.field));
 					}
 				}
-
-				for(var i in this._actions){
-					var action = this._actions[i];
-					if(openbiz.elements.forms.hasOwnProperty(action.type)){
-						var element = new openbiz.elements.forms[action.type];
-						element.init(action,this,this.model);
-					}
-				}
-
+				this._renderElements();
+				this._bindEvents();
 				this.afterRender();
 			}
 			else
@@ -69,6 +61,15 @@ define(['../objects/View'],function(view){
 				openbiz.ui.update(this.$el);
 			else
 				openbiz.ui.update($(this.el));
+		},
+		_renderElements:function(){
+			for(var i in this._getActions()){
+				var action = this._actions[i];
+				if(openbiz.elements.forms.hasOwnProperty(action.type)){
+					var element = new openbiz.elements.forms[action.type];
+					element.init(action,this,this.model);
+				}
+			}
 		},
 		_getActions:function(){
 			if(! this._actions){
@@ -165,6 +166,10 @@ define(['../objects/View'],function(view){
 						var value = this._element[field.field].getValue();
 						this._parseAttr(record,field.field,value);
 						break;
+					case "currency":
+						this._parseAttr(record,field.field,$(selector).val());
+						break;
+					case "user":
 					case "currency":
 						this._parseAttr(record,field.field,$(selector).val());
 						break;
