@@ -38,7 +38,8 @@ define(["objects/Object",
 		'views/elements/forms/Button',
 		'views/elements/forms/Link',
 		'views/elements/forms/Label',
-		'views/elements/forms/Text'
+		'views/elements/forms/Text',
+		'views/elements/forms/Date',
 ],
 	function(Object,
 		Module,
@@ -73,7 +74,8 @@ define(["objects/Object",
 		FormButton,
 		FormLink,
 		FormLabel,
-		FormText
+		FormText,
+		FormDate
 		){		
 	return {
 		apps:{},
@@ -118,7 +120,8 @@ define(["objects/Object",
 				radio:RadioView,
 				label:FormLabel,
 				colorpicker:ColorPicker,
-				text:FormText
+				text:FormText,
+				date:FormDate
 			}
 		},
 		Element:Element,
