@@ -42,13 +42,7 @@ define(['../objects/View'],function(view){
 					this.$el = $(this.template(output));
 				else
 					$(this.el).html(this.template(output));
-				for(var i in this._fields){
-					var field = this._fields[i];
-					if(openbiz.elements.forms.hasOwnProperty(field.type)){
-						var element = new openbiz.elements.forms[field.type];
-						this._element[field.field] = element.init(field,this,this.model);
-					}
-				}
+				this._renderFields();
 				this._renderElements();
 				this._bindEvents();
 				this.afterRender();
@@ -62,8 +56,18 @@ define(['../objects/View'],function(view){
 			else
 				openbiz.ui.update($(this.el));
 		},
+		_renderFields:function(){
+			for(var i in this._fields){
+				var field = this._fields[i];
+				if(openbiz.elements.forms.hasOwnProperty(field.type)){
+					var element = new openbiz.elements.forms[field.type];
+					this._element[field.field] = element.init(field,this,this.model);
+				}
+			}
+		},
 		_renderElements:function(){
-			for(var i in this._getActions()){
+			this._getActions();
+			for(var i in this._actions){
 				var action = this._actions[i];
 				if(openbiz.elements.forms.hasOwnProperty(action.type)){
 					var element = new openbiz.elements.forms[action.type];
