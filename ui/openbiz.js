@@ -40,6 +40,7 @@ define(["objects/Object",
 		'views/elements/forms/Label',
 		'views/elements/forms/Text',
 		'views/elements/forms/Date',
+		'views/elements/forms/DataPicker',
 ],
 	function(Object,
 		Module,
@@ -75,7 +76,8 @@ define(["objects/Object",
 		FormLink,
 		FormLabel,
 		FormText,
-		FormDate
+		FormDate,
+		FormDataPicker
 		){		
 	return {
 		apps:{},
@@ -121,7 +123,8 @@ define(["objects/Object",
 				label:FormLabel,
 				colorpicker:ColorPicker,
 				text:FormText,
-				date:FormDate
+				date:FormDate,
+				picker:FormDataPicker
 			}
 		},
 		Element:Element,
