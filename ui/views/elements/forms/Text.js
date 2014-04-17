@@ -1,6 +1,6 @@
 "use strict";
 define(['../../../objects/Object',
-		'text!./Label.html'
+		'text!./Text.html'
 		],
 		function(object,templateData){
 	return object.extend({
@@ -15,15 +15,16 @@ define(['../../../objects/Object',
 				}
 			}
 			var template = _.template(templateData);
-			var localeKey = 'field'+metadata.name.charAt(0).toUpperCase()+metadata.name.slice(1);
+			var labelLocaleKey = 'field'+metadata.name.charAt(0).toUpperCase()+metadata.name.slice(1);
+			var placeholderLocaleKey = 'field'+metadata.name.charAt(0).toUpperCase()+metadata.name.slice(1);
 			
-			metadata.displayName = parent.locale[localeKey]?parent.locale[localeKey]:metadata.displayName			
+			metadata.displayName = parent.locale[labelLocaleKey]?parent.locale[labelLocaleKey]:metadata.displayName;		
 			metadata.className = metadata.className?metadata.className.replace(/\./g," "):'';
-			metadata.icon = metadata.icon?metadata.icon.replace(/\./g," "):"";
+			metadata.icon = metadata.icon?metadata.icon.replace(/\./g," "):"";			
+			metadata.placeholder = parent.locale[placeholderLocaleKey]?parent.locale[placeholderLocaleKey]:metadata.placeholder;		
+			metadata.elemName = "record-"+metadata.name.toLowerCase();
 			if(!metadata.field) metadata.displayValue = "";
-
 			if(metadata.field.indexOf("{{")!=-1){
-				//process _.template field
 				metadata.displayValue =  _.template(metadata.field,
 													{record:model},
 													{
@@ -33,10 +34,8 @@ define(['../../../objects/Object',
 													});
 			}else{
 				if(metadata.field.indexOf('.')==-1){
-					//process simple field
 					metadata.displayValue = model[metadata.field]?model[metadata.field]:model.get(metadata.field);
 				}else{
-					  //process JSON path field
 					  var attrArray = metadata.field.split('.');
 				      var data = model.get(attrArray[0]);
 				      var value = data;
@@ -49,6 +48,10 @@ define(['../../../objects/Object',
 			}			
 
 			parent.$el.find(selector).replaceWith($(template(metadata)).addClass("field-"+metadata.name.toLowerCase()));			
+			
+			if(metadata.readonly==true) parent.$el.find(selector).find("input[name='"+metadata.elemName+"']").attr('readonly','readonly');
+			if(metadata.required==true) parent.$el.find(selector).find("input[name='"+metadata.elemName+"']").attr('required','required');
+			if(metadata.disabled==true) parent.$el.find(selector).find("input[name='"+metadata.elemName+"']").attr('disabled','disabled');
 		}
 	})
 });
