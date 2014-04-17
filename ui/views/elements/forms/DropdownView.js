@@ -7,7 +7,7 @@ define(['./OptionElement'],function(element){
 			openbiz.OptionElement.prototype.init.call(this,metadata,parent);
 			var self = this;
 			this._parseModel(function(){
-				self._selector = "record-"+self.metadata.name.toLowerCase();				
+				self._selector = "field-"+self.metadata.name.toLowerCase();								
 				var data = "<label class='control-label' >"+ parent.locale[self.metadata.fieldName] +"</label>";
 				var select = "<select class='selectpicker form-control' parsley-required='true' parsley-error-container='div#select-com-error'>";
 				if(typeof metadata.placeholder!="undefined"){

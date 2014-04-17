@@ -7,7 +7,7 @@ define(['./OptionElement'],function(element){
 			openbiz.OptionElement.prototype.init.call(this,metadata,parent);
 			var self = this;
 			this._parseModel(function(){
-				self._selector = "record-"+self.metadata.name.toLowerCase();
+				self._selector = "field-"+self.metadata.name.toLowerCase();
 				var data = "<div class='form-group'><label class='control-label'>"+ parent.locale[self.metadata.fieldName] +"</label>";
 				var div = "<ul data-color='green' class='iCheck'>";
 				if(self._modelType == "internal"){
