@@ -34,6 +34,9 @@ define({
 	      , maxcheck:       "You must select %s choices or less."
 	      , rangecheck:     "You must select between %s and %s choices."
 	      , equalto:        "This value should be the same."
+	    },
+	    datagrid:{
+	    	indicator: 		"Display {{startPos}} to {{endPos}} items, Total {{total} records"
 	    }
 	},
 	'en-us': true,
