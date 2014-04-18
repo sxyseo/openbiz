@@ -39,6 +39,7 @@ define(["objects/Object",
 		'views/elements/forms/Link',
 		'views/elements/forms/Label',
 		'views/elements/forms/Text',
+		'views/elements/forms/Textarea',
 		'views/elements/forms/Date',
 		'views/elements/forms/DataPicker',
 ],
@@ -76,6 +77,7 @@ define(["objects/Object",
 		FormLink,
 		FormLabel,
 		FormText,
+		FormTextarea,
 		FormDate,
 		FormDataPicker
 		){		
@@ -123,6 +125,7 @@ define(["objects/Object",
 				label:FormLabel,
 				colorpicker:ColorPicker,
 				text:FormText,
+				textarea:FormTextarea,
 				date:FormDate,
 				picker:FormDataPicker
 			}
