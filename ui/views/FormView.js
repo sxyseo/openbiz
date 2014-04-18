@@ -38,10 +38,13 @@ define(['../objects/View'],function(view){
 					locale:this.locale,
 					record:this.model
 				}
-				if(this._isModal == true)
+				if(this.el =="" || this.el==null){
 					this.$el = $(this.template(output));
+				}
 				else
+				{
 					$(this.el).html(this.template(output));
+				}
 				this._renderFields();
 				this._renderElements();
 				this._bindEvents();
@@ -51,11 +54,8 @@ define(['../objects/View'],function(view){
 			{
 				this._renderNoPermissionView();
 			}
-			if(this._isModal == true)
-				openbiz.ui.update(this.$el);
-			else
-				openbiz.ui.update($(this.el));
-		},
+ 			openbiz.ui.update(this.$el);
+  		},
 		_renderFields:function(){
 			for(var i in this._fields){
 				var field = this._fields[i];
