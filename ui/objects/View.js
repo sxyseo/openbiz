@@ -7,8 +7,9 @@ define(function(){
 		subviews:[],
 		renderedSubviews:{},
 		parent:null,
-		_isModal:false,
 		_dataId:null,
+		$el:null,
+		el:null,
 		initialize:function(){			
 			this.renderedSubviews={};
 			if(typeof this.app == 'string'){						
@@ -195,7 +196,8 @@ define(function(){
 			var output={
 				locale:this.locale
 			}
-	        $(this.el).html(this.template(output));
+			this.$el = $(this.template(output));
+			$(this.el).html(this.$el);
         	openbiz.ui.update($(this.el));
 			this.renderSubviews();
  	        return this;

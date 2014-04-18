@@ -29,12 +29,8 @@ define(['./OptionElement'],function(element){
 								div += "<li class='pull-left' style='margin-right: 10px'><input type='radio' name='"+self.metadata.name+"' data-display-field='"+value+"'  data-value-field='"+value+"'/><label>"+display+"</label></li>";
 							}
 							div += "</ul></div>";
-							if(self.parent._isModal){
-								self.parent.$el.find("."+self._selector).append(data+div);
-							}
-							else{
-								$(self.parent.el).find("."+self._selector).append(data+div);
-							}
+							self.parent.$el.find("."+self._selector).append(data+div);
+							
 							self._setDefaultValue(defautValue);
 							self._update();
 						}
