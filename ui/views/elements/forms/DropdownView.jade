@@ -1,9 +1,10 @@
 .form-group(class!="<%= className%>")
 	label.control-label <%= displayName%>
-	select.selectpicker.form-control(parsley-error-container!="div.<%= elemName %>-error")
-		<% if(placeholder){ %>
+	select.selectpicker.form-control(parsley-error-container!="div.<%= elemName %>-error",style="display:none")
+		<% if(placeholder && multiple!=true ){ %>
 		option(value="") 
 			| <%= placeholder %> 
+		option(data-divider="true")
 		<% } %>
 		<% for(var i=0;i<selections.length;i++){ var selection = selections[i]; %>
 		option(value!="<%= selection.value%>") 

@@ -27,6 +27,7 @@ define(['./OptionElement',
 			metadata.icon = metadata.icon?metadata.icon.replace(/\./g," "):"";			
 			metadata.placeholder = parent.locale[placeholderLocaleKey]?parent.locale[placeholderLocaleKey]:metadata.placeholder;		
 			metadata.elemName = "record-"+metadata.name.toLowerCase();
+			metadata.multiple = metadata.multiple?metadata.multiple:false;
 			if(!metadata.displayValue) metadata.displayValue = metadata.field;
 			if(metadata.displayValue.indexOf("{{")!=-1){
 				metadata.displayValue =  _.template(metadata.displayValue,
@@ -54,6 +55,11 @@ define(['./OptionElement',
 			var renderElement = function(){				
 				parent.$el.find(selector).replaceWith($(template(metadata)).addClass("field-"+metadata.name.toLowerCase()));
 				if(metadata.readonly!=false) parent.$el.find(selector).find("select").attr('parsley-required','true');
+				if(metadata.multiple==true) {
+					parent.$el.find(selector).find("select").attr('multiple','multiple');
+					parent.$el.find(selector).find("select").attr('title',metadata.placeholder);					
+				}				
+				parent.$el.find(selector).find("select").val(metadata.displayValue)
 				parent.$el.find(selector).find("select").selectpicker();
 
 			}
