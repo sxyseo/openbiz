@@ -35,5 +35,11 @@ define({
     },
     datagrid:{
         indicator:    "显示第 {{startPos}} 到 {{endPos}} 条, 共计 {{total}} 条记录"
+    },
+    uploader:{
+        btnAddFiles:    "添加文件",
+        btnStartUpload:   "开始上传",
+        btnCancelUpload:  "取消上传",
+        btnDelete:    "删除",
     }
 });

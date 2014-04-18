@@ -37,6 +37,12 @@ define({
 	    },
 	    datagrid:{
 	    	indicator: 		"Display {{startPos}} to {{endPos}} items, Total {{total} records"
+	    },
+	    uploader:{
+	      btnAddFiles: 		"Add files...",
+	      btnStartUpload: 	"Start upload",
+	      btnCancelUpload: 	"Cancel upload",
+	      btnDelete: 	 	"Delete",
 	    }
 	},
 	'en-us': true,

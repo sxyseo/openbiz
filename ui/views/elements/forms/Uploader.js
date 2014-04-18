@@ -1,6 +1,6 @@
 "use strict";
-define(['../../../objects/Object',
-		'text!./Label.html'
+define(['./Text',
+		'text!./Uploader.html'
 		],
 		function(object,templateData){
 	return object.extend({
@@ -15,12 +15,14 @@ define(['../../../objects/Object',
 				}
 			}
 			var template = _.template(templateData);
-			var localeKey = 'field'+metadata.name.charAt(0).toUpperCase()+metadata.name.slice(1);
+			var labelLocaleKey = 'field'+metadata.name.charAt(0).toUpperCase()+metadata.name.slice(1);
+			var placeholderLocaleKey = 'field'+metadata.name.charAt(0).toUpperCase()+metadata.name.slice(1);
 			
-			metadata.displayName = parent.locale[localeKey]?parent.locale[localeKey]:metadata.displayName			
+			metadata.displayName = parent.locale[labelLocaleKey]?parent.locale[labelLocaleKey]:metadata.displayName;		
 			metadata.className = metadata.className?metadata.className.replace(/\./g," "):'';
-			metadata.icon = metadata.icon?metadata.icon.replace(/\./g," "):"";
-			
+			metadata.icon = metadata.icon?metadata.icon.replace(/\./g," "):"";			
+			metadata.placeholder = parent.locale[placeholderLocaleKey]?parent.locale[placeholderLocaleKey]:metadata.placeholder;		
+			metadata.elemName = "record-"+metadata.name.toLowerCase();
 			if(!metadata.displayValue) metadata.displayValue = metadata.field;
 			if(metadata.displayValue.indexOf("{{")!=-1){
 				metadata.displayValue =  _.template(metadata.displayValue,
@@ -45,12 +47,8 @@ define(['../../../objects/Object',
 				}
 			}	
 
-			//for support array
-			if( metadata.displayValue instanceof Array ){
-				metadata.displayValue = metadata.displayValue.toString();
-			}
-
 			parent.$el.find(selector).replaceWith($(template(metadata)).addClass("field-"+metadata.name.toLowerCase()));			
+			
 		}
 	})
 });

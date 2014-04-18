@@ -15,6 +15,7 @@ requirejs.config({
 		'jquery' 	: 'vendor/jquery/jquery-1.10.2.min',
 		'jquery.mmenu' : 'vendor/plugins/mmenu/jquery.mmenu',
 		'jquery.ui' : 'vendor/jquery-ui/jquery.ui.min',
+		'jquery.ui.widget' : 'vendor/jquery-ui/jquery.ui.widget',
 		'jqueryform' 	: 'vendor/jquery-form/jquery.form.min',
 		'modernizr' : 'vendor/modernizr/modernizr',
 		'chart' 	: 'vendor/plugins/chart/ori/chart',
@@ -100,7 +101,9 @@ requirejs.config({
           deps: [ "jquery","holder","throbber","jquery.mmenu","bootbox",
               "modernizr","form",'parsley',"chart","EasyPieChart","datetime","cookie"]
         },
-
+        'jquery.ui.widget':{
+        	deps: [ "jquery.ui"]
+        },
         'bootstrap-paginator':{
           deps: [ "bootstrap"]
         },        
@@ -108,7 +111,7 @@ requirejs.config({
 			deps: [ "jquery"]
 		},
 		'openbiz.custom':{
-          deps: [ "jquery.ui","bootstrap-paginator"]
+          deps: [ "jquery.ui","jquery.ui.widget","bootstrap-paginator"]
         }
 	}
 });
