@@ -54,7 +54,7 @@ define(['./OptionElement',
 
 			var renderElement = function(){				
 				parent.$el.find(selector).replaceWith($(template(metadata)).addClass("field-"+metadata.name.toLowerCase()));
-				if(metadata.readonly!=false) parent.$el.find(selector).find("select").attr('parsley-required','true');
+				if(metadata.required==true) parent.$el.find(selector).find("select").attr('parsley-required','true');
 				if(metadata.multiple==true) {
 					parent.$el.find(selector).find("select").attr('multiple','multiple');
 					parent.$el.find(selector).find("select").attr('title',metadata.placeholder);					
