@@ -54,6 +54,7 @@ define(['../../../objects/Object',
 			if(metadata.disabled==true) parent.$el.find(selector).find("input[name='"+metadata.elemName+"']").attr('disabled','disabled');
 
 			this.bindEvents(metadata,parent);
+			return this;
 		},
 		bindEvents:function(metadata,parent){	
 			var selector = "div.field-"+metadata.name.toLowerCase();	

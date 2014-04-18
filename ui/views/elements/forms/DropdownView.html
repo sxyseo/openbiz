@@ -1,9 +1,16 @@
 
 <div class="form-group <%= className%>">
   <label class="control-label"><%= displayName%></label>
-  <select parsley-required="true" parsley-error-container="<%= elemName %>-error" class="selectpicker form-control">{% if(placeholder){ %}
-    <option>{{placeholder}} {% } %}</option>{% for(var i=0;i<options.lenght;i++){ var option = options[i]; %}
-    <option value="{{option.value}}">{{option.display}} {%  } %}</option>
+  <select parsley-error-container="div.<%= elemName %>-error" class="selectpicker form-control"><% if(placeholder){ %>
+    <option value="">
+       
+      <%= placeholder %> 
+    </option><% } %>
+    <% for(var i=0;i<selections.length;i++){ var selection = selections[i]; %>
+    <option value="<%= selection.value%>">
+       
+      <%= selection.display %>
+    </option><%  } %>
   </select>
   <div class="<%= elemName %>-error"></div>
 </div>

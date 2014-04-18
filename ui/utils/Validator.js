@@ -81,7 +81,11 @@ define(function(){
 					    	$(elem).removeClass("parsley-error");			    	
 					    	$(elem).closest(".input-group").removeClass("parsley-success");
 					    	$(elem).closest(".input-group").addClass("parsley-error");			    									
-					    }							
+					    }	
+					    if($(elem).parent().find(".bootstrap-select").length){							    	
+					    	$(elem).parent().find(".bootstrap-select").find('button.selectpicker').removeClass("parsley-success");
+					    	$(elem).parent().find(".bootstrap-select").find('button.selectpicker').addClass("parsley-error");			    									
+					    }					
 					}
 					highlightError();
 					showErrorPopup();
@@ -104,8 +108,15 @@ define(function(){
 							$(elem).removeClass("parsley-success");
 				    		$(elem).closest(".input-group").removeClass("parsley-error");
 				    		$(elem).closest(".input-group").addClass("parsley-success");
-				    	}
-				    }else{
+				    	}						
+				    }
+				    else if($(elem).parent().find(".bootstrap-select").length){
+				    	
+					    	$(elem).parent().find(".bootstrap-select").find('button.selectpicker').removeClass("parsley-error");
+					    	$(elem).parent().find(".bootstrap-select").find('button.selectpicker').addClass("parsley-success");			    									
+					    
+				    }
+				    else{
 			    		$(elem).removeClass("parsley-error");
 			    		$(elem).addClass("parsley-success");
 				    }

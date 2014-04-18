@@ -4,9 +4,12 @@ define(['./OptionElement',
 	function(element,templateData){
 	return element.extend({
 		_selector:null,
-		n_init:function(metadata,parent,model){
+		_parent:null,
+		init:function(metadata,parent,model){
 			openbiz.OptionElement.prototype.init.call(this,metadata,parent);
 			var selector = "div.field-"+metadata.name.toLowerCase();
+			this._selector = selector;
+			this._parent = parent;
 			if (parent.$el.find(selector).length == 0) return; //ignore it, if it doesn't mount on UI
 			if (parent.$el.find(selector).children().length>0) return; //ignore it, if has custom template
 
@@ -48,19 +51,22 @@ define(['./OptionElement',
 				}
 			}	
 
-			var renderElement = function(){
+			var renderElement = function(){				
 				parent.$el.find(selector).replaceWith($(template(metadata)).addClass("field-"+metadata.name.toLowerCase()));
+				if(metadata.readonly!=false) parent.$el.find(selector).find("select").attr('parsley-required','true');
 				parent.$el.find(selector).find("select").selectpicker();
+
 			}
-			metadata.options = [];
+			metadata.selections = [];
 			var self = this;
 
 			this._parseModel(function(){
 				if(self._modelType != "model"){
 					//internal
 					for(var i = 0; i < self.collection.length; i++){
-						metadata.options.push({
-							value:self.collection[i]
+						metadata.selections.push({
+							value:self.collection[i],
+							display:self.collection[i]
 						});				
 					}
 					renderElement();
@@ -70,7 +76,7 @@ define(['./OptionElement',
 						success:function(){	
 							for(var i = 0; i < self.collection.models.length; i++){
 								var model = self.collection.models[i];
-								metadata.options.push({
+								metadata.selections.push({
 									value: self._parseField(model,self._dataSource.valueField),
 									display: self._parseField(model,self._dataSource.displayField)
 								});									
@@ -80,66 +86,11 @@ define(['./OptionElement',
 					})
 				}
 			})
-		},
-		init:function(metadata,parent,model){
-			var defautValue = model.get(metadata.field);
-			openbiz.OptionElement.prototype.init.call(this,metadata,parent);
-			var self = this;
-			this._parseModel(function(){
-				self._selector = "field-"+self.metadata.name.toLowerCase();								
-				var data = "<label class='control-label' >"+ parent.locale[self.metadata.fieldName] +"</label>";
-				var select = "<select class='selectpicker form-control' parsley-required='true' parsley-error-container='div#select-com-error'>";
-				if(typeof metadata.placeholder!="undefined"){
-					var title = parent.locale["placeholder"+metadata.name.charAt(0).toUpperCase()+metadata.name.slice(1)];
-					select += "<option value=''>"+title+"</option>";
-				}
 
-				if(self._modelType == "internal"){
-					for(var i = 0; i < self.collection.length; i++){
-						var display = self.collection[i];
-						if(display == defautValue){
-							select += "<option value='"+display+"' selected='selected' data-value-field='"+display+"' data-display-field='"+display+"'>"+display+"</option>";
-						}
-						else{
-							select += "<option value='"+display+"' data-value-field='"+display+"' data-display-field='"+display+"'>"+display+"</option>";
-						}
-					}
-					select += "</select><div id='select-com-error'></div>";
-					$(self.parent.el).find("."+self._selector).append(data+select);
-					$('.selectpicker').selectpicker();
-				}else if(self._modelType == "model"){
-					self.collection.fetch({
-						success:function(){							
-							for(var i = 0; i < self.collection.models.length; i++){
-								var model = self.collection.models[i];
-								var display =  self._parseField(model,self._dataSource.displayField);
-								var value = self._parseField(model,self._dataSource.valueField);
-								if(value == defautValue){
-									select += "<option value="+display+" selected='selected' data-value-field='"+value+"' data-display-field='"+display+"'>"+display+"</option>";
-								}
-								else{
-									select += "<option value="+display+" data-value-field='"+value+"' data-display-field='"+display+"'>"+display+"</option>";
-								}
-							}
-							select += "</select><div id='select-com-error'></div>";
-							if(self.parent._isModal){
-								self.parent.$el.find("."+self._selector).append(data+select);
-							}
-							else{
-								$(self.parent.el).find("."+self._selector).append(data+select);
-							}
-
-							$('.selectpicker').selectpicker();
-						}
-					});
-				}
-			});
 			return this;
-		},
-		getValue:function(){
-			var sel =  "."+this._selector + " option[value='"+$("."+this._selector).find(".selected").text()+"']";
-			var value = $(sel).attr('value');
-			return value;
+		},				
+		getValue:function(){			
+			return this._parent.$el.find(this._selector + ' select').val();
 		}
 	});
 });

@@ -150,33 +150,11 @@ define(['../objects/View'],function(view){
 			{
 				var field = fields[i];
 				var selector = "[name="+"'"+field.selector+"']";
-
-				switch(field.type){
-					case 'text':
-						this._parseAttr(record,field.field,$(selector).val());
-						break;
-					case 'textarea':
-						this._parseAttr(record,field.field,$(selector).val());
-						break;
-					case 'dropdown':
-					case 'colorpicker':
-						var value = this._element[field.field].getValue();
-						this._parseAttr(record,field.field,value);
-						break;
-					case 'date':
-						this._parseAttr(record,field.field,new Date($(selector).val().replace(/-/g,"/")));
-						break;
-					case 'radio':
-						var value = this._element[field.field].getValue();
-						this._parseAttr(record,field.field,value);
-						break;
-					case "currency":
-						this._parseAttr(record,field.field,$(selector).val());
-						break;
-					case "user":
-					case "currency":
-						this._parseAttr(record,field.field,$(selector).val());
-						break;
+				if(typeof this._element[field.field].getValue=='function'){
+					var value = this._element[field.field].getValue();
+					this._parseAttr(record,field.field,value);
+				}else{
+					this._parseAttr(record,field.field,$(selector).val());
 				}
 			}
 			var self = this;

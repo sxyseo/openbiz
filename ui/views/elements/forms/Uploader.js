@@ -49,6 +49,7 @@ define(['./Text',
 
 			parent.$el.find(selector).replaceWith($(template(metadata)).addClass("field-"+metadata.name.toLowerCase()));			
 			
+			return this;
 		}
 	})
 });

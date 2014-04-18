@@ -1,8 +1,12 @@
 .form-group(class!="<%= className%>")
 	label.control-label <%= displayName%>
-	select.selectpicker.form-control(parsley-required="true",parsley-error-container!="<%= elemName %>-error")
-		{% if(placeholder){ %}
-		option {{placeholder}} {% } %}
-		{% for(var i=0;i<options.lenght;i++){ var option = options[i]; %}
-		option(value!="{{option.value}}") {{option.display}} {%  } %}
+	select.selectpicker.form-control(parsley-error-container!="div.<%= elemName %>-error")
+		<% if(placeholder){ %>
+		option(value="") 
+			| <%= placeholder %> 
+		<% } %>
+		<% for(var i=0;i<selections.length;i++){ var selection = selections[i]; %>
+		option(value!="<%= selection.value%>") 
+			| <%= selection.display %>
+		<%  } %>
 	div(class!="<%= elemName %>-error")

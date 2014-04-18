@@ -6,6 +6,8 @@ define(['../../../objects/Object',
 	return object.extend({
 		init:function(metadata,parent,model){
 			var selector = "div.field-"+metadata.name.toLowerCase();
+			this._selector = selector;
+			this._parent = parent;
 			if (parent.$el.find(selector).length == 0) return; //ignore it, if it doesn't mount on UI
 			if (parent.$el.find(selector).children().length>0) return; //ignore it, if has custom template
 
@@ -53,6 +55,11 @@ define(['../../../objects/Object',
 			if(metadata.readonly==true) parent.$el.find(selector).find("input[name='"+metadata.elemName+"']").attr('readonly','readonly');
 			if(metadata.required==true) parent.$el.find(selector).find("input[name='"+metadata.elemName+"']").attr('required','required');
 			if(metadata.disabled==true) parent.$el.find(selector).find("input[name='"+metadata.elemName+"']").attr('disabled','disabled');
+
+			return this;
+		},
+		getValue:function(){						
+			return new Date(this._parent.$el.find(this._selector).find("input").val().replace(/-/g,"/"));
 		}
 	})
 });
