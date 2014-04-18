@@ -23,9 +23,9 @@ define(['../../../objects/Object',
 			metadata.icon = metadata.icon?metadata.icon.replace(/\./g," "):"";			
 			metadata.placeholder = parent.locale[placeholderLocaleKey]?parent.locale[placeholderLocaleKey]:metadata.placeholder;		
 			metadata.elemName = "record-"+metadata.name.toLowerCase();
-			if(!metadata.field) metadata.displayValue = "";
-			if(metadata.field.indexOf("{{")!=-1){
-				metadata.displayValue =  _.template(metadata.field,
+			if(!metadata.displayValue) metadata.displayValue = metadata.field;
+			if(metadata.displayValue.indexOf("{{")!=-1){
+				metadata.displayValue =  _.template(metadata.displayValue,
 													{record:model},
 													{
 														evaluate    : /\{%([\s\S]+?)%\}/g,
@@ -33,10 +33,10 @@ define(['../../../objects/Object',
 														escape      : /\{-([\s\S]+?)\}/g
 													});
 			}else{
-				if(metadata.field.indexOf('.')==-1){
-					metadata.displayValue = model[metadata.field]?model[metadata.field]:model.get(metadata.field);
+				if(metadata.displayValue.indexOf('.')==-1){
+					metadata.displayValue = model[metadata.displayValue]?model[metadata.displayValue]:model.get(metadata.displayValue);
 				}else{
-					  var attrArray = metadata.field.split('.');
+					  var attrArray = metadata.displayValue.split('.');
 				      var data = model.get(attrArray[0]);
 				      var value = data;
 					  for(var i =1; i<attrArray.length; i++){
@@ -45,7 +45,7 @@ define(['../../../objects/Object',
 				      }  
 				      metadata.displayValue = value;
 				}
-			}			
+			}	
 
 			parent.$el.find(selector).replaceWith($(template(metadata)).addClass("field-"+metadata.name.toLowerCase()));			
 			

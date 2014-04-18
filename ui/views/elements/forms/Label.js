@@ -20,11 +20,10 @@ define(['../../../objects/Object',
 			metadata.displayName = parent.locale[localeKey]?parent.locale[localeKey]:metadata.displayName			
 			metadata.className = metadata.className?metadata.className.replace(/\./g," "):'';
 			metadata.icon = metadata.icon?metadata.icon.replace(/\./g," "):"";
-			if(!metadata.field) metadata.displayValue = "";
-
-			if(metadata.field.indexOf("{{")!=-1){
-				//process _.template field
-				metadata.displayValue =  _.template(metadata.field,
+			
+			if(!metadata.displayValue) metadata.displayValue = metadata.field;
+			if(metadata.displayValue.indexOf("{{")!=-1){
+				metadata.displayValue =  _.template(metadata.displayValue,
 													{record:model},
 													{
 														evaluate    : /\{%([\s\S]+?)%\}/g,
@@ -32,12 +31,10 @@ define(['../../../objects/Object',
 														escape      : /\{-([\s\S]+?)\}/g
 													});
 			}else{
-				if(metadata.field.indexOf('.')==-1){
-					//process simple field
-					metadata.displayValue = model[metadata.field]?model[metadata.field]:model.get(metadata.field);
+				if(metadata.displayValue.indexOf('.')==-1){
+					metadata.displayValue = model[metadata.displayValue]?model[metadata.displayValue]:model.get(metadata.displayValue);
 				}else{
-					  //process JSON path field
-					  var attrArray = metadata.field.split('.');
+					  var attrArray = metadata.displayValue.split('.');
 				      var data = model.get(attrArray[0]);
 				      var value = data;
 					  for(var i =1; i<attrArray.length; i++){
@@ -46,7 +43,7 @@ define(['../../../objects/Object',
 				      }  
 				      metadata.displayValue = value;
 				}
-			}			
+			}		
 
 			parent.$el.find(selector).replaceWith($(template(metadata)).addClass("field-"+metadata.name.toLowerCase()));			
 		}
