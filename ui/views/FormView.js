@@ -38,13 +38,8 @@ define(['../objects/View'],function(view){
 					locale:this.locale,
 					record:this.model
 				}
-				if(this.el =="" || this.el==null){
-					this.$el = $(this.template(output));
-				}
-				else
-				{
-					$(this.el).html(this.template(output));
-				}
+				this.$el = $(this.template(output));
+				$(this.el).html(this.$el);
 				this._renderFields();
 				this._renderElements();
 				this._bindEvents();
