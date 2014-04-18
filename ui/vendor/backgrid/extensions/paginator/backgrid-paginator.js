@@ -446,7 +446,15 @@
 				if(lastNum > this.collection.state.totalRecords )lastNum = this.collection.state.totalRecords;
 			}
 			var textDiv = document.createElement("div");
-			$(textDiv).addClass('pull-left indicator col-sm-6 align-xs-right align-sm-left').html('显示第 '+firstNum+' 到 '+lastNum+' 项,共 '+this.collection.state.totalRecords+' 条记录');
+			$(textDiv).addClass('pull-left indicator col-sm-6 align-xs-right align-sm-left').html(_.template(openbiz.locale.datagrid.indicator,{
+				startPos: firstNum,
+				endPos: lastNum,
+				total: this.collection.state.totalRecords
+			}, {
+              evaluate    : /\{%([\s\S]+?)%\}/g,
+              interpolate : /\{\{([\s\S]+?)\}\}/g,
+              escape      : /\{-([\s\S]+?)\}/g
+            } ));
 						
 			if(this.$el.parent().find('.indicator').length==0){
 				this.$el.before(textDiv);

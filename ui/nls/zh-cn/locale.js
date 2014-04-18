@@ -32,5 +32,8 @@ define({
       , maxcheck:       "此项最多输入 %s 个字符"
       , rangecheck:     "请输入 %s 至 %s 个字符。"
       , equalto:        "此项数值应当相等。"
+    },
+    datagrid:{
+        indicator:    "显示第 {{startPos}} 到 {{endPos}} 条, 共计 {{total}} 条记录"
     }
 });
