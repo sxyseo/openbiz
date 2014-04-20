@@ -1,0 +1,23 @@
+{% for (var i=0, file; file=o.files[i]; i++) { %}
+tr.template-upload.fade
+	td
+		span.preview
+	td
+		p.name {%=file.name%}
+		strong.error.text-danger
+	td
+		p.size <%= openbiz.locale.uploader.labelProcessing %>
+		.progress.progress-striped.active(role='progressbar', aria-valuemin='0', aria-valuemax='100', aria-valuenow='0')
+			.progress-bar.progress-bar-success(style='width:0%;')
+	td
+		{% if (!i && !o.options.autoUpload) { %}
+		button.btn.btn-primary.start(disabled='')
+			i.glyphicon.glyphicon-upload
+			span <%= openbiz.locale.uploader.btnStart %>
+		{% } %}
+		{% if (!i) { %}
+		button.btn.btn-warning.cancel
+			i.glyphicon.glyphicon-ban-circle
+			span <%= openbiz.locale.uploader.btnCancel %>
+		{% } %}
+{% } %}

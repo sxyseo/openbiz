@@ -43,6 +43,9 @@ define({
 	      btnStartUpload: 	"Start upload",
 	      btnCancelUpload: 	"Cancel upload",
 	      btnDelete: 	 	"Delete",
+	      btnStart: 	 	"Start",
+	      btnCancel: 	 	"Cancel",
+	      labelProcessing:    "Processing..."
 	    }
 	},
 	'en-us': true,

@@ -53,11 +53,11 @@ requirejs.config({
 		'jquery.fileupload-audio'	 : 'vendor/fileupload/js/jquery.fileupload-audio',
 		'jquery.fileupload-image'	 : 'vendor/fileupload/js/jquery.fileupload-image',
 		'jquery.fileupload-jquery-ui': 'vendor/fileupload/js/jquery.fileupload-jquery-ui',
-		'load-image' : 'vendor/fileupload/js/load-image.min',
+		'load-image' : 'vendor/fileupload/js/load-image',
 		'load-image-ios' : 'vendor/fileupload/js/load-image-ios',
 		'load-image-meta' : 'vendor/fileupload/js/load-image-meta',
 		'load-image-exif' : 'vendor/fileupload/js/load-image-exif',
-		'tmpl' : 'vendor/fileupload/js/tmpl.min',
+		'tmpl' : 'vendor/fileupload/js/tmpl',
 		'canvas-to-blob' : 'vendor/fileupload/js/canvas-to-blob.min',
 	},
 	shim:{

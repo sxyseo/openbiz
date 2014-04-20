@@ -639,7 +639,7 @@
             var options = this.options;
             options.templatesContainer = this.document[0].createElement(
                 options.filesContainer.prop('nodeName')
-            );
+            );            
             if (tmpl) {
                 if (options.uploadTemplateId) {
                     options.uploadTemplate = tmpl(options.uploadTemplateId);

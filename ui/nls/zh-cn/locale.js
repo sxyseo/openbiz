@@ -41,5 +41,8 @@ define({
         btnStartUpload:   "开始上传",
         btnCancelUpload:  "取消上传",
         btnDelete:    "删除",
+        btnStart:     "上传",
+        btnCancel:    "取消",
+        labelProcessing:    "处理中..."
     }
 });

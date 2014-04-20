@@ -1,10 +1,18 @@
 "use strict";
 define(['./Text',
-		'text!./Uploader.html'
+		'text!./Uploader.html',
+		'text!./Uploader-upload.html',
+		'text!./Uploader-download.html'
 		],
-		function(object,templateData){
+		function(object,templateData,templateUploadData, templateDownloadData){
 	return object.extend({
+		_metadata:null,
+		_parent:null,
+		_model:null,
 		init:function(metadata,parent,model){
+			this._metadata 	= metadata;
+			this._parent 	= parent;
+			this._model 	= model;
 			var selector = "div.field-"+metadata.name.toLowerCase();
 			if (parent.$el.find(selector).length == 0) return; //ignore it, if it doesn't mount on UI
 			if (parent.$el.find(selector).children().length>0) return; //ignore it, if has custom template
@@ -48,8 +56,33 @@ define(['./Text',
 			}	
 
 			parent.$el.find(selector).replaceWith($(template(metadata)).addClass("field-"+metadata.name.toLowerCase()));			
-			
+			this.initUploader();
 			return this;
+		},
+		initUploader:function(){
+			var selector = "div.field-"+this._metadata.name.toLowerCase();
+			var uploadTemplateId =  this._metadata.elemName + "-upload-template";
+			var downloadTemplateId =  this._metadata.elemName + "-download-template";
+			var dom = $('<script/>').attr("id",uploadTemplateId).attr('type','text/x-tmpl');
+			dom.get(0).innerHTML = _.template(templateUploadData)();
+			this._parent.$el.find(selector).append(dom);			
+
+			var dom = $('<script/>').attr("id",downloadTemplateId).attr('type','text/x-tmpl');
+			dom.get(0).innerHTML = _.template(templateDownloadData)();
+			this._parent.$el.find(selector).append(dom);			
+
+			this._parent.$el.find(selector).fileupload({
+		        // Uncomment the following to send cross-domain cookies:
+		        //xhrFields: {withCredentials: true},
+		        url: 'http://localhost:8080/api/uploader',
+		        uploadTemplateId: uploadTemplateId,
+			    downloadTemplateId: downloadTemplateId,
+			    disableImageResize: /Android(?!.*Chrome)|Opera/
+			        .test(window.navigator.userAgent),
+			    maxFileSize: 5000000,
+			    acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i	
+		    });
+			
 		}
 	})
 });

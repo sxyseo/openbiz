@@ -12,9 +12,9 @@
 
 @import url(../fileupload/css/jquery.fileupload.css);
 @import url(../fileupload/css/jquery.fileupload-ui.css);
-@import url(../fileupload/css/jquery.fileupload-ui-noscript.css);
+/*@import url(../fileupload/css/jquery.fileupload-ui-noscript.css);
 @import url(../fileupload/css/jquery.fileupload-noscript.css);
-
+*/
 @import url(animation.css);
 @import url(openbiz.fonts.css);
 @import url(jquery-ui.css);
