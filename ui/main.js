@@ -16,7 +16,7 @@ requirejs.config({
 		'jquery.mmenu' : 'vendor/plugins/mmenu/jquery.mmenu',
 		'jquery.ui' : 'vendor/jquery-ui/jquery.ui.min',
 		'jquery.ui.widget' : 'vendor/jquery-ui/jquery.ui.widget',
-		'jqueryform' 	: 'vendor/jquery-form/jquery.form.min',
+		'jqueryform' 	: 'vendor/jquery-form/jquery.form.min',		
 		'modernizr' : 'vendor/modernizr/modernizr',
 		'chart' 	: 'vendor/plugins/chart/ori/chart',
 		'EasyPieChart' 	: 'vendor/plugins/chart/ori/easypiechart.min',
@@ -43,8 +43,22 @@ requirejs.config({
 		'bootstrap-paginator'	: 'vendor/paginator/bootstrap-paginator.min',
 		'moment' 	: 'vendor/moment/moment-with-langs.min',
 		'jsoneditor': 'vendor/jsoneditor/jsoneditor-min',
-		'ace' 		: 'vendor/ace/ace',
-		'jsonlint'  : 'vendor/jsonlint/jsonlint'
+		'jsonlint'  : 'vendor/jsonlint/jsonlint',
+		'ace' 		: 'vendor/ace/ace',		
+		'jquery.fileupload' 		 : 'vendor/fileupload/js/jquery.fileupload',
+		'jquery.fileupload-video' 	 : 'vendor/fileupload/js/jquery.fileupload-video',
+		'jquery.fileupload-validate' : 'vendor/fileupload/js/jquery.fileupload-validate',
+		'jquery.fileupload-ui' 		 : 'vendor/fileupload/js/jquery.fileupload-ui',
+		'jquery.fileupload-process'  : 'vendor/fileupload/js/jquery.fileupload-process',
+		'jquery.fileupload-audio'	 : 'vendor/fileupload/js/jquery.fileupload-audio',
+		'jquery.fileupload-image'	 : 'vendor/fileupload/js/jquery.fileupload-image',
+		'jquery.fileupload-jquery-ui': 'vendor/fileupload/js/jquery.fileupload-jquery-ui',
+		'load-image' : 'vendor/fileupload/js/load-image.min',
+		'load-image-ios' : 'vendor/fileupload/js/load-image-ios',
+		'load-image-meta' : 'vendor/fileupload/js/load-image-meta',
+		'load-image-exif' : 'vendor/fileupload/js/load-image-exif',
+		'tmpl' : 'vendor/fileupload/js/tmpl.min',
+		'canvas-to-blob' : 'vendor/fileupload/js/canvas-to-blob.min',
 	},
 	shim:{
 		'backbone':{
@@ -55,8 +69,37 @@ requirejs.config({
         "backbone-paginator":{
           deps: [ 'backbone']
         }, 
-           
-           
+
+        //support for jQuery fileupload - start
+        'load-image-ios':{
+        	deps:['load-image']
+        },
+        'load-image-meta':{
+        	deps:['load-image']
+        },
+        'load-image-exif':{
+        	deps:['load-image']
+        },
+        "jquery.fileupload":{		  
+		   deps: [ 	
+				"jquery.ui",
+				"jquery.ui.widget"
+			]
+        },        
+        "jquery.fileupload-process":{          
+		  exports: ['jQuery'],
+		  deps: ['jquery.fileupload']	  
+        },
+         "jquery.fileupload-validate":{        
+		  exports: ['jQuery'],
+		  deps:['jquery.fileupload-process']
+        }, 
+         "jquery.fileupload-audio":{
+          deps:['jquery.fileupload-validate'],
+          exports: ['jQuery','loadImage']
+        },
+		//support for jQuery fileupload - end
+
         "backgrid":{
           exports: "Backgrid",
            deps: [ 'underscore','jquery','backbone' ]     
@@ -66,8 +109,7 @@ requirejs.config({
         }, 
         "backgrid-filter":{
           deps: [ 'backgrid'],          
-        },
-
+        },		
 
         'underscore':{
           exports: '_'
@@ -111,7 +153,7 @@ requirejs.config({
 			deps: [ "jquery"]
 		},
 		'openbiz.custom':{
-          deps: [ "jquery.ui","jquery.ui.widget","bootstrap-paginator"]
+          deps: [ "jquery.ui","jquery.ui.widget","jquery.fileupload-ui","bootstrap-paginator"]
         }
 	}
 });

@@ -11,9 +11,8 @@
 
 /* jshint nomen:false */
 /* global define, window */
-
 (function (factory) {
-    'use strict';
+    'use strict';    
     if (typeof define === 'function' && define.amd) {
         // Register as an anonymous AMD module:
         define([
