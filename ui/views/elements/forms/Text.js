@@ -52,7 +52,7 @@ define(['../../../objects/Object',
 			if(metadata.readonly==true) parent.$el.find(selector).find("input[name='"+metadata.elemName+"']").attr('readonly','readonly');
 			if(metadata.required==true) parent.$el.find(selector).find("input[name='"+metadata.elemName+"']").attr('required','required');
 			if(metadata.disabled==true) parent.$el.find(selector).find("input[name='"+metadata.elemName+"']").attr('disabled','disabled');
-
+			if(typeof metadata.parsleyType != "undefined" && metadata.parsleyType) parent.$el.find(selector).find("input[name='"+metadata.elemName+"']").attr('parsley-type',metadata.parsleyType);
 			return this;
 		}
 	})
