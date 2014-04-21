@@ -43,6 +43,8 @@ define(["objects/Object",
 		'views/elements/forms/Date',
 		'views/elements/forms/DataPicker',
 		'views/elements/forms/Uploader',
+		'views/elements/forms/User',
+		'views/elements/forms/Currency'
 ],
 	function(Object,
 		Module,
@@ -81,7 +83,9 @@ define(["objects/Object",
 		FormTextarea,
 		FormDate,
 		FormDataPicker,
-		Uploader
+		Uploader,
+		User,
+		Currency
 		){		
 	return {
 		apps:{},
@@ -130,7 +134,9 @@ define(["objects/Object",
 				textarea:FormTextarea,
 				date:FormDate,
 				picker:FormDataPicker,
-				uploader:Uploader
+				uploader:Uploader,
+				user:User,
+				currency:Currency
 			}
 		},
 		Element:Element,

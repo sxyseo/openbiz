@@ -16,7 +16,7 @@ define(['./Text',
 			}
 			var template = _.template(templateData);
 			var labelLocaleKey = 'field'+metadata.name.charAt(0).toUpperCase()+metadata.name.slice(1);
-			var placeholderLocaleKey = 'field'+metadata.name.charAt(0).toUpperCase()+metadata.name.slice(1);
+			var placeholderLocaleKey = 'placeholder'+metadata.name.charAt(0).toUpperCase()+metadata.name.slice(1);
 			
 			metadata.displayName = parent.locale[labelLocaleKey]?parent.locale[labelLocaleKey]:metadata.displayName;		
 			metadata.className = metadata.className?metadata.className.replace(/\./g," "):'';
@@ -52,6 +52,7 @@ define(['./Text',
 			if(metadata.readonly==true) parent.$el.find(selector).find("input[name='"+metadata.elemName+"']").attr('readonly','readonly');
 			if(metadata.required==true) parent.$el.find(selector).find("input[name='"+metadata.elemName+"']").attr('required','required');
 			if(metadata.disabled==true) parent.$el.find(selector).find("input[name='"+metadata.elemName+"']").attr('disabled','disabled');
+			if(typeof metadata.parsleyType != "undefined" && metadata.parsleyType) parent.$el.find(selector).find("input[name='"+metadata.elemName+"']").attr('parsley-type',metadata.parsleyType);
 
 			return this;
 		}

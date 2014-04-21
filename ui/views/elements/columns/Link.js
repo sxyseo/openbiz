@@ -7,8 +7,14 @@ define(['./Element'],function(element){
 				render: function () {
 					this.$el.empty();
 					var self = this;
-					var parsedURL = column.url.replace(/.*\/?\:([^\/]*).*?/gi,function(s,value){						
-						return s.replace(":"+value, (typeof self.model[value]!='undefined')?self.model[value]:self.model.get(value) );																		
+					var parsedURL = column.url.replace(/.*\/?\:([^\/]*).*?/gi,function(s,value){
+						var attrArray = value.split('.');
+						var data = (typeof self.model[attrArray[0]]!='undefined')?self.model[attrArray[0]]:self.model.get(attrArray[0]);
+						for(var i =1; i<attrArray.length; i++){
+							var indexName = attrArray[i];
+							data = data[indexName];
+						}
+						return s.replace(":"+value, data );
 					});
 					var attr = this.column.get("name");
 					var attrArray = attr.split('.');

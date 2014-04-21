@@ -1,0 +1,6 @@
+.form-group(class!="<%= className%>")
+	label.control-label <%= displayName%>
+	.input-group
+		span.input-group-addon <%= currencySymbol %>
+		input.form-control(name!="<%= elemName %>",type="text",value!="<%= displayValue %>",placeholder!="<%= placeholder %>" )
+		span.input-group-addon .00
