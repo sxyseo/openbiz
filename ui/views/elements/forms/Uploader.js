@@ -74,13 +74,13 @@ define(['./Text',
 			this._parent.$el.find(selector).fileupload({
 		        // Uncomment the following to send cross-domain cookies:
 		        //xhrFields: {withCredentials: true},
-		        url: 'http://localhost:8080/api/uploader',
+		        url: this._metadata.server?this._metadata.server:"",
 		        uploadTemplateId: uploadTemplateId,
 			    downloadTemplateId: downloadTemplateId,
 			    disableImageResize: /Android(?!.*Chrome)|Opera/
 			        .test(window.navigator.userAgent),
-			    maxFileSize: 5000000,
-			    acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i	
+			    maxFileSize: this._metadata.maxFileSize?this._metadata.maxFileSize:5000000,
+			    acceptFileTypes: this._metadata.acceptFileTypes?new RegExp("/(\.|\/)("+this._metadata.acceptFileTypes.join("|")+")$/i"):/(\.|\/)(gif|jpe?g|png)$/i
 		    });
 			
 		}
