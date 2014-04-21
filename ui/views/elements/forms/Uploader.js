@@ -70,19 +70,41 @@ define(['./Text',
 			var dom = $('<script/>').attr("id",downloadTemplateId).attr('type','text/x-tmpl');
 			dom.get(0).innerHTML = _.template(templateDownloadData)();
 			this._parent.$el.find(selector).append(dom);			
-
 			this._parent.$el.find(selector).fileupload({
 		        // Uncomment the following to send cross-domain cookies:
 		        //xhrFields: {withCredentials: true},
 		        url: this._metadata.server?this._metadata.server:"",
 		        uploadTemplateId: uploadTemplateId,
 			    downloadTemplateId: downloadTemplateId,
+			    autoUpload:this._metadata.autoUpload?this._metadata.autoUpload:false,
 			    disableImageResize: /Android(?!.*Chrome)|Opera/
 			        .test(window.navigator.userAgent),
 			    maxFileSize: this._metadata.maxFileSize?this._metadata.maxFileSize:5000000,
-			    acceptFileTypes: this._metadata.acceptFileTypes?new RegExp("/(\.|\/)("+this._metadata.acceptFileTypes.join("|")+")$/i"):/(\.|\/)(gif|jpe?g|png)$/i
+			    acceptFileTypes: this._metadata.acceptFileTypes?new RegExp("(\.|\/)("+this._metadata.acceptFileTypes.join("|")+")$",'i'):/(\.|\/)(gif|jpe?g|png)$/i
 		    });
-			
+			this.loadExistingData();
+		},
+		loadExistingData:function(){
+			var selector = "div.field-"+this._metadata.name.toLowerCase();
+			this._parent.$el.find(selector).addClass('fileupload-processing');
+	        $.ajax({
+	            url: this._parent.$el.find(selector).fileupload('option', 'url'),
+	            dataType: 'json',
+	            context: this._parent.$el.find(selector)[0]
+	        }).always(function () {
+	            $(this).removeClass('fileupload-processing');
+	        }).done(function (result) {
+	            $(this).fileupload('option', 'done')
+	                .call(this, $.Event('done'), {result: result});
+	        });
+		},
+		getValue:function(){
+			var selector = "div.field-"+this._metadata.name.toLowerCase();
+			var files=[];
+			this._parent.$el.find(selector).find('tbody.files tr').each(function(i, e) {				
+			    files.push($(e).find('td p.name a').attr("href"));			    
+			});
+			return files;
 		}
 	})
 });
