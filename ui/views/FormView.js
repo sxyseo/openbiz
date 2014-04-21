@@ -82,7 +82,9 @@ define(['../objects/View'],function(view){
 
 		},
 		deleteRecord:function(event){
+
 			event.preventDefault();
+			var currentActionName = $(event.currentTarget).attr('data-action-name');
 			var self = this;
 			bootbox.confirm({
 				title: this.locale.deleteConfirmationTitle ? this.locale.deleteConfirmationTitle: this.app.locale.common.deleteConfirmationTitle,
@@ -92,6 +94,17 @@ define(['../objects/View'],function(view){
 						self.beforeDeleteRecord();
 						self.model.destroy({success:function(){
 							self.deleteRecordSuccess();
+							for (var i in self.metadata.actions){
+								var actionElem = self.metadata.actions[i];
+								if(actionElem.name==currentActionName){
+									if(typeof actionElem.gotoURL!='undefined'){
+										var url = "!/backend/"+self.app.name +actionElem.gotoURL.replace(":id",self.model.id);
+										self.undelegateEvents();
+										Backbone.history.navigate(url, {trigger: true, replace: true});
+									}
+									break;
+								}
+							}
 						},error:function(model, response){
 							if(response.status == 403){
 								bootbox.alert({
@@ -126,7 +139,8 @@ define(['../objects/View'],function(view){
 						var actionElem = self.metadata.actions[i];
 						if(actionElem.name==currentActionName){
 							if(typeof actionElem.gotoURL!='undefined'){
-								var url = "!/backend/"+self.app.name +actionElem.gotoURL.replace(":id",self.model.id);;
+								var url = "!/backend/"+self.app.name +actionElem.gotoURL.replace(":id",self.model.id);
+								self.undelegateEvents();
 								Backbone.history.navigate(url, {trigger: true, replace: true});
 							}
 							break;

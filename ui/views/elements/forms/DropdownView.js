@@ -21,7 +21,6 @@ define(['./OptionElement',
 			var template = _.template(templateData);
 			var labelLocaleKey = 'field'+metadata.name.charAt(0).toUpperCase()+metadata.name.slice(1);
 			var placeholderLocaleKey = 'placeholder'+metadata.name.charAt(0).toUpperCase()+metadata.name.slice(1);
-			
 			metadata.displayName = parent.locale[labelLocaleKey]?parent.locale[labelLocaleKey]:metadata.displayName;		
 			metadata.className = metadata.className?metadata.className.replace(/\./g," "):'';
 			metadata.icon = metadata.icon?metadata.icon.replace(/\./g," "):"";			
