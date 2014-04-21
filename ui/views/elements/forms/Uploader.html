@@ -7,7 +7,7 @@
       <button type="submit" class="btn btn-primary start"><i class="glyphicon glyphicon-upload"></i><span><%= openbiz.locale.uploader.btnStartUpload %></span></button>
       <button type="reset" class="btn btn-warning cancel"><i class="glyphicon glyphicon-ban-circle"></i><span><%= openbiz.locale.uploader.btnCancelUpload %></span></button>
       <button type="button" class="btn btn-danger delete"><i class="glyphicon glyphicon-trash"></i><span><%= openbiz.locale.uploader.btnDelete %></span></button>
-      <input type="checkbox" class="toggle"/><span class="fileupload-process">
+      <input type="checkbox" parsley-group="<%=elemName%>" class="toggle"/><span class="fileupload-process">
         <div class="col-lg-5 fileupload-progress fade">
           <div role="progressbar" aria-valuemin="0" aria-valuemax="100" class="progress progress-striped active">
             <div style="width:0%;" class="progress-bar progress-bar-success"></div>

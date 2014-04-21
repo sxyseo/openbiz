@@ -15,7 +15,7 @@ div(class!="<%= className%>")
 			button.btn.btn-danger.delete(type='button')
 				i.glyphicon.glyphicon-trash
 				span <%= openbiz.locale.uploader.btnDelete %>
-			input.toggle(type='checkbox')
+			input.toggle(type='checkbox',parsley-group!="<%=elemName%>")
 			span.fileupload-process
 				.col-lg-5.fileupload-progress.fade
 					.progress.progress-striped.active(role='progressbar', aria-valuemin='0', aria-valuemax='100')
