@@ -94,7 +94,10 @@ define(['./OptionElement',
 			})
 
 			return this;
-		},				
+		},
+		reload:function(metadata,parent,model){
+			return this.init(metadata,parent,model);
+		},
 		getValue:function(){			
 			return this._parent.$el.find(this._selector + ' select').val();
 		}
