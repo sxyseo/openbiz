@@ -86,23 +86,19 @@ define(['./Text',
 		},
 		loadExistingData:function(){
 			var selector = "div.field-"+this._metadata.name.toLowerCase();
-			this._parent.$el.find(selector).addClass('fileupload-processing');
-	        $.ajax({
-	            url: this._parent.$el.find(selector).fileupload('option', 'url'),
-	            dataType: 'json',
-	            context: this._parent.$el.find(selector)[0]
-	        }).always(function () {
-	            $(this).removeClass('fileupload-processing');
-	        }).done(function (result) {
-	            $(this).fileupload('option', 'done')
-	                .call(this, $.Event('done'), {result: result});
-	        });
+	       	var files = this._model.get(this._metadata.field);
+	       	var filesOutput = [];
+	       	for(var i in files){
+	       		filesOutput.push(files[i].metadata.fileInfo);
+	       	}
+	       	var uploader = this._parent.$el.find(selector).get(0);
+	        $(uploader).fileupload('option','done').call(uploader, $.Event('done'), {result: {files:filesOutput}});
 		},
 		getValue:function(){
 			var selector = "div.field-"+this._metadata.name.toLowerCase();
 			var files=[];
 			this._parent.$el.find(selector).find('tbody.files tr').each(function(i, e) {				
-			    files.push($(e).find('td p.name a').attr("href"));			    
+			    files.push($(e).find('td p.name a').attr("data-file-id"));			    
 			});
 			return files;
 		}
