@@ -38,8 +38,8 @@ define(['../objects/View'],function(view){
 					record:this.model
 				}
 
-				this.$el = $(this.template(output));
-				$(this.el).html(this.$el);
+				this.$el.html($(this.template(output)))
+				$(this.el).html(this.$el.html());
 				this._renderFields();
 				this._renderElements();
 				this._bindEvents();

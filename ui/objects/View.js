@@ -137,7 +137,7 @@ define(function(){
 				self.app.views.get(viewName).undelegateEvents();
 			}
             self.app.views.render(viewName,args,function(view){
-            	var $modal = $(view.$el);
+            	var $modal = $(view.$el.html());
             	view.delegateEvents();
 	            view.parent = parentView;
 	            view.onPickedRecord = onPickedRecordCallBack;
@@ -177,7 +177,7 @@ define(function(){
 				self.app.views.get(viewName).undelegateEvents();
 			}
             self.app.views.render(viewName,args,function(view){
-            	var $modal = $(view.$el);
+            	var $modal = $(view.$el.html());
             	view.delegateEvents();
 	            view.parent = parentView;
                 $modal.modal();

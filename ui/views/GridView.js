@@ -48,8 +48,8 @@ define(['../objects/View'],function(view){
 				var output={
 					locale:this.locale
 				}
-				this.$el = $(this.template(output));
-				$(this.el).html(this.$el);
+				this.$el.html($(this.template(output)))
+				$(this.el).html(this.$el.html());
 				this._renderDataGridConfig()._bindEvents();
 				for(var i in this._actions){
 					var action = this._actions[i];
