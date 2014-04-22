@@ -59,6 +59,10 @@ requirejs.config({
 		'load-image-exif' : 'vendor/fileupload/js/load-image-exif',
 		'tmpl' : 'vendor/fileupload/js/tmpl',
 		'canvas-to-blob' : 'vendor/fileupload/js/canvas-to-blob.min',
+
+		'jquery.blueimp-gallery' : 'vendor/gallery/jquery.blueimp-gallery',
+		'blueimp-gallery' 		: 'vendor/gallery/blueimp-gallery',
+		'blueimp-helper' 		: 'vendor/gallery/blueimp-helper'
 	},
 	shim:{
 		'backbone':{
@@ -99,6 +103,10 @@ requirejs.config({
           exports: ['jQuery','loadImage']
         },
 		//support for jQuery fileupload - end
+
+		"jquery.blueimp-gallery":{
+			deps:['jquery'],
+		},
 
         "backgrid":{
           exports: "Backgrid",
@@ -153,7 +161,7 @@ requirejs.config({
 			deps: [ "jquery"]
 		},
 		'openbiz.custom':{
-          deps: [ "jquery.ui","jquery.ui.widget","jquery.fileupload-ui","bootstrap-paginator"]
+          deps: [ "jquery.ui","jquery.ui.widget","jquery.fileupload-ui","bootstrap-paginator","jquery.blueimp-gallery"]
         }
 	}
 });

@@ -44,7 +44,8 @@ define(["objects/Object",
 		'views/elements/forms/DataPicker',
 		'views/elements/forms/Uploader',
 		'views/elements/forms/User',
-		'views/elements/forms/Currency'
+		'views/elements/forms/Currency',
+		'views/elements/forms/Gallery'
 ],
 	function(Object,
 		Module,
@@ -85,7 +86,8 @@ define(["objects/Object",
 		FormDataPicker,
 		Uploader,
 		User,
-		Currency
+		Currency,
+		Gallery
 		){		
 	return {
 		apps:{},
@@ -136,7 +138,8 @@ define(["objects/Object",
 				picker:FormDataPicker,
 				uploader:Uploader,
 				user:User,
-				currency:Currency
+				currency:Currency,
+				gallery:Gallery
 			}
 		},
 		Element:Element,
