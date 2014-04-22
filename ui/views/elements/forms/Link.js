@@ -24,7 +24,7 @@ define(['../../../objects/Object',
 						return s.replace(":"+value, (typeof model[value]!='undefined')?model[value]:model.get(value) );																		
 					});			
 			metadata.className = metadata.className?metadata.className.replace(/\./g," "):'btn-default';
-			metadata.icon = metadata.icon.replace(/\./g," ");
+			metadata.icon = metadata.icon?metadata.icon.replace(/\./g," "):"";
 			
 			parent.$el.find(selector).replaceWith($(template(metadata)).addClass("act-"+metadata.name.toLowerCase()));			
 
