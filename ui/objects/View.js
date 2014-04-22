@@ -144,6 +144,7 @@ define(function(){
 	            view.onPickedRecord = onPickedRecordCallBack;
                 $modal.modal();
                 $modal.on('shown.bs.modal',function(){
+                	view.$el = $modal;
                 	view.delegateEvents();
             	});  
                 $modal.on('hidden.bs.modal',function(){
@@ -184,7 +185,8 @@ define(function(){
             	var $modal = $(view.$el.children()[0]);          	
 	            view.parent = parentView;
                 $modal.modal();
-                $modal.on('shown.bs.modal',function(){                	
+                $modal.on('shown.bs.modal',function(){      
+                	view.$el = $modal;          	
                 	view.delegateEvents();
             	});                
                 $modal.on('hidden.bs.modal',function(){
