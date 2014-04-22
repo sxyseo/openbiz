@@ -34,7 +34,8 @@ define({
       , equalto:        "此项数值应当相等。"
     },
     datagrid:{
-        indicator:    "显示第 {{startPos}} 到 {{endPos}} 条, 共计 {{total}} 条记录"
+        indicator:    "显示第 {{startPos}} 到 {{endPos}} 条, 共计 {{total}} 条记录",
+        search:       "查询"
     },
     uploader:{
         btnAddFiles:    "添加文件",

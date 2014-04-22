@@ -137,12 +137,13 @@ define(function(){
 				self.app.views.get(viewName).undelegateEvents();
 			}
             self.app.views.render(viewName,args,function(view){
-            	var $modal = $(view.$el.html());
+            	
+            	var $modal = $(view.$el.children()[0]);
+
 	            view.parent = parentView;
 	            view.onPickedRecord = onPickedRecordCallBack;
                 $modal.modal();
                 $modal.on('shown.bs.modal',function(){
-                	view.$el = $modal;
                 	view.delegateEvents();
             	});  
                 $modal.on('hidden.bs.modal',function(){
@@ -180,11 +181,10 @@ define(function(){
 				self.app.views.get(viewName).undelegateEvents();
 			}
             self.app.views.render(viewName,args,function(view){
-            	var $modal = $(view.$el.html());            	
+            	var $modal = $(view.$el.children()[0]);          	
 	            view.parent = parentView;
                 $modal.modal();
                 $modal.on('shown.bs.modal',function(){                	
-                	view.$el = $modal;                	
                 	view.delegateEvents();
             	});                
                 $modal.on('hidden.bs.modal',function(){

@@ -36,7 +36,8 @@ define({
 	      , equalto:        "This value should be the same."
 	    },
 	    datagrid:{
-	    	indicator: 		"Display {{startPos}} to {{endPos}} items, Total {{total} records"
+	    	indicator: 		"Display {{startPos}} to {{endPos}} items, Total {{total} records",
+	    	search: 		"Search"
 	    },
 	    uploader:{
 	      btnAddFiles: 		"Add files...",
