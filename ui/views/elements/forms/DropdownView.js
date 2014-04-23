@@ -50,18 +50,21 @@ define(['./OptionElement',
 				      metadata.displayValue = value;
 				}
 			}	
-
+			
 			var renderElement = function(){				
-				parent.$el.find(selector).replaceWith($(template(metadata)).addClass("field-"+metadata.name.toLowerCase()));
-				if(metadata.required==true) parent.$el.find(selector).find("select").attr('parsley-required','true');
+				var $selector = parent.$el.find(selector).length>0?parent.$el.find(selector).length: $(selector);
+							
+				$selector.replaceWith($(template(metadata)).addClass("field-"+metadata.name.toLowerCase()));
+				if(metadata.required==true) $selector.find("select").attr('parsley-required','true');
 				if(metadata.multiple==true) {
-					parent.$el.find(selector).find("select").attr('multiple','multiple');
-					parent.$el.find(selector).find("select").attr('title',metadata.placeholder);					
+					$selector.find("select").attr('multiple','multiple');
+					$selector.find("select").attr('title',metadata.placeholder);					
 				}									
-				metadata.displayValue = metadata.displayValue.indexOf(",")>-1?metadata.displayValue.split(","):metadata.displayValue;
-				console.log(metadata.displayValue);
-				parent.$el.find(selector).find("select").val(metadata.displayValue);
-				parent.$el.find(selector).find("select").selectpicker();
+				if(typeof metadata.displayValue!='undefined'){
+					metadata.displayValue = metadata.displayValue.indexOf(",")>-1?metadata.displayValue.split(","):metadata.displayValue;				
+					$selector.find("select").val(metadata.displayValue);
+				}
+				$(selector).find("select").selectpicker();
 
 			}
 			metadata.selections = [];
