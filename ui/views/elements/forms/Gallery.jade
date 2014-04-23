@@ -1,8 +1,15 @@
-div.blueimp-gallery
-  div.slides
-  h3.title
-  a.prev ‹
-  a.next ›
-  a.close ×
-  a.play-pause
-  ol.indicator
+.form-group(class!="<%= className%>")
+	label.control-label <%= displayName%>
+	div.blueimp-gallery.blueimp-gallery-controls
+		div.slides
+		h3.title
+		a.prev ‹
+		a.next ›
+		a.close ×
+		a.play-pause
+		ol.indicator
+	div.links
+		<% for(var i=0; i<images.length;i++){ var image = images[i]; %>
+		a(data-gallery!="<%=selector%>",title!="<%=image.title%>",href!="<%=image.href%>")
+			img(src!="<%=image.thumbnail%>")
+		<% } %>

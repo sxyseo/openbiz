@@ -60,9 +60,10 @@ requirejs.config({
 		'tmpl' : 'vendor/fileupload/js/tmpl',
 		'canvas-to-blob' : 'vendor/fileupload/js/canvas-to-blob.min',
 
-		'jquery.blueimp-gallery' : 'vendor/gallery/jquery.blueimp-gallery',
-		'blueimp-gallery' 		: 'vendor/gallery/blueimp-gallery',
-		'blueimp-helper' 		: 'vendor/gallery/blueimp-helper'
+		'jquery.blueimp-gallery' : 'vendor/gallery/js/jquery.blueimp-gallery',
+		'blueimp-gallery' 		: 'vendor/gallery/js/blueimp-gallery',		
+		'blueimp-helper' 		: 'vendor/gallery/js/blueimp-helper',
+		'blueimp-gallery-indicator' 		: 'vendor/gallery/js/blueimp-gallery-indicator'
 	},
 	shim:{
 		'backbone':{
@@ -103,10 +104,6 @@ requirejs.config({
           exports: ['jQuery','loadImage']
         },
 		//support for jQuery fileupload - end
-
-		"jquery.blueimp-gallery":{
-			deps:['jquery'],
-		},
 
         "backgrid":{
           exports: "Backgrid",
@@ -161,17 +158,19 @@ requirejs.config({
 			deps: [ "jquery"]
 		},
 		'openbiz.custom':{
-          deps: [ "jquery.ui","jquery.ui.widget","jquery.fileupload-ui","bootstrap-paginator","jquery.blueimp-gallery"]
+          deps: [ "jquery.ui","jquery.ui.widget","jquery.fileupload-ui","bootstrap-paginator"]
         }
 	}
 });
 
-define(['backbone-pageable','hammer','openbiz',"async","moment","ace","jsonlint","jsoneditor",'bootstrap','throbber','backgrid-paginator','backgrid-filter',"jqueryform"],
-	function(Backbone,Hammer,openbiz,async,moment,ace,jsonlint,jsoneditor){
+define(['backbone-pageable','hammer','openbiz',"async","moment","ace","jsonlint","jsoneditor","blueimp-gallery",'blueimp-gallery-indicator','bootstrap','throbber','backgrid-paginator','backgrid-filter',"jqueryform"],
+	function(Backbone,Hammer,openbiz,async,moment,ace,jsonlint,jsoneditor,gallery){
 		window.Hammer = Hammer; //kick the thing back to global				
 		window.async = async;
 		window.moment = moment;
 		window.jsoneditor = jsoneditor;
+		window.blueimp = {Gallery:gallery};
+
 		// // trigger event for onEnvironmentLoaded			
 		// if( typeof openbizEventsDelegate =='object' && 
 		// 	typeof openbizEventsDelegate.onEnvironmentLoaded =='function' ){

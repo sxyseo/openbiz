@@ -98,9 +98,9 @@ module.exports = function(grunt) {
 						'tmpl' : 'vendor/fileupload/js/tmpl',
 						'canvas-to-blob' : 'vendor/fileupload/js/canvas-to-blob.min',
 
-						'jquery.blueimp-gallery' : 'vendor/gallery/jquery.blueimp-gallery',
-						'blueimp-gallery' 		: 'vendor/gallery/blueimp-gallery',
-						'blueimp-helper' 		: 'vendor/gallery/blueimp-helper'						
+						'jquery.blueimp-gallery' : 'vendor/gallery/js/jquery.blueimp-gallery',
+						'blueimp-gallery' 		: 'vendor/gallery/js/blueimp-gallery',
+						'blueimp-helper' 		: 'vendor/gallery/js/blueimp-helper'						
 					},
 					shim:{
 						'backbone':{
