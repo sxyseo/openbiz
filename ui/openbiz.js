@@ -31,6 +31,10 @@ define(["objects/Object",
 		'views/elements/columns/Link',
 		'views/elements/columns/Text',
 		'views/elements/columns/RecordAction',
+
+		'views/elements/records/Button',
+		'views/elements/records/Link',
+
 		"views/elements/forms/OptionElement",
 		"views/elements/forms/DropdownView",
 		"views/elements/forms/RadioView",
@@ -71,8 +75,10 @@ define(["objects/Object",
 		PieChartView,
 		Element,
 		ColumnLink,
-		ColumnText,
+		ColumnText,		
 		RecordAction,
+		RecordButton,
+		RecordLink,
 		OptionElement,
 		DropdownView,
 		RadioView,
@@ -124,6 +130,10 @@ define(["objects/Object",
 				link:ColumnLink,
 				text:ColumnText,
 				recordActions:RecordAction
+			},
+			records:{
+				button:RecordButton,
+				link:RecordLink
 			},
 			forms:{
 				link:FormLink,
