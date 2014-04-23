@@ -15,7 +15,7 @@
 (function (factory) {
     'use strict';
     if (typeof define === 'function' && define.amd) {
-        // Register as an anonymous AMD module:
+        // Register as an anonymous AMD module:        
         define([
             'jquery',
             'jquery.ui.widget'
@@ -26,7 +26,7 @@
     }
 }(function ($) {
     'use strict';
-
+    
     // Detect file input support, based on
     // http://viljamis.com/blog/2012/file-upload-support-on-mobile/
     $.support.fileInput = !(new RegExp(
@@ -58,7 +58,7 @@
     // the fileupload API.
     // By default, files added via file input selection, paste, drag & drop or
     // "add" method are uploaded immediately, but it is possible to override
-    // the "add" callback option to queue file uploads.
+    // the "add" callback option to queue file uploads.    
     $.widget('blueimp.fileupload', {
 
         options: {

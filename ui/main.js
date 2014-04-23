@@ -163,7 +163,7 @@ requirejs.config({
 	}
 });
 
-define(['backbone-pageable','hammer','openbiz',"async","moment","ace","jsonlint","jsoneditor","blueimp-gallery",'blueimp-gallery-indicator','bootstrap','throbber','backgrid-paginator','backgrid-filter',"jqueryform"],
+define(['backbone-pageable','hammer','openbiz',"async","moment","ace","jsonlint","jsoneditor","blueimp-gallery",'blueimp-gallery-indicator','bootstrap','throbber','backgrid-paginator','backgrid-filter',"jqueryform","jquery.fileupload-ui"],
 	function(Backbone,Hammer,openbiz,async,moment,ace,jsonlint,jsoneditor,gallery){
 		window.Hammer = Hammer; //kick the thing back to global				
 		window.async = async;

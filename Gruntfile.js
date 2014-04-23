@@ -125,10 +125,14 @@ module.exports = function(grunt) {
 				        },
 				        "jquery.fileupload":{		  
 						   deps: [ 	
+						   		"jquery",
 								"jquery.ui",
 								"jquery.ui.widget"
 							]
-				        },        
+				        },    
+				        "jquery.fileupload-ui":{
+				        	exports: ['jQuery']
+				        },
 				        "jquery.fileupload-process":{          
 						  exports: ['jQuery'],
 						  deps: ['jquery.fileupload']	  
@@ -200,7 +204,8 @@ module.exports = function(grunt) {
 							deps: [ "jquery"]
 						},
 						'openbiz.custom':{
-				          deps: [ "jquery.ui","jquery.ui.widget","jquery.fileupload-ui","bootstrap-paginator","jquery.blueimp-gallery"]
+				          deps: [ "jquery.ui","jquery.ui.widget","jquery.fileupload-ui","bootstrap-paginator","jquery.blueimp-gallery"],
+				          exports: ['jQuery']
 				        }
 					}
 				}
