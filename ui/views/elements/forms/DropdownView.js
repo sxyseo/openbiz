@@ -57,13 +57,16 @@ define(['./OptionElement',
 				if(metadata.multiple==true) {
 					parent.$el.find(selector).find("select").attr('multiple','multiple');
 					parent.$el.find(selector).find("select").attr('title',metadata.placeholder);					
-				}				
-				parent.$el.find(selector).find("select").val(metadata.displayValue)
+				}									
+				metadata.displayValue = metadata.displayValue.indexOf(",")>-1?metadata.displayValue.split(","):metadata.displayValue;
+				console.log(metadata.displayValue);
+				parent.$el.find(selector).find("select").val(metadata.displayValue);
 				parent.$el.find(selector).find("select").selectpicker();
 
 			}
 			metadata.selections = [];
 			var self = this;
+
 
 			this._parseModel(function(){
 				if(self._modelType != "model"){

@@ -6,8 +6,8 @@
 			| <%= placeholder %> 
 		option(data-divider="true")
 		<% } %>
-		<% for(var i=0;i<selections.length;i++){ var selection = selections[i]; %>
+		<% for(var i=0;i<selections.length;i++){ var selection = selections[i]; %>		
 		option(value!="<%= selection.value%>") 
-			| <%= selection.display %>
+			| <%= selection.display %>		
 		<%  } %>
 	div(class!="<%= elemName %>-error")

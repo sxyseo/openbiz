@@ -1,2 +1,17 @@
-<div class="form-group <%= className%>"><label class="control-label"><%= displayName%></label><select parsley-error-container="div.<%= elemName %>-error" style="display:none" class="selectpicker form-control"><% if(placeholder && multiple!=true ){ %><option value=""><%= placeholder %> </option><option data-divider="true"></option><% } %>
-<% for(var i=0;i<selections.length;i++){ var selection = selections[i]; %><option value="<%= selection.value%>"><%= selection.display %></option><%  } %></select><div class="<%= elemName %>-error"></div></div>
+
+<div class="form-group <%= className%>">
+  <label class="control-label"><%= displayName%></label>
+  <select parsley-error-container="div.<%= elemName %>-error" style="display:none" class="selectpicker form-control"><% if(placeholder && multiple!=true ){ %>
+    <option value="">
+       
+      <%= placeholder %> 
+    </option>
+    <option data-divider="true"></option><% } %>
+    <% for(var i=0;i<selections.length;i++){ var selection = selections[i]; %>		
+    <option value="<%= selection.value%>">
+       
+      <%= selection.display %>		
+    </option><%  } %>
+  </select>
+  <div class="<%= elemName %>-error"></div>
+</div>
