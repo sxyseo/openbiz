@@ -99,8 +99,9 @@ module.exports = function(grunt) {
 						'canvas-to-blob' : 'vendor/fileupload/js/canvas-to-blob.min',
 
 						'jquery.blueimp-gallery' : 'vendor/gallery/js/jquery.blueimp-gallery',
-						'blueimp-gallery' 		: 'vendor/gallery/js/blueimp-gallery',
-						'blueimp-helper' 		: 'vendor/gallery/js/blueimp-helper'						
+						'blueimp-gallery' 		: 'vendor/gallery/js/blueimp-gallery',		
+						'blueimp-helper' 		: 'vendor/gallery/js/blueimp-helper',
+						'blueimp-gallery-indicator' 		: 'vendor/gallery/js/blueimp-gallery-indicator'					
 					},
 					shim:{
 						'backbone':{

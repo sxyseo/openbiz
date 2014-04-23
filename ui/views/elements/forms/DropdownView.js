@@ -8,6 +8,7 @@ define(['./OptionElement',
 		init:function(metadata,parent,model,reload){
 			openbiz.OptionElement.prototype.init.call(this,metadata,parent);
 			var selector = "div.field-"+metadata.name.toLowerCase();
+			if(parent.$el.find(selector).length==0)return;
 			this._selector = selector;
 			this._parent = parent;
 			if (parent.$el.find(selector).length == 0) return; //ignore it, if it doesn't mount on UI
@@ -52,7 +53,7 @@ define(['./OptionElement',
 			}	
 			
 			var renderElement = function(){				
-				var $selector = parent.$el.find(selector).length>0?parent.$el.find(selector).length: $(selector);
+				var $selector = parent.$el.find(selector).length>0?parent.$el.find(selector): $(selector);
 							
 				$selector.replaceWith($(template(metadata)).addClass("field-"+metadata.name.toLowerCase()));
 				if(metadata.required==true) $selector.find("select").attr('parsley-required','true');
