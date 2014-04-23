@@ -98,7 +98,10 @@ define(['./Text',
 			var selector = "div.field-"+this._metadata.name.toLowerCase();
 			var files=[];
 			this._parent.$el.find(selector).find('tbody.files tr').each(function(i, e) {				
-			    files.push($(e).find('td p.name a').attr("data-file-id"));			    
+			    var fileId = $(e).find('td p.name a').attr("data-file-id");
+			    if(fileId!=null){
+			    	files.push(fileId);			    
+				}
 			});
 			return files;
 		}
