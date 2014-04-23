@@ -30,7 +30,7 @@ define(['./Element'],function(element){
 											}else{
 												className = "btn-default";
 											}
-											url = "#!/backend/"+obj.app.name+url
+											url = "#!/backend"+ (obj.app.name=='cubi'?'':'/'+obj.app.name)+url;
 											html = html + "<a href='"+url+"' class='btn  "+className+" '"+isEnabled+">"+label+"</a>"+"&nbsp";
 											break;
 										}
