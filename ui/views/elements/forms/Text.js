@@ -7,6 +7,7 @@ define(['../../../objects/Object',
 		_metadata:null,
 		_parent:null,
 		_model:null,
+		_templateData : templateData,
 		init:function(metadata,parent,model){
 			this._metadata = metadata;
 			this._parent = parent;
@@ -21,7 +22,7 @@ define(['../../../objects/Object',
 				}
 			}
 
-			var template = _.template(templateData);
+			var template = _.template(this._templateData);
 			var labelLocaleKey = 'field'+metadata.name.charAt(0).toUpperCase()+metadata.name.slice(1);
 			var placeholderLocaleKey = 'placeholder'+metadata.name.charAt(0).toUpperCase()+metadata.name.slice(1);
 			
