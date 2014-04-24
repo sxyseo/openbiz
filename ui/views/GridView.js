@@ -71,6 +71,11 @@ define(['../objects/View'],function(view){
 			var columnConfigs = this._getColumnsConfig();
 			for (var i in columnConfigs){
 				var column = columnConfigs[i];
+                if(column.hasOwnProperty("display")){
+                    if(column.display == false){
+                        continue;
+                    }
+                }
 				if(this._canDisplayColumn(column)){
 					var type = column['type'];
 					if(typeof  type == 'undefined' || type == null){
