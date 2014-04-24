@@ -44,7 +44,15 @@ requirejs.config({
 		'moment' 	: 'vendor/moment/moment-with-langs.min',
 		'jsoneditor': 'vendor/jsoneditor/jsoneditor-min',
 		'jsonlint'  : 'vendor/jsonlint/jsonlint',
-		'ace' 		: 'vendor/ace/ace',		
+
+		'ace' 					: 'vendor/ace/ace',		
+		'ace/mode/json' 		: 'vendor/ace/mode-json',	
+		'ace/ext/searchbox' 	: 'vendor/ace/searchbox',	
+		'ace/theme/jsoneditor' 	: 'vendor/ace/theme-jsoneditor',	
+		'ace/theme/textmate' 	: 'vendor/ace/theme-textmate',
+		'ace/worker/worker' 	: 'vendor/ace/ace/worker/worker',			
+		'ace/worker/worker_client' 	: 'vendor/ace/worker-json',	
+		
 		'jquery.fileupload' 		 : 'vendor/fileupload/js/jquery.fileupload',
 		'jquery.fileupload-video' 	 : 'vendor/fileupload/js/jquery.fileupload-video',
 		'jquery.fileupload-validate' : 'vendor/fileupload/js/jquery.fileupload-validate',
