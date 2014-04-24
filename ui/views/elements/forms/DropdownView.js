@@ -53,17 +53,19 @@ define(['./OptionElement',
 			}	
 			
 			var renderElement = function(){				
-				var $selector = parent.$el.find(selector).length>0?parent.$el.find(selector): $(selector);
+				//var $selector = parent.$el.find(selector).length>0?parent.$el.find(selector): $(selector);
+				var $selector =  $(selector);
 							
-				$selector.replaceWith($(template(metadata)).addClass("field-"+metadata.name.toLowerCase()));
-				if(metadata.required==true) $selector.find("select").attr('parsley-required','true');
+				$(selector).replaceWith($(template(metadata)).addClass("field-"+metadata.name.toLowerCase()));
+				if(metadata.required==true) $(selector).find("select").attr('parsley-required','true');
 				if(metadata.multiple==true) {
-					$selector.find("select").attr('multiple','multiple');
-					$selector.find("select").attr('title',metadata.placeholder);					
-				}									
+					$(selector).find("select").attr('multiple','multiple');
+					$(selector).find("select").attr('title',metadata.placeholder);					
+				}				
+
 				if(typeof metadata.displayValue!='undefined'){
 					metadata.displayValue = metadata.displayValue.indexOf(",")>-1?metadata.displayValue.split(","):metadata.displayValue;				
-					$selector.find("select").val(metadata.displayValue);
+					$(selector).find("select").val(metadata.displayValue);
 				}
 				$(selector).find("select").selectpicker();
 
