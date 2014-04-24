@@ -4,7 +4,13 @@ define(['../../../objects/Object',
 		],
 		function(object,templateData){
 	return object.extend({
+		_metadata:null,
+		_parent:null,
+		_model:null,
 		init:function(metadata,parent,model){
+			this._metadata = metadata;
+			this._parent = parent;
+			this._model = model;
 			var selector = "div.field-"+metadata.name.toLowerCase();
 			if (parent.$el.find(selector).length == 0) return; //ignore it, if it doesn't mount on UI
 			if (parent.$el.find(selector).children().length>0) return; //ignore it, if has custom template
@@ -14,6 +20,7 @@ define(['../../../objects/Object',
 					return ;
 				}
 			}
+
 			var template = _.template(templateData);
 			var labelLocaleKey = 'field'+metadata.name.charAt(0).toUpperCase()+metadata.name.slice(1);
 			var placeholderLocaleKey = 'placeholder'+metadata.name.charAt(0).toUpperCase()+metadata.name.slice(1);
@@ -22,11 +29,14 @@ define(['../../../objects/Object',
 			metadata.className = metadata.className?metadata.className.replace(/\./g," "):'';
 			metadata.icon = metadata.icon?metadata.icon.replace(/\./g," "):"";			
 			metadata.placeholder = parent.locale[placeholderLocaleKey]?parent.locale[placeholderLocaleKey]:metadata.placeholder;		
-			metadata.elemName = "record-"+metadata.name.toLowerCase();
+			metadata.elemName = "record-"+metadata.name.toLowerCase();			
+			metadata.locale = parent.locale;
+
+
 			if(!metadata.displayValue) metadata.displayValue = metadata.field;
-			if(metadata.displayValue.indexOf("{{")!=-1){
+			if(metadata.displayValue.indexOf("{{")!=-1){				
 				metadata.displayValue =  _.template(metadata.displayValue,
-													{record:model},
+													{record:model,locale:parent.locale},
 													{
 														evaluate    : /\{%([\s\S]+?)%\}/g,
 														interpolate : /\{\{([\s\S]+?)\}\}/g,
@@ -52,8 +62,26 @@ define(['../../../objects/Object',
 			if(metadata.readonly==true) parent.$el.find(selector).find("input[name='"+metadata.elemName+"']").attr('readonly','readonly');
 			if(metadata.required==true) parent.$el.find(selector).find("input[name='"+metadata.elemName+"']").attr('required','required');
 			if(metadata.disabled==true) parent.$el.find(selector).find("input[name='"+metadata.elemName+"']").attr('disabled','disabled');
-			if(typeof metadata.parsleyType != "undefined" && metadata.parsleyType) parent.$el.find(selector).find("input[name='"+metadata.elemName+"']").attr('parsley-type',metadata.parsleyType);
+			this.applyValidator();
 			return this;
+		},
+		applyValidator:function(){
+			if(typeof this._metadata.validator!='undefined' && this._metadata.validator.indexOf("{{")!=-1){				
+				var selector = "div.field-"+this._metadata.name.toLowerCase();
+				this._metadata.validator =  _.template(this._metadata.validator,
+													{record:this._model,locale:this._parent.locale},
+													{
+														evaluate    : /\{%([\s\S]+?)%\}/g,
+														interpolate : /\{\{([\s\S]+?)\}\}/g,
+														escape      : /\{-([\s\S]+?)\}/g
+													});
+				var validators = this._metadata.validator.indexOf(",")!=-1?this._metadata.validator.split(","):[this._metadata.validator];
+				for(var i = 0; i<validators.length;i++){
+					var validator = validators[i];
+					var validatorPair = validator.split("=");
+					this._parent.$el.find(selector).find("input[name='"+this._metadata.elemName+"']").attr(validatorPair[0].trim(),validatorPair[1].trim());
+				}
+			}
 		}
 	})
 });
