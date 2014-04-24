@@ -80,7 +80,8 @@ define(['../../../objects/Object',
 				for(var i = 0; i<validators.length;i++){
 					var validator = validators[i];
 					var validatorPair = validator.split("=");
-					this._parent.$el.find(selector).find("input[name='"+this._metadata.elemName+"']").attr(validatorPair[0].trim(),validatorPair[1].trim());
+					
+					this._parent.$el.find(selector).find("input[name='"+this._metadata.elemName+"']").attr(validatorPair[0].trim(),validatorPair[1].trim().replace(/["']/gi,''));
 				}
 			}
 		}
