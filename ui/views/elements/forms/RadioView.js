@@ -13,7 +13,7 @@ define(['./OptionElement'],function(element){
 				if(self._modelType == "internal"){
 					for(var i = 0; i < self.collection.length; i++){
 						var value = self.collection[i];
-						var localeKey="selection"+self.metadata.name.charAt(0).toUpperCase()+self.metadata.name.slice(1) +display;
+						var localeKey="selection"+self.metadata.name.charAt(0).toUpperCase()+self.metadata.name.slice(1) +self.collection[i];
 						var display = parent.locale[localeKey]?parent.locale[localeKey]:self.collection[i];
 						div += "<li class='pull-left' style='margin-right: 10px'><input type='radio' name='"+self.metadata.name+"' data-value='"+value+"'/><label>"+display+"</label></li>";
 					}
