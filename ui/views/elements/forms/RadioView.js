@@ -1,3 +1,4 @@
+//@todo: Refactor this class if i have time
 "use strict";
 define(['./OptionElement'],function(element){
 	return element.extend({
