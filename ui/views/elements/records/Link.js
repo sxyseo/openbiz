@@ -7,7 +7,7 @@ define(['../../../objects/Object'],function(element){
 					return ;
 				}
 			}
-			var displayName = 'metadata'+metadata.name.charAt(0).toUpperCase() + metadata.name.slice(1);
+			var displayName = 'recordAction'+metadata.name.charAt(0).toUpperCase() + metadata.name.slice(1);
 			var isEnabled = this._getEnableText(metadata["name"],model,obj.model!=null?true:false);
 			var label = obj.locale[displayName]?obj.locale[displayName]: metadata.displayName;
 
