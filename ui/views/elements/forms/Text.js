@@ -27,6 +27,7 @@ define(['../../../objects/Object',
 			var placeholderLocaleKey = 'placeholder'+metadata.name.charAt(0).toUpperCase()+metadata.name.slice(1);
 			
 			metadata.displayName = parent.locale[labelLocaleKey]?parent.locale[labelLocaleKey]:metadata.displayName;		
+			metadata.currencySymbol = parent.locale.app.currencySymbol;		
 			metadata.className = metadata.className?metadata.className.replace(/\./g," "):'';
 			metadata.icon = metadata.icon?metadata.icon.replace(/\./g," "):"";			
 			metadata.placeholder = parent.locale[placeholderLocaleKey]?parent.locale[placeholderLocaleKey]:metadata.placeholder;		
