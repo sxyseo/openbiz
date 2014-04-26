@@ -20,6 +20,7 @@ define(['../../../objects/Object',
 			metadata.displayName = parent.locale[localeKey]?parent.locale[localeKey]:metadata.displayName			
 			metadata.className = metadata.className?metadata.className.replace(/\./g," "):'';
 			metadata.icon = metadata.icon?metadata.icon.replace(/\./g," "):"";
+			metadata.labelClassName = typeof metadata.labelClassName!='undefined'?metadata.labelClassName:'';
 			
 			if(!metadata.displayValue) metadata.displayValue = metadata.field;
 			if(metadata.displayValue.indexOf("{{")!=-1){
