@@ -1,5 +1,5 @@
-.row(class!="<%= className%>")
+.row
 	.col-md-3
 		label.control-label <%= displayName%>
 	.col-md-9
-		label.control-label <%= displayValue%>
+		label.control-label(class!="<%= className%>") <%= displayValue%>
