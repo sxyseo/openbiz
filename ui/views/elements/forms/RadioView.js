@@ -52,7 +52,7 @@ define(['./OptionElement'],function(element){
 					value = this._parseField(model,self._dataSource.valueField);
 				}
 			}
-			var sel = "input:radio[name='"+this.metadata.name+"'][da='"+value+"']";
+			var sel = "input:radio[name='"+this.metadata.name+"'][data-value='"+value+"']";
 			$("."+this._selector).find(sel).attr('checked', 'true');
 		},
 		getValue:function(){
