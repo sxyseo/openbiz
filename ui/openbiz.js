@@ -51,7 +51,8 @@ define(["objects/Object",
 		'views/elements/forms/User',
 		'views/elements/forms/Currency',
 		'views/elements/forms/Gallery',
-		'views/elements/forms/AutoComplete'
+		'views/elements/forms/AutoComplete',
+		'views/elements/forms/CustomFieldsEditView'
 ],
 	function(Object,
 		Module,
@@ -97,7 +98,8 @@ define(["objects/Object",
 		User,
 		Currency,
 		Gallery,
-		AutoComplete
+		AutoComplete,
+		CustomFieldsEditView
 		){		
 	return {
 		apps:{},
@@ -155,7 +157,8 @@ define(["objects/Object",
 				user:User,
 				currency:Currency,
 				gallery:Gallery,
-				autocomplete:AutoComplete
+				autocomplete:AutoComplete,
+				customfieldseditview:CustomFieldsEditView
 			}
 		},
 		Element:Element,

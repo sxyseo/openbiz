@@ -1,7 +1,7 @@
 "use strict";
 define(['./Element'],function(element){
 	return element.extend({
-		getConfig:function(obj,column,recordActions){
+		getConfig:function(obj,column,recordActions,callback){
 			var self = this;
 			var field = openbiz.Element.prototype.getConfig.call(this,obj,column);
 			{
@@ -34,8 +34,8 @@ define(['./Element'],function(element){
 					});
 				}
 			}
-			return field;
-		},		
+			callback(field);
+		},
 		_hasPermission:function(permission){
 			if(typeof permission != 'undefined' && permission){
 				return openbiz.session.me.hasPermission(permission);

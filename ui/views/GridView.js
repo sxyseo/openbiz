@@ -67,63 +67,75 @@ define(['../objects/View'],function(view){
 			openbiz.ui.update(this.$el);
 		},
 		_renderDataGridConfig:function(){
-			var columns = [];
+			var self = this;
 			var columnConfigs = this._getColumnsConfig();
-			for (var i in columnConfigs){
-				var column = columnConfigs[i];
-				if(this._canDisplayColumn(column)){
+			var async = require('async');
+			async.mapSeries(columnConfigs,function(column,cb){
+				if(self._canDisplayColumn(column)){
 					var type = column['type'];
 					if(typeof  type == 'undefined' || type == null){
 						type = 'text';
 					}
-					var field;
-					if(this.elements[type]){
-						var element = new this.elements[type];
-						field = element.getConfig(this,column,this._getRecordActions());
+					if(self.elements[type]){
+						var element = new self.elements[type];
+						element.getConfig(self,column,self._getRecordActions(),function(field){
+							cb(null,field);
+						});
 					}
 					else{
 						var element = new openbiz.elements.columns[type];
-						field = element.getConfig(this,column,this._getRecordActions());
-					}
-					if(field != null){
-						columns.push(field);
+						element.getConfig(self,column,self._getRecordActions(),function(field){
+							cb(null,field);
+						});
 					}
 				}
-			}
-			if(this._getFilterConfig()){
-				var filter = new Backgrid.Extension.ServerSideFilter({
-					collection: this.collection,
-					name: "query",
-					placeholder: ""
-				});
+			},function(err,results){
+				if(!err){
+					var columns = [];
+					for(var i in results){
+						var result = results[i];
+						if(_.isObject(result)){
+							columns.push(result);
+						}
+						else if (_.isArray(result)){
+							columns = columns.contact(result);
+						}
+					}
 
-				this.$el.find(this._dataGridEL).append(filter.render().el);
-				this.$el.find(this._dataGridEL).append("<hr>");
-				
-			}
-			var grid = new Backgrid.Grid({
-				columns:columns,
-				collection: this.collection,
-				className: 'backgrid table table-striped table-bordered text-center datatable table-hover',
-				emptyText: this.metadata.gridEmptyText
-			});
+					if(self._getFilterConfig()){
+						var filter = new Backgrid.Extension.ServerSideFilter({
+							collection: self.collection,
+							name: "query",
+							placeholder: ""
+						});
 
-			this.$el.find(this._dataGridEL).append(grid.render().el);
-			
-			if(this._getPaginatorConfig()){
-				var paginator = new Backgrid.Extension.Paginator({
-					windowSize: 10,
-					slideScale: 0.5,
-					goBackFirstOnSort: true,
-					collection: this.collection,
-					className:'vog'
-				});
-				this.$el.find(this._dataGridEL).append(paginator.render().el);
-			}
-			var self = this;
-			this.collection.fetch({
-				success:function(){
+						self.$el.find(self._dataGridEL).append(filter.render().el);
+						self.$el.find(self._dataGridEL).append("<hr>");
+					}
+					var grid = new Backgrid.Grid({
+						columns:columns,
+						collection: self.collection,
+						className: 'backgrid table table-striped table-bordered text-center datatable table-hover',
+						emptyText: self.metadata.gridEmptyText
+					});
 
+					self.$el.find(self._dataGridEL).append(grid.render().el);
+
+					if(self._getPaginatorConfig()){
+						var paginator = new Backgrid.Extension.Paginator({
+							windowSize: 10,
+							slideScale: 0.5,
+							goBackFirstOnSort: true,
+							collection: self.collection,
+							className:'openbiz-paginator'
+						});
+						self.$el.find(self._dataGridEL).append(paginator.render().el);
+					}
+					self.collection.fetch({
+						success:function(){
+
+						}
+					});
 				}
 			});
 			return this;

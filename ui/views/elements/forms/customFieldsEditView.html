@@ -1,0 +1,11 @@
+
+<div class="col-lg-12"><% for(var i=0;i<fields.length;i+=2) { %>	
+  <div class="row vogdata-show-grid"><% var field = fields[i];  %>
+    <div class="col-md-6">
+      <div class="<%= field.selector %>"></div>
+    </div><% if((i+1)<fields.length){ var field = fields[i+1];   %>
+    <div class="col-md-6">
+      <div class="<%= field.selector %>"></div>
+    </div><% } %>
+  </div><% } %>
+</div>

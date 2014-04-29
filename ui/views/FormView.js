@@ -160,8 +160,16 @@ define(['../objects/View'],function(view){
 				var field = fields[i];
 				var selector = "[name="+"'"+field.selector+"']";
 				if(typeof this._element[field.field] != 'undefined' && typeof this._element[field.field].getValue=='function'){
-					var value = this._element[field.field].getValue();
-					this._parseAttr(record,field.field,value);
+					if(field.type == "customfieldseditview"){
+						var value = this._element[field.field].getValue();
+						for(var j in value){
+							record[j] = value[j];
+						}
+					}
+					else{
+						var value = this._element[field.field].getValue();
+						this._parseAttr(record,field.field,value);
+					}
 				}else{
 					this._parseAttr(record,field.field,$(selector).val());
 				}

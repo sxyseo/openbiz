@@ -1,7 +1,7 @@
 "use strict";
 define(['./Element'],function(element){
 	return element.extend({
-		getConfig:function(obj,column){
+		getConfig:function(obj,column,recordActions,callback){
 			var field = openbiz.Element.prototype.getConfig.call(this,obj,column);
 			field.cell = BackGrid.UriCell.extend({
 				render: function () {
@@ -17,7 +17,7 @@ define(['./Element'],function(element){
 					return this;
 				}
 			});
-			return field;
+			callback(field);
 		}
 	});
 });
