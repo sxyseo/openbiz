@@ -109,7 +109,8 @@ module.exports = function(grunt) {
 						'jquery.blueimp-gallery' : 'vendor/gallery/js/jquery.blueimp-gallery',
 						'blueimp-gallery' 		: 'vendor/gallery/js/blueimp-gallery',		
 						'blueimp-helper' 		: 'vendor/gallery/js/blueimp-helper',
-						'blueimp-gallery-indicator' 		: 'vendor/gallery/js/blueimp-gallery-indicator'					
+						'blueimp-gallery-indicator' 		: 'vendor/gallery/js/blueimp-gallery-indicator'
+						"bootstrap-typeahead" :"vendor/twitter-bootstrap-typeahead/bootstrap-typeahead",
 					},
 					shim:{
 						'backbone':{
@@ -214,7 +215,10 @@ module.exports = function(grunt) {
 						'openbiz.custom':{
 				          deps: [ "jquery.ui","jquery.ui.widget","jquery.fileupload-ui","bootstrap-paginator","jquery.blueimp-gallery"],
 				          exports: ['jQuery']
-				        }
+				        },
+						'bootstrap-typeahead':{
+							deps: [ "jquery","bootstrap"]
+						}
 					}
 				}
 			}

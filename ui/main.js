@@ -71,7 +71,8 @@ requirejs.config({
 		'jquery.blueimp-gallery' : 'vendor/gallery/js/jquery.blueimp-gallery',
 		'blueimp-gallery' 		: 'vendor/gallery/js/blueimp-gallery',		
 		'blueimp-helper' 		: 'vendor/gallery/js/blueimp-helper',
-		'blueimp-gallery-indicator' 		: 'vendor/gallery/js/blueimp-gallery-indicator'
+		'blueimp-gallery-indicator' 		: 'vendor/gallery/js/blueimp-gallery-indicator',
+		"bootstrap-typeahead" :"vendor/twitter-bootstrap-typeahead/bootstrap-typeahead",
 	},
 	shim:{
 		'backbone':{
@@ -167,11 +168,14 @@ requirejs.config({
 		},
 		'openbiz.custom':{
           deps: [ "jquery.ui","jquery.ui.widget","jquery.fileupload-ui","bootstrap-paginator"]
-        }
+        },
+		'bootstrap-typeahead':{
+			  deps: [ "jquery","bootstrap"]
+		}
 	}
 });
 
-define(['backbone-pageable','hammer','openbiz',"async","moment","ace","jsonlint","jsoneditor","blueimp-gallery",'blueimp-gallery-indicator','bootstrap','throbber','backgrid-paginator','backgrid-filter',"jqueryform","jquery.fileupload-ui"],
+define(['backbone-pageable','hammer','openbiz',"async","moment","ace","jsonlint","jsoneditor","blueimp-gallery",'blueimp-gallery-indicator','bootstrap','throbber','backgrid-paginator','backgrid-filter',"jqueryform","jquery.fileupload-ui","bootstrap-typeahead"],
 	function(Backbone,Hammer,openbiz,async,moment,ace,jsonlint,jsoneditor,gallery){
 		window.Hammer = Hammer; //kick the thing back to global				
 		window.async = async;

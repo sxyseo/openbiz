@@ -50,7 +50,8 @@ define(["objects/Object",
 		'views/elements/forms/Uploader',
 		'views/elements/forms/User',
 		'views/elements/forms/Currency',
-		'views/elements/forms/Gallery'
+		'views/elements/forms/Gallery',
+		'views/elements/forms/AutoComplete'
 ],
 	function(Object,
 		Module,
@@ -95,7 +96,8 @@ define(["objects/Object",
 		Uploader,
 		User,
 		Currency,
-		Gallery
+		Gallery,
+		AutoComplete
 		){		
 	return {
 		apps:{},
@@ -152,7 +154,8 @@ define(["objects/Object",
 				uploader:Uploader,
 				user:User,
 				currency:Currency,
-				gallery:Gallery
+				gallery:Gallery,
+				autocomplete:AutoComplete
 			}
 		},
 		Element:Element,
