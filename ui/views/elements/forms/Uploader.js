@@ -65,11 +65,11 @@ define(['./Text',
 			var downloadTemplateId =  this._metadata.elemName + "-download-template";
 			var dom = $('<script/>').attr("id",uploadTemplateId).attr('type','text/x-tmpl');
 			dom.get(0).innerHTML = _.template(templateUploadData)();
-			this._parent.$el.find(selector).append(dom);			
+			this._parent.$el.find(selector).append(dom);
 
 			var dom = $('<script/>').attr("id",downloadTemplateId).attr('type','text/x-tmpl');
 			dom.get(0).innerHTML = _.template(templateDownloadData)();
-			this._parent.$el.find(selector).append(dom);			
+			this._parent.$el.find(selector).append(dom);
 			this._parent.$el.find(selector).fileupload({
 		        // Uncomment the following to send cross-domain cookies:
 		        //xhrFields: {withCredentials: true},

@@ -6,9 +6,11 @@ div(class!="<%= className%>")
 				i.glyphicon.glyphicon-plus
 				span <%= openbiz.locale.uploader.btnAddFiles %>
 				input(type='file', name='files[]', multiple='')
+			<% if(autoUpload != true){ %>
 			button.btn.btn-primary.start(type='submit')
 				i.glyphicon.glyphicon-upload
 				span <%= openbiz.locale.uploader.btnStartUpload %>
+			<% }%>
 			button.btn.btn-warning.cancel(type='reset')
 				i.glyphicon.glyphicon-ban-circle
 				span <%= openbiz.locale.uploader.btnCancelUpload %>
