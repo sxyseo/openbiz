@@ -21,7 +21,16 @@ define(['../../../objects/Object',
 			metadata.className = metadata.className?metadata.className.replace(/\./g," "):'';
 			metadata.icon = metadata.icon?metadata.icon.replace(/\./g," "):"";
 			metadata.labelClassName = typeof metadata.labelClassName!='undefined'?metadata.labelClassName:'';
-			
+
+			if(typeof metadata.hint != 'undefined' && metadata.hint)
+			{
+				var hinteKey = 'hint'+metadata.name.charAt(0).toUpperCase()+metadata.name.slice(1);
+				metadata.hintContent = parent.locale[hinteKey]?parent.locale[hinteKey]:metadata.hint;
+				metadata.hint = true;
+			}
+			else{
+				metadata.hint = false;
+			}
 			if(!metadata.displayValue) metadata.displayValue = metadata.field;
 			if(metadata.displayValue.indexOf("{{")!=-1){
 				metadata.displayValue =  _.template(metadata.displayValue,

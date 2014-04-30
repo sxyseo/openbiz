@@ -214,6 +214,11 @@ define(function(){
         //Global function
         //////////     TOOLTIP AND POPOVER     //////////
         $(elem).find('.tooltip-area .btn').tooltip();
+	    var options={
+		    animation:true,
+		    trigger:'hover'
+	    }
+	    $(elem).find('.openbiz-hint').tooltip(options);
         $(elem).find('.tooltip-area a[data-toggle="tooltip"]').tooltip();
         $(elem).find('.popover-area [data-toggle="popover"]').popover();
         $(elem).find('.popover-area-hover [data-toggle="popover"]').popover({ trigger:"hover" });
