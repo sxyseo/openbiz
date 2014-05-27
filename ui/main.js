@@ -73,6 +73,7 @@ requirejs.config({
 		'blueimp-helper' 		: 'vendor/gallery/js/blueimp-helper',
 		'blueimp-gallery-indicator' 		: 'vendor/gallery/js/blueimp-gallery-indicator',
 		"bootstrap-typeahead" :"vendor/twitter-bootstrap-typeahead/bootstrap-typeahead",
+		"handsontable":"vendor/handsontable/jquery.handsontable.full"
 	},
 	shim:{
 		'backbone':{
@@ -171,12 +172,17 @@ requirejs.config({
         },
 		'bootstrap-typeahead':{
 			  deps: [ "jquery","bootstrap"]
+		},
+		'handsontable':{
+			deps:["jquery"]
 		}
 	}
 });
 
-define(['backbone-pageable','hammer','openbiz',"async","moment","ace","jsonlint","jsoneditor","blueimp-gallery",'throbber','blueimp-gallery-indicator','bootstrap','throbber','backgrid-paginator','backgrid-filter',"jqueryform","jquery.fileupload-ui","bootstrap-typeahead"],
-	function(Backbone,Hammer,openbiz,async,moment,ace,jsonlint,jsoneditor,gallery,throbber){
+
+define(['backbone-pageable','hammer','openbiz',"async","moment","ace","jsonlint","jsoneditor","blueimp-gallery",'throbber','blueimp-gallery-indicator','bootstrap','throbber','backgrid-paginator','backgrid-filter',"jqueryform","jquery.fileupload-ui","bootstrap-typeahead","handsontable"],
+	function(Backbone,Hammer,openbiz,async,moment,ace,jsonlint,jsoneditor,gallery,throbber){ 
+ 
 		window.Hammer = Hammer; //kick the thing back to global				
 		window.async = async;
 		window.moment = moment;

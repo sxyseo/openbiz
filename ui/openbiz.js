@@ -52,7 +52,8 @@ define(["objects/Object",
 		'views/elements/forms/Currency',
 		'views/elements/forms/Gallery',
 		'views/elements/forms/AutoComplete',
-		'views/elements/forms/CustomFieldsEditView'
+		'views/elements/forms/CustomFieldsEditView',
+		"views/elements/forms/EditableGrid"
 ],
 	function(Object,
 		Module,
@@ -99,7 +100,8 @@ define(["objects/Object",
 		Currency,
 		Gallery,
 		AutoComplete,
-		CustomFieldsEditView
+		CustomFieldsEditView,
+		EditableGrid
 		){		
 	return {
 		apps:{},
@@ -158,7 +160,8 @@ define(["objects/Object",
 				currency:Currency,
 				gallery:Gallery,
 				autocomplete:AutoComplete,
-				customfieldseditview:CustomFieldsEditView
+				customfieldseditview:CustomFieldsEditView,
+				editablegrid:EditableGrid
 			}
 		},
 		Element:Element,
