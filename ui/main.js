@@ -175,13 +175,14 @@ requirejs.config({
 	}
 });
 
-define(['backbone-pageable','hammer','openbiz',"async","moment","ace","jsonlint","jsoneditor","blueimp-gallery",'blueimp-gallery-indicator','bootstrap','throbber','backgrid-paginator','backgrid-filter',"jqueryform","jquery.fileupload-ui","bootstrap-typeahead"],
-	function(Backbone,Hammer,openbiz,async,moment,ace,jsonlint,jsoneditor,gallery){
+define(['backbone-pageable','hammer','openbiz',"async","moment","ace","jsonlint","jsoneditor","blueimp-gallery",'throbber','blueimp-gallery-indicator','bootstrap','throbber','backgrid-paginator','backgrid-filter',"jqueryform","jquery.fileupload-ui","bootstrap-typeahead"],
+	function(Backbone,Hammer,openbiz,async,moment,ace,jsonlint,jsoneditor,gallery,throbber){
 		window.Hammer = Hammer; //kick the thing back to global				
 		window.async = async;
 		window.moment = moment;
 		window.jsoneditor = jsoneditor;
 		window.blueimp = {Gallery:gallery};
+		window.Throbber = throbber;
 
 		// // trigger event for onEnvironmentLoaded			
 		// if( typeof openbizEventsDelegate =='object' && 
