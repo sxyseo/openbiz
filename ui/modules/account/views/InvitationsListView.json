@@ -1,0 +1,72 @@
+{
+	"breadcrumbs":[
+		{
+			"name":"home",
+			"displayName":"Home",
+			"url":"#!/backend/dashboard"
+		},
+		{
+			"name":"account",
+			"displayName":"Account",
+			"url":"#!/backend/account"
+		}
+		,
+		{
+			"name":"invitations",
+			"displayName":"Invitations"
+		}
+	],
+	"viewTitle":"User Invitations",
+	"gridEmptyText" : "this is a empty text",
+	"viewDescription":"You can invite your colleague to join this account",
+	"fields":[
+		{
+			"name":"Token",
+			"field":"_id",
+			"displayName":"Token",
+			"type":"link",
+			"url":"/account/invitations/:id"
+		},
+		{
+			"name":"User",
+			"field":"data.contact.name.displayName",
+			"displayName":"User",
+			"className":"hidden-xs",
+			"sortable":true
+		},
+		{
+			"name":"Email",
+			"field":"data.username",
+			"displayName":"Email",
+			"sortable":true
+		},
+		{
+			"name":"ExpiryDate",
+			"field":"{% return model.getDisplayExpiryDate() %}",
+			"displayName":"Expiry Date",
+			"sortable":true
+		},
+		{
+			"name":"Actions",
+			"displayName":"Action",
+			"type":"recordActions"
+		}
+	],
+	"paginator":true,
+	"filter":true,
+	"recordActions":[
+		{
+			"name":"detail",
+			"displayName":"Detail",
+			"type":"Link",
+			"url":"/account/invitations/{{ id }}"
+		},
+		{
+			"name":"delete",
+			"displayName":"Delete",
+			"type":"Button",
+			"event":"click",
+			"function":"deleteRecord"
+		}
+	]
+}

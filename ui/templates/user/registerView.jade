@@ -1,0 +1,75 @@
+.real-border
+    .row
+      .col-xs-1
+      .col-xs-1
+      .col-xs-1
+      .col-xs-1
+      .col-xs-1
+      .col-xs-1
+      .col-xs-1
+      .col-xs-1
+      .col-xs-1
+      .col-xs-1
+      .col-xs-1
+      .col-xs-1
+  .container
+    .row
+      .col-lg-12
+        .account-wall
+          section.align-lg-center
+            .site-logo
+            h1.login-title
+              | <%= viewTitle %>
+              small  <%= viewDescription %>
+          form#form-sign-up.form-signup(parsley-validate,novalidate="novalidate")            
+            section.login
+              .input-group
+                .input-group-addon
+                  i.fa.fa-user
+                input#inputEmail.form-control(required,type="email", parsley-type="email", name='username', placeholder!='<%= email %>',parsley-remote-method="POST",parsley-remote-message!="<%= validation.emailDuplicated %>")                
+              .input-group
+                .input-group-addon
+                  i.fa.fa-key
+                input#inputPassword.form-control(required,type='password',parsley-mincheck="6", parsley-trigger="change",name='password', placeholder!='<%= password %>')
+              .input-group
+                .input-group-addon
+                  i.fa.fa-key
+                input#inputRepeatPassword.form-control(required,type='password',parsley-mincheck="6", parsley-trigger="change",name='password-repeat', placeholder!='<%= repeatPassword %>',parsley-equalto="#inputPassword",parsley-equalto-message!="<%= validation.passwordNotMatch %>")
+            
+            section.profile
+              div.input-group
+                .input-group-addon
+                  i.fa.fa-heart         
+                ul.iCheck.form-control(data-color='green') 
+                  li.pull-left.col-xs-6(style="padding-bottom:0px")
+                    input(type="radio",id="title-mr",name="title",value="Mr", parsley-trigger="ifClicked ifChanged",parsley-required="true",parsley-group="title") 
+                    label(style="margin-bottom:0px;") <%= titleMr %>
+                  li.pull-left.col-xs-6(style="padding-bottom:0px")
+                    input(type="radio",id="title-ms",name="title",value="Ms", parsley-trigger="ifClicked ifChanged",parsley-group="title") 
+                    label(style="margin-bottom:0px") <%= titleMs %>              
+              div.input-group
+                .input-group-addon
+                  i.fa.fa-tags
+                div
+                  input.form-control.pull-left#inputFirstName(name="firstName",parsley-trigger="change",required,type="text",placeholder!="<%= firstName %>",style="width:48%;padding-right:0px;")
+                  input.form-control.pull-left#inputLastName(name="lastName",parsley-trigger="change",required,type="text",placeholder!="<%= lastName %>",style="width:48%;padding-left:0px;")
+              div.input-group
+                .input-group-addon
+                  i.fa.fa-group
+                input.form-control.pull-left#inputCompany(name="company",parsley-mincheck="2",parsley-trigger="change",required,type="text",placeholder!="<%= company %>")
+              div.input-group
+                .input-group-addon
+                  i.fa.fa-phone-square
+                input.form-control.pull-left#inputMobileCountryCode(name="mobileCountryCode",required,placeholder!="<%= phoneCountryCode %>",value!="<%= phoneDefaultCountryCode %>",style="width:25%;padding-right:0px;")
+                input.form-control.pull-left#inputMobileNumber(name="mobileNumber",required,type="tel",placeholder!="<%= mobileNumber %>",style="width:71%")
+              
+            section.clearfix
+              .iCheck.pull-left(data-color='red')                
+                input#inputAgreement(name="agreement",required,type="checkbox", parsley-trigger="ifUnchecked ifChecked", parsley-group="agreement",parsley-required-message!='<%= validation.needAgreement %>')
+                label <%= agreeWith %> 
+                  a(href="#") <%= termOfUse %>
+            section
+              button.btn.btn-lg.btn-theme-inverse.btn-block.btn-sign-up(type='submit') <%= createAccountButton %>            
+            section.clearfix              
+              a.pull-right.help.go-to-login(href='#!/user/login') <%= goToLogin %>                        
+          a.footer-link(href='#') <%= copyright %>

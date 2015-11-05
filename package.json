@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -121,3 +122,54 @@
     "license": "BSD"
 }
 >>>>>>> 1196908712e898671cfd72ee5575091f7d5b0304
+=======
+{
+    "name": "openbiz-cubi",
+    "description": "A openbiz based application, provides basically user, account, models and permission contronls.",
+    "version": "1.0.0",
+    "homepage": "http://github.com/openbiz/openbiz",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/openbiz/openbiz-cubi.git"
+    },
+    "author": [
+        "Jixian Wang <jixian@openbiz.me>",
+        "Rocky Swen <rocky@openbiz.me>"
+    ],
+    "contributors": [
+        
+    ],
+    "scripts": {
+        "start": "node app.js"
+    },
+    "dependencies": {
+        "openbiz": "~4.0.0"
+        
+    },
+    "devDependencies": {
+        "grunt": "~0.4.1",
+        "grunt-jsdoc": "~0.4.2",
+        "grunt-contrib-jade": "~0.9.0",
+        "grunt-contrib-requirejs": "~0.4.1",
+        "grunt-contrib-clean": "~0.5.0"
+    },
+    "engines": {
+        "node": ">=0.10.0"
+    },
+    "readmeFilename": "README.md",
+    "bugs": {
+        "url": "https://github.com/openbiz/openbiz-cubi/issues"
+    },
+    "gitHead": "0b2c62c85ac152c1517ca0681d1f018daa3f4c6b",
+    "main": "index.js",
+    "directories": {
+        "doc": "doc"
+    },
+    "keywords": [
+        "openbiz",
+        "framework",
+        "cubi"
+    ],
+    "license": "BSD"
+}
+>>>>>>> df20f5b3b4b2a9db6e4d17a78482bea46826e662

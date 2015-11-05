@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 Openbiz Startup
 ===============
 
@@ -248,3 +249,9 @@ openbiz-ui
 
 Openbiz UI libs on browser side
 >>>>>>> 1196908712e898671cfd72ee5575091f7d5b0304
+=======
+openbiz-cubi
+============
+
+A openbiz based application, provides basically user, account, models and permission contronls
+>>>>>>> df20f5b3b4b2a9db6e4d17a78482bea46826e662

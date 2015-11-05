@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 ############################
 # npm
 ############################
@@ -37,3 +38,7 @@ coverage
 =======
 node_modules/*
 >>>>>>> 997f1398396683d7ad667b1b360ce74c7c7fcf6f
+=======
+.DS_Store
+app/modules/me/controllers/public 
+>>>>>>> df20f5b3b4b2a9db6e4d17a78482bea46826e662

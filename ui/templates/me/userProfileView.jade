@@ -1,0 +1,13 @@
+ol.breadcrumb
+	li
+		a(href='#') <%= locale.breadcrumb.home %>
+	li
+		a(href='#') <%= locale.breadcrumb.me %>
+	li.active <%= locale.breadcrumb.profile %>
+#content
+	section.panel.corner-flip
+		div.panel-heading
+			h2 <%= locale.viewTitle %>
+		div.panel-body
+			div.panel.userProfileEditView(style="margin-bottom:0px;")
+				| <%= locale.loading%>		

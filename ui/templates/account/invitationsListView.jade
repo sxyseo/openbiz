@@ -1,0 +1,21 @@
+ol.breadcrumb
+	li
+		a(href='#') <%= locale.breadcrumb.home %>
+	li
+		a(href='#') <%= locale.breadcrumb.account %>
+	li.active <%= locale.breadcrumb.invitations %>
+#content
+	.row
+		.col-md-12
+			section.panel.wizard-form.corner-flip
+				header.panel-heading.sm
+					h2 
+						strong <%= locale.viewTitle%>
+					<%if(typeof viewDescription=='string'){%>
+					p <%= locale.viewDescription%>
+					<%}%>
+				.panel-body.data-grid
+				.panel-footer
+					button.btn-next.btn.btn-theme.btn-record-add
+						i.fa.fa-plus
+						| &nbsp; <%=locale.actionInviteUser%> &nbsp;

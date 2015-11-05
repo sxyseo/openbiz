@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var path = require('path');
 
 module.exports = function(grunt) {
@@ -267,3 +268,128 @@ module.exports = function(grunt) {
 	grunt.registerTask('build', ['requirejs','jade','jsdoc']);
 >>>>>>> 1196908712e898671cfd72ee5575091f7d5b0304
 };
+=======
+var path = require('path');
+
+module.exports = function(grunt) {
+	grunt.initConfig({
+		pkg: grunt.file.readJSON('package.json'),
+		jsdoc: {
+			dist: {
+				src: [
+					'app/**/*.js'
+				],
+				dest: 'doc'
+			}
+		},
+		jade: {
+			compile: {
+				options: {
+					pretty: false,
+					data: {
+						debug: false,
+					}
+				},
+				files: [
+					{
+						expand: true,
+						cwd: 'ui/',
+						src: "**/*.jade",
+						dest: "ui/",
+						ext: ".html"
+					}
+				]
+			}
+		},
+		requirejs: {
+			cubi: {
+				options: {
+					preserveLicenseComments:false,
+					baseUrl: "./ui",
+					useStrict: true,
+					name: "main",
+					out: "ui/main.min.js",
+					paths:{
+						'i18n'    : 'vendor/require/plugins/i18n',
+						'text'    : 'vendor/require/plugins/text'
+					},
+					shim:{
+						'modules/account/main':{
+							deps: [
+								//models
+								'modules/account/models/User',
+								'modules/account/models/UserCollection',
+								'modules/account/models/Account',
+								'modules/account/models/Invitation',
+								'modules/account/models/InvitationCollection',
+								//views
+								'modules/account/views/ApplicationsDetailView',
+								'modules/account/views/ApplicationsListView',
+								'modules/account/views/ApplicationsView',
+								'modules/account/views/BillingView',
+								'modules/account/views/InvitationsDetailView',
+								'modules/account/views/InvitationsListView',
+								'modules/account/views/InvitationsNewPermissionView',
+								'modules/account/views/InvitationsNewView',
+								'modules/account/views/MembersEditView',
+								'modules/account/views/MembersListView',
+								'modules/account/views/ProfileView',
+							]
+						},
+						'modules/system/main':{
+							deps: [
+								//models
+								'modules/system/models/App',
+								'modules/system/models/AppCollection',
+								//views
+								'modules/system/views/LayoutView',
+								'modules/system/views/ContactRightView',
+								'modules/system/views/MenuView',
+								'modules/system/views/NavView',
+								'modules/system/views/HeaderView',
+							]
+						},
+						'modules/user/main':{
+							deps: [
+								//models
+								'modules/user/models/User',
+								//views
+								'modules/user/views/DashboardView',
+								'modules/user/views/ForgetPasswordView',
+								'modules/user/views/LoginView',
+								'modules/user/views/RegisterView'
+							]
+						},
+						'modules/me/main':{
+							deps: [
+								//models
+								'modules/me/models/Me',
+								//views
+								'modules/me/views/SetupWizardView',
+								'modules/me/views/UserProfileView'
+
+							]
+						}
+					}
+				}
+			}
+		},
+		clean: {
+			html: {
+				src: [
+					'ui/**/*.html'
+				]
+			}
+		}
+	});
+
+
+	grunt.loadNpmTasks('grunt-jsdoc');
+	grunt.loadNpmTasks('grunt-contrib-jade');
+	grunt.loadNpmTasks('grunt-contrib-clean');
+	grunt.loadNpmTasks('grunt-contrib-requirejs');
+
+	grunt.registerTask('default', ['build']);
+	grunt.registerTask('build', ['requirejs','jade','jsdoc']);
+};
+>>>>>>> df20f5b3b4b2a9db6e4d17a78482bea46826e662
