@@ -1,6 +1,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 Openbiz Startup
 ===============
 
@@ -255,3 +256,24 @@ openbiz-cubi
 
 A openbiz based application, provides basically user, account, models and permission contronls
 >>>>>>> df20f5b3b4b2a9db6e4d17a78482bea46826e662
+=======
+openbiz-appbuilder
+==================
+
+Generate an Openbiz Application structure
+----------------------
+appbuilder  -c examples/testApp.json -o ../../apps/test
+
+
+
+Generate an Openbiz Module structure
+----------------------
+appbuilder  -c examples/testModule.json -o ../../apps/test
+
+
+Installation
+------------------
+You can link the appbuilder script to system bin folder
+APPBUILDER_DIR=/Users/jixian/Workspace/VogdataProjects/server/node_modules/openbiz-appbuilder
+ln -s ${APPBUILDER_DIR}/bin/appbuilder /usr/local/bin/appbuilder
+>>>>>>> aab7915eb414a7edf8ad7abf887d2fea19892b34

@@ -1,0 +1,377 @@
+{
+	"type":"module",
+	"app":{
+		"name":"test",
+		"displayName":"决策支持系统",
+		"url":"/dss"
+	},
+	"name":"firstmodule",
+	"displayName":"Test App",
+	"models":[{
+		"name": "Test",
+		"collection": "test_testmodule_Test",
+		"schema": {
+			"name": {
+				"type": "String",
+				"required": true,
+				"unique": true
+			},
+			"info": {
+				"website": {
+					"type": "String"
+				},
+				"address": {
+					"country": {
+						"type": "String"
+					},
+					"province": {
+						"type": "String"
+					},
+					"city": {
+						"type": "String"
+					},
+					"street": {
+						"type": "String"
+					},
+					"zipcode": {
+						"type": "String"
+					}
+				},
+				"phone": {
+					"countryCode": {
+						"type": "String"
+					},
+					"areaCode": {
+						"type": "Number"
+					},
+					"number": {
+						"type": "Number"
+					}
+				}
+			}
+		},
+		"features":{
+			"enableMetadata":true,
+			"enableDataACL":true,
+			"enableLogDataChange":true,
+			"defaults":{
+				"visibility":{
+					"scope":"ACCOUNT"
+				}
+			}
+		},
+		"functions":{
+			"statics":[
+				{
+					"name": "statFunc1",
+					"parameters":"arg1,arg2",
+					"function":" var x=123;return this; "
+				},
+				{
+					"name": "statFunc2",
+					"function":""
+				}
+			],
+			"methods":[
+				{
+					"name": "dynaFunc1",
+					"function":" var x=123;return this; "
+				},
+				{
+					"name": "dynaFunc2",
+					"function":""
+				}
+			]
+		}
+	}],
+
+	"controllers":[
+		{
+			"name":"TestController",
+			"model":"Test",
+			"type":"ModelController",
+			"functions":[
+				{
+					"name": "customFunction",
+					"function":" var x=123;return this; "
+				},
+				{
+					"name": "customFunction2"
+				}]
+		},
+		{
+			"name":"TestSubController",
+			"model":"Test",
+			"path":"info",
+			"type":"ModelSubdocController",
+			"functions":[{
+				"name": "customFunction",
+				"function":" var x=123;return this; "
+			},
+				{
+					"name": "customFunction2"
+				}]
+		}
+	],
+
+	"routes":{
+		"post /test" 	: {
+			"permissions": ["test-info-manage"],
+			"action" 	: "TestController.create"
+		},
+		"get /test" 	: {
+			"permissions": ["test-info-access"],
+			"action" 	: "TestController.getCollection"
+		},
+		"put /test/:id" 	: {
+			"permissions": ["test-info-manage"],
+			"action" 	: "TestController.update"
+		},
+		"delete /test/:id" 	: {
+			"permissions": ["test-info-manage"],
+			"action" 	: "TestController.delete"
+		},
+		"get /test/:id" : {
+			"permissions": ["test-info-access"],
+			"action" 	: "TestController.getItem"
+		}
+	},
+
+	"clientModels": [
+		{
+			"resourceUri":"/test",
+			"itemModel":{
+				"name":"Test",
+				"functions":[{
+					"name": "getStat",
+					"parameters":"",
+					"function":" return this.get('attr1') * this.get('attr2'); "
+				},
+					{
+						"name": "statFunc2",
+						"function":""
+					}]
+			},
+			"collectionModel":{
+				"name":"TestCollection",
+				"functions":[{
+					"name": "statFunc1",
+					"parameters":"arg1,arg2",
+					"function":" var x=123;return this; "
+				},
+					{
+						"name": "statFunc2",
+						"function":""
+					}]
+			}
+		}
+	],
+
+	"views":[
+		{
+			"name":"testListView",
+			"displayName":"Test Management",
+			"description":"description",
+			"permission":"test-info-access"	,
+			"type":"gridView",
+			"model":"TestCollection",
+			"url":"/tests",
+			"recordActions":[
+				{
+					"name":"delete",
+					"displayName":"Delete",
+					"className":"hidden-xs",
+					"type":"Button",
+					"event":"click",
+					"function":"deleteRecord",
+					"permission":"test-info-manage"
+				}
+			],
+			"actions":[
+				{
+					"name":"new",
+					"type":"link",
+					"url":"/tests/add",
+					"className":"btn-theme x-large",
+					"permission":"test-info-manage"
+				},
+				{
+					"name":"test",
+					"displayName":"Stat Func",
+					"type":"button",
+					"function":"statFunc2",
+					"permission":"test-info-manage"
+				}
+			],
+			"functions":[{
+				"name": "statFunc1",
+				"parameters":"arg1,arg2",
+				"function":" var x=123;return this; "
+			},
+				{
+					"name": "statFunc2",
+					"function":""
+				}]
+		},
+		{
+			"name":"testEditView",
+			"displayName":"Test Edit",
+			"type":"editForm",
+			"permission":"test-info-manage"	,
+			"model":"Test",
+			"url":"/tests/:id/edit",
+			"fields":[
+				{
+					"name":"name",
+					"field":"name",
+					"className":"",
+					"validation":"",
+					"type":"text"
+				},
+				{
+					"name":"website",
+					"field":"info.website",
+					"className":"hidden-xs",
+					"validation":"",
+					"type":"textarea"
+				},
+				{
+					"name":"something",
+					"field":"info.something",
+					"className":"",
+					"validation":"",
+					"type":"select",
+					"dataSource":{
+						"type":"model",
+						"model":"OtherCollection",
+						"path":"account.brands",
+						"key":"id",
+						"value":"displayName"
+					}
+				}
+			],
+			"actions":[
+				{
+					"name":"saveRecord",
+					"className":"",
+					"type":"button",
+					"event":"click",
+					"function":"saveRecord",
+					"gotoURL":"/tests/:id"
+				},
+				{
+					"name":"cancel",
+					"className":"",
+					"type":"link",
+					"url":"/tests"
+				}
+			]
+		},
+		{
+			"name":"testDetailView",
+			"displayName":"Test Detail",
+			"type":"detailForm",
+			"url":"/tests/:id",
+			"model":"Test",
+			"fields":[
+				{
+					"name":"name",
+					"field":"name",
+					"className":"",
+					"type":"text"
+				},
+				{
+					"name":"website",
+					"field":"info.website",
+					"className":"hidden-xs",
+					"type":"text"
+				},
+				{
+					"name":"sel",
+					"field":"info.see",
+					"className":"hidden-xs",
+					"type":"select"
+				},
+				{
+					"name":"date",
+					"field":"info.date",
+					"className":"ab cd ef",
+					"type":"date"
+				}
+			],
+			"actions":[
+				{
+					"name":"deleteRecord",
+					"className":"",
+					"type":"button",
+					"event":"click",
+					"action":"saveRecord",
+					"gotoURL":"/tests/:id"
+				},
+				{
+					"name":"back",
+					"className":"",
+					"type":"link",
+					"url":"/tests"
+				}
+			]
+		},
+		{
+			"name":"testNewView",
+			"displayName":"Create a Test Record",
+			"type":"addForm",
+			"model":"Test",
+			"url":"/tests/add",
+			"fields":[
+				{
+					"name":"name",
+					"field":"name",
+					"className":""
+				},
+				{
+					"name":"website",
+					"field":"info.website",
+					"className":"hidden-xs"
+				}
+			]
+		}
+	],
+
+	"menus":[
+		{
+			"name":"test",
+			"displayName":"Test Module",
+			"url":"/tests",
+			"permission":"test-info-access",
+			"className":"mylink teststyle"
+		},
+		{
+			"name":"test2",
+			"displayName":"Test Module2",
+			"url":"/tests",
+			"permission":"test-info-access",
+			"className":""
+		}
+	],
+
+	"roles":[
+		{
+			"name":"test-manager",
+			"displayName":"Test Manager",
+			"permissions":[
+				"test-info-access",
+				"test-info-manage",
+				"test-menu-access"
+			],
+			"isDefault":false
+		},
+		{
+			"name":"test-user",
+			"displayName":"Test User",
+			"permissions":[
+				"test-info-access",
+				"test-menu-access"
+			],
+			"isDefault":true
+		}]
+}

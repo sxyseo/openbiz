@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 ############################
 # npm
 ############################
@@ -42,3 +43,20 @@ node_modules/*
 .DS_Store
 app/modules/me/controllers/public 
 >>>>>>> df20f5b3b4b2a9db6e4d17a78482bea46826e662
+=======
+lib-cov
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+
+pids
+logs
+results
+
+npm-debug.log
+node_modules
+>>>>>>> aab7915eb414a7edf8ad7abf887d2fea19892b34

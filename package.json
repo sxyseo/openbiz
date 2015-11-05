@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 {
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -126,11 +127,20 @@
 {
     "name": "openbiz-cubi",
     "description": "A openbiz based application, provides basically user, account, models and permission contronls.",
+=======
+{
+    "name": "openbiz-appbuilder",
+    "description": "Openbiz Appbuilder, Automatic generate openbiz application ",
+>>>>>>> aab7915eb414a7edf8ad7abf887d2fea19892b34
     "version": "1.0.0",
     "homepage": "http://github.com/openbiz/openbiz",
     "repository": {
         "type": "git",
+<<<<<<< HEAD
         "url": "https://github.com/openbiz/openbiz-cubi.git"
+=======
+        "url": "https://github.com/openbiz/openbiz-appbuilder.git"
+>>>>>>> aab7915eb414a7edf8ad7abf887d2fea19892b34
     },
     "author": [
         "Jixian Wang <jixian@openbiz.me>",
@@ -139,6 +149,7 @@
     "contributors": [
         
     ],
+<<<<<<< HEAD
     "scripts": {
         "start": "node app.js"
     },
@@ -152,12 +163,23 @@
         "grunt-contrib-jade": "~0.9.0",
         "grunt-contrib-requirejs": "~0.4.1",
         "grunt-contrib-clean": "~0.5.0"
+=======
+    "dependencies": {
+        "nopt":"~2.2.0",
+        "jade":"~1.3.0",
+        "underscore":"~1.6.0",
+        "requirejs":"~2.1.11",
+	    "moment":"~2.5.1"
+    },
+    "devDependencies": {        
+>>>>>>> aab7915eb414a7edf8ad7abf887d2fea19892b34
     },
     "engines": {
         "node": ">=0.10.0"
     },
     "readmeFilename": "README.md",
     "bugs": {
+<<<<<<< HEAD
         "url": "https://github.com/openbiz/openbiz-cubi/issues"
     },
     "gitHead": "0b2c62c85ac152c1517ca0681d1f018daa3f4c6b",
@@ -167,9 +189,23 @@
     },
     "keywords": [
         "openbiz",
+=======
+        "url": "https://github.com/openbiz/openbiz-appbuilder/issues"
+    },
+    "gitHead": "0b2c62c85ac152c1517ca0681d1f018daa3f4c6b",    
+    "keywords": [
+        "openbiz",
+        "openbiz-ui",
+        "openbiz-appbuilder",
+        "client framework",
+>>>>>>> aab7915eb414a7edf8ad7abf887d2fea19892b34
         "framework",
         "cubi"
     ],
     "license": "BSD"
+<<<<<<< HEAD
 }
 >>>>>>> df20f5b3b4b2a9db6e4d17a78482bea46826e662
+=======
+}
+>>>>>>> aab7915eb414a7edf8ad7abf887d2fea19892b34
