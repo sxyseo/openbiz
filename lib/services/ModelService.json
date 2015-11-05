@@ -1,0 +1,81 @@
+{
+	"RecordMetadata":{
+		"creator":{
+			"id":{
+	            "type": "ObjectId",
+	            "ref": "cubi.user.User",
+	            "required": true
+	        },
+	        "timestamp": {
+	            "type": "Date",
+	            "default": "<% return Date.now %>"
+	        }
+		},
+		"state":{
+			"readable":{
+				"type":"Boolean",
+				"default":true
+			},
+			"writable":{
+				"type":"Boolean",
+				"default":true
+			},
+			"deletable":{
+				"type":"Boolean",
+				"default":true
+			}
+		},
+		"updates":[
+			{
+				"id":{
+		            "type": "ObjectId",
+		            "ref": "cubi.user.User",
+		            "required": true
+		        },
+		        "timestamp": {
+		            "type": "Date",
+		            "default": "<% return Date.now %>"
+		        },
+				"action": {
+					"type": "String",
+					"enum":["ADD","DELETE","UPDATE"]
+				},
+				"path": "String",
+				"original": {},
+				"current": {}
+			}
+		],
+		"ownership":{
+			"ownerId":{
+		            "type": "ObjectId",
+		            "ref": "cubi.user.User",
+		            "required": true
+		        },
+			"accountId":{
+		            "type": "ObjectId",
+		            "ref": "cubi.account.Account",
+		            "required": true
+		        }
+		},
+		"visibility":{ 
+			"scope":{ 	
+				"type":"String",
+				"enum":["GLOBAL","ACCOUNT","OWNER"],
+				"default":"ACCOUNT"
+			}
+		},
+		"ACL":[	
+			{
+				"id":{
+		            "type": "ObjectId",
+		            "ref": "cubi.user.User",
+		            "required": true
+		        },
+		        "permission":{
+					"type":"String",
+					"enum":["ACCESS","MANAGE"]
+				}
+			}
+		]
+	}
+}

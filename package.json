@@ -1,12 +1,31 @@
 {
+<<<<<<< HEAD
   "name": "Openbiz-Startup",
   "version": "0.1.0",
   "private": true,
+=======
+  "name": "openbiz",
+  "description": "Openbiz framework for building Node.js application",
+  "version": "4.0.0",
+  "homepage": "http://github.com/openbiz/openbiz",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/openbiz/openbiz.git"
+  },
+  "author": [
+      "Jixian Wang <jixian@openbiz.me>",
+      "Rocky Swen <rocky@openbiz.me>"
+  ],
+  "contributors": [
+
+  ],
+>>>>>>> 997f1398396683d7ad667b1b360ce74c7c7fcf6f
   "scripts": {
     "start": "node app.js"
   },
   "dependencies": {
     "async": "~0.2.9",
+<<<<<<< HEAD
     "connect-mongo": "~0.4.0",
     "nopt":"~2.2.0",
     "emailjs": "~0.3.6",
@@ -23,4 +42,33 @@
     "gridfs-stream":"~0.4.1",
     "imagemagick": ">=0.1.3"
   }
+=======
+    "emailjs": "~0.3.6",
+    "express": "~3.4.4",
+    "mongoose": "~3.8.1",
+    "underscore":"~1.6.0",
+    "imagemagick": ">=0.1.3"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-jsdoc": "~0.4.2"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/openbiz/openbiz/issues"
+  },
+  "gitHead": "0b2c62c85ac152c1517ca0681d1f018daa3f4c6b",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "keywords": [
+    "openbiz",
+    "framework"
+  ],
+  "license": "BSD"
+>>>>>>> 997f1398396683d7ad667b1b360ce74c7c7fcf6f
 }
