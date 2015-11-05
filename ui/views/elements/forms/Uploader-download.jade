@@ -1,0 +1,44 @@
+{% for (var i=0, file; file=o.files[i]; i++) { %}
+tr.template-download.fade
+  td
+    span.preview
+      {% if (file.thumbnailUrl) { %}
+      a(href='{%=file.url%}', title='{%=file.name%}', download='{%=file.name%}', data-gallery='')
+        img(src='{%=file.thumbnailUrl%}')
+      {% } %}
+  td
+    p.name
+      {% if (file.url) { %}
+      {% if (file.thumbnailUrl) { %}
+      a(href='{%=file.url%}', title='{%=file.name%}', data-file-id='{%=file.fileId%}', download='{%=file.name%}', data-gallery="data-gallery" ) {%=file.name%}
+      {% } else { %}
+      a(href='{%=file.url%}', title='{%=file.name%}', data-file-id='{%=file.fileId%}', download='{%=file.name%}' ) {%=file.name%}
+      {% } %}
+      {% } else { %}
+      span {%=file.name%}
+      {% } %}
+    {% if (file.error) { %}
+    div
+      span.label.label-danger Error
+        {%=file.error%}
+    {% } %}
+  td
+    span.size {%=o.formatFileSize(file.size)%}
+  td
+    {% if (file.deleteUrl) { %}
+    {% if (file.deleteWithCredentials) { %}
+    button.btn.btn-danger.delete(data-type='{%=file.deleteType%}', data-url='{%=file.deleteUrl%}', data-xhr-fields='{"withCredentials":true}')
+      i.glyphicon.glyphicon-trash
+      span <%= openbiz.locale.uploader.btnDelete %>
+    {% } else { %}
+    button.btn.btn-danger.delete(data-type='{%=file.deleteType%}', data-url='{%=file.deleteUrl%}')
+      i.glyphicon.glyphicon-trash
+      span <%= openbiz.locale.uploader.btnDelete %>
+    {% } %}
+    input.toggle(type='checkbox', name='delete', value='1')
+    {% } else { %}
+    button.btn.btn-warning.cancel
+      i.glyphicon.glyphicon-ban-circle
+      span <%= openbiz.locale.uploader.btnCancel %>
+    {% } %}
+{% } %}

@@ -1,0 +1,7 @@
+.form-group(class!="<%= className%>")
+	label.control-label <%= displayName%>
+	.input-group.date.form_datetime(data-date-format!='<%= dateFormat %>', data-picker-position='bottom-left')
+		input.form-control(name!="<%= elemName %>",type='text',value!="<%= displayValue %>",placeholder!="<%= placeholder %>")
+		span.input-group-btn
+			button.btn.btn-default(type='button')
+				i.fa.fa-calendar

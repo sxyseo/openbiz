@@ -1,0 +1,27 @@
+div(class!="<%= className%>")
+	label.control-label <%= displayName%>
+	.row.fileupload-buttonbar
+		.col-lg-7
+			span.btn.btn-success.fileinput-button
+				i.glyphicon.glyphicon-plus
+				span <%= openbiz.locale.uploader.btnAddFiles %>
+				input(type='file', name='files[]', multiple='')
+			<% if(autoUpload != true){ %>
+			button.btn.btn-primary.start(type='submit')
+				i.glyphicon.glyphicon-upload
+				span <%= openbiz.locale.uploader.btnStartUpload %>
+			<% }%>
+			button.btn.btn-warning.cancel(type='reset')
+				i.glyphicon.glyphicon-ban-circle
+				span <%= openbiz.locale.uploader.btnCancelUpload %>
+			button.btn.btn-danger.delete(type='button')
+				i.glyphicon.glyphicon-trash
+				span <%= openbiz.locale.uploader.btnDelete %>
+			input.toggle(type='checkbox',parsley-group!="<%=elemName%>")
+			span.fileupload-process
+				.col-lg-5.fileupload-progress.fade
+					.progress.progress-striped.active(role='progressbar', aria-valuemin='0', aria-valuemax='100')
+						.progress-bar.progress-bar-success(style='width:0%;')
+					.progress-extended
+	table.table.table-striped(role='presentation')
+		tbody.files

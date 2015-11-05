@@ -1,0 +1,11 @@
+.row(class!="<%= className%>")
+	.col-md-3
+		<% if(hint==true) {%>
+		a.openbiz-hint(href="javascript:void(0)",data-toggle="tooltip",data-placement="top",title="" ,data-original-title!="<%= hintContent%>")
+			| <%= displayName %>&nbsp;
+			i.fa.fa-question-circle
+		<%}else{%>
+		label.control-label <%= displayName%>
+		<%}%>
+	.col-md-9
+		label.control-label(class!="<%= labelClassName%>") <%= displayValue%>

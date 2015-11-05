@@ -1,5 +1,6 @@
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
   "name": "Openbiz-Startup",
   "version": "0.1.0",
   "private": true,
@@ -72,3 +73,51 @@
   "license": "BSD"
 >>>>>>> 997f1398396683d7ad667b1b360ce74c7c7fcf6f
 }
+=======
+    "name": "openbiz-ui",
+    "description": "Openbiz UI Frameworks, runs on browsers and required by all Openbiz applications",
+    "version": "1.0.0",
+    "homepage": "http://github.com/openbiz/openbiz",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/openbiz/openbiz-ui.git"
+    },
+    "author": [
+        "Jixian Wang <jixian@openbiz.me>",
+        "Rocky Swen <rocky@openbiz.me>"
+    ],
+    "contributors": [
+        
+    ],
+    "dependencies": {
+        "gridfs-stream":"~0.4.1"
+    },
+    "devDependencies": {
+        "grunt": "~0.4.1",
+        "grunt-jsdoc": "~0.4.2",
+        "grunt-contrib-jade": "~0.9.0",
+        "grunt-contrib-requirejs": "~0.4.1",
+        "grunt-contrib-clean": "~0.5.0"
+    },
+    "engines": {
+        "node": ">=0.10.0"
+    },
+    "readmeFilename": "README.md",
+    "bugs": {
+        "url": "https://github.com/openbiz/openbiz-ui/issues"
+    },
+    "gitHead": "0b2c62c85ac152c1517ca0681d1f018daa3f4c6b",
+    "main": "index.js",
+    "directories": {
+        "doc": "doc"
+    },
+    "keywords": [
+        "openbiz",
+        "openbiz-ui",
+        "client framework",
+        "framework",
+        "cubi"
+    ],
+    "license": "BSD"
+}
+>>>>>>> 1196908712e898671cfd72ee5575091f7d5b0304
